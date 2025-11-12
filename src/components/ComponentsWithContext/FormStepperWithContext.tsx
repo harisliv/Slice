@@ -1,20 +1,20 @@
-import { FormStepper } from "@app/lib/ui";
-import { useEffect } from "react";
-import { useFormContext } from "react-hook-form";
+import { FormStepper } from '@app/lib/ui';
+import { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
 import {
   useCurrentStep,
   useFormStepperActions,
-  useStepStates,
-} from "@app/hooks/useFormStepper";
-import { useMultiStepFormActions } from "@app/hooks";
-import { StepStatus } from "@app/lib/types";
-import { useStepChangeModal } from "@app/hooks/Modal/variants/useStepChangeModal";
-import { isEmpty } from "lodash";
+  useStepStates
+} from '@app/hooks/useFormStepper';
+import { useMultiStepFormActions } from '@app/hooks';
+import { StepStatus } from '@app/lib/types';
+import { useStepChangeModal } from '@app/hooks/Modal/variants/useStepChangeModal';
+import { isEmpty } from 'lodash';
 
 export default function FormStepperWithContext({
-  mode = "random",
+  mode = 'random'
 }: {
-  mode?: "serial" | "random";
+  mode?: 'serial' | 'random';
 }) {
   const currentStep = useCurrentStep();
 
@@ -24,7 +24,7 @@ export default function FormStepperWithContext({
     completeStep,
     getStepByIndex,
     uncompleteStep,
-    revertToCurrentStepInitialStatus,
+    revertToCurrentStepInitialStatus
   } = useFormStepperActions();
 
   const stepStates = useStepStates();
@@ -35,13 +35,13 @@ export default function FormStepperWithContext({
   };
 
   const { showStepChangeModal } = useStepChangeModal({
-    onConfirm: goToStepAndRevertToInitialState,
+    onConfirm: goToStepAndRevertToInitialState
   });
 
   const { updateFormValues } = useMultiStepFormActions();
   const {
     getValues,
-    formState: { isValid, isDirty, dirtyFields },
+    formState: { isValid, isDirty, dirtyFields }
   } = useFormContext();
 
   const hasDirtyFields = isDirty && !isEmpty(dirtyFields);
@@ -59,7 +59,7 @@ export default function FormStepperWithContext({
   };
 
   useEffect(() => {
-    if (mode === "serial") {
+    if (mode === 'serial') {
       const nextStep = getStepByIndex(currentStep + 1);
       // when the current step is completed, we need to toggle the next step to active if it's not completed
       if (nextStep?.status !== StepStatus.COMPLETED) {

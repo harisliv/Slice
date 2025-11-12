@@ -1,11 +1,11 @@
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { InitiativeProfileControlledInput } from "@app/components";
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import { InitiativeProfileControlledInput } from '@app/components';
 
 export default function SummaryOutcomes() {
   return (
     <InitiativeProfileControlledInput
       istextArea
-      name={"summaryOutcomes"}
+      name={'summaryOutcomes'}
       required
       customGridSize="full"
       inputDescriptionTitle={

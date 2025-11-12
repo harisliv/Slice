@@ -1,11 +1,11 @@
-import type { AccountEntityOption } from "@app/components/Autocomplete/Autocomplete.types";
-import type { DropdownName } from "@app/hooks/useDropdownValues";
-import { type TUploadedFile } from "@app/types/InitiativeProfile/InitiativeProfile.types";
-import type { CheckboxProps } from "@mui/material";
-import type { DatePickerProps } from "@mui/x-date-pickers";
-import type { CustomSize, IInputBase, ISelect } from "@app/lib/types";
-import type { Dayjs } from "dayjs";
-import type { SCHEMA_TYPE } from "./SmartDropdown.types";
+import type { AccountEntityOption } from '@app/components/Autocomplete/Autocomplete.types';
+import type { CustomSize, IInputBase, ISelect } from '@app/lib/types';
+import { type TUploadedFile } from '@app/types/InitiativeProfile/InitiativeProfile.types';
+import type { CheckboxProps } from '@mui/material';
+import type { DatePickerProps } from '@mui/x-date-pickers';
+import type { Dayjs } from 'dayjs';
+import type { DropdownName } from './Dropdown.types';
+import type { SCHEMA_TYPE } from './SmartDropdown.types';
 
 export type TControlledInputBase = {
   customGridSize?: CustomSize;
@@ -89,7 +89,7 @@ export interface ControlledUploaderProps {
   inputDescriptionTitle?: string;
   inputDescriptionSubtitle?: string;
   accept: { [key: string]: string[] };
-  type: "Initiative" | "ProgressReport";
+  type: 'Initiative' | 'ProgressReport';
   serverValue?: TUploadedFile | null;
   fileMaxSize?: number;
 }

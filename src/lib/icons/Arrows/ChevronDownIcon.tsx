@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import type { IIconProps } from "@app/lib/types";
-import { Theme } from "@app/lib/general";
+import type { FC } from 'react';
+import type { IIconProps } from '@app/lib/types';
+import { Theme } from '@app/lib/general';
 
 const ChevronDownIcon: FC<IIconProps> = ({
-  fill = Theme.palette.primary.azur,
+  fill = Theme.palette.primary.azur
 }) => (
   <svg
     width="20"

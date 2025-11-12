@@ -1,18 +1,18 @@
-import { type Table } from "@tanstack/react-table";
-import { Stack } from "@mui/material";
-import { PlusIcon } from "@app/lib/icons";
-import { ButtonComponent } from "@app/lib/ui";
-import ExportActions from "./ExportActions";
-import ColumnVisibilityActions from "./ColumnVisibilityActions";
-import type { VisibilityState } from "@tanstack/react-table";
-import SmartDropdown from "@app/components/SmartDropdown";
+import { type Table } from '@tanstack/react-table';
+import { Stack } from '@mui/material';
+import { PlusIcon } from '@app/lib/icons';
+import { ButtonComponent } from '@app/lib/ui';
+import ExportActions from './ExportActions';
+import ColumnVisibilityActions from './ColumnVisibilityActions';
+import type { VisibilityState } from '@tanstack/react-table';
+import SmartDropdown from '@app/components/SmartDropdown';
 import {
   isParticipantCreationData,
   type TMyParticipants,
-  type SmartDropdownData,
-} from "@app/types";
-import { useUpdateParticipant, useMyParticipants } from "@app/hooks";
-import { useState } from "react";
+  type SmartDropdownData
+} from '@app/types';
+import { useUpdateParticipant, useMyParticipants } from '@app/hooks';
+import { useState } from 'react';
 
 interface TableActionsProps {
   table: Table<TMyParticipants>;
@@ -21,14 +21,14 @@ interface TableActionsProps {
   setVisibility: (
     updaterOrValue:
       | VisibilityState
-      | ((old: VisibilityState) => VisibilityState),
+      | ((old: VisibilityState) => VisibilityState)
   ) => void;
 }
 export default function TableActions({
   table,
   hasActiveFilters,
   visibility,
-  setVisibility,
+  setVisibility
 }: TableActionsProps) {
   const [openSmartDd, setOpenSmartDd] = useState<boolean>(false);
   const { mutateAsync: updateParticipant } = useUpdateParticipant();
@@ -44,9 +44,9 @@ export default function TableActions({
     <Stack
       mb={1}
       mt={3}
-      direction={{ xs: "column", sm: "row" }}
+      direction={{ xs: 'column', sm: 'row' }}
       justifyContent="space-between"
-      alignItems={{ xs: "left", sm: "center" }}
+      alignItems={{ xs: 'left', sm: 'center' }}
     >
       <ButtonComponent
         customVariant="primary-m"
@@ -54,7 +54,7 @@ export default function TableActions({
         startIcon={<PlusIcon />}
         onClick={() => setOpenSmartDd(true)}
       >
-        {"Add Participants"}
+        {'Add Participants'}
       </ButtonComponent>
       <SmartDropdown
         schemaType="participantCreation"
@@ -68,7 +68,7 @@ export default function TableActions({
         selectOptions={selectOptions}
       />
 
-      <Stack direction={{ xxs: "column", xs: "row", sm: "row" }} spacing={2}>
+      <Stack direction={{ xxs: 'column', xs: 'row', sm: 'row' }} spacing={2}>
         <ExportActions table={table} hasActiveFilters={hasActiveFilters} />
         <ColumnVisibilityActions
           visibility={visibility}

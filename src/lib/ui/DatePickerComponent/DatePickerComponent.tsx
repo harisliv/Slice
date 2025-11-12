@@ -1,16 +1,16 @@
-import type { Dayjs } from "dayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import type { DatePickerProps } from "@mui/x-date-pickers";
-import { Theme } from "@app/lib/general";
-import { StyleDatePicker } from "./DatePicker.styles";
-import { CalendarIcon } from "@app/lib/icons";
-import { type CustomSize, gridSizeMap } from "@app/lib/types";
-import { Grid2 } from "@mui/material";
-import { RequiredLabel } from "../Input";
+import type { Dayjs } from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import type { DatePickerProps } from '@mui/x-date-pickers';
+import { Theme } from '@app/lib/general';
+import { StyleDatePicker } from './DatePicker.styles';
+import { CalendarIcon } from '@app/lib/icons';
+import { type CustomSize, gridSizeMap } from '@app/lib/types';
+import { Grid2 } from '@mui/material';
+import { RequiredLabel } from '../Input';
 
 export default function DatePickerComponent({
-  customGridSize = "full",
+  customGridSize = 'full',
   name,
   label,
   required,
@@ -28,16 +28,16 @@ export default function DatePickerComponent({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyleDatePicker
             sx={{ borderColor: Theme.palette.primary.azur }}
-            format={props.format || "DD/MM/YYYY"}
+            format={props.format || 'DD/MM/YYYY'}
             slots={{
-              openPickerIcon: CalendarIcon,
+              openPickerIcon: CalendarIcon
             }}
             slotProps={{
               field: { clearable: true },
               textField: {
                 error: props.error,
-                helperText: props.helperText,
-              },
+                helperText: props.helperText
+              }
             }}
             {...props}
             label={

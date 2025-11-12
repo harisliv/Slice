@@ -1,15 +1,15 @@
-import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
-import type { TProgressReportingShape } from "@app/types";
-import { Divider, Grid2 } from "@mui/material";
-import { Stack } from "@mui/system";
-import { Header3, Header4, InfoCard, Paragraph } from "@app/lib/ui";
-import Link from "@mui/material/Link";
+import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
+import type { TProgressReportingShape } from '@app/types';
+import { Divider, Grid2 } from '@mui/material';
+import { Stack } from '@mui/system';
+import { Header3, Header4, InfoCard, Paragraph } from '@app/lib/ui';
+import Link from '@mui/material/Link';
 
 interface ActionsOutcomesImpactsReviewProps {
   data: TProgressReportingShape;
 }
 export default function ActionsOutcomesImpactsReview({
-  data,
+  data
 }: ActionsOutcomesImpactsReviewProps) {
   const actions = data?.actions?.length ? data.actions : null;
 
@@ -18,15 +18,15 @@ export default function ActionsOutcomesImpactsReview({
       <Header3 variant="bold">2. Actions, outcomes, impacts</Header3>
       {actions ? (
         actions.map((action, index) => (
-          <Grid2 container key={action.id} direction={"column"} spacing={3}>
+          <Grid2 container key={action.id} direction={'column'} spacing={3}>
             <Header4 variant="lora">{`Action ${index + 1}`}</Header4>
             <Grid2 container spacing={3}>
               <Grid2 size={{ sm: 6, xs: 12, xxs: 12 }}>
                 <InfoCard
                   title={CREATE_REPORT_FIELD_INFO.action.title.title}
                   content={{
-                    type: "text",
-                    value: action.title,
+                    type: 'text',
+                    value: action.title
                   }}
                 />
               </Grid2>
@@ -34,8 +34,8 @@ export default function ActionsOutcomesImpactsReview({
                 <InfoCard
                   title={CREATE_REPORT_FIELD_INFO.action.typeOfAction.title}
                   content={{
-                    type: "text",
-                    value: action.typeOfAction,
+                    type: 'text',
+                    value: action.typeOfAction
                   }}
                 />
               </Grid2>
@@ -44,8 +44,8 @@ export default function ActionsOutcomesImpactsReview({
                   <InfoCard
                     title="Type of action undertaken - other"
                     content={{
-                      type: "text",
-                      value: action.typeOther,
+                      type: 'text',
+                      value: action.typeOther
                     }}
                   />
                 </Grid2>
@@ -54,8 +54,8 @@ export default function ActionsOutcomesImpactsReview({
                 <InfoCard
                   title={CREATE_REPORT_FIELD_INFO.action.description.title}
                   content={{
-                    type: "text",
-                    value: action.description,
+                    type: 'text',
+                    value: action.description
                   }}
                 />
               </Grid2>
@@ -66,8 +66,8 @@ export default function ActionsOutcomesImpactsReview({
                       CREATE_REPORT_FIELD_INFO.action.associatedTargets.title
                     }
                     content={{
-                      type: "list",
-                      value: action.associatedTargets,
+                      type: 'list',
+                      value: action.associatedTargets
                     }}
                   />
                 </Grid2>
@@ -76,15 +76,15 @@ export default function ActionsOutcomesImpactsReview({
                 <InfoCard
                   title={CREATE_REPORT_FIELD_INFO.action.outcomes.title}
                   content={{
-                    type: "text",
-                    value: action.outcomes,
+                    type: 'text',
+                    value: action.outcomes
                   }}
                 />
                 {action.outcomesUrl.length > 0 && (
                   <ul>
                     {action.outcomesUrl.map(
                       (url) =>
-                        url !== "" && (
+                        url !== '' && (
                           <li>
                             <Link
                               href={url}
@@ -94,7 +94,7 @@ export default function ActionsOutcomesImpactsReview({
                               {url}
                             </Link>
                           </li>
-                        ),
+                        )
                     )}
                   </ul>
                 )}
@@ -105,8 +105,8 @@ export default function ActionsOutcomesImpactsReview({
                     CREATE_REPORT_FIELD_INFO.action.impactExplanation.title
                   }
                   content={{
-                    type: "text",
-                    value: action.impactExplanation,
+                    type: 'text',
+                    value: action.impactExplanation
                   }}
                 />
               </Grid2>
@@ -119,8 +119,8 @@ export default function ActionsOutcomesImpactsReview({
                           .contributionToMultilateralProcess.title
                       }
                       content={{
-                        type: "list",
-                        value: action.contributionToMultilateralProcess,
+                        type: 'list',
+                        value: action.contributionToMultilateralProcess
                       }}
                     />
                   </Grid2>
@@ -131,8 +131,8 @@ export default function ActionsOutcomesImpactsReview({
                           .contributionToMultilateralProcessDescription.title
                       }
                       content={{
-                        type: "text",
-                        value: action.contributionOfTheAction,
+                        type: 'text',
+                        value: action.contributionOfTheAction
                       }}
                     />
                   </Grid2>

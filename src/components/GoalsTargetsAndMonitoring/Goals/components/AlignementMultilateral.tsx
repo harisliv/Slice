@@ -1,15 +1,15 @@
 import {
   FormInputDescription,
   GoalsTargetsAndMonitoringControlledInput,
-  GoalsTargetsAndMonitoringControlledSelect,
-} from "@app/components";
-import { ButtonComponent } from "@app/lib/ui";
-import { Stack } from "@mui/system";
-import type { GoalsFormData } from "@app/types";
-import { useFieldArray, useFormContext } from "react-hook-form";
-import { useDeleteModal, useDropdownValues } from "@app/hooks";
-import { GOALS_FIELD_INFO } from "@app/constants";
-import ClimateRelatedAlignmentTitle from "./ClimateRelatedAlignmentTitle";
+  GoalsTargetsAndMonitoringControlledSelect
+} from '@app/components';
+import { ButtonComponent } from '@app/lib/ui';
+import { Stack } from '@mui/system';
+import type { GoalsFormData } from '@app/types';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import { useDeleteModal, useDropdownValues } from '@app/hooks';
+import { GOALS_FIELD_INFO } from '@app/constants';
+import ClimateRelatedAlignmentTitle from './ClimateRelatedAlignmentTitle';
 
 export default function AlignementMultilateral() {
   const { showDeleteModal } = useDeleteModal();
@@ -17,28 +17,28 @@ export default function AlignementMultilateral() {
 
   const { append, remove } = useFieldArray({
     control,
-    name: "climateRelatedGoalAlignmentMultilateral",
+    name: 'climateRelatedGoalAlignmentMultilateral'
   });
 
   const climateRelatedGoalAlignmentMultilateral = watch(
-    "climateRelatedGoalAlignmentMultilateral",
+    'climateRelatedGoalAlignmentMultilateral'
   );
 
   const tempClimateRelatedGoalAlignmentMultilateralAgreements = watch(
-    "tempClimateRelatedGoalAlignmentMultilateralAgreements",
+    'tempClimateRelatedGoalAlignmentMultilateralAgreements'
   );
 
   const tempClimateRelatedGoalAlignmentMultilateralDescription = watch(
-    "tempClimateRelatedGoalAlignmentMultilateralDescription",
+    'tempClimateRelatedGoalAlignmentMultilateralDescription'
   );
 
-  const { data: agreements } = useDropdownValues("Agreements");
+  const { data: agreements } = useDropdownValues('Agreements');
 
   const agreementsLeft = agreements?.filter(
     (agreement) =>
       !climateRelatedGoalAlignmentMultilateral?.some(
-        (a) => a.agreement === agreement.value,
-      ),
+        (a) => a.agreement === agreement.value
+      )
   );
 
   return (
@@ -52,26 +52,26 @@ export default function AlignementMultilateral() {
       {!!climateRelatedGoalAlignmentMultilateral?.length &&
         climateRelatedGoalAlignmentMultilateral?.length > 0 &&
         climateRelatedGoalAlignmentMultilateral.map((item, index) => {
-          const titleText = item.agreement ?? "";
+          const titleText = item.agreement ?? '';
 
           return (
             <ClimateRelatedAlignmentTitle
-              key={item.agreement ?? "" + index}
-              title={item.agreement ?? ""}
-              text={item.description ?? ""}
+              key={item.agreement ?? '' + index}
+              title={item.agreement ?? ''}
+              text={item.description ?? ''}
               onActionClick={() => {
                 showDeleteModal({
                   subtitle:
-                    "Are you sure you want to remove this climate-related goal alignment?",
+                    'Are you sure you want to remove this climate-related goal alignment?',
                   content: `You’re about to permanently delete "${titleText}" This action cannot be undone`,
-                  onConfirm: () => remove(index),
+                  onConfirm: () => remove(index)
                 });
               }}
             />
           );
         })}
       <GoalsTargetsAndMonitoringControlledSelect
-        name={"tempClimateRelatedGoalAlignmentMultilateralAgreements"}
+        name={'tempClimateRelatedGoalAlignmentMultilateralAgreements'}
         customGridSize="half"
         inputPlaceholder={
           GOALS_FIELD_INFO.climateRelatedGoalAlignmentMultilateral
@@ -83,9 +83,9 @@ export default function AlignementMultilateral() {
       {tempClimateRelatedGoalAlignmentMultilateralAgreements && (
         <GoalsTargetsAndMonitoringControlledInput
           istextArea
-          name={"tempClimateRelatedGoalAlignmentMultilateralDescription"}
+          name={'tempClimateRelatedGoalAlignmentMultilateralDescription'}
           inputDescriptionTitle={
-            tempClimateRelatedGoalAlignmentMultilateralAgreements ?? ""
+            tempClimateRelatedGoalAlignmentMultilateralAgreements ?? ''
           }
           inputDescriptionSubtitle={
             GOALS_FIELD_INFO.climateRelatedGoalAlignmentOtherDescription
@@ -104,16 +104,16 @@ export default function AlignementMultilateral() {
             append({
               agreement: tempClimateRelatedGoalAlignmentMultilateralAgreements,
               description:
-                tempClimateRelatedGoalAlignmentMultilateralDescription ?? "",
+                tempClimateRelatedGoalAlignmentMultilateralDescription ?? ''
             });
 
             setValue(
-              "tempClimateRelatedGoalAlignmentMultilateralAgreements",
-              "",
+              'tempClimateRelatedGoalAlignmentMultilateralAgreements',
+              ''
             );
             setValue(
-              "tempClimateRelatedGoalAlignmentMultilateralDescription",
-              "",
+              'tempClimateRelatedGoalAlignmentMultilateralDescription',
+              ''
             );
           }}
           customVariant="secondary-m"

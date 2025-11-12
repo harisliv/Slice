@@ -1,11 +1,11 @@
-import { Box, Snackbar } from "@mui/material";
-import type { DefaultTheme } from "styled-components";
-import styled from "styled-components";
-import type { IToasterType } from "./Toaster.types";
-import { ToasterType } from "./Toaster.types";
+import { Box, Snackbar } from '@mui/material';
+import type { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
+import type { IToasterType } from './Toaster.types';
+import { ToasterType } from './Toaster.types';
 const getContentBorder = ({
   toastertype,
-  theme,
+  theme
 }: IToasterType & { theme: DefaultTheme }): string => {
   const color =
     toastertype === ToasterType.SUCCESS
@@ -16,7 +16,7 @@ const getContentBorder = ({
 
 const getButtonOutline = ({
   toastertype,
-  theme,
+  theme
 }: IToasterType & { theme: DefaultTheme }): string => {
   const color =
     toastertype === ToasterType.SUCCESS
@@ -27,7 +27,7 @@ const getButtonOutline = ({
 
 const getContentBackgroundColor = ({
   toastertype,
-  theme,
+  theme
 }: IToasterType & { theme: DefaultTheme }): string => {
   return toastertype === ToasterType.SUCCESS
     ? theme.palette.successGreen.successGreen2
@@ -58,7 +58,7 @@ export const StyledToasterContent = styled(Box)<IToasterType>`
 export const ToasterBody = styled(Box)`
   display: flex;
   flex-direction: row;
-  align-items: "flex-start";
+  align-items: 'flex-start';
   justify-content: space-between;
   gap: 16px;
 `;
@@ -67,7 +67,7 @@ export const IconAndTextWrapper = styled(Box)`
   display: flex;
   flex-direction: row;
   gap: 10px;
-  align-items: "flex-start";
+  align-items: 'flex-start';
 `;
 
 export const StyledIconWrapper = styled(Box)`

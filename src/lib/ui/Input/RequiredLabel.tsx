@@ -1,17 +1,17 @@
-import { Stack } from "@mui/material";
-import type { Theme } from "@app/lib/general";
+import { Stack } from '@mui/material';
+import type { Theme } from '@app/lib/general';
 import {
   StyledRequiredLabelSpan,
-  StyledRequiredLabelStar,
-} from "./Input.styles";
+  StyledRequiredLabelStar
+} from './Input.styles';
 
 // TODO fix active label color
 export default function RequiredLabel({
   label,
   required,
-  fontSize = "l",
+  fontSize = 'l',
   id,
-  startWithStar = false,
+  startWithStar = false
 }: {
   label: React.ReactNode;
   required?: boolean;

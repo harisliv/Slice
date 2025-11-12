@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import type { IIconProps } from "@app/lib/types";
-import { Theme } from "@app/lib/general";
+import type { FC } from 'react';
+import type { IIconProps } from '@app/lib/types';
+import { Theme } from '@app/lib/general';
 
 const SearchIcon: FC<IIconProps> = ({
-  fill = Theme.palette.primary.darkerGrey,
+  fill = Theme.palette.primary.darkerGrey
 }) => (
   <svg
     width="20"

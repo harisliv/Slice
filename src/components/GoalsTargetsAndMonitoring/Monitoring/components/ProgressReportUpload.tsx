@@ -1,16 +1,16 @@
-import FormInputDescription from "@app/components/FormInputDescription";
-import { MONITORING_FIELD_INFO } from "@app/constants";
-import Grid2 from "@mui/material/Grid2";
-import { ControlledUploader } from "@app/components/ControlledInput";
-import { useFormContext } from "react-hook-form";
-import type { InitiativeProfileFormData } from "@app/types";
+import FormInputDescription from '@app/components/FormInputDescription';
+import { MONITORING_FIELD_INFO } from '@app/constants';
+import Grid2 from '@mui/material/Grid2';
+import { ControlledUploader } from '@app/components/ControlledInput';
+import { useFormContext } from 'react-hook-form';
+import type { InitiativeProfileFormData } from '@app/types';
 
 interface ProgressReportUploadProps {
   fieldIndex: number;
 }
 
 export default function ProgressReportUpload({
-  fieldIndex,
+  fieldIndex
 }: ProgressReportUploadProps) {
   const { watch } = useFormContext<InitiativeProfileFormData>();
   const reportValue = watch(`periodicalProgressReport.${fieldIndex}.report`);
@@ -30,7 +30,7 @@ export default function ProgressReportUpload({
           type="Initiative"
           serverValue={reportValue}
           accept={{
-            "application/pdf": [],
+            'application/pdf': []
           }}
         />
       </Grid2>

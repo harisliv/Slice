@@ -1,12 +1,12 @@
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { InitiativeProfileControlledInput } from "@app/components";
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import { InitiativeProfileControlledInput } from '@app/components';
 
 export default function ExplanationOfStatus() {
   return (
     <InitiativeProfileControlledInput
       helperText={INITIATIVE_INFORMATION_FIELD_INFO.explanationStatus.helper}
       istextArea
-      name={"explanationStatus"}
+      name={'explanationStatus'}
       required
       customGridSize="full"
       inputDescriptionTitle={

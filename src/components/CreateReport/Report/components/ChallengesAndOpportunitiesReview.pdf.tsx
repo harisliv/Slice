@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
-import type { TProgressReportingShape } from "@app/types";
+import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import type { TProgressReportingShape } from '@app/types';
 
 interface ChallengesAndOpportunitiesReviewProps {
   data: TProgressReportingShape;
@@ -7,38 +7,38 @@ interface ChallengesAndOpportunitiesReviewProps {
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 15,
+    marginBottom: 15
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
   },
   card: {
     marginBottom: 10,
     padding: 10,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 4,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 4
   },
   cardTitle: {
     fontSize: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 5,
-    color: "#666",
+    color: '#666'
   },
   cardContent: {
     fontSize: 11,
-    color: "#333",
+    color: '#333'
   },
   listItem: {
     fontSize: 11,
     marginLeft: 10,
-    marginBottom: 3,
-  },
+    marginBottom: 3
+  }
 });
 
 export default function ChallengesAndOpportunitiesReviewPDF({
-  data,
+  data
 }: ChallengesAndOpportunitiesReviewProps) {
   return (
     <View style={styles.section}>
@@ -49,7 +49,7 @@ export default function ChallengesAndOpportunitiesReviewPDF({
         {data?.typesOfChallengesFaced?.length > 0 ? (
           data.typesOfChallengesFaced.map((challenge, i) => (
             <Text key={i} style={styles.listItem}>
-              • {challenge || "-"}
+              • {challenge || '-'}
             </Text>
           ))
         ) : (

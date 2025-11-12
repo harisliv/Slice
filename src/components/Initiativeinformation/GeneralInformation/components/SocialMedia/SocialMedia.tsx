@@ -1,7 +1,7 @@
-import Grid2 from "@mui/material/Grid2";
-import FormInputDescription from "@app/components/FormInputDescription";
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import ControlledInput from "@app/components/ControlledInput";
+import Grid2 from '@mui/material/Grid2';
+import FormInputDescription from '@app/components/FormInputDescription';
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import ControlledInput from '@app/components/ControlledInput';
 
 export default function SocialMedia() {
   return (
@@ -22,7 +22,7 @@ export default function SocialMedia() {
               inputDescriptionTitle={title}
             />
           </Grid2>
-        ),
+        )
       )}
     </Grid2>
   );

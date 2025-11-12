@@ -1,27 +1,27 @@
-import { z } from "zod";
+import { z } from 'zod';
 import {
   functionShape,
   functionSuperRefine,
   isFunctionSchema,
-  defaultFunctionFormValues,
-} from "./Function.types";
+  defaultFunctionFormValues
+} from './Function.types';
 import {
   focusesShape,
   focusesSuperRefine,
   isFocusesSchema,
-  defaultFocusesFormValues,
-} from "./Focus.types";
+  defaultFocusesFormValues
+} from './Focus.types';
 import {
   themesShape,
   isThemesSchema,
-  defaultThemesFormValues,
-} from "./Themes.types";
+  defaultThemesFormValues
+} from './Themes.types';
 
 export const FunctionFocusAndThemesSchema = z
   .object({
     ...functionShape.shape,
     ...focusesShape.shape,
-    ...themesShape.shape,
+    ...themesShape.shape
   })
   .superRefine(functionSuperRefine)
   .superRefine(focusesSuperRefine);
@@ -32,7 +32,7 @@ export type FunctionFocusAndThemesShape = z.infer<
 
 export const isFunctionFocusAndThemesSchema = (
   value: unknown,
-  withLogs: boolean = true,
+  withLogs: boolean = true
 ): value is FunctionFocusAndThemesShape => {
   const isFunctions = isFunctionSchema(value, withLogs);
   const isFocuses = isFocusesSchema(value, withLogs);
@@ -44,5 +44,5 @@ export const defaultFunctionFocusAndThemesFormValues: FunctionFocusAndThemesShap
   {
     ...defaultFunctionFormValues,
     ...defaultFocusesFormValues,
-    ...defaultThemesFormValues,
+    ...defaultThemesFormValues
   };

@@ -4,11 +4,11 @@ import {
   MenuItem as MaterialMenuItem,
   Select as MaterialSelect,
   OutlinedInput,
-  Stack,
-} from "@mui/material";
-import { animation } from "@app/lib/general";
-import { EnumWeight } from "@app/lib/types";
-import styled from "styled-components";
+  Stack
+} from '@mui/material';
+import { animation } from '@app/lib/general';
+import { EnumWeight } from '@app/lib/types';
+import styled from 'styled-components';
 
 export const StyledFormControl = styled(FormControl)`
   && {
@@ -206,7 +206,7 @@ export const StyledSlimChip = styled(Chip)`
       font-weight: 400;
 
       &::after {
-        content: ",";
+        content: ',';
         font-family: ${(props) => props.theme.fontFamilies.Roboto};
         font-size: ${(props) => props.theme.fontSizes.body.s};
         font-style: normal;
@@ -228,7 +228,7 @@ export const WrapperIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${animation({ time: "0.3s" })}
+  ${animation({ time: '0.3s' })}
 `;
 
 export const StyledInput = styled(OutlinedInput)`

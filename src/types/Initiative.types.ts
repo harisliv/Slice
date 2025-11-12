@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const InitiativeInfoSchema = z.object({
   id: z.string(),
@@ -6,7 +6,7 @@ const InitiativeInfoSchema = z.object({
   lastUpdated: z.string().nullable(),
   lastProgressSubmitted: z.string().nullable(),
   lastParticipantUpdated: z.string().nullable(),
-  initiativeStatus: z.string().nullable(),
+  initiativeStatus: z.string().nullable()
 });
 
 export type InitiativeInfo = z.infer<typeof InitiativeInfoSchema>;

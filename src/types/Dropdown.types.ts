@@ -1,38 +1,38 @@
 export type DropdownOption = { label: string; value: string };
 
 export type DropdownName =
-  | "AccountType"
-  | "ActionProType"
-  | "ActionType"
-  | "ChallengeFaced"
-  | "InitiativeStatus"
-  | "RelationType"
-  | "ReportStatus"
-  | "TargetProgressTypes"
-  | "TargetType"
-  | "TypesOfChallengesFaced"
-  | "Sessions"
-  | "GoalAlignmentOther"
-  | "Targets"
-  | "InitiativePrimaryFunctionTypes"
-  | "ClimateFocusTypes"
-  | "GeographicalFocusTypes"
-  | "Countries"
-  | "IdentifyProviderType" // identityTypes
-  | "BusinessActivities"
-  | "BusinessRolesAssignment" // assignedRoles
-  | "Regions"
-  | "MarrakechPartnershipThemes"
-  | "SustainableDevelopmentGoals"
-  | "Agreements"
-  | "SubNationalGovernmentType"
-  | "StaffingTypes"
-  | "SignatoriesAndMembers"
-  | "SignatoryFollowUps"
-  | "Initiatives"
-  | "CciRelationType"
-  | "CciRelationStatus"
-  | "InvolvedEntityType"
-  | "ParticipantType"
-  | "ParticipantCategory"
-  | "";
+  | 'AccountType'
+  | 'ActionProType'
+  | 'ActionType'
+  | 'ChallengeFaced'
+  | 'InitiativeStatus'
+  | 'RelationType'
+  | 'ReportStatus'
+  | 'TargetProgressTypes'
+  | 'TargetType'
+  | 'TypesOfChallengesFaced'
+  | 'Sessions'
+  | 'GoalAlignmentOther'
+  | 'Targets'
+  | 'InitiativePrimaryFunctionTypes'
+  | 'ClimateFocusTypes'
+  | 'GeographicalFocusTypes'
+  | 'Countries'
+  | 'IdentifyProviderType' // identityTypes
+  | 'BusinessActivities'
+  | 'BusinessRolesAssignment' // assignedRoles
+  | 'Regions'
+  | 'MarrakechPartnershipThemes'
+  | 'SustainableDevelopmentGoals'
+  | 'Agreements'
+  | 'SubNationalGovernmentType'
+  | 'StaffingTypes'
+  | 'SignatoriesAndMembers'
+  | 'SignatoryFollowUps'
+  | 'Initiatives'
+  | 'CciRelationType'
+  | 'CciRelationStatus'
+  | 'InvolvedEntityType'
+  | 'ParticipantType'
+  | 'ParticipantCategory'
+  | '';

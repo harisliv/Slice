@@ -1,6 +1,6 @@
-import { Chip } from "@mui/material";
-import { EnumWeight } from "@app/lib/types";
-import styled from "styled-components";
+import { Chip } from '@mui/material';
+import { EnumWeight } from '@app/lib/types';
+import styled from 'styled-components';
 
 export const StyledChip = styled(Chip)`
   && {

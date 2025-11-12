@@ -1,22 +1,22 @@
-import { type InitiativeProfileFormData } from "@app/types";
-import { InfoCard, Paragraph, TitleAction } from "@app/lib/ui";
-import { NavLink } from "react-router";
-import { Divider, Stack } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
+import { type InitiativeProfileFormData } from '@app/types';
+import { InfoCard, Paragraph, TitleAction } from '@app/lib/ui';
+import { NavLink } from 'react-router';
+import { Divider, Stack } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
 import {
   useLeadOrganizationsDisplayModeColumns,
   usePendingInitiativesDisplayModeColumns,
-  useRelatedInitiativesDisplayModeColumns,
-} from "./hooks";
-import { GenericTable } from "@app/components";
+  useRelatedInitiativesDisplayModeColumns
+} from './hooks';
+import { GenericTable } from '@app/components';
 import {
   filterManualRelatedInitiatives,
-  filterRelationshipRelatedInitiatives,
-} from "@app/utils/InitiativeProfile";
+  filterRelationshipRelatedInitiatives
+} from '@app/utils/InitiativeProfile';
 
 export default function OrganizationalStructureDisplayMode({
-  initiativeProfile,
+  initiativeProfile
 }: {
   initiativeProfile?: InitiativeProfileFormData;
 }) {
@@ -31,11 +31,11 @@ export default function OrganizationalStructureDisplayMode({
     signatoryFollowUps,
     signatoryFollowUpsOther,
     signatoryRemoval,
-    memberInformation,
+    memberInformation
   } = initiativeProfile || {};
 
-  const signatories = signatoriesMembers?.includes("Signatories");
-  const members = signatoriesMembers?.includes("Members");
+  const signatories = signatoriesMembers?.includes('Signatories');
+  const members = signatoriesMembers?.includes('Members');
 
   const leadOrgcolumns = useLeadOrganizationsDisplayModeColumns();
 
@@ -63,13 +63,13 @@ export default function OrganizationalStructureDisplayMode({
               ORGANIZATIONAL_STRUCTURE_FIELD_INFO.organizationalArrangements
                 .title
             }
-            content={{ type: "text", value: organizationalArrangements }}
+            content={{ type: 'text', value: organizationalArrangements }}
           />
         </Grid>
         <Grid size={{ sm: 12, xs: 12 }}>
           <InfoCard
             title={ORGANIZATIONAL_STRUCTURE_FIELD_INFO.dedicatedStaff.title}
-            content={{ type: "text", value: dedicatedStaff }}
+            content={{ type: 'text', value: dedicatedStaff }}
           />
         </Grid>
         <Grid size={{ sm: 12, xs: 12 }}>
@@ -77,7 +77,7 @@ export default function OrganizationalStructureDisplayMode({
             title={
               ORGANIZATIONAL_STRUCTURE_FIELD_INFO.staffingInformation.title
             }
-            content={{ type: "text", value: staffingInformation }}
+            content={{ type: 'text', value: staffingInformation }}
           />
         </Grid>
       </Grid>
@@ -93,7 +93,7 @@ export default function OrganizationalStructureDisplayMode({
       </Paragraph>
       <Grid container rowSpacing={3} columnSpacing={1}>
         {!leadOrganizations?.length ? (
-          <div style={{ marginTop: "0" }}>-</div>
+          <div style={{ marginTop: '0' }}>-</div>
         ) : (
           <GenericTable
             columns={leadOrgcolumns}
@@ -105,8 +105,8 @@ export default function OrganizationalStructureDisplayMode({
           <InfoCard
             title={ORGANIZATIONAL_STRUCTURE_FIELD_INFO.participants.title}
             content={{
-              type: "text",
-              value: ORGANIZATIONAL_STRUCTURE_FIELD_INFO.participants.subtitle,
+              type: 'text',
+              value: ORGANIZATIONAL_STRUCTURE_FIELD_INFO.participants.subtitle
             }}
           />
         </Grid>
@@ -125,7 +125,7 @@ export default function OrganizationalStructureDisplayMode({
                         ORGANIZATIONAL_STRUCTURE_FIELD_INFO.signatoryCriteria
                           .title
                       }
-                      :{" "}
+                      :{' '}
                     </b>
                     {signatoryCriteria}
                   </Paragraph>
@@ -137,7 +137,7 @@ export default function OrganizationalStructureDisplayMode({
                         ORGANIZATIONAL_STRUCTURE_FIELD_INFO.signatoryFollowUps
                           .title
                       }
-                      :{" "}
+                      :{' '}
                     </b>
                     {signatoryFollowUps}
                   </Paragraph>
@@ -149,7 +149,7 @@ export default function OrganizationalStructureDisplayMode({
                         ORGANIZATIONAL_STRUCTURE_FIELD_INFO
                           .signatoryFollowUpsOther.title
                       }
-                      :{" "}
+                      :{' '}
                     </b>
                     {signatoryFollowUpsOther}
                   </Paragraph>
@@ -161,7 +161,7 @@ export default function OrganizationalStructureDisplayMode({
                         ORGANIZATIONAL_STRUCTURE_FIELD_INFO.signatoryRemoval
                           .title
                       }
-                      :{" "}
+                      :{' '}
                     </b>
                     {signatoryRemoval}
                   </Paragraph>
@@ -196,7 +196,7 @@ export default function OrganizationalStructureDisplayMode({
               {ORGANIZATIONAL_STRUCTURE_FIELD_INFO.relatedInitiatives.title}
             </Paragraph>
             {!manualRelatedInitiatives?.length ? (
-              <div style={{ marginTop: "0" }}>-</div>
+              <div style={{ marginTop: '0' }}>-</div>
             ) : (
               <GenericTable
                 columns={relatedInitiativescolumns}
@@ -211,7 +211,7 @@ export default function OrganizationalStructureDisplayMode({
               }
             </Paragraph>
             {!relationshipRelatedInitiatives?.length ? (
-              <div style={{ marginTop: "0" }}>-</div>
+              <div style={{ marginTop: '0' }}>-</div>
             ) : (
               <GenericTable
                 columns={pendingInitiativescolumns}

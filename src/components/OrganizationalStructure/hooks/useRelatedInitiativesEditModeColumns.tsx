@@ -1,15 +1,15 @@
 // useRelatedInitiativesEditColumns.tsx
-import { useMemo } from "react";
-import { createColumnHelper, type ColumnDef } from "@tanstack/react-table";
-import type { RelatedInitiative } from "@app/types";
-import { Grid2, Stack } from "@mui/material";
-import { IconButton } from "@app/lib/ui";
-import { TrashBinIcon } from "@app/lib/icons";
-import { useRemovalConfirmationModal } from "@app/hooks";
+import { useMemo } from 'react';
+import { createColumnHelper, type ColumnDef } from '@tanstack/react-table';
+import type { RelatedInitiative } from '@app/types';
+import { Grid2, Stack } from '@mui/material';
+import { IconButton } from '@app/lib/ui';
+import { TrashBinIcon } from '@app/lib/icons';
+import { useRemovalConfirmationModal } from '@app/hooks';
 
 function ContactStack({
   name,
-  email,
+  email
 }: {
   name?: string | null;
   email?: string | null;
@@ -30,42 +30,42 @@ type Props = {
 export function useRelatedInitiativesEditModeColumns({ removeRow }: Props) {
   const columnHelper = createColumnHelper<RelatedInitiative>();
   const { showRemovalConfirmationModal } = useRemovalConfirmationModal({
-    onConfirm: removeRow,
+    onConfirm: removeRow
   });
 
   return useMemo<ColumnDef<RelatedInitiative, any>[]>(
     () => [
-      columnHelper.accessor("relatedInitiativeName", {
-        header: "Cooperative climate initiative name",
+      columnHelper.accessor('relatedInitiativeName', {
+        header: 'Cooperative climate initiative name',
         cell: (info) => info.getValue(),
-        sortingFn: "alphanumeric",
-        meta: { width: "20%" },
+        sortingFn: 'alphanumeric',
+        meta: { width: '20%' }
       }),
-      columnHelper.accessor("relationshipType", {
-        header: "Relationship of the initiative to your initiative",
+      columnHelper.accessor('relationshipType', {
+        header: 'Relationship of the initiative to your initiative',
         cell: (info) => info.getValue(),
-        sortingFn: "alphanumeric",
-        meta: { width: "30%" },
+        sortingFn: 'alphanumeric',
+        meta: { width: '30%' }
       }),
       columnHelper.display({
-        header: "Contact information",
+        header: 'Contact information',
         enableSorting: false,
-        meta: { width: "25%" },
+        meta: { width: '25%' },
         cell: (info) => {
           const { contactName, contactEmail } = info.row.original;
           return <ContactStack name={contactName} email={contactEmail} />;
-        },
+        }
       }),
-      columnHelper.accessor("validationStatus", {
-        header: "Validation status",
+      columnHelper.accessor('validationStatus', {
+        header: 'Validation status',
         cell: (info) => info.getValue(),
-        sortingFn: "alphanumeric",
-        meta: { width: "15%" },
+        sortingFn: 'alphanumeric',
+        meta: { width: '15%' }
       }),
       columnHelper.display({
-        header: "Select for removal",
+        header: 'Select for removal',
         enableSorting: false,
-        meta: { width: "10%" },
+        meta: { width: '10%' },
         cell: (info) => {
           const rowId = info.row.original.id;
           const initiativeName = info.row.original.relatedInitiativeName;
@@ -77,8 +77,8 @@ export function useRelatedInitiativesEditModeColumns({ removeRow }: Props) {
                 aria-label="remove"
                 onClick={() =>
                   showRemovalConfirmationModal?.(
-                    rowId ?? "",
-                    initiativeName ?? "",
+                    rowId ?? '',
+                    initiativeName ?? ''
                   )
                 }
               >
@@ -86,9 +86,9 @@ export function useRelatedInitiativesEditModeColumns({ removeRow }: Props) {
               </IconButton>
             </Grid2>
           );
-        },
-      }),
+        }
+      })
     ],
-    [removeRow],
+    [removeRow]
   );
 }

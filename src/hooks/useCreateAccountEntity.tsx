@@ -1,23 +1,23 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from '@tanstack/react-query';
 import type {
   AccountEntityCreateDTO,
   AccountEntityDetails,
   AccountEntityOption,
   SCHEMA_TYPE,
-  SmartDropdownData,
-} from "@app/types";
+  SmartDropdownData
+} from '@app/types';
 import {
   convertToClientEntity,
-  convertToServerEntity,
-} from "@app/utils/smartDropdown";
-import { idbAddItem } from "@app/utils/indexedDb";
-import { IDB_STORES } from "@app/constants";
-import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
-import { useActiveInitiative } from "./useActiveInitiative";
-import { apiClient } from "@app/config/axios.config";
+  convertToServerEntity
+} from '@app/utils/smartDropdown';
+import { idbAddItem } from '@app/utils/indexedDb';
+import { IDB_STORES } from '@app/constants';
+import useMutatePrivateRoutes from './useMutatePrivateRoutes';
+import { useActiveInitiative } from './useActiveInitiative';
+import { apiClient } from '@app/config/axios.config';
 
 function isAccountEntityDetails(v: any): v is AccountEntityDetails {
-  return !!v && typeof v.id === "string" && typeof v.name === "string";
+  return !!v && typeof v.id === 'string' && typeof v.name === 'string';
 }
 
 export default function useCreateAccountEntity(schemaType: SCHEMA_TYPE) {
@@ -28,8 +28,8 @@ export default function useCreateAccountEntity(schemaType: SCHEMA_TYPE) {
     Partial<AccountEntityDetails>,
     AccountEntityCreateDTO
   >({
-    endpoint: "/functions/v1/account",
-    mutationKey: ["createAccountEntity"],
+    endpoint: '/functions/v1/account',
+    mutationKey: ['createAccountEntity'],
     convertToServerEntity,
     convertToClientEntity,
     typeGuard: isAccountEntityDetails,
@@ -39,23 +39,23 @@ export default function useCreateAccountEntity(schemaType: SCHEMA_TYPE) {
       }
       const accountOption: AccountEntityOption = {
         id: data.id,
-        name: data.name,
+        name: data.name
       };
 
       await idbAddItem(IDB_STORES.accountsStore, accountOption);
 
-      qc.setQueryData(["accounts", "idb"], (old: any) => ({
+      qc.setQueryData(['accounts', 'idb'], (old: any) => ({
         dropdownAccounts: [...(old?.dropdownAccounts ?? []), accountOption],
-        lastUpdate: old?.lastUpdate,
+        lastUpdate: old?.lastUpdate
       }));
-    },
+    }
   });
 
   return {
     ...mutation,
     mutateAsync: async (data: SmartDropdownData) => {
       const initiativeId =
-        schemaType === "participantCreation" && activeInitiative?.id
+        schemaType === 'participantCreation' && activeInitiative?.id
           ? activeInitiative.id
           : undefined;
 
@@ -74,23 +74,23 @@ export default function useCreateAccountEntity(schemaType: SCHEMA_TYPE) {
             initiativeId,
             accountId: createdAccount.id,
             // Merge in any fields from createdAccount that might be missing
-            ...createdAccount,
+            ...createdAccount
           };
 
           // Create participant entry
-          await apiClient.post("/functions/v1/participant", participantData);
+          await apiClient.post('/functions/v1/participant', participantData);
 
           // Invalidate participant list query to refresh the list
           qc.invalidateQueries({
-            queryKey: ["getMyParticipants", initiativeId],
+            queryKey: ['getMyParticipants', initiativeId]
           });
         } catch (error) {
-          console.error("Failed to create participant entry:", error);
+          console.error('Failed to create participant entry:', error);
           // Don't throw - account was created successfully, participant creation is secondary
         }
       }
 
       return createdAccount;
-    },
+    }
   };
 }

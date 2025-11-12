@@ -1,20 +1,20 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import {
   HydratedQueryClientProvider,
   HydratedRouterProvider,
-  HydratedThemeProvider,
-} from "@app/providers";
-import { printEnvVars } from "./utils";
+  HydratedThemeProvider
+} from '@app/providers';
+import { printEnvVars } from './utils';
 
 printEnvVars();
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HydratedQueryClientProvider>
       <HydratedThemeProvider>
         <HydratedRouterProvider />
       </HydratedThemeProvider>
     </HydratedQueryClientProvider>
-  </StrictMode>,
+  </StrictMode>
 );

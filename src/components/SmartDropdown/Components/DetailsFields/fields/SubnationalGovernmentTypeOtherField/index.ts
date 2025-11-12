@@ -1,1 +1,1 @@
-export { default } from "./SubnationalGovernmentTypeOtherField";
+export { default } from './SubnationalGovernmentTypeOtherField';

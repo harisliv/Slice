@@ -1,2 +1,2 @@
-export * from "./SmartDropdown";
-export { default } from "./SmartDropdown";
+export * from './SmartDropdown';
+export { default } from './SmartDropdown';

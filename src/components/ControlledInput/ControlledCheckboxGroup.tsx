@@ -1,8 +1,8 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { FormInputDescription } from "@app/components";
-import { Stack, FormGroup, Box } from "@mui/material";
-import { type ControlledInputProps } from "@app/types";
-import { Checkbox } from "@app/lib/ui";
+import { Controller, useFormContext } from 'react-hook-form';
+import { FormInputDescription } from '@app/components';
+import { Stack, FormGroup, Box } from '@mui/material';
+import { type ControlledInputProps } from '@app/types';
+import { Checkbox } from '@app/lib/ui';
 
 type Option = {
   label: string;
@@ -15,7 +15,7 @@ type ControlledCheckboxGroupProps<T extends string> =
     options: Option[];
     onOptionChange?: (
       e: React.ChangeEvent<HTMLInputElement>,
-      value: string,
+      value: string
     ) => void;
   };
 
@@ -25,7 +25,7 @@ export default function ControlledCheckboxGroup<T extends string>({
   inputDescriptionTitle,
   inputDescriptionSubtitle,
   options,
-  onOptionChange,
+  onOptionChange
 }: ControlledCheckboxGroupProps<T>) {
   const { control } = useFormContext();
 
@@ -52,7 +52,7 @@ export default function ControlledCheckboxGroup<T extends string>({
                   onChange={(e) => {
                     field.onChange({
                       ...field.value,
-                      [opt.value]: e.target.checked,
+                      [opt.value]: e.target.checked
                     });
                     onOptionChange?.(e, opt.value);
                   }}

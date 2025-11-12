@@ -1,9 +1,9 @@
-import { ControlledCheckboxGroup, ControlledInput } from "@app/components";
-import { Divider, Stack } from "@mui/material";
-import { PeriodicalProgressReport } from "./components/PeriodicalProgressReport";
-import { MONITORING_FIELD_INFO } from "@app/constants";
-import { useFormContext } from "react-hook-form";
-import type { MonitoringFormData } from "@app/types";
+import { ControlledCheckboxGroup, ControlledInput } from '@app/components';
+import { Divider, Stack } from '@mui/material';
+import { PeriodicalProgressReport } from './components/PeriodicalProgressReport';
+import { MONITORING_FIELD_INFO } from '@app/constants';
+import { useFormContext } from 'react-hook-form';
+import type { MonitoringFormData } from '@app/types';
 
 export default function Monitoring() {
   const { setValue } = useFormContext<MonitoringFormData>();
@@ -11,7 +11,7 @@ export default function Monitoring() {
   return (
     <Stack spacing={2} paddingBottom={1}>
       <ControlledInput
-        name={"progress"}
+        name={'progress'}
         required
         inputDescriptionTitle={MONITORING_FIELD_INFO.progress.title}
         inputDescriptionSubtitle={MONITORING_FIELD_INFO.progress.subtitle}
@@ -29,38 +29,38 @@ export default function Monitoring() {
           MONITORING_FIELD_INFO.publicReportingOptions.subtitle
         }
         onOptionChange={(e, v) => {
-          if (v === "checkbox3" && !e.target.checked) {
-            setValue("publicReportingOther", null);
+          if (v === 'checkbox3' && !e.target.checked) {
+            setValue('publicReportingOther', null);
           }
         }}
         options={[
           {
             label:
               MONITORING_FIELD_INFO.publicReportingOptions.fields.checkbox1,
-            value: "checkbox1",
+            value: 'checkbox1'
           },
           {
             label:
               MONITORING_FIELD_INFO.publicReportingOptions.fields.checkbox2,
-            value: "checkbox2",
-            content: () => <PeriodicalProgressReport />,
+            value: 'checkbox2',
+            content: () => <PeriodicalProgressReport />
           },
           {
             label:
               MONITORING_FIELD_INFO.publicReportingOptions.fields.checkbox3,
-            value: "checkbox3",
+            value: 'checkbox3',
             content: (checked) =>
               checked ? (
                 <ControlledInput
-                  name={"publicReportingOther"}
+                  name={'publicReportingOther'}
                   required
                   inputDescriptionTitle={
                     MONITORING_FIELD_INFO.publicReportingOther.title
                   }
                   helperText={MONITORING_FIELD_INFO.publicReportingOther.helper}
                 />
-              ) : null,
-          },
+              ) : null
+          }
         ]}
       />
     </Stack>

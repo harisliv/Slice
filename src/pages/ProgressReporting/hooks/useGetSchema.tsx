@@ -8,19 +8,19 @@ import {
   progressOfTargetsSchema,
   progressReportingShape,
   timeframeOfInformationSchema,
-  type TProgressReportingShape,
-} from "@app/types";
-import { isEmpty, pick } from "lodash";
+  type TProgressReportingShape
+} from '@app/types';
+import { isEmpty, pick } from 'lodash';
 import {
   useMultiStepFormActions,
   useMultiStepFormValues,
-  useSelectedReport,
-} from "@app/hooks";
+  useSelectedReport
+} from '@app/hooks';
 import {
   useCurrentStep,
-  useFormStepperActions,
-} from "@app/hooks/useFormStepper";
-import { useEffect, useMemo } from "react";
+  useFormStepperActions
+} from '@app/hooks/useFormStepper';
+import { useEffect, useMemo } from 'react';
 
 export default function useGetSchema(step: number, reportId: string) {
   const { updateFormValues } = useMultiStepFormActions();
@@ -28,7 +28,7 @@ export default function useGetSchema(step: number, reportId: string) {
     useFormStepperActions();
   const currentStep = useCurrentStep();
 
-  const { data: report } = useSelectedReport({ id: reportId ?? "" });
+  const { data: report } = useSelectedReport({ id: reportId ?? '' });
 
   useEffect(() => {
     if (report) {
@@ -41,7 +41,7 @@ export default function useGetSchema(step: number, reportId: string) {
 
   const formData = useMemo(
     () => ({ ...report, ...savedFormData }),
-    [report, savedFormData],
+    [report, savedFormData]
   );
 
   return useMemo(() => {
@@ -49,7 +49,7 @@ export default function useGetSchema(step: number, reportId: string) {
       case 0: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultTimeframeOfInformationFormValues),
+          Object.keys(defaultTimeframeOfInformationFormValues)
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -58,7 +58,7 @@ export default function useGetSchema(step: number, reportId: string) {
 
         return {
           schema: timeframeOfInformationSchema,
-          defaultValues,
+          defaultValues
         };
       }
       case 1: {
@@ -73,7 +73,7 @@ export default function useGetSchema(step: number, reportId: string) {
       case 2: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultTProgressOfTargetsFormValues),
+          Object.keys(defaultTProgressOfTargetsFormValues)
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -85,7 +85,7 @@ export default function useGetSchema(step: number, reportId: string) {
       case 3: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultChallengesAndOpportunitiesFormValues),
+          Object.keys(defaultChallengesAndOpportunitiesFormValues)
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -97,7 +97,7 @@ export default function useGetSchema(step: number, reportId: string) {
       default:
         return {
           schema: progressReportingShape,
-          defaultValues: formData,
+          defaultValues: formData
         };
     }
   }, [step, formData]);

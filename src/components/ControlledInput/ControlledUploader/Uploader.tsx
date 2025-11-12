@@ -2,14 +2,14 @@ import {
   Controller,
   useFormContext,
   type ControllerRenderProps,
-  type FieldValues,
-} from "react-hook-form";
-import { FormInputDescription } from "@app/components";
-import { Stack } from "@mui/material";
-import { type ControlledUploaderProps } from "@app/types";
-import CustomUploader from "@app/lib/ui/Uploader/Uploader";
-import { useState } from "react";
-import useMutateUploadFile from "@app/hooks/useMutateUploadFile";
+  type FieldValues
+} from 'react-hook-form';
+import { FormInputDescription } from '@app/components';
+import { Stack } from '@mui/material';
+import { type ControlledUploaderProps } from '@app/types';
+import CustomUploader from '@app/lib/ui/Uploader/Uploader';
+import { useState } from 'react';
+import useMutateUploadFile from '@app/hooks/useMutateUploadFile';
 
 export default function ControlledUploader({
   name,
@@ -19,7 +19,7 @@ export default function ControlledUploader({
   serverValue,
   accept,
   type,
-  fileMaxSize,
+  fileMaxSize
 }: ControlledUploaderProps) {
   const { control } = useFormContext();
 
@@ -31,7 +31,7 @@ export default function ControlledUploader({
 
   const transformToFieldValue = (
     accFiles: File[],
-    field: ControllerRenderProps<FieldValues>,
+    field: ControllerRenderProps<FieldValues>
   ) => {
     const file = accFiles[0];
 
@@ -39,14 +39,14 @@ export default function ControlledUploader({
       setFileLocally(file);
       const reader = new FileReader();
       reader.onload = async () => {
-        const base64 = reader.result?.toString().split(",")[1];
-        if (typeof base64 === "string") {
-          if (name === "logoBase64") {
+        const base64 = reader.result?.toString().split(',')[1];
+        if (typeof base64 === 'string') {
+          if (name === 'logoBase64') {
             field.onChange(base64);
           } else {
             const pureFile = new File([file], file.name, {
               type: file.type,
-              lastModified: file.lastModified,
+              lastModified: file.lastModified
             });
             const id = await mutateAsync(pureFile);
             if (id) {
@@ -55,7 +55,7 @@ export default function ControlledUploader({
                 size: file.size,
                 sharePointId: id,
                 name: file.name,
-                url: `${baseUrl}/document/download/${id}`,
+                url: `${baseUrl}/document/download/${id}`
               });
             }
           }

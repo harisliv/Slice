@@ -1,18 +1,18 @@
-import { FormInputDescription } from "@app/components";
-import ControlledInput from "@app/components/ControlledInput";
-import { ControlledMultiSelectWithDropdown } from "@app/components/ControlledInput";
-import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
-import { Stack } from "@mui/system";
-import { useFormContext } from "react-hook-form";
+import { FormInputDescription } from '@app/components';
+import ControlledInput from '@app/components/ControlledInput';
+import { ControlledMultiSelectWithDropdown } from '@app/components/ControlledInput';
+import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
+import { Stack } from '@mui/system';
+import { useFormContext } from 'react-hook-form';
 
 export default function ActionMultilateralProcess({
-  index,
+  index
 }: {
   index: number;
 }) {
   const { watch, setValue } = useFormContext();
   const contributionToMultilateralProcess = watch(
-    `actions.${index}.contributionToMultilateralProcess`,
+    `actions.${index}.contributionToMultilateralProcess`
   );
   return (
     <Stack spacing={2}>

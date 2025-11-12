@@ -1,8 +1,8 @@
-import { Menu, MenuItem } from "@mui/material";
-import styled from "styled-components";
-import { P } from "@app/lib/ui";
-import { EnumWeight } from "@app/lib/types";
-import IconButton from "../IconButton";
+import { Menu, MenuItem } from '@mui/material';
+import styled from 'styled-components';
+import { P } from '@app/lib/ui';
+import { EnumWeight } from '@app/lib/types';
+import IconButton from '../IconButton';
 
 export const StyledMenu = styled(Menu)`
   .MuiList-root {

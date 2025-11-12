@@ -11,7 +11,7 @@ export interface IStepperProps {
 }
 
 export enum StepStatus {
-  COMPLETED = "completed",
-  ACTIVE = "active",
-  INACTIVE = "inactive",
+  COMPLETED = 'completed',
+  ACTIVE = 'active',
+  INACTIVE = 'inactive'
 }

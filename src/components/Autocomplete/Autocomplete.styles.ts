@@ -1,7 +1,7 @@
-import { InputAdornment } from "@mui/material";
-import MuiAutocomplete from "@mui/material/Autocomplete";
-import styled from "styled-components";
-import type { ACProps } from "./Autocomplete.types";
+import { InputAdornment } from '@mui/material';
+import MuiAutocomplete from '@mui/material/Autocomplete';
+import styled from 'styled-components';
+import type { ACProps } from './Autocomplete.types';
 
 const TypedAutocomplete =
   MuiAutocomplete as unknown as React.ForwardRefExoticComponent<
@@ -117,8 +117,8 @@ export const AdornmentEnd = styled(InputAdornment)<{ $disabled?: boolean }>`
     display: flex;
     align-items: center;
     gap: 8px;
-    cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-    pointer-events: ${({ $disabled }) => ($disabled ? "none" : "auto")};
+    cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
+    pointer-events: ${({ $disabled }) => ($disabled ? 'none' : 'auto')};
     color: ${({ theme, $disabled }) =>
       $disabled
         ? theme.palette.controlsAndStatus.disabled

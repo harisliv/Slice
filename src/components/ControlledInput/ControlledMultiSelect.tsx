@@ -1,9 +1,9 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { type ControlledMultiSelectProps } from "@app/types";
-import FormInputDescription from "../FormInputDescription";
-import { get } from "lodash";
-import { Stack } from "@mui/material";
-import { Multiselect } from "@app/lib/ui";
+import { Controller, useFormContext } from 'react-hook-form';
+import { type ControlledMultiSelectProps } from '@app/types';
+import FormInputDescription from '../FormInputDescription';
+import { get } from 'lodash';
+import { Stack } from '@mui/material';
+import { Multiselect } from '@app/lib/ui';
 
 export default function ControlledMultiSelect<T extends string>({
   name,
@@ -16,15 +16,15 @@ export default function ControlledMultiSelect<T extends string>({
   maxOptions,
   disabled,
   loading,
-  customGridSize = "full",
+  customGridSize = 'full'
 }: ControlledMultiSelectProps<T>) {
   const {
     control,
-    formState: { errors },
+    formState: { errors }
   } = useFormContext();
 
   const normalizedOptions = options.map((o) =>
-    typeof o === "string" ? { label: o, value: o } : o,
+    typeof o === 'string' ? { label: o, value: o } : o
   );
 
   return (

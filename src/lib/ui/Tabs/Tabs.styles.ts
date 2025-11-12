@@ -1,7 +1,7 @@
-import { Box, Tab, Tabs } from "@mui/material";
-import styled from "styled-components";
-import { EnumWeight } from "@app/lib/types";
-import IconButton from "../IconButton";
+import { Box, Tab, Tabs } from '@mui/material';
+import styled from 'styled-components';
+import { EnumWeight } from '@app/lib/types';
+import IconButton from '../IconButton';
 
 export const StyledTabsWrapper = styled(Box)`
   display: flex;

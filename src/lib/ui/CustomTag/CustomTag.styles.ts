@@ -1,5 +1,5 @@
-import type { Theme } from "@app/lib/general";
-import styled from "styled-components";
+import type { Theme } from '@app/lib/general';
+import styled from 'styled-components';
 
 export const IconFrame = styled.div`
   padding: 0px 4px;
@@ -21,7 +21,7 @@ export const LabelText = styled.span<{ $textColor: string }>`
 `;
 
 export const TagContainer = styled.div<{
-  $backgroundColor: keyof (typeof Theme)["palette"]["secondary"];
+  $backgroundColor: keyof (typeof Theme)['palette']['secondary'];
 }>`
   display: flex;
   flex-direction: row;

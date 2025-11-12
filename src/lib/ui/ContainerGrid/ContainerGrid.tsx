@@ -1,8 +1,8 @@
-import Grid2 from "@mui/material/Grid2";
+import Grid2 from '@mui/material/Grid2';
 
 export default function ContainerGrid({
   withParentGrid,
-  children,
+  children
 }: {
   withParentGrid: boolean;
   children: React.ReactNode;

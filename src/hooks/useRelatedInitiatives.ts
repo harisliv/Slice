@@ -2,20 +2,20 @@ import {
   validationStatusSchema,
   type OrganizationalStructureFormData,
   type RelatedInitiative,
-  type TempModalPayload,
-} from "@app/types";
+  type TempModalPayload
+} from '@app/types';
 import {
   filterManualRelatedInitiatives,
-  filterRelationshipRelatedInitiatives,
-} from "@app/utils/InitiativeProfile";
-import { useMemo } from "react";
-import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
+  filterRelationshipRelatedInitiatives
+} from '@app/utils/InitiativeProfile';
+import { useMemo } from 'react';
+import { useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 
 const getUserContactInfo = () => {
   // No authentication - return empty/default values
   return {
-    fullName: "",
-    email: "",
+    fullName: '',
+    email: ''
   };
 };
 
@@ -23,19 +23,19 @@ export function useRelatedInitiatives() {
   const { control, resetField, getValues, setValue } =
     useFormContext<OrganizationalStructureFormData>();
 
-  const methods = useFieldArray({ control, name: "relatedInitiatives" });
+  const methods = useFieldArray({ control, name: 'relatedInitiatives' });
 
-  const relatedInitiatives = useWatch({ control, name: "relatedInitiatives" });
+  const relatedInitiatives = useWatch({ control, name: 'relatedInitiatives' });
 
-  const tempValidations = useWatch({ control, name: "tempValidations" });
+  const tempValidations = useWatch({ control, name: 'tempValidations' });
 
   const resetTempoOptionFields = () => {
-    resetField("tempOption", { defaultValue: { id: "", name: "" } });
-    resetField("tempRelationshipType", { defaultValue: "" });
+    resetField('tempOption', { defaultValue: { id: '', name: '' } });
+    resetField('tempRelationshipType', { defaultValue: '' });
   };
 
   const resetTempValidationsFields = () => {
-    setValue("tempValidations", {});
+    setValue('tempValidations', {});
   };
 
   const memoizedManualInitiatives = useMemo(() => {
@@ -54,7 +54,7 @@ export function useRelatedInitiatives() {
 
   const removeManualInitiative = (id: string) => {
     const indexToRemove = memoizedManualInitiatives?.findIndex(
-      (i) => i.id === id,
+      (i) => i.id === id
     );
 
     if (indexToRemove === -1) {
@@ -67,8 +67,8 @@ export function useRelatedInitiatives() {
   const addManualInitiative = (tempOption: TempModalPayload) => {
     if (
       !tempOption ||
-      getValues("relatedInitiatives")?.some(
-        (i) => i.relatedInitiativeId === tempOption.id,
+      getValues('relatedInitiatives')?.some(
+        (i) => i.relatedInitiativeId === tempOption.id
       )
     )
       return;
@@ -76,19 +76,19 @@ export function useRelatedInitiatives() {
 
     const payload: RelatedInitiative = {
       id: null,
-      relatedInitiativeName: tempOption.name ?? "",
-      relatedInitiativeId: tempOption.id ?? "",
+      relatedInitiativeName: tempOption.name ?? '',
+      relatedInitiativeId: tempOption.id ?? '',
       relationshipType: tempOption.relationshipType,
       contactName: fullName,
       contactEmail: email,
       validationStatus: validationStatusSchema.Enum.Pending,
-      needsConfirmation: false,
+      needsConfirmation: false
     };
     append(payload);
   };
 
   const mergeUpdatedValidations = () => {
-    const currentRelatedInitiatives = getValues("relatedInitiatives");
+    const currentRelatedInitiatives = getValues('relatedInitiatives');
     if (!tempValidations || !currentRelatedInitiatives) return;
 
     const indexesToRemove: number[] = [];
@@ -100,7 +100,7 @@ export function useRelatedInitiatives() {
           const decision = tempValidations[initiativeId];
 
           const actualIndex = currentRelatedInitiatives.findIndex(
-            (item) => item.id === initiative.id,
+            (item) => item.id === initiative.id
           );
 
           if (actualIndex === -1) return;
@@ -111,19 +111,19 @@ export function useRelatedInitiatives() {
             const updatedInitiative: RelatedInitiative = {
               ...initiative,
               validationStatus: decision,
-              needsConfirmation: false,
+              needsConfirmation: false
             };
             update(actualIndex, updatedInitiative);
           }
         }
-      },
+      }
     );
     indexesToRemove.reverse().forEach((index) => remove(index));
   };
 
   const isValidTempModalPayload = () => {
-    const tempOption = getValues("tempOption");
-    const tempRelationshipType = getValues("tempRelationshipType");
+    const tempOption = getValues('tempOption');
+    const tempRelationshipType = getValues('tempRelationshipType');
     return (
       tempOption && tempOption?.id && tempOption?.name && tempRelationshipType
     );
@@ -139,6 +139,6 @@ export function useRelatedInitiatives() {
     resetTempoOptionFields,
     resetTempValidationsFields,
     tempValidations,
-    isValidTempModalPayload,
+    isValidTempModalPayload
   };
 }

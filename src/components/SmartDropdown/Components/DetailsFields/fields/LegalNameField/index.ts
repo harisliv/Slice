@@ -1,1 +1,1 @@
-export { default } from "./LegalNameField";
+export { default } from './LegalNameField';

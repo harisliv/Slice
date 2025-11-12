@@ -1,28 +1,28 @@
-import { InputComponent } from "@app/lib/ui";
-import { Controller, useFormContext } from "react-hook-form";
-import { FormInputDescription } from "@app/components";
-import { Stack } from "@mui/material";
-import { type ControlledInputProps } from "@app/types";
-import { get, isNumber } from "lodash";
+import { InputComponent } from '@app/lib/ui';
+import { Controller, useFormContext } from 'react-hook-form';
+import { FormInputDescription } from '@app/components';
+import { Stack } from '@mui/material';
+import { type ControlledInputProps } from '@app/types';
+import { get, isNumber } from 'lodash';
 
 const displayNumericFieldValue = (value: unknown) => {
-  if (value === undefined || value === null || value === "") return "";
+  if (value === undefined || value === null || value === '') return '';
   const numValue = Number(value);
-  if (!isNumber(numValue) || isNaN(numValue)) return "";
+  if (!isNumber(numValue) || isNaN(numValue)) return '';
   return numValue;
 };
 
 export default function NumericControlledInput<T extends string>({
   name,
   required,
-  customGridSize = "full",
+  customGridSize = 'full',
   inputDescriptionTitle,
   inputDescriptionSubtitle,
   ...restProps
 }: ControlledInputProps<T>) {
   const {
     control,
-    formState: { errors },
+    formState: { errors }
   } = useFormContext();
   return (
     <Stack spacing={2}>
@@ -48,8 +48,8 @@ export default function NumericControlledInput<T extends string>({
             value={displayNumericFieldValue(field.value)}
             onChange={(e) => {
               const value = e.target.value;
-              if (value === undefined || value === null || value === "") {
-                field.onChange("");
+              if (value === undefined || value === null || value === '') {
+                field.onChange('');
                 restProps.onChange?.(e);
                 return;
               }

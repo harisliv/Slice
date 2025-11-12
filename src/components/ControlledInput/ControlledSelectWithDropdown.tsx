@@ -1,12 +1,12 @@
-import { type ControlledSelectWithDropdownProps } from "@app/types";
-import { useDropdownValues } from "@app/hooks";
-import ControlledSelect from "./ControlledSelect";
+import { type ControlledSelectWithDropdownProps } from '@app/types';
+import { useDropdownValues } from '@app/hooks';
+import ControlledSelect from './ControlledSelect';
 
 export default function ControlledSelectWithDropdown<T extends string>({
   name,
   inputDescriptionTitle,
   inputDescriptionSubtitle,
-  customGridSize = "full",
+  customGridSize = 'full',
   required,
   helperText,
   inputPlaceholder,

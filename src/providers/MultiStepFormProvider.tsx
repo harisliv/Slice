@@ -1,11 +1,11 @@
-import React from "react";
-import { createStore } from "zustand";
-import type { MultiStepFormStore } from "@app/types";
-import MultiStepFormStoreContext from "./MultiStepFormStoreContext";
+import React from 'react';
+import { createStore } from 'zustand';
+import type { MultiStepFormStore } from '@app/types';
+import MultiStepFormStoreContext from './MultiStepFormStoreContext';
 
 export default function MultiStepFormProvider<T = Record<string, unknown>>({
   children,
-  initialValues = {},
+  initialValues = {}
 }: {
   children: React.ReactNode;
   initialValues?: Partial<T>;
@@ -21,13 +21,13 @@ export default function MultiStepFormProvider<T = Record<string, unknown>>({
 
         updateFormValues: (values: Partial<T>) => {
           set((state) => ({
-            formValues: { ...state.formValues, ...values },
+            formValues: { ...state.formValues, ...values }
           }));
         },
 
         resetFormValue: (name: keyof T) => {
           set((state) => ({
-            formValues: { ...state.formValues, [name]: initialValues[name] },
+            formValues: { ...state.formValues, [name]: initialValues[name] }
           }));
         },
 
@@ -35,9 +35,9 @@ export default function MultiStepFormProvider<T = Record<string, unknown>>({
           set({ formValues: initialValues });
         },
 
-        getFormValues: () => get().formValues,
-      },
-    })),
+        getFormValues: () => get().formValues
+      }
+    }))
   );
 
   return (

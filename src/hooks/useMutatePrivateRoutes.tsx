@@ -1,16 +1,16 @@
 import {
   useMutation,
   type UseMutationOptions,
-  type UseMutationResult,
-} from "@tanstack/react-query";
-import type { AxiosRequestConfig } from "axios";
-import { apiClient } from "@app/config/axios.config";
+  type UseMutationResult
+} from '@tanstack/react-query';
+import type { AxiosRequestConfig } from 'axios';
+import { apiClient } from '@app/config/axios.config';
 
 interface useMutatePrivateRoutesOptions<T, Error, DTO = unknown>
-  extends Omit<UseMutationOptions<T, Error, T>, "mutationFn"> {
+  extends Omit<UseMutationOptions<T, Error, T>, 'mutationFn'> {
   endpoint: string;
   typeGuard?: (value: unknown) => value is T;
-  action?: "post" | "put" | "patch";
+  action?: 'post' | 'put' | 'patch';
   convertToClientEntity?: (value: DTO) => T;
   convertToServerEntity?: (value: T) => DTO;
   onMutationFnSuccess?: (value: DTO) => void;
@@ -19,11 +19,11 @@ interface useMutatePrivateRoutesOptions<T, Error, DTO = unknown>
 export default function useMutatePrivateRoutes<
   T = unknown,
   DTO = unknown,
-  K extends T = T,
+  K extends T = T
 >({
   endpoint,
   typeGuard,
-  action = "post",
+  action = 'post',
   convertToClientEntity,
   convertToServerEntity,
   onMutationFnSuccess,
@@ -55,6 +55,6 @@ export default function useMutatePrivateRoutes<
       onMutationFnSuccess?.(formEntity); // TODO formEntity this is useless, remove
 
       return formEntity;
-    },
+    }
   });
 }

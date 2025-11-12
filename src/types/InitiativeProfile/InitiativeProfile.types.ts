@@ -1,32 +1,32 @@
-import { logger } from "@app/utils";
-import { constructErrorResponseFromZod } from "@app/utils/error";
-import { z } from "zod";
+import { logger } from '@app/utils';
+import { constructErrorResponseFromZod } from '@app/utils/error';
+import { z } from 'zod';
 import {
   defaultFunctionFocusAndThemesFormValues,
   focusesShape,
   functionShape,
   isFunctionFocusAndThemesSchema,
-  themesShape,
-} from "./FunctionFocusAndThemes";
-import { goalsShape } from "./Goals.types";
+  themesShape
+} from './FunctionFocusAndThemes';
+import { goalsShape } from './Goals.types';
 import {
   defaultGoalsTargetsAndMonitoringFormValues,
-  isGoalsTargetsAndMonitoringSchema,
-} from "./GoalsTargetsAndMonitoring.types";
+  isGoalsTargetsAndMonitoringSchema
+} from './GoalsTargetsAndMonitoring.types';
 import {
   defaultInitiativeInformationFormValues,
   initiativeInformationShape,
-  isInitiativeInformationSchema,
-} from "./InitiativeInformation.types";
-import { monitoringShape } from "./Monitoring.types";
+  isInitiativeInformationSchema
+} from './InitiativeInformation.types';
+import { monitoringShape } from './Monitoring.types';
 import {
   defaultOrganizationalStructureFormValues,
   involvedEntitiesShape,
   isOrganizationalStructureSchema,
   organizationalArrangementsShape,
-  relatedInitiativesShape,
-} from "./OrganizationalStructure";
-import { targetsShape } from "./Target.types";
+  relatedInitiativesShape
+} from './OrganizationalStructure';
+import { targetsShape } from './Target.types';
 
 export const initiativeProfileShape = z.object({
   ...initiativeInformationShape.shape,
@@ -39,26 +39,26 @@ export const initiativeProfileShape = z.object({
   ...themesShape.shape,
   ...organizationalArrangementsShape.shape,
   ...involvedEntitiesShape.shape,
-  ...relatedInitiativesShape.shape,
+  ...relatedInitiativesShape.shape
 });
 
 export const defaultInitiativeProfileFormValues: InitiativeProfileFormData = {
   ...defaultInitiativeInformationFormValues,
   ...defaultGoalsTargetsAndMonitoringFormValues,
   ...defaultOrganizationalStructureFormValues,
-  ...defaultFunctionFocusAndThemesFormValues,
+  ...defaultFunctionFocusAndThemesFormValues
 };
 
 export const isInitiativeProfileShape = (
   value: unknown,
-  withLogs: boolean = true,
+  withLogs: boolean = true
 ): value is InitiativeProfileFormData => {
   const result = initiativeProfileShape.safeParse(value);
   if (result.error && withLogs) {
     logger.error(
-      "Invalid response format",
-      new Error("Initiative Profile"),
-      constructErrorResponseFromZod(result),
+      'Invalid response format',
+      new Error('Initiative Profile'),
+      constructErrorResponseFromZod(result)
     );
   }
   return result.success;
@@ -66,25 +66,25 @@ export const isInitiativeProfileShape = (
 
 export const isInitiativeProfileSchema = (
   value: unknown,
-  withLogs: boolean = true,
+  withLogs: boolean = true
 ): value is InitiativeProfileFormData => {
   const isInitiativeInformation = isInitiativeInformationSchema(
     value,
-    withLogs,
+    withLogs
   );
   const isGoalsTargetsAndMonitoring = isGoalsTargetsAndMonitoringSchema(
     value,
-    withLogs,
+    withLogs
   );
 
   const isOrganizationalStructure = isOrganizationalStructureSchema(
     value,
-    withLogs,
+    withLogs
   );
 
   const isFunctionFocusAndThemes = isFunctionFocusAndThemesSchema(
     value,
-    withLogs,
+    withLogs
   );
   return (
     isInitiativeInformation &&

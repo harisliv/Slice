@@ -1,6 +1,6 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import PrivateContentProvider from "./PrivateContentProvider";
-import HydratedErrorBoundary from "./HydratedErrorBoundary";
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import PrivateContentProvider from './PrivateContentProvider';
+import HydratedErrorBoundary from './HydratedErrorBoundary';
 import {
   Home,
   CourseProfileDisplayMode,
@@ -9,8 +9,8 @@ import {
   WorkCentre,
   CourseProfile,
   CreateAssignment,
-  AssignmentManagement,
-} from "@app/pages";
+  AssignmentManagement
+} from '@app/pages';
 
 const router = createBrowserRouter([
   {
@@ -18,69 +18,69 @@ const router = createBrowserRouter([
     ErrorBoundary: HydratedErrorBoundary,
     children: [
       {
-        path: "/",
-        Component: Home,
+        path: '/',
+        Component: Home
       },
       {
-        path: "/course-profile",
+        path: '/course-profile',
         children: [
           {
             Component: CourseProfileDisplayMode,
-            index: true,
+            index: true
           },
           {
-            path: "edit",
-            Component: CourseProfile,
+            path: 'edit',
+            Component: CourseProfile
           },
           {
-            path: "edit/initialStep/:initialStep/initialTab/:initialTab",
+            path: 'edit/initialStep/:initialStep/initialTab/:initialTab',
             Component: CourseProfile,
             loader: ({ params }) => ({
               initialTab: params.initialTab,
-              initialStep: params.initialStep,
-            }),
-          },
-        ],
+              initialStep: params.initialStep
+            })
+          }
+        ]
       },
       {
-        path: "/assignment-management",
+        path: '/assignment-management',
         children: [
           {
             Component: AssignmentManagement,
-            index: true,
+            index: true
           },
           {
-            path: "create-assignment/new",
-            Component: CreateAssignment,
+            path: 'create-assignment/new',
+            Component: CreateAssignment
           },
           {
-            path: "create-assignment/:assignmentId",
+            path: 'create-assignment/:assignmentId',
             Component: CreateAssignment,
             loader: ({ params }) => ({
-              assignmentId: params.assignmentId,
-            }),
-          },
-        ],
+              assignmentId: params.assignmentId
+            })
+          }
+        ]
       },
       {
-        path: "/student-management",
+        path: '/student-management',
         children: [
           {
             Component: StudentManagement,
-            index: true,
+            index: true
           },
           {
-            path: "my-students",
-            Component: MyStudents,
+            path: 'my-students',
+            Component: MyStudents
           },
           {
-            path: "work-centre",
-            Component: WorkCentre,
-          },
-        ],
-      },
-    ],
-  },
+            path: 'work-centre',
+            Component: WorkCentre
+          }
+        ]
+      }
+    ]
+  }
 ]);
 
 export default function HydratedRouterProvider() {

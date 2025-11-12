@@ -1,9 +1,9 @@
-import { FormInputDescription } from "@app/components";
-import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
-import { Stack } from "@mui/material";
-import { useFieldArray, useFormContext } from "react-hook-form";
-import { RemovableItem } from "@app/lib/ui";
-import { ControlledMultiSelectWithDropdown } from "@app/components/ControlledInput";
+import { FormInputDescription } from '@app/components';
+import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
+import { Stack } from '@mui/material';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import { RemovableItem } from '@app/lib/ui';
+import { ControlledMultiSelectWithDropdown } from '@app/components/ControlledInput';
 
 export default function AssociatedTargets({ index }: { index: number }) {
   const { control, watch } = useFormContext();
@@ -12,7 +12,7 @@ export default function AssociatedTargets({ index }: { index: number }) {
 
   const { remove } = useFieldArray({
     control,
-    name: `actions.${index}.associatedTargets`,
+    name: `actions.${index}.associatedTargets`
   });
 
   return (

@@ -1,9 +1,9 @@
-import type { OutlinedTextFieldProps } from "@mui/material";
-import type { ReactNode } from "react";
-import type { DefaultTheme } from "styled-components";
-import type { CustomSize } from "./Global";
+import type { OutlinedTextFieldProps } from '@mui/material';
+import type { ReactNode } from 'react';
+import type { DefaultTheme } from 'styled-components';
+import type { CustomSize } from './Global';
 
-type IOutlinedTextFieldProps = Omit<OutlinedTextFieldProps, "variant">;
+type IOutlinedTextFieldProps = Omit<OutlinedTextFieldProps, 'variant'>;
 
 export interface IInputBase extends IOutlinedTextFieldProps {
   icon?: ReactNode;
@@ -14,7 +14,7 @@ export interface IInputBase extends IOutlinedTextFieldProps {
   istextArea?: boolean;
   rightAdornment?: ReactNode;
   keyboardEventsEnabled?: boolean;
-  labelFontSize?: keyof DefaultTheme["fontSizes"]["body"];
+  labelFontSize?: keyof DefaultTheme['fontSizes']['body'];
   enableLabel?: boolean;
   customGridSize?: CustomSize;
 }

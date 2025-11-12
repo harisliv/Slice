@@ -1,10 +1,10 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { useQueryClient } from "@tanstack/react-query";
-import Autocomplete from "../Autocomplete";
-import type { ControlledAutocompleteProps } from "@app/types";
-import type { AccountEntityDetails } from "@app/types";
-import { isAccountEntityDetails } from "@app/utils/smartDropdown";
-import { logger } from "@app/utils";
+import { Controller, useFormContext } from 'react-hook-form';
+import { useQueryClient } from '@tanstack/react-query';
+import Autocomplete from '../Autocomplete';
+import type { ControlledAutocompleteProps } from '@app/types';
+import type { AccountEntityDetails } from '@app/types';
+import { isAccountEntityDetails } from '@app/utils/smartDropdown';
+import { logger } from '@app/utils';
 
 export default function ControlledAutocomplete<T extends string>({
   name,
@@ -13,7 +13,7 @@ export default function ControlledAutocomplete<T extends string>({
   loading,
   disabled,
   onClear,
-  schemaType,
+  schemaType
 }: ControlledAutocompleteProps<T>) {
   const { control, reset } = useFormContext();
   const queryClient = useQueryClient();
@@ -26,22 +26,22 @@ export default function ControlledAutocomplete<T extends string>({
         <Autocomplete
           required={required}
           options={options}
-          value={field.value ?? { id: "", name: "" }}
+          value={field.value ?? { id: '', name: '' }}
           onChange={(opt) => {
             if (opt?.id) {
               const cachedData = queryClient.getQueryData<AccountEntityDetails>(
-                ["entityDetails", opt.id],
+                ['entityDetails', opt.id]
               );
 
               if (isAccountEntityDetails(cachedData)) {
-                logger.info("Cache hit on account entity:", cachedData);
+                logger.info('Cache hit on account entity:', cachedData);
                 const dataWithTempOption = {
                   ...cachedData,
                   schemaType,
                   tempOption: {
                     id: opt.id,
-                    name: cachedData.name,
-                  },
+                    name: cachedData.name
+                  }
                 };
                 reset?.(dataWithTempOption);
                 return;
@@ -51,8 +51,8 @@ export default function ControlledAutocomplete<T extends string>({
           }}
           placeholder={
             loading
-              ? "Loading…"
-              : "Search entity by keyword, filter (list from CRM)"
+              ? 'Loading…'
+              : 'Search entity by keyword, filter (list from CRM)'
           }
           disabled={disabled}
           onClear={onClear}

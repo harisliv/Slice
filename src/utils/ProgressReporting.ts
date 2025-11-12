@@ -6,21 +6,21 @@ import {
   isActionSchema,
   isChallengesAndOpportunitiesSchema,
   isProgressOfTargetsSchema,
-  isTimeframeOfInformationSchema,
-} from "@app/types";
-import { StepStatus, TagStatus } from "@app/lib/types";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
-import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+  isTimeframeOfInformationSchema
+} from '@app/types';
+import { StepStatus, TagStatus } from '@app/lib/types';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import {
   formatDate,
   normalizeDateTime,
   normalizeNumber,
-  normalizeString,
-} from "./general";
+  normalizeString
+} from './general';
 
-const dateFormat: string = "DD/MM/YYYY";
+const dateFormat: string = 'DD/MM/YYYY';
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -29,7 +29,7 @@ dayjs.extend(customParseFormat);
 function hasOverlap(
   arr1: [string, string][],
   newStart: string,
-  newEnd: string,
+  newEnd: string
 ) {
   const start = dayjs(newStart, dateFormat);
   const end = dayjs(newEnd, dateFormat);
@@ -44,7 +44,7 @@ function hasOverlap(
 
 export const hasErrorRange = (
   ranges: [string, string][],
-  dateString: string | null,
+  dateString: string | null
 ) => {
   if (!ranges || !ranges.length || !dateString) {
     return false;
@@ -54,15 +54,15 @@ export const hasErrorRange = (
   const endDate =
     startDateValue &&
     dayjs(startDateValue, dateFormat)
-      .add(1, "year")
-      .subtract(1, "day")
+      .add(1, 'year')
+      .subtract(1, 'day')
       .format(dateFormat);
 
   return hasOverlap(ranges, startDateValue, endDate);
 };
 
 export const findFirstAvailableSlot = (
-  allProgressReportsDateRanges: [string, string][],
+  allProgressReportsDateRanges: [string, string][]
 ) => {
   const getCurrentAcademicYearStart = () => {
     const now = dayjs();
@@ -77,7 +77,7 @@ export const findFirstAvailableSlot = (
   const sortedRanges = allProgressReportsDateRanges
     .map(([start, end]) => ({
       start: dayjs(start, dateFormat),
-      end: dayjs(end, dateFormat),
+      end: dayjs(end, dateFormat)
     }))
     .sort((a, b) => a.start.valueOf() - b.start.valueOf());
 
@@ -85,12 +85,12 @@ export const findFirstAvailableSlot = (
 
   while (true) {
     const candidateStart = dayjs().year(candidateYear).month(8).date(1);
-    const candidateEnd = candidateStart.add(1, "year").month(7).date(31);
+    const candidateEnd = candidateStart.add(1, 'year').month(7).date(31);
 
     const hasConflict = sortedRanges.some(
       (range) =>
         candidateStart.isSameOrBefore(range.end) &&
-        candidateEnd.isSameOrAfter(range.start),
+        candidateEnd.isSameOrAfter(range.start)
     );
 
     if (!hasConflict) {
@@ -102,12 +102,12 @@ export const findFirstAvailableSlot = (
 };
 
 const mapStatusToTagStatus = (
-  status: ProgressReportingDTO["reportStatus"],
+  status: ProgressReportingDTO['reportStatus']
 ): TagStatus => {
   switch (status) {
-    case "Draft":
+    case 'Draft':
       return TagStatus.DRAFT;
-    case "Submitted":
+    case 'Submitted':
       return TagStatus.SUBMITTED;
     default:
       return TagStatus.DRAFT;
@@ -115,20 +115,20 @@ const mapStatusToTagStatus = (
 };
 
 const mapStatusToActions = (
-  status: ProgressReportingDTO["reportStatus"],
+  status: ProgressReportingDTO['reportStatus']
 ): TProgressReportingTableActions[] => {
   switch (status) {
-    case "Draft":
-      return ["EDIT", "DELETE"];
-    case "Submitted":
-      return ["VIEW"];
+    case 'Draft':
+      return ['EDIT', 'DELETE'];
+    case 'Submitted':
+      return ['VIEW'];
     default:
       return [];
   }
 };
 
 export const getStepStatusArray = (
-  progressReporting: TProgressReportingShape,
+  progressReporting: TProgressReportingShape
 ): StepStatus[] => {
   const step1 = isTimeframeOfInformationSchema(progressReporting);
   const step2 = isActionSchema(progressReporting);
@@ -154,36 +154,36 @@ export const getStepStatusArray = (
         : StepStatus.INACTIVE,
     step1 && step2 && step3 && step4
       ? StepStatus.COMPLETED
-      : StepStatus.INACTIVE,
+      : StepStatus.INACTIVE
   ];
 };
 
 export const convertToTableData = (
-  data: ProgressReportingDTO[],
+  data: ProgressReportingDTO[]
 ): TProgressReportingData[] =>
   data.map((item) => ({
-    id: item.id ?? "",
+    id: item.id ?? '',
     timeframeOfInformation: `${formatDate(item.reportingStartDate)} to ${formatDate(item.reportingEndDate)}`,
     draftLatestUpdate: formatDate(item?.submissionOrDraftDate ?? null),
     reportingStatus: mapStatusToTagStatus(item.reportStatus),
-    actions: mapStatusToActions(item.reportStatus),
+    actions: mapStatusToActions(item.reportStatus)
   }));
 
 export const convertToClientEntity = (
-  dto: ProgressReportingDTO,
+  dto: ProgressReportingDTO
 ): TProgressReportingShape => ({
   id: dto.id,
   timeframeOfInformation: normalizeString(dto.custom),
-  startDate: dto.reportingStartDate ?? "",
+  startDate: dto.reportingStartDate ?? '',
   endDate: normalizeDateTime(dto.reportingEndDate),
   draftLatestUpdate: normalizeDateTime(dto.submissionOrDraftDate),
   typesOfChallengesFaced: dto.typesOfChallengesFaced ?? [],
   othersTypesOfChallengesFaced: normalizeString(
-    dto.othersTypesOfChallengesFaced,
+    dto.othersTypesOfChallengesFaced
   ),
   descriptionOfChallenges: normalizeString(dto.descriptionOfChallenges),
   descriptionOfOpportunitiesIdentified: normalizeString(
-    dto.descriptionOfOpportunitiesIdentified,
+    dto.descriptionOfOpportunitiesIdentified
   ),
   actions:
     dto.actions?.map((action) => ({
@@ -194,11 +194,11 @@ export const convertToClientEntity = (
       typeOther: normalizeString(action.typeOther),
       associatedTargets: action.targets,
       outcomes: normalizeString(action.outcomes),
-      outcomesUrl: action.outcomesUrl ?? [""],
+      outcomesUrl: action.outcomesUrl ?? [''],
       impactExplanation: normalizeString(action.impactExplanation),
       contributionToMultilateralProcess:
         action.actionToTheMultilateralPro ?? [],
-      contributionOfTheAction: normalizeString(action.contributionOfTheAction),
+      contributionOfTheAction: normalizeString(action.contributionOfTheAction)
     })) ?? [],
   targets:
     dto.targets?.map((target) => ({
@@ -215,17 +215,17 @@ export const convertToClientEntity = (
       unit: normalizeString(target.unit),
       updateStatus: normalizeString(target.updateStatus),
       value: normalizeNumber(target.value),
-      year: normalizeNumber(target.year),
-    })) ?? [],
+      year: normalizeNumber(target.year)
+    })) ?? []
 });
 
 export const convertToServerEntity = (
-  formData: TProgressReportingShape,
+  formData: TProgressReportingShape
 ): ProgressReportingDTO => ({
   initiativeId: formData.initiativeId,
   ...(formData.id && formData.id.length > 0 ? { id: formData.id } : {}),
   targets: formData.targets,
-  reportStatus: formData.reportStatus || "Draft",
+  reportStatus: formData.reportStatus || 'Draft',
   custom: formData.timeframeOfInformation,
   reportingStartDate: formData.startDate,
   reportingEndDate: (() => {
@@ -233,7 +233,7 @@ export const convertToServerEntity = (
       return null;
     }
     const startDate = dayjs(formData.startDate);
-    const endDate = startDate.add(1, "year").subtract(1, "day");
+    const endDate = startDate.add(1, 'year').subtract(1, 'day');
     return endDate.toISOString();
   })(),
   submissionOrDraftDate: new Date().toISOString(),
@@ -255,7 +255,7 @@ export const convertToServerEntity = (
           outcomesUrl: action.outcomesUrl ?? [],
           contributionOfTheAction: action.contributionOfTheAction,
           actionToTheMultilateralPro: action.contributionToMultilateralProcess,
-          targets: action.associatedTargets ?? [],
+          targets: action.associatedTargets ?? []
         }))
-      : [],
+      : []
 });

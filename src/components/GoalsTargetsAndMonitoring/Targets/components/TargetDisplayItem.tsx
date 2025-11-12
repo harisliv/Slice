@@ -1,17 +1,17 @@
-import Grid from "@mui/material/Grid2";
-import { CustomAccordion, Paragraph } from "@app/lib/ui";
-import { type TargetFormData } from "@app/types";
+import Grid from '@mui/material/Grid2';
+import { CustomAccordion, Paragraph } from '@app/lib/ui';
+import { type TargetFormData } from '@app/types';
 import {
   StyledHeader2Cell,
   StyledTable2Header,
   StyledTable2Row,
-  TableComponent,
-} from "@app/lib/ui";
-import { Box, TableCell } from "@mui/material";
-import { renderValueOrHyphen } from "@app/utils";
+  TableComponent
+} from '@app/lib/ui';
+import { Box, TableCell } from '@mui/material';
+import { renderValueOrHyphen } from '@app/utils';
 
 interface TargetDisplayItemProps {
-  target: TargetFormData["targets"][0];
+  target: TargetFormData['targets'][0];
   onActionClick?: (event?: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
   showSecondTable?: boolean;
   isEditMode?: boolean;
@@ -21,20 +21,20 @@ export default function TargetDisplayItem({
   target,
   onActionClick = () => {},
   showSecondTable = true,
-  isEditMode = false,
+  isEditMode = false
 }: TargetDisplayItemProps) {
   const getColumns = () => [
-    "Target year",
-    "Target base year",
-    "Target type",
-    "Target unit",
-    "Target value",
+    'Target year',
+    'Target base year',
+    'Target type',
+    'Target unit',
+    'Target value'
   ];
   const getColumns2 = () => [
-    "Latest Reported Year",
-    "Latest target overall status",
-    "Latest progress description",
-    "Current value",
+    'Latest Reported Year',
+    'Latest target overall status',
+    'Latest progress description',
+    'Current value'
   ];
 
   const headerGroups = (
@@ -43,7 +43,7 @@ export default function TargetDisplayItem({
         <StyledHeader2Cell
           key={`${headerGroup}-${index}`}
           colSpan={1}
-          style={{ width: "20%" }}
+          style={{ width: '20%' }}
         >
           {headerGroup}
         </StyledHeader2Cell>
@@ -56,14 +56,14 @@ export default function TargetDisplayItem({
       {[
         target.year,
         target.baseyear,
-        target.type.join(", "),
+        target.type.join(', '),
         target.unit,
-        target.value,
+        target.value
       ].map((value, index) => (
         <TableCell
           key={`${value}-${index}`}
           colSpan={1}
-          style={{ width: "20%" }}
+          style={{ width: '20%' }}
         >
           {renderValueOrHyphen(value)}
         </TableCell>
@@ -77,7 +77,7 @@ export default function TargetDisplayItem({
         <StyledHeader2Cell
           key={`${headerGroup}-${index}`}
           colSpan={1}
-          style={{ width: index === 2 ? "40%" : "20%" }}
+          style={{ width: index === 2 ? '40%' : '20%' }}
         >
           {headerGroup}
         </StyledHeader2Cell>
@@ -91,12 +91,12 @@ export default function TargetDisplayItem({
         target?.targetProgress[0]?.latestReportedYear,
         target?.targetProgress[0]?.updateStatus,
         target?.targetProgress[0]?.descriptionStatus,
-        target?.targetProgress[0]?.reportValue,
+        target?.targetProgress[0]?.reportValue
       ].map((value, index) => (
         <TableCell
           key={`${value}-${index}`}
           colSpan={1}
-          style={{ width: index === 2 ? "40%" : "20%" }}
+          style={{ width: index === 2 ? '40%' : '20%' }}
         >
           {renderValueOrHyphen(value)}
         </TableCell>
@@ -108,13 +108,13 @@ export default function TargetDisplayItem({
     <Grid size={{ sm: 12, xs: 12 }}>
       <CustomAccordion
         defaultExpanded={isEditMode}
-        title={target.title || ""}
+        title={target.title || ''}
         onActionClick={() => onActionClick()}
         tagStatus={!isEditMode ? target.status : null}
         withDelete={isEditMode}
       >
-        <Box display={"flex"} gap={2} flexDirection={"column"}>
-          <Box display={"flex"} gap={1} flexDirection={"column"}>
+        <Box display={'flex'} gap={2} flexDirection={'column'}>
+          <Box display={'flex'} gap={1} flexDirection={'column'}>
             {!isEditMode && (
               <Paragraph variant="medium-bold">Target description</Paragraph>
             )}

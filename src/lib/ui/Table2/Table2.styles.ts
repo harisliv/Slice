@@ -1,7 +1,7 @@
-import { TableCell, TableContainer, TableRow } from "@mui/material";
-import { Theme } from "@app/lib/general";
-import { EnumWeight } from "@app/lib/types";
-import styled from "styled-components";
+import { TableCell, TableContainer, TableRow } from '@mui/material';
+import { Theme } from '@app/lib/general';
+import { EnumWeight } from '@app/lib/types';
+import styled from 'styled-components';
 
 export const StyledTable2Container = styled(TableContainer)`
   border-radius: 10px 10px 0 0;
@@ -10,7 +10,7 @@ export const StyledTable2Container = styled(TableContainer)`
 export const StyledTable2Row = styled(TableRow)`
   border-radius: 6px 6px 0px 0px;
   padding: 0px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: ${EnumWeight.normal};
   font-size: ${Theme.fontSizes.body.m};
   vertical-align: center;
@@ -25,7 +25,7 @@ export const StyledTable2Row = styled(TableRow)`
 
 export const StyledTable2Header = styled(TableRow)`
   && {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: ${EnumWeight.normal};
     font-size: ${Theme.fontSizes.body.m};
     transform: translateY(-0.3px);

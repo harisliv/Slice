@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
-import styled from "styled-components";
-import { GenericContainer, H3 } from "../Global/Global.styles";
-import { EnumWeight } from "@app/lib/types";
+import { Box } from '@mui/material';
+import styled from 'styled-components';
+import { GenericContainer, H3 } from '../Global/Global.styles';
+import { EnumWeight } from '@app/lib/types';
 
 export const StyledH3 = styled(H3)``;
 
@@ -95,7 +95,7 @@ export const StyledNavItems = styled(Box)`
     padding-right: 12px;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: 1px;
       top: 50%;
@@ -157,21 +157,21 @@ export const StyledNavActionButton = styled.button`
 `;
 
 export const tooltipStyles = {
-  "& .MuiTooltip-tooltip": {
-    padding: "8px",
-    alignItems: "center",
-    gap: "8px",
-    transition: "opacity 0.1s, visibility 0.1s, transform 0.1s",
+  '& .MuiTooltip-tooltip': {
+    padding: '8px',
+    alignItems: 'center',
+    gap: '8px',
+    transition: 'opacity 0.1s, visibility 0.1s, transform 0.1s',
     opacity: 1,
-    visibility: "visible",
-    backgroundColor: "#F5F7F6",
-    color: "#424245",
-    border: "0.5px solid #BBBBBC",
+    visibility: 'visible',
+    backgroundColor: '#F5F7F6',
+    color: '#424245',
+    border: '0.5px solid #BBBBBC'
   },
-  "& .MuiTooltip-arrow": {
-    "&::before": {
-      backgroundColor: "#F5F7F6",
-      border: "0.5px solid #BBBBBC",
-    },
-  },
+  '& .MuiTooltip-arrow': {
+    '&::before': {
+      backgroundColor: '#F5F7F6',
+      border: '0.5px solid #BBBBBC'
+    }
+  }
 };

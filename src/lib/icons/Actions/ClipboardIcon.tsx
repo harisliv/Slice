@@ -1,10 +1,10 @@
-import { Theme } from "@app/lib/general";
-import type { IIconProps } from "@app/lib/types";
-import type { FC } from "react";
+import { Theme } from '@app/lib/general';
+import type { IIconProps } from '@app/lib/types';
+import type { FC } from 'react';
 
 const ClipboardIcon: FC<IIconProps> = ({
   fill = Theme.palette.primary.azur,
-  size = 20,
+  size = 20
 }) => (
   <svg
     width={size}

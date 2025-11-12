@@ -1,14 +1,14 @@
 import {
   useQuery,
   type UseQueryOptions,
-  type UseQueryResult,
-} from "@tanstack/react-query";
-import type { AxiosRequestConfig } from "axios";
-import { apiClient } from "@app/config/axios.config";
-import { logger } from "@app/utils";
+  type UseQueryResult
+} from '@tanstack/react-query';
+import type { AxiosRequestConfig } from 'axios';
+import { apiClient } from '@app/config/axios.config';
+import { logger } from '@app/utils';
 
 interface UseGetPrivateRoutesOptions<T, DTO>
-  extends Omit<UseQueryOptions<T>, "queryFn"> {
+  extends Omit<UseQueryOptions<T>, 'queryFn'> {
   endpoint: string;
   typeGuard: (value: unknown) => value is T;
   convertToClientEntity?: (value: DTO) => T;
@@ -34,7 +34,7 @@ export default function useGetPrivateRoutes<T = unknown, DTO = unknown>({
         : response.data;
 
       if (!typeGuard(data)) {
-        logger.error("Invalid response format", new Error(endpoint), data);
+        logger.error('Invalid response format', new Error(endpoint), data);
       }
 
       if (onQueryFnSuccess) {
@@ -43,6 +43,6 @@ export default function useGetPrivateRoutes<T = unknown, DTO = unknown>({
 
       return data;
     },
-    enabled: queryOptions.enabled ?? true,
+    enabled: queryOptions.enabled ?? true
   });
 }

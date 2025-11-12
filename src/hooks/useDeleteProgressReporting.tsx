@@ -1,5 +1,5 @@
-import { useQueryClient } from "@tanstack/react-query";
-import useDeletePrivateRoutes from "./useDeletePrivateRoutes";
+import { useQueryClient } from '@tanstack/react-query';
+import useDeletePrivateRoutes from './useDeletePrivateRoutes';
 
 export default function useDeleteProgressReporting(id: string) {
   const queryClient = useQueryClient();
@@ -7,9 +7,9 @@ export default function useDeleteProgressReporting(id: string) {
     endpoint: `/functions/v1/progress-report/${id}`,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["progressReportList"],
+        queryKey: ['progressReportList']
       });
-    },
+    }
   });
 
   return mutation;

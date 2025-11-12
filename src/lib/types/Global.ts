@@ -1,6 +1,6 @@
-import type { FC } from "react";
-import type { ErrorResponse } from "react-router";
-import type { WebTarget } from "styled-components";
+import type { FC } from 'react';
+import type { ErrorResponse } from 'react-router';
+import type { WebTarget } from 'styled-components';
 
 export enum EnumWeight {
   extraBold = 800,
@@ -8,14 +8,14 @@ export enum EnumWeight {
   extraNormal = 500,
   normal = 400,
   light = 300,
-  extraLight = 200,
+  extraLight = 200
 }
 
 export enum EnumLineHeight {
-  extraSmall = "19px",
-  small = "20px",
-  medium = "22px",
-  large = "24px",
+  extraSmall = '19px',
+  small = '20px',
+  medium = '22px',
+  large = '24px'
 }
 
 export interface ITypography {
@@ -24,8 +24,8 @@ export interface ITypography {
   fontSize?: string;
   $lineHeight?: string;
   fontFamily?: string;
-  fontStyle?: "normal" | "italic";
-  $textTransform?: "uppercase" | "lowercase" | "capitalize";
+  fontStyle?: 'normal' | 'italic';
+  $textTransform?: 'uppercase' | 'lowercase' | 'capitalize';
 }
 
 export type TTypographyProps<T extends string> = {
@@ -44,17 +44,17 @@ export type TExternalNavLink = React.FunctionComponent<TLinkComponentProps>;
 export type TCustomComponentToStyle = WebTarget;
 export type TErrorResponse = ErrorResponse;
 export enum TagStatus {
-  SUBMITTED = "SUBMITTED",
-  DRAFT = "DRAFT",
-  CONCLUDED = "CONCLUDED",
-  ACTIVE = "ACTIVE",
-  ACCOMPLISHED = "ACCOMPLISHED",
-  INACTIVE = "INACTIVE",
+  SUBMITTED = 'SUBMITTED',
+  DRAFT = 'DRAFT',
+  CONCLUDED = 'CONCLUDED',
+  ACTIVE = 'ACTIVE',
+  ACCOMPLISHED = 'ACCOMPLISHED',
+  INACTIVE = 'INACTIVE'
 }
 
 export type TRouterLink = FC<{ to: string }>;
 
-export type CustomSize = "full" | "half" | "third" | "quarter" | "twoThrids";
+export type CustomSize = 'full' | 'half' | 'third' | 'quarter' | 'twoThrids';
 
 export const gridSizeMap: {
   [key in CustomSize]: {
@@ -70,5 +70,5 @@ export const gridSizeMap: {
   quarter: { xxs: 12, xs: 12, sm: 12, md: 3, lg: 3, xl: 3 },
   half: { xxs: 12, xs: 12, sm: 12, md: 6, lg: 6, xl: 6 },
   twoThrids: { xxs: 12, xs: 12, sm: 12, md: 8, lg: 8, xl: 8 },
-  full: { xxs: 12, xs: 12, sm: 12, md: 12, lg: 12, xl: 12 },
+  full: { xxs: 12, xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }
 };

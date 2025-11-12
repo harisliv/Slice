@@ -10,7 +10,7 @@
  */
 export const tryToParseJSON = <T = string>(
   data: string,
-  def: T = "" as T,
+  def: T = '' as T
 ): T => {
   try {
     return JSON.parse(data);
@@ -20,7 +20,7 @@ export const tryToParseJSON = <T = string>(
 };
 
 export const valueIsEmpty = <T>(value: T): boolean =>
-  value === undefined || value === null || value === "";
+  value === undefined || value === null || value === '';
 
 /**
  * Checks if a given string is a valid email address.
@@ -35,7 +35,7 @@ export const isEmail = (value: string): boolean => {
 
 export const downloadFile = (file: File) => {
   const fileURL = URL.createObjectURL(file);
-  const a = document.createElement("a");
+  const a = document.createElement('a');
   a.href = fileURL;
   a.download = file.name;
   document.body.appendChild(a);
@@ -45,7 +45,7 @@ export const downloadFile = (file: File) => {
 
 export const viewFile = (file: File) => {
   const fileURL = URL.createObjectURL(file);
-  window.open(fileURL, "_blank");
+  window.open(fileURL, '_blank');
 };
 
 /**
@@ -58,17 +58,17 @@ export const viewFile = (file: File) => {
 export const convertFileSize = (
   bytes: number,
   decimals = 2,
-  decimalSeparator = ".",
+  decimalSeparator = '.'
 ): string => {
-  if (!bytes) return "";
+  if (!bytes) return '';
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PiB", "EiB", "ZiB", "YiB"];
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PiB', 'EiB', 'ZiB', 'YiB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`.replace(
-    ".",
-    decimalSeparator,
+    '.',
+    decimalSeparator
   );
 };
 
@@ -102,7 +102,7 @@ export const convertFileSize = (
 export const toCamelCase = (str: string): string =>
   str
     .replace(/\s(.)/g, (_match, group1) => group1.toUpperCase())
-    .replace(/[-\s]/g, "")
+    .replace(/[-\s]/g, '')
     .replace(/^(.)/, (_match, group1) => group1.toLowerCase());
 
 /**
@@ -148,11 +148,11 @@ export const arraysAreTheSame = (a: string[], b: string[]): boolean => {
 // };
 
 export enum FileType {
-  PDF = "application/pdf",
-  XLS = "application/vnd.ms-excel",
-  XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  XLSM = "application/vnd.ms-excel.sheet.macroEnabled.12",
-  DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  PDF = 'application/pdf',
+  XLS = 'application/vnd.ms-excel',
+  XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  XLSM = 'application/vnd.ms-excel.sheet.macroEnabled.12',
+  DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 }
 
 export const isValidEnum = (key: string, enumObj: Record<string, string>) =>

@@ -1,10 +1,10 @@
-import { StateAndFormStepperProvider } from "@app/components";
-import { CREATE_REPORT_STEPS } from "@app/constants";
-import CreateReportContent from "./components/CreateReportContent";
-import { useSingleReportLoading } from "@app/hooks";
-import { SkeletonComponent } from "@app/lib/ui";
-import FormContextProvider from "./components/FormContextProvider";
-import { useLoaderData } from "react-router";
+import { StateAndFormStepperProvider } from '@app/components';
+import { CREATE_REPORT_STEPS } from '@app/constants';
+import CreateReportContent from './components/CreateReportContent';
+import { useSingleReportLoading } from '@app/hooks';
+import { SkeletonComponent } from '@app/lib/ui';
+import FormContextProvider from './components/FormContextProvider';
+import { useLoaderData } from 'react-router';
 
 export default function CreateReport() {
   const isLoading = useSingleReportLoading();

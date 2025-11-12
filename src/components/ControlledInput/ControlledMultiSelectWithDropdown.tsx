@@ -1,6 +1,6 @@
-import { type ControlledMultiSelectWithDropdownProps } from "@app/types";
-import { useDropdownValues } from "@app/hooks";
-import ControlledMultiSelect from "./ControlledMultiSelect";
+import { type ControlledMultiSelectWithDropdownProps } from '@app/types';
+import { useDropdownValues } from '@app/hooks';
+import ControlledMultiSelect from './ControlledMultiSelect';
 
 export default function ControlledMultiSelectWithDropdown<T extends string>({
   name,
@@ -12,7 +12,7 @@ export default function ControlledMultiSelectWithDropdown<T extends string>({
   maxOptions,
   disabled,
   dropdownEnpoint,
-  customGridSize = "full",
+  customGridSize = 'full'
 }: ControlledMultiSelectWithDropdownProps<T>) {
   const { data: options, isLoading } = useDropdownValues(dropdownEnpoint);
 

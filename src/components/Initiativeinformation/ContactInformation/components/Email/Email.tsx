@@ -1,10 +1,10 @@
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { InitiativeProfileControlledInput } from "@app/components";
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import { InitiativeProfileControlledInput } from '@app/components';
 
 export default function Email() {
   return (
     <InitiativeProfileControlledInput
-      name={"contactEmail"}
+      name={'contactEmail'}
       required
       customGridSize="half"
       inputDescriptionTitle={

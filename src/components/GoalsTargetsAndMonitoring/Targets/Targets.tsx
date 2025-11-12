@@ -1,15 +1,15 @@
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from 'react-hook-form';
 import {
   defaultTargetValues,
-  type GoalsTargetsAndMonitoringShape,
-} from "@app/types";
-import { ButtonComponent, Paragraph } from "@app/lib/ui";
-import { Box, Stack } from "@mui/material";
-import { PlusIcon } from "@app/lib/icons";
-import TargetFieldsModal from "./components/TargetFieldsModal";
-import TargetDisplayItem from "./components/TargetDisplayItem";
-import { useState } from "react";
-import { useCreateModal, useDeleteModal } from "@app/hooks";
+  type GoalsTargetsAndMonitoringShape
+} from '@app/types';
+import { ButtonComponent, Paragraph } from '@app/lib/ui';
+import { Box, Stack } from '@mui/material';
+import { PlusIcon } from '@app/lib/icons';
+import TargetFieldsModal from './components/TargetFieldsModal';
+import TargetDisplayItem from './components/TargetDisplayItem';
+import { useState } from 'react';
+import { useCreateModal, useDeleteModal } from '@app/hooks';
 
 export default function Targets() {
   const { showDeleteModal } = useDeleteModal();
@@ -17,22 +17,22 @@ export default function Targets() {
   const { control, watch } = useFormContext<GoalsTargetsAndMonitoringShape>();
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "newTargets",
+    name: 'newTargets',
     rules: {
-      maxLength: 7,
-    },
+      maxLength: 7
+    }
   });
 
-  const newTargets = watch("newTargets");
+  const newTargets = watch('newTargets');
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openDeleteModal = (index: number) => {
-    const title = newTargets?.[index].title || "this target";
+    const title = newTargets?.[index].title || 'this target';
     showDeleteModal({
-      subtitle: "Are you sure you want to delete this creaeted target?",
+      subtitle: 'Are you sure you want to delete this creaeted target?',
       content: `You're about to permanently delete "${title}". This action cannot be undone.`,
-      onConfirm: () => remove(index),
+      onConfirm: () => remove(index)
     });
   };
 
@@ -43,9 +43,9 @@ export default function Targets() {
 
   const handleRequestCreate = () => {
     showCreateModal({
-      subtitle: "Creating a new target?",
+      subtitle: 'Creating a new target?',
       content: `Your are about to create a new target. You can still review or delete it before submitting changes. Once you submit changes, target(s) will not be able to edit, and the CCI will be requested to report its progress through the annual progress tracking procedure.`,
-      onConfirm: () => setIsModalOpen(false),
+      onConfirm: () => setIsModalOpen(false)
     });
   };
 

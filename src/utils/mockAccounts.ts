@@ -1,232 +1,232 @@
-import { apiClient } from "@app/config/axios.config";
-import type { AccountEntityCreateDTO } from "@app/types";
+import { apiClient } from '@app/config/axios.config';
+import type { AccountEntityCreateDTO } from '@app/types';
 
 // Sample data for generating realistic account names
 const companyTypes = [
-  "Corporation",
-  "Inc.",
-  "Ltd.",
-  "LLC",
-  "Group",
-  "Holdings",
-  "Enterprises",
-  "Solutions",
-  "Systems",
-  "Technologies",
-  "Industries",
-  "Partners",
-  "Associates",
-  "International",
-  "Global",
-  "Worldwide",
+  'Corporation',
+  'Inc.',
+  'Ltd.',
+  'LLC',
+  'Group',
+  'Holdings',
+  'Enterprises',
+  'Solutions',
+  'Systems',
+  'Technologies',
+  'Industries',
+  'Partners',
+  'Associates',
+  'International',
+  'Global',
+  'Worldwide'
 ];
 
 const businessSectors = [
-  "Technology",
-  "Finance",
-  "Healthcare",
-  "Energy",
-  "Manufacturing",
-  "Retail",
-  "Transportation",
-  "Construction",
-  "Real Estate",
-  "Education",
-  "Media",
-  "Telecommunications",
-  "Agriculture",
-  "Pharmaceuticals",
-  "Automotive",
-  "Aerospace",
-  "Food & Beverage",
-  "Hospitality",
-  "Consulting",
-  "Legal",
+  'Technology',
+  'Finance',
+  'Healthcare',
+  'Energy',
+  'Manufacturing',
+  'Retail',
+  'Transportation',
+  'Construction',
+  'Real Estate',
+  'Education',
+  'Media',
+  'Telecommunications',
+  'Agriculture',
+  'Pharmaceuticals',
+  'Automotive',
+  'Aerospace',
+  'Food & Beverage',
+  'Hospitality',
+  'Consulting',
+  'Legal'
 ];
 
 const cityNames = [
-  "New York",
-  "London",
-  "Tokyo",
-  "Paris",
-  "Berlin",
-  "Madrid",
-  "Rome",
-  "Amsterdam",
-  "Barcelona",
-  "Milan",
-  "Vienna",
-  "Stockholm",
-  "Copenhagen",
-  "Oslo",
-  "Helsinki",
-  "Dublin",
-  "Brussels",
-  "Zurich",
-  "Geneva",
-  "Luxembourg",
-  "Warsaw",
-  "Prague",
-  "Budapest",
-  "Athens",
-  "Lisbon",
-  "Bucharest",
-  "Sofia",
-  "Zagreb",
-  "Belgrade",
-  "Bratislava",
+  'New York',
+  'London',
+  'Tokyo',
+  'Paris',
+  'Berlin',
+  'Madrid',
+  'Rome',
+  'Amsterdam',
+  'Barcelona',
+  'Milan',
+  'Vienna',
+  'Stockholm',
+  'Copenhagen',
+  'Oslo',
+  'Helsinki',
+  'Dublin',
+  'Brussels',
+  'Zurich',
+  'Geneva',
+  'Luxembourg',
+  'Warsaw',
+  'Prague',
+  'Budapest',
+  'Athens',
+  'Lisbon',
+  'Bucharest',
+  'Sofia',
+  'Zagreb',
+  'Belgrade',
+  'Bratislava'
 ];
 
 const organizationTypes = [
-  "City Council",
-  "Municipality",
-  "Regional Government",
-  "State Agency",
-  "Federal Department",
-  "Public Authority",
-  "Development Agency",
-  "Environmental Agency",
-  "Transport Authority",
-  "Health Authority",
-  "Education Board",
-  "Housing Authority",
-  "Water Authority",
-  "Energy Commission",
-  "Planning Commission",
+  'City Council',
+  'Municipality',
+  'Regional Government',
+  'State Agency',
+  'Federal Department',
+  'Public Authority',
+  'Development Agency',
+  'Environmental Agency',
+  'Transport Authority',
+  'Health Authority',
+  'Education Board',
+  'Housing Authority',
+  'Water Authority',
+  'Energy Commission',
+  'Planning Commission'
 ];
 
 const adjectives = [
-  "Advanced",
-  "Global",
-  "International",
-  "National",
-  "Regional",
-  "Metropolitan",
-  "Urban",
-  "Sustainable",
-  "Green",
-  "Smart",
-  "Digital",
-  "Innovative",
-  "Modern",
-  "Premier",
-  "Elite",
-  "Prime",
-  "First",
-  "United",
-  "Allied",
-  "Pacific",
-  "Atlantic",
-  "European",
-  "American",
-  "Asian",
-  "African",
+  'Advanced',
+  'Global',
+  'International',
+  'National',
+  'Regional',
+  'Metropolitan',
+  'Urban',
+  'Sustainable',
+  'Green',
+  'Smart',
+  'Digital',
+  'Innovative',
+  'Modern',
+  'Premier',
+  'Elite',
+  'Prime',
+  'First',
+  'United',
+  'Allied',
+  'Pacific',
+  'Atlantic',
+  'European',
+  'American',
+  'Asian',
+  'African'
 ];
 
 const nouns = [
-  "Solutions",
-  "Systems",
-  "Services",
-  "Group",
-  "Partners",
-  "Associates",
-  "Enterprises",
-  "Industries",
-  "Holdings",
-  "Capital",
-  "Ventures",
-  "Investments",
-  "Management",
-  "Consulting",
-  "Advisory",
-  "Resources",
-  "Development",
-  "Innovation",
-  "Technologies",
-  "Networks",
+  'Solutions',
+  'Systems',
+  'Services',
+  'Group',
+  'Partners',
+  'Associates',
+  'Enterprises',
+  'Industries',
+  'Holdings',
+  'Capital',
+  'Ventures',
+  'Investments',
+  'Management',
+  'Consulting',
+  'Advisory',
+  'Resources',
+  'Development',
+  'Innovation',
+  'Technologies',
+  'Networks'
 ];
 
 // Categories
-const categories = ["Member", "Signatory", "Partner", "Observer", "Supporter"];
+const categories = ['Member', 'Signatory', 'Partner', 'Observer', 'Supporter'];
 
 // Countries (sample from the dropdown)
 const countries = [
-  "United States",
-  "United Kingdom",
-  "Germany",
-  "France",
-  "Spain",
-  "Italy",
-  "Netherlands",
-  "Belgium",
-  "Sweden",
-  "Norway",
-  "Denmark",
-  "Finland",
-  "Poland",
-  "Czech Republic",
-  "Austria",
-  "Switzerland",
-  "Portugal",
-  "Greece",
-  "Ireland",
-  "Japan",
-  "China",
-  "India",
-  "Brazil",
-  "Canada",
-  "Australia",
-  "South Africa",
-  "Mexico",
-  "Argentina",
-  "Chile",
-  "Colombia",
+  'United States',
+  'United Kingdom',
+  'Germany',
+  'France',
+  'Spain',
+  'Italy',
+  'Netherlands',
+  'Belgium',
+  'Sweden',
+  'Norway',
+  'Denmark',
+  'Finland',
+  'Poland',
+  'Czech Republic',
+  'Austria',
+  'Switzerland',
+  'Portugal',
+  'Greece',
+  'Ireland',
+  'Japan',
+  'China',
+  'India',
+  'Brazil',
+  'Canada',
+  'Australia',
+  'South Africa',
+  'Mexico',
+  'Argentina',
+  'Chile',
+  'Colombia'
 ];
 
 // Identity types
 const identityTypes = [
-  "Tax ID",
-  "Registration Number",
-  "Business License",
-  "EIN",
-  "VAT Number",
-  "Company Number",
+  'Tax ID',
+  'Registration Number',
+  'Business License',
+  'EIN',
+  'VAT Number',
+  'Company Number'
 ];
 
 // Business activities
 const businessActivities = [
-  "Technology Services",
-  "Financial Services",
-  "Healthcare",
-  "Energy",
-  "Manufacturing",
-  "Retail",
-  "Transportation",
-  "Construction",
-  "Real Estate",
-  "Education",
-  "Media",
-  "Telecommunications",
-  "Agriculture",
-  "Pharmaceuticals",
-  "Automotive",
-  "Aerospace",
-  "Food & Beverage",
-  "Hospitality",
-  "Consulting",
-  "Legal Services",
+  'Technology Services',
+  'Financial Services',
+  'Healthcare',
+  'Energy',
+  'Manufacturing',
+  'Retail',
+  'Transportation',
+  'Construction',
+  'Real Estate',
+  'Education',
+  'Media',
+  'Telecommunications',
+  'Agriculture',
+  'Pharmaceuticals',
+  'Automotive',
+  'Aerospace',
+  'Food & Beverage',
+  'Hospitality',
+  'Consulting',
+  'Legal Services'
 ];
 
 // Subnational government types
 const subnationalGovernmentTypes = [
-  "State",
-  "Province",
-  "Region",
-  "County",
-  "Municipality",
-  "City",
-  "District",
-  "Other",
+  'State',
+  'Province',
+  'Region',
+  'County',
+  'Municipality',
+  'City',
+  'District',
+  'Other'
 ];
 
 /**
@@ -269,45 +269,45 @@ function generateMockAccount(index: number): AccountEntityCreateDTO {
     case 1: // Company
       if (Math.random() > 0.5) {
         name = `${randomElement(adjectives)} ${randomElement(
-          nouns,
+          nouns
         )} ${randomElement(companyTypes)}`;
       } else {
         name = `${randomElement(businessSectors)} ${randomElement(
-          companyTypes,
+          companyTypes
         )}`;
       }
-      type = "Company";
+      type = 'Company';
       break;
 
     case 2: // City/Government
       if (Math.random() > 0.5) {
         name = `${randomElement(cityNames)} ${randomElement(
-          organizationTypes,
+          organizationTypes
         )}`;
       } else {
         name = `${randomElement(cityNames)} City Council`;
       }
-      type = Math.random() > 0.5 ? "City" : "Subnational Government Agency";
-      if (type === "Subnational Government Agency") {
+      type = Math.random() > 0.5 ? 'City' : 'Subnational Government Agency';
+      if (type === 'Subnational Government Agency') {
         subnationalGovernmentType = randomElement(subnationalGovernmentTypes);
-        if (subnationalGovernmentType === "Other") {
-          subnationalGovernmentTypeOther = "Custom Government Type";
+        if (subnationalGovernmentType === 'Other') {
+          subnationalGovernmentTypeOther = 'Custom Government Type';
         }
       }
       break;
 
     case 3: // Combined format
       name = `${randomElement(adjectives)} ${randomElement(
-        cityNames,
+        cityNames
       )} ${randomElement(organizationTypes)}`;
-      type = randomElement(["NGO", "International Organization", "Foundation"]);
+      type = randomElement(['NGO', 'International Organization', 'Foundation']);
       break;
 
     default: // Simple company name
       name = `${randomElement(businessSectors)} ${randomElement(
-        companyTypes,
+        companyTypes
       )} ${randomInt(100, 9999)}`;
-      type = "Company";
+      type = 'Company';
   }
 
   // Add some variety with numbers or additional descriptors
@@ -315,13 +315,13 @@ function generateMockAccount(index: number): AccountEntityCreateDTO {
     name = `${name} ${randomInt(1, 5)}`;
   }
 
-  const accountId = `account-${String(index + 1).padStart(6, "0")}`;
+  const accountId = `account-${String(index + 1).padStart(6, '0')}`;
   const selectedCountry = randomElement(countries);
   const selectedCategory = randomElement(categories);
   const selectedIdentityType =
     Math.random() > 0.5 ? randomElement(identityTypes) : null;
   const selectedBusinessActivity =
-    type === "Company" && Math.random() > 0.3
+    type === 'Company' && Math.random() > 0.3
       ? randomElement(businessActivities)
       : null;
 
@@ -339,7 +339,7 @@ function generateMockAccount(index: number): AccountEntityCreateDTO {
       : null,
     businessActivity: selectedBusinessActivity,
     subnationalGovernmentType: subnationalGovernmentType,
-    subnationalGovernmentTypeOther: subnationalGovernmentTypeOther,
+    subnationalGovernmentTypeOther: subnationalGovernmentTypeOther
   };
 }
 
@@ -347,7 +347,7 @@ function generateMockAccount(index: number): AccountEntityCreateDTO {
  * Generates an array of mock accounts with full details
  */
 export function generateMockAccounts(
-  count: number = 2000,
+  count: number = 2000
 ): AccountEntityCreateDTO[] {
   const accounts: AccountEntityCreateDTO[] = [];
   const usedNames = new Set<string>();
@@ -373,7 +373,7 @@ export function generateMockAccounts(
  * Populates Supabase with mock accounts
  */
 export async function populateMockAccounts(
-  count: number = 2000,
+  count: number = 2000
 ): Promise<void> {
   console.log(`Generating ${count} mock accounts...`);
   const accounts = generateMockAccounts(count);
@@ -387,7 +387,7 @@ export async function populateMockAccounts(
   for (let i = 0; i < accounts.length; i += batchSize) {
     const batch = accounts.slice(i, i + batchSize);
     try {
-      await apiClient.put("/functions/v1/dropdown-accounts", batch);
+      await apiClient.put('/functions/v1/dropdown-accounts', batch);
       inserted += batch.length;
       console.log(`Inserted ${inserted}/${accounts.length} accounts...`);
     } catch (error) {
@@ -403,7 +403,7 @@ export async function populateMockAccounts(
  * Utility function to be called from browser console or during development
  * Usage: window.populateMockAccounts(2000)
  */
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   (window as any).populateMockAccounts = populateMockAccounts;
   (window as any).generateMockAccounts = generateMockAccounts;
 }

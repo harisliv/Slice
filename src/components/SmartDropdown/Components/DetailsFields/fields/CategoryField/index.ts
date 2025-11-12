@@ -1,1 +1,1 @@
-export { default } from "./CategoryField";
+export { default } from './CategoryField';

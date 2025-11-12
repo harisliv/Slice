@@ -1,32 +1,32 @@
-import { Stack } from "@mui/system";
-import { InfoCardList, InfoCardUrl } from "./InfoCard.styles";
-import type { InfoCardProps } from "./InfoCard.types";
-import Grid from "@mui/material/Grid2";
-import SocialLink from "../SocialMediaLink";
-import PdfLink from "../PdfLink";
-import { Paragraph } from "../Global";
-import { convertFileSize } from "@app/lib/general";
-import { buildSocialLinks } from "./infoCard.utils";
+import { Stack } from '@mui/system';
+import { InfoCardList, InfoCardUrl } from './InfoCard.styles';
+import type { InfoCardProps } from './InfoCard.types';
+import Grid from '@mui/material/Grid2';
+import SocialLink from '../SocialMediaLink';
+import PdfLink from '../PdfLink';
+import { Paragraph } from '../Global';
+import { convertFileSize } from '@app/lib/general';
+import { buildSocialLinks } from './infoCard.utils';
 
 export default function InfoCard({ title, content }: InfoCardProps) {
   function renderContent() {
     switch (content?.type) {
-      case "text":
+      case 'text':
         return (
           <Paragraph variant="medium-regular">
-            {content?.value && content?.value !== "" ? content?.value : "-"}
+            {content?.value && content?.value !== '' ? content?.value : '-'}
           </Paragraph>
         );
 
-      case "number":
+      case 'number':
         return (
           <Paragraph variant="medium-regular">
-            {content?.value && !isNaN(content?.value) ? content?.value : "-"}
+            {content?.value && !isNaN(content?.value) ? content?.value : '-'}
           </Paragraph>
         );
 
-      case "url":
-        return content?.value && content?.value !== "" ? (
+      case 'url':
+        return content?.value && content?.value !== '' ? (
           <InfoCardUrl
             href={content.value}
             target="_blank"
@@ -38,7 +38,7 @@ export default function InfoCard({ title, content }: InfoCardProps) {
           <Paragraph variant="medium-regular">-</Paragraph>
         );
 
-      case "social":
+      case 'social':
         const socialLinks = buildSocialLinks(content.value);
 
         if (socialLinks.length === 0) {
@@ -55,7 +55,7 @@ export default function InfoCard({ title, content }: InfoCardProps) {
           </Grid>
         );
 
-      case "list":
+      case 'list':
         return content?.value?.length ? (
           <InfoCardList $showDot={content?.showDot}>
             {content.value?.map((item, index) => (
@@ -68,7 +68,7 @@ export default function InfoCard({ title, content }: InfoCardProps) {
           <Paragraph variant="medium-regular">-</Paragraph>
         );
 
-      case "doc":
+      case 'doc':
         return content?.value?.filename ? (
           <PdfLink
             filename={content.value?.filename}
@@ -79,7 +79,7 @@ export default function InfoCard({ title, content }: InfoCardProps) {
           <Paragraph variant="medium-regular">-</Paragraph>
         );
 
-      case "docMultiple":
+      case 'docMultiple':
         return content?.value?.length ? (
           <div>
             {content?.value?.map((fileReport) => (
@@ -95,11 +95,11 @@ export default function InfoCard({ title, content }: InfoCardProps) {
           <Paragraph variant="medium-regular">-</Paragraph>
         );
 
-      case "image":
+      case 'image':
         return content?.src ? (
           <img
             src={`data:image/png;base64,${content.src}`}
-            alt={content.alt || "Logo image"}
+            alt={content.alt || 'Logo image'}
             className="file-thumbnail"
             style={{ maxWidth: 150 }}
           />
@@ -114,7 +114,7 @@ export default function InfoCard({ title, content }: InfoCardProps) {
 
   return (
     <Stack>
-      {content?.type === "list" && content.doubleTitle && (
+      {content?.type === 'list' && content.doubleTitle && (
         <Paragraph variant="medium-bold">{content.doubleTitle}</Paragraph>
       )}
       <Paragraph variant="medium-bold">{title}</Paragraph>

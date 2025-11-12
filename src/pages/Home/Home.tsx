@@ -1,8 +1,8 @@
-import type { FC } from "react";
-import { Initiative } from "@app/components";
-import { Header2, MainWrapperWithHeader, Paragraph } from "@app/lib/ui";
-import { Theme } from "@app/lib/general";
-import { Divider, Stack } from "@mui/material";
+import type { FC } from 'react';
+import { Initiative } from '@app/components';
+import { Header2, MainWrapperWithHeader, Paragraph } from '@app/lib/ui';
+import { Theme } from '@app/lib/general';
+import { Divider, Stack } from '@mui/material';
 
 const Homepage: FC = () => {
   const content = (
@@ -23,7 +23,7 @@ const Homepage: FC = () => {
         <Divider
           sx={{
             borderColor: Theme.palette.background.grey,
-            borderBottomWidth: 1,
+            borderBottomWidth: 1
           }}
         />
         <Initiative />

@@ -1,13 +1,13 @@
-import { type InitiativeInformationFormData } from "@app/types";
-import { InfoCard, TitleAction } from "@app/lib/ui";
-import { NavLink } from "react-router";
-import { Divider, Stack } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { convertFileSize } from "@app/lib/general";
+import { type InitiativeInformationFormData } from '@app/types';
+import { InfoCard, TitleAction } from '@app/lib/ui';
+import { NavLink } from 'react-router';
+import { Divider, Stack } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import { convertFileSize } from '@app/lib/general';
 
 export default function GeneralInformationDisplayMode({
-  initiativeProfile,
+  initiativeProfile
 }: {
   initiativeProfile?: InitiativeInformationFormData;
 }) {
@@ -24,7 +24,7 @@ export default function GeneralInformationDisplayMode({
     summaryOutcomes,
     closureReport,
     contactEmail,
-    contactOrganizations,
+    contactOrganizations
   } = initiativeProfile || {};
 
   return (
@@ -38,15 +38,15 @@ export default function GeneralInformationDisplayMode({
         <Grid size={{ sm: 4, xs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.name.title}
-            content={{ type: "text", value: name }}
+            content={{ type: 'text', value: name }}
           />
         </Grid>
         <Grid size={{ sm: 8, xs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.website.title}
             content={{
-              type: "url",
-              value: website,
+              type: 'url',
+              value: website
             }}
           />
         </Grid>
@@ -54,8 +54,8 @@ export default function GeneralInformationDisplayMode({
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.socialProfiles.title}
             content={{
-              type: "social",
-              value: socialProfiles,
+              type: 'social',
+              value: socialProfiles
             }}
           />
         </Grid>
@@ -64,31 +64,31 @@ export default function GeneralInformationDisplayMode({
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.logoBase64.title}
             content={{
-              type: "image",
+              type: 'image',
               src: logoBase64,
-              alt: "Logo of the initiative",
+              alt: 'Logo of the initiative'
             }}
           />
         </Grid>
         <Grid size={{ sm: 4, xs: 12, xxs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.launchDate.title}
-            content={{ type: "number", value: launchDate }}
+            content={{ type: 'number', value: launchDate }}
           />
         </Grid>
         <Grid size={{ sm: 4, xs: 12, xxs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.launchEvent.title}
             content={{
-              type: "text",
-              value: launchEvent ?? "",
+              type: 'text',
+              value: launchEvent ?? ''
             }}
           />
         </Grid>
         <Grid size={{ sm: 4, xs: 12, xxs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.expectedEndDate.title}
-            content={{ type: "number", value: expectedEndDate }}
+            content={{ type: 'number', value: expectedEndDate }}
           />
         </Grid>
       </Grid>
@@ -103,12 +103,12 @@ export default function GeneralInformationDisplayMode({
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.initiativeStatus.title}
             content={{
-              type: "text",
-              value: initiativeStatus,
+              type: 'text',
+              value: initiativeStatus
             }}
           />
         </Grid>
-        {initiativeStatus?.toLowerCase() !== "active" && (
+        {initiativeStatus?.toLowerCase() !== 'active' && (
           <>
             <Grid size={{ sm: 8, xs: 12 }}>
               <InfoCard
@@ -116,8 +116,8 @@ export default function GeneralInformationDisplayMode({
                   INITIATIVE_INFORMATION_FIELD_INFO.explanationStatus.title
                 }
                 content={{
-                  type: "text",
-                  value: explanationStatus,
+                  type: 'text',
+                  value: explanationStatus
                 }}
               />
             </Grid>
@@ -125,8 +125,8 @@ export default function GeneralInformationDisplayMode({
               <InfoCard
                 title={INITIATIVE_INFORMATION_FIELD_INFO.summaryOutcomes.title}
                 content={{
-                  type: "text",
-                  value: summaryOutcomes,
+                  type: 'text',
+                  value: summaryOutcomes
                 }}
               />
             </Grid>
@@ -134,12 +134,12 @@ export default function GeneralInformationDisplayMode({
               <InfoCard
                 title={INITIATIVE_INFORMATION_FIELD_INFO.closureReport.title}
                 content={{
-                  type: "doc",
+                  type: 'doc',
                   value: {
-                    filename: closureReport?.name ?? "",
-                    url: closureReport?.url ?? "",
-                    size: convertFileSize(closureReport?.size || 0),
-                  },
+                    filename: closureReport?.name ?? '',
+                    url: closureReport?.url ?? '',
+                    size: convertFileSize(closureReport?.size || 0)
+                  }
                 }}
               />
             </Grid>
@@ -156,17 +156,17 @@ export default function GeneralInformationDisplayMode({
         <Grid size={{ sm: 4, xs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.contactEmail.title}
-            content={{ type: "text", value: contactEmail }}
+            content={{ type: 'text', value: contactEmail }}
           />
         </Grid>
         <Grid size={{ sm: 8, xs: 12 }}>
           <InfoCard
             title={INITIATIVE_INFORMATION_FIELD_INFO.contactOrganizations.title}
             content={{
-              type: "list",
+              type: 'list',
               value: contactOrganizations?.map(
-                (organization) => organization?.label || "",
-              ),
+                (organization) => organization?.label || ''
+              )
             }}
           />
         </Grid>

@@ -1,5 +1,5 @@
-import { Backdrop, Box } from "@mui/material";
-import styled from "styled-components";
+import { Backdrop, Box } from '@mui/material';
+import styled from 'styled-components';
 
 export const StyledBackdrop = styled(Backdrop)`
   z-index: 9999 !important;

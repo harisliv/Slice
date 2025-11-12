@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
-import styled from "styled-components";
+import { Box } from '@mui/material';
+import styled from 'styled-components';
 
 export const CardWrapper = styled(Box)<{ $backgroundColor?: string }>`
   width: 100%;
@@ -21,7 +21,7 @@ export const CardContentContainer = styled(Box)<{ $fullWidth: boolean }>`
   flex: 1;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: ${(props) => (props.$fullWidth ? "row" : "column")};
+  flex-direction: ${(props) => (props.$fullWidth ? 'row' : 'column')};
 `;
 
 export const StyledIconContainer = styled(Box)`

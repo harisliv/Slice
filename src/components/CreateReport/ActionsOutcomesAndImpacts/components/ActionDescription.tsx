@@ -1,6 +1,6 @@
-import { ControlledInput } from "@app/components";
+import { ControlledInput } from '@app/components';
 
-import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
+import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
 
 export default function ActionDescription({ index }: { index: number }) {
   return (

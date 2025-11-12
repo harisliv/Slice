@@ -1,11 +1,11 @@
-import ControlledInput from "@app/components/ControlledInput";
+import ControlledInput from '@app/components/ControlledInput';
 import {
   type ControlledInputProps,
-  type GoalsTargetsAndMonitoringShape,
-} from "@app/types";
+  type GoalsTargetsAndMonitoringShape
+} from '@app/types';
 
 export default function GoalsTargetsAndMonitoringControlledInput(
-  props: ControlledInputProps<keyof GoalsTargetsAndMonitoringShape>,
+  props: ControlledInputProps<keyof GoalsTargetsAndMonitoringShape>
 ) {
   return <ControlledInput {...props} />;
 }

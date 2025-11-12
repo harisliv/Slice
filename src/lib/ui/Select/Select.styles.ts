@@ -3,11 +3,11 @@ import {
   FormHelperText,
   InputLabel,
   MenuItem,
-  OutlinedInput,
-} from "@mui/material";
-import { EnumWeight } from "@app/lib/types";
-import styled from "styled-components";
-import SelectBase from "../SelectBase";
+  OutlinedInput
+} from '@mui/material';
+import { EnumWeight } from '@app/lib/types';
+import styled from 'styled-components';
+import SelectBase from '../SelectBase';
 
 export const StyledInputLabel = styled(InputLabel)`
   &&&& {

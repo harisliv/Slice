@@ -1,15 +1,15 @@
-import React from "react";
-import { createStore } from "zustand";
-import type { IStepProps } from "@app/lib/types";
-import { StepStatus } from "@app/lib/types";
-import type { FormStepperStore } from "@app/types";
-import FormStepperStoreContext from "./FormStepperStoreContext";
+import React from 'react';
+import { createStore } from 'zustand';
+import type { IStepProps } from '@app/lib/types';
+import { StepStatus } from '@app/lib/types';
+import type { FormStepperStore } from '@app/types';
+import FormStepperStoreContext from './FormStepperStoreContext';
 
 export default function FormStepperProvider({
   children,
   steps,
   onStepChange,
-  initialStep,
+  initialStep
 }: {
   children: React.ReactNode;
   steps: IStepProps[];
@@ -61,8 +61,8 @@ export default function FormStepperProvider({
                   ? toggle
                     ? StepStatus.ACTIVE
                     : StepStatus.INACTIVE
-                  : step.status,
-            })),
+                  : step.status
+            }))
           }));
         },
 
@@ -70,19 +70,19 @@ export default function FormStepperProvider({
           set((state) => ({
             steps: state.steps.map((step, idx) => ({
               ...step,
-              status: idx === index ? StepStatus.COMPLETED : step.status,
-            })),
+              status: idx === index ? StepStatus.COMPLETED : step.status
+            }))
           }));
         },
 
-        uncompleteStep: (index: number, mode: "serial" | "random") => {
+        uncompleteStep: (index: number, mode: 'serial' | 'random') => {
           const uncompleteStatus =
-            mode === "serial" ? StepStatus.INACTIVE : StepStatus.ACTIVE;
+            mode === 'serial' ? StepStatus.INACTIVE : StepStatus.ACTIVE;
           set((state) => ({
             steps: state.steps.map((step, idx) => ({
               ...step,
-              status: idx === index ? uncompleteStatus : step.status,
-            })),
+              status: idx === index ? uncompleteStatus : step.status
+            }))
           }));
         },
 
@@ -90,15 +90,15 @@ export default function FormStepperProvider({
           set((state) => ({
             steps: state.steps.map((step, idx) => ({
               ...step,
-              status: statusArray[idx],
-            })),
+              status: statusArray[idx]
+            }))
           }));
         },
 
         resetSteps: () => {
           set({
             currentStep: 0,
-            completedSteps: new Set(),
+            completedSteps: new Set()
           });
         },
 
@@ -132,11 +132,11 @@ export default function FormStepperProvider({
           set((state) => ({
             steps: state.steps.map((step, idx) => ({
               ...step,
-              status: idx === index ? initialStepStatus : step.status,
-            })),
+              status: idx === index ? initialStepStatus : step.status
+            }))
           }));
-        },
-      },
+        }
+      }
     }));
   });
 

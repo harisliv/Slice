@@ -1,5 +1,5 @@
-import { Text, View, Link, StyleSheet } from "@react-pdf/renderer";
-import type { TProgressReportingShape } from "@app/types";
+import { Text, View, Link, StyleSheet } from '@react-pdf/renderer';
+import type { TProgressReportingShape } from '@app/types';
 
 interface ActionsOutcomesImpactsReviewProps {
   data: TProgressReportingShape;
@@ -7,64 +7,64 @@ interface ActionsOutcomesImpactsReviewProps {
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 15,
+    marginBottom: 15
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
+    fontWeight: 'bold',
+    marginBottom: 10
   },
   actionTitle: {
     fontSize: 13,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 10,
-    marginBottom: 8,
+    marginBottom: 8
   },
   card: {
     marginBottom: 10,
     padding: 10,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 4,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 4
   },
   cardTitle: {
     fontSize: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 5,
-    color: "#666",
+    color: '#666'
   },
   cardContent: {
     fontSize: 11,
-    color: "#333",
+    color: '#333'
   },
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   column: {
-    flex: 1,
+    flex: 1
   },
   listItem: {
     fontSize: 11,
     marginLeft: 10,
-    marginBottom: 3,
+    marginBottom: 3
   },
   link: {
     fontSize: 10,
-    color: "#0066cc",
-    textDecoration: "underline",
+    color: '#0066cc',
+    textDecoration: 'underline',
     marginLeft: 10,
-    marginBottom: 3,
+    marginBottom: 3
   },
   divider: {
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
-    marginVertical: 15,
-  },
+    borderBottomColor: '#e0e0e0',
+    marginVertical: 15
+  }
 });
 
 export default function ActionsOutcomesImpactsReviewPDF({
-  data,
+  data
 }: ActionsOutcomesImpactsReviewProps) {
   const actions = data?.actions?.length ? data.actions : null;
 
@@ -80,12 +80,12 @@ export default function ActionsOutcomesImpactsReviewPDF({
             <View style={styles.row}>
               <View style={[styles.column, styles.card]}>
                 <Text style={styles.cardTitle}>Title</Text>
-                <Text style={styles.cardContent}>{action.title || "-"}</Text>
+                <Text style={styles.cardContent}>{action.title || '-'}</Text>
               </View>
               <View style={[styles.column, styles.card]}>
                 <Text style={styles.cardTitle}>Type of action</Text>
                 <Text style={styles.cardContent}>
-                  {action.typeOfAction || "-"}
+                  {action.typeOfAction || '-'}
                 </Text>
               </View>
             </View>
@@ -102,7 +102,7 @@ export default function ActionsOutcomesImpactsReviewPDF({
             <View style={styles.card}>
               <Text style={styles.cardTitle}>Description</Text>
               <Text style={styles.cardContent}>
-                {action.description || "-"}
+                {action.description || '-'}
               </Text>
             </View>
 
@@ -120,7 +120,7 @@ export default function ActionsOutcomesImpactsReviewPDF({
 
             <View style={styles.card}>
               <Text style={styles.cardTitle}>Outcomes</Text>
-              <Text style={styles.cardContent}>{action.outcomes || "-"}</Text>
+              <Text style={styles.cardContent}>{action.outcomes || '-'}</Text>
             </View>
 
             {action.outcomesUrl?.length > 0 && (
@@ -133,7 +133,7 @@ export default function ActionsOutcomesImpactsReviewPDF({
                         • {url}
                       </Link>
                     </View>
-                  ) : null,
+                  ) : null
                 )}
               </View>
             )}
@@ -141,7 +141,7 @@ export default function ActionsOutcomesImpactsReviewPDF({
             <View style={styles.card}>
               <Text style={styles.cardTitle}>Impact explanation</Text>
               <Text style={styles.cardContent}>
-                {action.impactExplanation || "-"}
+                {action.impactExplanation || '-'}
               </Text>
             </View>
 
@@ -156,13 +156,13 @@ export default function ActionsOutcomesImpactsReviewPDF({
                       <Text key={i} style={styles.listItem}>
                         • {contribution}
                       </Text>
-                    ),
+                    )
                   )}
                 </View>
                 <View style={styles.card}>
                   <Text style={styles.cardTitle}>Contribution description</Text>
                   <Text style={styles.cardContent}>
-                    {action.contributionOfTheAction || "-"}
+                    {action.contributionOfTheAction || '-'}
                   </Text>
                 </View>
               </>

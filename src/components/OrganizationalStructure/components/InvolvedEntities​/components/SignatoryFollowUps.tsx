@@ -1,5 +1,5 @@
-import { OrganizationalStructureControlledMultiSelect } from "@app/components/ControlledInput";
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
+import { OrganizationalStructureControlledMultiSelect } from '@app/components/ControlledInput';
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
 
 export default function SignatoryFollowUps() {
   return (

@@ -1,9 +1,9 @@
-import { Grid2, InputAdornment } from "@mui/material";
-import type { FC } from "react";
-import { AlertTriangleIcon } from "@app/lib/icons";
-import { Theme } from "@app/lib/general";
-import { StyledTextField, WrapperIcon } from "./Input.styles";
-import { gridSizeMap, type IInputBase } from "@app/lib/types";
+import { Grid2, InputAdornment } from '@mui/material';
+import type { FC } from 'react';
+import { AlertTriangleIcon } from '@app/lib/icons';
+import { Theme } from '@app/lib/general';
+import { StyledTextField, WrapperIcon } from './Input.styles';
+import { gridSizeMap, type IInputBase } from '@app/lib/types';
 
 const InputBase: FC<IInputBase> = ({
   icon,
@@ -17,26 +17,26 @@ const InputBase: FC<IInputBase> = ({
   keyboardEventsEnabled = true,
   label,
   required,
-  labelFontSize = "s",
+  labelFontSize = 's',
   enableLabel = true,
-  customGridSize = "full",
+  customGridSize = 'full',
   ...restProps
 }) => {
   const getInputProps = () => {
     if (istextArea) {
       return {
-        type: "textarea",
+        type: 'textarea',
         multiline: true,
-        rows: 3,
+        rows: 3
       };
     }
-    if (restProps.type === "number") {
+    if (restProps.type === 'number') {
       return {
-        type: "number",
+        type: 'number'
       };
     }
     return {
-      type: "input",
+      type: 'input'
     };
   };
 
@@ -60,11 +60,11 @@ const InputBase: FC<IInputBase> = ({
               startAdornment: icon && !rightIcon && (
                 <InputAdornment
                   position="start"
-                  data-testid={"input.adornment-start"}
+                  data-testid={'input.adornment-start'}
                 >
                   <WrapperIcon
                     $error={error}
-                    data-testid={"input.wrapper-icon-start"}
+                    data-testid={'input.wrapper-icon-start'}
                   >
                     {icon}
                   </WrapperIcon>
@@ -75,13 +75,13 @@ const InputBase: FC<IInputBase> = ({
                 rightAdornment) && (
                 <InputAdornment
                   position="end"
-                  data-testid={"input.adornment-end"}
+                  data-testid={'input.adornment-end'}
                 >
                   {rightAdornment}
                   {error && showErrorIcon && (
                     <WrapperIcon
                       $error={error}
-                      data-testid={"input.wrapper-icon-end"}
+                      data-testid={'input.wrapper-icon-end'}
                       className="wrapper-icon-end"
                     >
                       {error && showErrorIcon ? (
@@ -94,8 +94,8 @@ const InputBase: FC<IInputBase> = ({
                     </WrapperIcon>
                   )}
                 </InputAdornment>
-              ),
-            },
+              )
+            }
           }}
         />
       </Grid2>

@@ -1,4 +1,4 @@
-import { useModalStore } from "../useModalStore";
+import { useModalStore } from '../useModalStore';
 
 type CreateArgs = {
   subtitle?: string;
@@ -10,30 +10,30 @@ export const useCreateModal = () => {
   const { showModal, hideModal } = useModalStore();
 
   const showCreateModal = ({
-    subtitle = "Are you sure you want to create",
-    content = "",
-    onConfirm,
+    subtitle = 'Are you sure you want to create',
+    content = '',
+    onConfirm
   }: CreateArgs) => {
     showModal({
-      title: "Attention",
+      title: 'Attention',
       subtitle: subtitle,
       content: content,
       buttons: [
         {
-          text: "Return",
-          customVariant: "secondary-m",
+          text: 'Return',
+          customVariant: 'secondary-m',
           action: () => {
             hideModal();
-          },
+          }
         },
         {
-          text: "Continue",
+          text: 'Continue',
           action: () => {
             hideModal();
             onConfirm?.();
-          },
-        },
-      ],
+          }
+        }
+      ]
     });
   };
 

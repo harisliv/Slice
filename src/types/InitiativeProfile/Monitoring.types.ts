@@ -2,10 +2,10 @@ import {
   logger,
   stringSchemaMandatoryType,
   stringSchemaOptionalType,
-  yearMandatorySchemaType,
-} from "@app/utils";
-import { constructErrorResponseFromZod } from "@app/utils/error";
-import { z } from "zod";
+  yearMandatorySchemaType
+} from '@app/utils';
+import { constructErrorResponseFromZod } from '@app/utils/error';
+import { z } from 'zod';
 
 const periodicalProgressReportShape = z.object({
   id: stringSchemaOptionalType(),
@@ -14,33 +14,33 @@ const periodicalProgressReportShape = z.object({
     name: z.string().nullable(),
     size: z.number().nullable(),
     url: z.string().nullable(),
-    sharePointId: z.string().nullable(),
+    sharePointId: z.string().nullable()
   }),
   title: stringSchemaMandatoryType({
-    maxChars: 100,
+    maxChars: 100
   }),
   year: yearMandatorySchemaType(),
-  status: stringSchemaOptionalType(),
+  status: stringSchemaOptionalType()
 });
 
 export const monitoringShape = z.object({
   progress: stringSchemaMandatoryType({
-    maxChars: 3000,
+    maxChars: 3000
   }),
   publicReportingOptions: z.object({
     checkbox1: z.boolean(),
     checkbox2: z.boolean(),
-    checkbox3: z.boolean(),
+    checkbox3: z.boolean()
   }),
   publicReportingOther: stringSchemaOptionalType({
-    maxChars: 300,
+    maxChars: 300
   }),
-  periodicalProgressReport: z.array(periodicalProgressReportShape),
+  periodicalProgressReport: z.array(periodicalProgressReportShape)
 });
 
 export const monitoringSuperRefine = (
   data: z.infer<typeof monitoringShape>,
-  ctx: z.RefinementCtx,
+  ctx: z.RefinementCtx
 ) => {
   if (
     !data.publicReportingOptions.checkbox1 &&
@@ -48,9 +48,9 @@ export const monitoringSuperRefine = (
     !data.publicReportingOptions.checkbox3
   ) {
     ctx.addIssue({
-      path: ["publicReportingOptions"],
-      message: "Please complete at least one of the required fields",
-      code: z.ZodIssueCode.custom,
+      path: ['publicReportingOptions'],
+      message: 'Please complete at least one of the required fields',
+      code: z.ZodIssueCode.custom
     });
   }
   if (data.publicReportingOptions.checkbox2) {
@@ -59,9 +59,9 @@ export const monitoringSuperRefine = (
       data.periodicalProgressReport.length === 0
     ) {
       ctx.addIssue({
-        path: ["periodicalProgressReport"],
-        message: "Please complete the Report",
-        code: z.ZodIssueCode.custom,
+        path: ['periodicalProgressReport'],
+        message: 'Please complete the Report',
+        code: z.ZodIssueCode.custom
       });
     }
   }
@@ -71,16 +71,16 @@ export const monitoringSuperRefine = (
       data.publicReportingOther.trim().length === 0
     ) {
       ctx.addIssue({
-        path: ["publicReportingOther"],
-        message: "Please complete Other when checkbox is clicked",
-        code: z.ZodIssueCode.custom,
+        path: ['publicReportingOther'],
+        message: 'Please complete Other when checkbox is clicked',
+        code: z.ZodIssueCode.custom
       });
     }
   }
 };
 
 export const monitoringSchema = monitoringShape.superRefine(
-  monitoringSuperRefine,
+  monitoringSuperRefine
 );
 
 export type MonitoringFormData = z.infer<typeof monitoringSchema>;
@@ -91,14 +91,14 @@ export type MonitoringFormData = z.infer<typeof monitoringSchema>;
 
 export const isMonitoringShape = (
   data: unknown,
-  withLogs: boolean = true,
+  withLogs: boolean = true
 ): data is MonitoringFormData => {
   const result = monitoringShape.safeParse(data);
   if (result.error && withLogs) {
     logger.error(
-      "Invalid response format",
-      new Error("Monitoring"),
-      constructErrorResponseFromZod(result),
+      'Invalid response format',
+      new Error('Monitoring'),
+      constructErrorResponseFromZod(result)
     );
   }
   return result.success;
@@ -106,27 +106,27 @@ export const isMonitoringShape = (
 
 export const isMonitoringSchema = (
   data: unknown,
-  withLogs: boolean = true,
+  withLogs: boolean = true
 ): data is MonitoringFormData => {
   const result = monitoringSchema.safeParse(data);
   if (result.error && withLogs) {
     logger.error(
-      "Invalid response format",
-      new Error("Monitoring"),
-      constructErrorResponseFromZod(result),
+      'Invalid response format',
+      new Error('Monitoring'),
+      constructErrorResponseFromZod(result)
     );
   }
   return result.success;
 };
 
 export const defaultMonitoringFormValues: MonitoringFormData = {
-  progress: "",
+  progress: '',
   publicReportingOptions: {
     checkbox1: false,
     checkbox2: false,
-    checkbox3: false,
+    checkbox3: false
   },
-  publicReportingOther: "",
+  publicReportingOther: '',
   periodicalProgressReport: [
     {
       id: null,
@@ -135,17 +135,17 @@ export const defaultMonitoringFormValues: MonitoringFormData = {
         name: null,
         size: NaN,
         url: null,
-        sharePointId: null,
+        sharePointId: null
       },
-      title: "",
+      title: '',
       year: NaN,
-      status: null,
-    },
-  ],
+      status: null
+    }
+  ]
 };
 
 export const ReportSchema = monitoringShape.pick({
-  periodicalProgressReport: true,
+  periodicalProgressReport: true
 });
 
 export const isReportFormData = (data: unknown) =>

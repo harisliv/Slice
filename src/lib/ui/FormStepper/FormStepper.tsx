@@ -1,7 +1,7 @@
-import { Stepper, useMediaQuery, useTheme } from "@mui/material";
-import type { FC } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@app/lib/icons";
-import { Theme } from "@app/lib/general";
+import { Stepper, useMediaQuery, useTheme } from '@mui/material';
+import type { FC } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@app/lib/icons';
+import { Theme } from '@app/lib/general';
 import {
   DividingLine,
   MobileArrowsContainer,
@@ -11,16 +11,16 @@ import {
   StyledStep,
   StyledStepButton,
   StyledStepIcon,
-  StyledStepLabel,
-} from "./FormStepper.styles";
-import type { IStepperProps } from "@app/lib/types";
-import { StepStatus } from "@app/lib/types";
-import { Paragraph } from "../Global";
+  StyledStepLabel
+} from './FormStepper.styles';
+import type { IStepperProps } from '@app/lib/types';
+import { StepStatus } from '@app/lib/types';
+import { Paragraph } from '../Global';
 
 const FormStepper: FC<IStepperProps> = ({
   steps,
   currentStep,
-  onStepClick,
+  onStepClick
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down(Theme.breakpoints.sm));
@@ -60,7 +60,7 @@ const FormStepper: FC<IStepperProps> = ({
           {label}
           {currentStepData.status === StepStatus.COMPLETED && (
             <Paragraph variant="extrasmall-regular-green">
-              {"Complete"}
+              {'Complete'}
             </Paragraph>
           )}
         </StyledStepLabel>
@@ -95,7 +95,7 @@ const FormStepper: FC<IStepperProps> = ({
         renderMobileLayout()
       ) : (
         <Stepper
-          orientation={isMobile ? "horizontal" : "vertical"}
+          orientation={isMobile ? 'horizontal' : 'vertical'}
           activeStep={currentStep}
         >
           {steps.map((step, index) => {
@@ -131,7 +131,7 @@ const FormStepper: FC<IStepperProps> = ({
                     {label}
                     {step.status === StepStatus.COMPLETED && (
                       <Paragraph variant="extrasmall-regular-green">
-                        {"Complete"}
+                        {'Complete'}
                       </Paragraph>
                     )}
                   </StyledStepLabel>

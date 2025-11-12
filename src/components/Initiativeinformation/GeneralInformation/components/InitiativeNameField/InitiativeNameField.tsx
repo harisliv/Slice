@@ -1,10 +1,10 @@
-import { InitiativeProfileControlledInput } from "@app/components";
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
+import { InitiativeProfileControlledInput } from '@app/components';
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
 
 export default function InitiativeNameField() {
   return (
     <InitiativeProfileControlledInput
-      name={"name"}
+      name={'name'}
       inputDescriptionTitle={INITIATIVE_INFORMATION_FIELD_INFO.name.title}
       inputDescriptionSubtitle={INITIATIVE_INFORMATION_FIELD_INFO.name.subtitle}
       required

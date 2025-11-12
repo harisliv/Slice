@@ -1,23 +1,23 @@
-import React from "react";
-import { Stack, Popover, Divider, IconButton } from "@mui/material";
-import { ColumnsIcon, ExitIcon } from "@app/lib/icons";
-import { Paragraph } from "@app/lib/ui";
-import { ButtonComponent } from "@app/lib/ui";
-import { VisibilityCard } from "./VisibilityCard";
-import type { VisibilityState } from "@tanstack/react-table";
+import React from 'react';
+import { Stack, Popover, Divider, IconButton } from '@mui/material';
+import { ColumnsIcon, ExitIcon } from '@app/lib/icons';
+import { Paragraph } from '@app/lib/ui';
+import { ButtonComponent } from '@app/lib/ui';
+import { VisibilityCard } from './VisibilityCard';
+import type { VisibilityState } from '@tanstack/react-table';
 
 interface ColumnVisibilityActionsProps {
   visibility: VisibilityState;
   setVisibility: (
     updaterOrValue:
       | VisibilityState
-      | ((old: VisibilityState) => VisibilityState),
+      | ((old: VisibilityState) => VisibilityState)
   ) => void;
 }
 
 export default function ColumnVisibilityActions({
   visibility,
-  setVisibility,
+  setVisibility
 }: ColumnVisibilityActionsProps) {
   const [anchorElColumns, setAnchorElColumns] =
     React.useState<HTMLButtonElement | null>(null);
@@ -31,7 +31,7 @@ export default function ColumnVisibilityActions({
   };
 
   const openColumnsPopover = Boolean(anchorElColumns);
-  const idColumnsPopover = openColumnsPopover ? "simple-popover" : undefined;
+  const idColumnsPopover = openColumnsPopover ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -49,13 +49,13 @@ export default function ColumnVisibilityActions({
         anchorEl={anchorElColumns}
         onClose={handleCloseColumns}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left'
         }}
         slotProps={{
           paper: {
-            className: "popover-paper",
-          },
+            className: 'popover-paper'
+          }
         }}
       >
         <Stack
@@ -67,9 +67,9 @@ export default function ColumnVisibilityActions({
           width="250px"
         >
           <Stack
-            direction={"row"}
-            alignItems={"center"}
-            justifyContent={"space-between"}
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'space-between'}
           >
             <Paragraph variant="medium-bold">Show columns</Paragraph>
             <IconButton onClick={handleCloseColumns}>

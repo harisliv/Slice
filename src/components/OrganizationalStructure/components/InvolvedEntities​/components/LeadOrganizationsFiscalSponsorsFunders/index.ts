@@ -1,1 +1,1 @@
-export { default } from "./LeadOrganizationsFiscalSponsorsFunders";
+export { default } from './LeadOrganizationsFiscalSponsorsFunders';

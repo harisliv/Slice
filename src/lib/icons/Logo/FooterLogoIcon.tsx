@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC } from 'react';
 
 const MainLogoIconWithText: FC = () => (
   <svg
@@ -59,7 +59,7 @@ const MainLogoIconWithText: FC = () => (
       />
       <mask
         id="mask0_494_2300"
-        style={{ maskType: "luminance" }}
+        style={{ maskType: 'luminance' }}
         maskUnits="userSpaceOnUse"
         x="165"
         y="6"
@@ -120,7 +120,7 @@ const MainLogoIconWithText: FC = () => (
       />
       <mask
         id="mask1_494_2300"
-        style={{ maskType: "luminance" }}
+        style={{ maskType: 'luminance' }}
         maskUnits="userSpaceOnUse"
         x="155"
         y="27"
@@ -140,7 +140,7 @@ const MainLogoIconWithText: FC = () => (
       </g>
       <mask
         id="mask2_494_2300"
-        style={{ maskType: "luminance" }}
+        style={{ maskType: 'luminance' }}
         maskUnits="userSpaceOnUse"
         x="165"
         y="27"
@@ -160,7 +160,7 @@ const MainLogoIconWithText: FC = () => (
       </g>
       <mask
         id="mask3_494_2300"
-        style={{ maskType: "luminance" }}
+        style={{ maskType: 'luminance' }}
         maskUnits="userSpaceOnUse"
         x="9"
         y="33"

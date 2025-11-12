@@ -1,4 +1,4 @@
-import { useModalStore } from "../useModalStore";
+import { useModalStore } from '../useModalStore';
 
 interface PreviousModalActions {
   onConfirm: () => void;
@@ -9,25 +9,25 @@ export const usePreviousModal = ({ onConfirm }: PreviousModalActions) => {
 
   const showPreviousModal = () => {
     showModal({
-      title: "Attention",
-      subtitle: "Are you sure you want to exit the form?",
+      title: 'Attention',
+      subtitle: 'Are you sure you want to exit the form?',
       content:
-        "You have unsaved changes. Save your changes before exiting the page to not lose them.",
+        'You have unsaved changes. Save your changes before exiting the page to not lose them.',
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           action: () => {
             hideModal();
-          },
+          }
         },
         {
-          text: "Confirm",
+          text: 'Confirm',
           action: () => {
             hideModal();
             onConfirm();
-          },
-        },
-      ],
+          }
+        }
+      ]
     });
   };
 

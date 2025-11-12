@@ -4,20 +4,20 @@ import {
   ShadowContainerWithTopPadding,
   SkeletonComponent,
   SubHeader,
-  Tabs,
-} from "@app/lib/ui";
-import { Theme } from "@app/lib/general";
+  Tabs
+} from '@app/lib/ui';
+import { Theme } from '@app/lib/general';
 import {
   useActiveInitiative,
   useGlobalLoading,
-  useInitiativeProfile,
-} from "@app/hooks";
+  useInitiativeProfile
+} from '@app/hooks';
 import {
   FunctionFocusAndThemesDisplayMode,
   GeneralInformationDisplayMode,
   GoalsTargetsAndMonitoringDisplayMode,
-  OrganizationalStructureDisplayMode,
-} from "@app/components";
+  OrganizationalStructureDisplayMode
+} from '@app/components';
 
 export default function InitiativeProfileDisplayMode() {
   const { data: initiativeProfile } = useInitiativeProfile();
@@ -43,37 +43,37 @@ export default function InitiativeProfileDisplayMode() {
               <Tabs
                 tabs={[
                   {
-                    label: "Course information",
+                    label: 'Course information',
                     content: (
                       <GeneralInformationDisplayMode
                         initiativeProfile={initiativeProfile}
                       />
-                    ),
+                    )
                   },
                   {
-                    label: "Learning objectives and assessment",
+                    label: 'Learning objectives and assessment',
                     content: (
                       <GoalsTargetsAndMonitoringDisplayMode
                         initiativeProfile={initiativeProfile}
                       />
-                    ),
+                    )
                   },
                   {
-                    label: "Organizational structure",
+                    label: 'Organizational structure',
                     content: (
                       <OrganizationalStructureDisplayMode
                         initiativeProfile={initiativeProfile}
                       />
-                    ),
+                    )
                   },
                   {
-                    label: "Function, focus and themes",
+                    label: 'Function, focus and themes',
                     content: (
                       <FunctionFocusAndThemesDisplayMode
                         initiativeProfile={initiativeProfile}
                       />
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </FormSection>

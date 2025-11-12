@@ -1,4 +1,4 @@
-import type { RadioGroupProps } from "@mui/material";
+import type { RadioGroupProps } from '@mui/material';
 
 export interface TRadioGroupProps extends RadioGroupProps {
   options?: { label: string; value: string }[];

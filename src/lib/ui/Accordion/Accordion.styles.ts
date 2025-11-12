@@ -2,10 +2,10 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
-} from "@mui/material";
-import styled from "styled-components";
-import { EnumWeight } from "@app/lib/types";
+  Box
+} from '@mui/material';
+import styled from 'styled-components';
+import { EnumWeight } from '@app/lib/types';
 
 export const StyledContainer = styled(Box)`
   width: 100%;
@@ -37,7 +37,7 @@ export const StyledAccordionSummary = styled(AccordionSummary)<{
   min-height: 40px !important;
   border-bottom: ${(props) =>
     props.$removeborder
-      ? "none"
+      ? 'none'
       : `2px solid ${props.theme.palette.primary.ocean}`} !important;
 
   svg {

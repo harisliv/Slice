@@ -1,9 +1,9 @@
-import { DROPDOWN_DATA } from "@app/constants";
-import type { DropdownName, DropdownOption } from "@app/types";
-import { useQuery } from "@tanstack/react-query";
+import { DROPDOWN_DATA } from '@app/constants';
+import type { DropdownName, DropdownOption } from '@app/types';
+import { useQuery } from '@tanstack/react-query';
 
 const convertToLabelValue = (
-  sourceData: string[] | Record<string, string> | null | undefined,
+  sourceData: string[] | Record<string, string> | null | undefined
 ): DropdownOption[] => {
   if (!sourceData) {
     return [];
@@ -13,7 +13,7 @@ const convertToLabelValue = (
 
   if (Array.isArray(sourceData)) {
     values = [...sourceData];
-  } else if (typeof sourceData === "object" && sourceData !== null) {
+  } else if (typeof sourceData === 'object' && sourceData !== null) {
     values = Object.values(sourceData) as string[];
   } else {
     return [];
@@ -33,7 +33,7 @@ export const useDropdownValues = (dropdownName?: DropdownName) => {
   }
 
   return useQuery({
-    queryKey: ["dropdown", dropdownName],
-    queryFn: () => res,
+    queryKey: ['dropdown', dropdownName],
+    queryFn: () => res
   });
 };

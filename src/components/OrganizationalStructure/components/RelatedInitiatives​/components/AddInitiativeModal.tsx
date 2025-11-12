@@ -1,17 +1,17 @@
-import { useMemo } from "react";
-import { Stack } from "@mui/material";
-import { ButtonComponent, Modal } from "@app/lib/ui";
+import { useMemo } from 'react';
+import { Stack } from '@mui/material';
+import { ButtonComponent, Modal } from '@app/lib/ui';
 
 import {
   ControlledAutocomplete,
-  ControlledSelectWithDropdown,
-} from "@app/components/ControlledInput";
-import FormInputDescription from "@app/components/FormInputDescription";
+  ControlledSelectWithDropdown
+} from '@app/components/ControlledInput';
+import FormInputDescription from '@app/components/FormInputDescription';
 import {
   useAddInitiativeConfirmationModal,
-  useDropdownValues,
-} from "@app/hooks";
-import type { RelatedInitiative, TempModalPayload } from "@app/types";
+  useDropdownValues
+} from '@app/hooks';
+import type { RelatedInitiative, TempModalPayload } from '@app/types';
 
 export type AddInitiativeModalProps = {
   open: boolean;
@@ -28,14 +28,14 @@ export default function AddInitiativeModal({
   onConfirm,
   relativeInitiatives,
   disabled,
-  onClear,
+  onClear
 }: AddInitiativeModalProps) {
   const { data: initiativeDropdownOptions = [] } =
-    useDropdownValues("Initiatives");
+    useDropdownValues('Initiatives');
 
   const { showAddInitiativeConfirmationModal } =
     useAddInitiativeConfirmationModal({
-      onConfirm,
+      onConfirm
     });
 
   const filteredOptions = useMemo(
@@ -44,14 +44,14 @@ export default function AddInitiativeModal({
         .filter(
           (option) =>
             !relativeInitiatives.some(
-              (i) => i.relatedInitiativeId === option.value,
-            ),
+              (i) => i.relatedInitiativeId === option.value
+            )
         )
         .map((o) => ({
           name: o.label,
-          id: o.value,
+          id: o.value
         })),
-    [relativeInitiatives, initiativeDropdownOptions],
+    [relativeInitiatives, initiativeDropdownOptions]
   );
 
   return (
@@ -59,7 +59,7 @@ export default function AddInitiativeModal({
       <Modal
         open={open}
         onClose={onClose}
-        modalTitle={"Add initiative"}
+        modalTitle={'Add initiative'}
         $width="640px"
         footerChildren={
           <>
@@ -81,12 +81,12 @@ export default function AddInitiativeModal({
           </>
         }
       >
-        <Stack spacing={3} overflow={"auto hidden"}>
+        <Stack spacing={3} overflow={'auto hidden'}>
           <FormInputDescription title="Select Initiative" required />
 
           <ControlledAutocomplete
             name="tempOption"
-            inputDescriptionTitle={"Select Initiative"}
+            inputDescriptionTitle={'Select Initiative'}
             required
             options={filteredOptions}
             onClear={onClear}
@@ -95,9 +95,9 @@ export default function AddInitiativeModal({
           <FormInputDescription title="Select relationship" required />
 
           <ControlledSelectWithDropdown
-            name={"tempRelationshipType"}
-            inputDescriptionTitle={"Select Relationship"}
-            label={"Select Relationship"}
+            name={'tempRelationshipType'}
+            inputDescriptionTitle={'Select Relationship'}
+            label={'Select Relationship'}
             dropdownEnpoint="CciRelationType"
             required
           />

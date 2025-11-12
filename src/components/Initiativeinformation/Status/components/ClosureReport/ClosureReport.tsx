@@ -1,13 +1,13 @@
-import FormInputDescription from "@app/components/FormInputDescription";
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import Grid2 from "@mui/material/Grid2";
-import { ControlledUploader } from "@app/components/ControlledInput";
-import { useFormContext } from "react-hook-form";
-import type { InitiativeInformationFormData } from "@app/types";
+import FormInputDescription from '@app/components/FormInputDescription';
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import Grid2 from '@mui/material/Grid2';
+import { ControlledUploader } from '@app/components/ControlledInput';
+import { useFormContext } from 'react-hook-form';
+import type { InitiativeInformationFormData } from '@app/types';
 
 export default function ClosureReport() {
   const { watch } = useFormContext<InitiativeInformationFormData>();
-  const closureReport = watch("closureReport");
+  const closureReport = watch('closureReport');
 
   return (
     <Grid2 container spacing={2}>
@@ -24,7 +24,7 @@ export default function ClosureReport() {
           type="Initiative"
           serverValue={closureReport}
           accept={{
-            "application/pdf": [],
+            'application/pdf': []
           }}
         />
       </Grid2>

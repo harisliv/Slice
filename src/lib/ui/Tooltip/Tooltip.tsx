@@ -1,19 +1,19 @@
-import React from "react";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import { useTheme } from "@mui/material/styles";
-import { Theme } from "@app/lib/general";
-import { Box } from "@mui/material";
+import React from 'react';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { useTheme } from '@mui/material/styles';
+import { Theme } from '@app/lib/general';
+import { Box } from '@mui/material';
 
 interface Props {
   title: React.ReactNode;
   children: React.ReactElement;
-  placement?: "bottom" | "top" | "left" | "right";
+  placement?: 'bottom' | 'top' | 'left' | 'right';
 }
 
 export default function CustomTooltip({
   title,
   children,
-  placement = "top",
+  placement = 'top'
 }: Props) {
   const theme = useTheme();
 
@@ -23,16 +23,16 @@ export default function CustomTooltip({
       color: Theme.palette.primary.darkerGrey,
       border: `1px solid ${Theme.palette.secondary.darkerGrey36}`,
       fontSize: 13,
-      padding: "5px",
+      padding: '5px'
     },
     [`& .${tooltipClasses.arrow}`]: {
       color: theme.palette.common.white,
-      "&::before": {
-        boxSizing: "border-box",
+      '&::before': {
+        boxSizing: 'border-box',
         border: `1px solid ${Theme.palette.secondary.darkerGrey36}`,
-        backgroundColor: theme.palette.common.white,
-      },
-    },
+        backgroundColor: theme.palette.common.white
+      }
+    }
   } as const;
 
   return (
@@ -42,11 +42,11 @@ export default function CustomTooltip({
       placement={placement}
       slotProps={{
         popper: {
-          sx: popperSx,
-        },
+          sx: popperSx
+        }
       }}
     >
-      <Box component="span" sx={{ cursor: "pointer", display: "inline-flex" }}>
+      <Box component="span" sx={{ cursor: 'pointer', display: 'inline-flex' }}>
         {children}
       </Box>
     </Tooltip>

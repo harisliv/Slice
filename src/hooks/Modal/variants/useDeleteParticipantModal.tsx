@@ -1,4 +1,4 @@
-import { useModalStore } from "../useModalStore";
+import { useModalStore } from '../useModalStore';
 
 type DeleteArgs = {
   onConfirm?: () => void;
@@ -9,8 +9,8 @@ export const useDeleteParticipantModal = () => {
 
   const showDeleteParticipantModal = ({ onConfirm }: DeleteArgs) => {
     showModal({
-      title: "Remove participants",
-      subtitle: "You are about to remove this participant.",
+      title: 'Remove participants',
+      subtitle: 'You are about to remove this participant.',
       content: (
         <span>
           The relationship between the entity and your CCI will be removed. The
@@ -23,21 +23,21 @@ export const useDeleteParticipantModal = () => {
       ),
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           action: () => {
             hideModal();
           },
-          customVariant: "secondary-m",
+          customVariant: 'secondary-m'
         },
         {
-          text: "Remove",
+          text: 'Remove',
           action: () => {
             hideModal();
             onConfirm?.();
           },
-          customVariant: "primary-m",
-        },
-      ],
+          customVariant: 'primary-m'
+        }
+      ]
     });
   };
 

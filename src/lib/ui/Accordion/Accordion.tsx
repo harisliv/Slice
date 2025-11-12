@@ -1,18 +1,18 @@
-import type { FC } from "react";
-import { useCallback, useState } from "react";
-import { ChevronRightIcon } from "@app/lib/icons";
+import type { FC } from 'react';
+import { useCallback, useState } from 'react';
+import { ChevronRightIcon } from '@app/lib/icons';
 import {
   StyledAccordion,
   StyledAccordionDetails,
   StyledAccordionSummary,
-  StyledContainer,
-} from "./Accordion.styles";
-import type { IAccordion } from "@app/lib/types";
+  StyledContainer
+} from './Accordion.styles';
+import type { IAccordion } from '@app/lib/types';
 
 const Accordion: FC<IAccordion> = ({
   items,
   allowMultipleOpen = false,
-  openIndexes = [],
+  openIndexes = []
 }) => {
   const [currentOpenIndexes, setCurrentOpenIndexes] =
     useState<number[]>(openIndexes);
@@ -29,7 +29,7 @@ const Accordion: FC<IAccordion> = ({
         }
       });
     },
-    [allowMultipleOpen],
+    [allowMultipleOpen]
   );
 
   return (
@@ -39,7 +39,7 @@ const Accordion: FC<IAccordion> = ({
           key={`${item.title}-${index}`}
           expanded={currentOpenIndexes.includes(index)}
           sx={{
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent'
           }}
         >
           <StyledAccordionSummary

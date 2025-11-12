@@ -1,16 +1,16 @@
-import { useQueryClient, type UseMutationResult } from "@tanstack/react-query";
-import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
+import { useQueryClient, type UseMutationResult } from '@tanstack/react-query';
+import useMutatePrivateRoutes from './useMutatePrivateRoutes';
 import {
   type ProgressReportingDTO,
-  type TProgressReportingShape,
-} from "@app/types";
-import { convertToServerEntity } from "@app/utils/ProgressReporting";
-import { useActiveInitiative } from "./useActiveInitiative";
-import { ToasterType, useToasterStore } from "./Toaster";
-import axios from "axios";
+  type TProgressReportingShape
+} from '@app/types';
+import { convertToServerEntity } from '@app/utils/ProgressReporting';
+import { useActiveInitiative } from './useActiveInitiative';
+import { ToasterType, useToasterStore } from './Toaster';
+import axios from 'axios';
 
 export default function useMutateProgressReporting(
-  id: string,
+  id: string
 ): UseMutationResult<TProgressReportingShape, Error, TProgressReportingShape> {
   const showToaster = useToasterStore((state) => state.showToaster);
 
@@ -21,20 +21,20 @@ export default function useMutateProgressReporting(
     ProgressReportingDTO
   >({
     endpoint: `/functions/v1/progress-report/${id}`,
-    mutationKey: ["createReport"],
+    mutationKey: ['createReport'],
     convertToServerEntity,
-    action: "put",
+    action: 'put',
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["singleReport", id],
+        queryKey: ['singleReport', id]
       });
       queryClient.invalidateQueries({
-        queryKey: ["progressReportList", activeInitiative?.id],
+        queryKey: ['progressReportList', activeInitiative?.id]
       });
 
       showToaster({
-        message: "Your changes have been saved successfully.",
-        toasterType: ToasterType.SUCCESS,
+        message: 'Your changes have been saved successfully.',
+        toasterType: ToasterType.SUCCESS
       });
     },
     onError: (error) => {
@@ -42,11 +42,11 @@ export default function useMutateProgressReporting(
         ? error.response?.data
         : error;
       showToaster({
-        message: "An error occurred while saving your changes.",
+        message: 'An error occurred while saving your changes.',
         toasterType: ToasterType.ERROR,
-        errorDetails: errorResponse,
+        errorDetails: errorResponse
       });
-    },
+    }
   });
 
   return {
@@ -54,10 +54,10 @@ export default function useMutateProgressReporting(
     mutateAsync: async (data: TProgressReportingShape) => {
       const payload = {
         ...data,
-        initiativeId: activeInitiative?.id,
+        initiativeId: activeInitiative?.id
       };
       const result = await mutation.mutateAsync(payload);
       return result;
-    },
+    }
   };
 }

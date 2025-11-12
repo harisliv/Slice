@@ -1,13 +1,13 @@
-import type { FC } from "react";
-import { StyledContentContainer, SubHeaderWrapper } from "./SubHeader.styles";
-import type { ISubHeader } from "./SubHeader.types";
-import { Header2, Paragraph } from "../Global";
+import type { FC } from 'react';
+import { StyledContentContainer, SubHeaderWrapper } from './SubHeader.styles';
+import type { ISubHeader } from './SubHeader.types';
+import { Header2, Paragraph } from '../Global';
 
 const SubHeader: FC<ISubHeader> = ({
   title,
   subtitle,
   backgroundColor,
-  children,
+  children
 }) => (
   <SubHeaderWrapper
     data-testid="sub-header-wrapper"

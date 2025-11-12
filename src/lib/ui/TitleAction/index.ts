@@ -1,2 +1,2 @@
-export * from "./TitleAction";
-export { default } from "./TitleAction";
+export * from './TitleAction';
+export { default } from './TitleAction';

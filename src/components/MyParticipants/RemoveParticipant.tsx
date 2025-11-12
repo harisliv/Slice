@@ -1,11 +1,11 @@
-import { useDeleteParticipantModal } from "@app/hooks/Modal";
-import useDeleteParticipant from "@app/hooks/useDeleteParticipant";
-import Grid2 from "@mui/material/Grid2";
-import { TrashBinIcon } from "@app/lib/icons";
-import { IconButton } from "@app/lib/ui";
+import { useDeleteParticipantModal } from '@app/hooks/Modal';
+import useDeleteParticipant from '@app/hooks/useDeleteParticipant';
+import Grid2 from '@mui/material/Grid2';
+import { TrashBinIcon } from '@app/lib/icons';
+import { IconButton } from '@app/lib/ui';
 
 export default function RemoveParticipant({
-  participantId,
+  participantId
 }: {
   participantId: string;
 }) {
@@ -22,7 +22,7 @@ export default function RemoveParticipant({
           showDeleteParticipantModal({
             onConfirm: () => {
               mutateAsync({});
-            },
+            }
           });
         }}
       >

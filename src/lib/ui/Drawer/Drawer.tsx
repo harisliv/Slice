@@ -1,17 +1,17 @@
-import type { FC } from "react";
+import type { FC } from 'react';
 
-import { StyledDrawer, StyledNavItems } from "./Drawer.styles";
-import type { DrawerProps } from "./Drawer.types";
-import ButtonComponent from "../Button";
+import { StyledDrawer, StyledNavItems } from './Drawer.styles';
+import type { DrawerProps } from './Drawer.types';
+import ButtonComponent from '../Button';
 
 const DrawerNav: FC<DrawerProps> = ({
   open,
   menu = [],
   handleClose,
-  LinkComponent,
+  LinkComponent
 }) => (
   <StyledDrawer
-    anchor={"left"}
+    anchor={'left'}
     open={open}
     onClose={handleClose}
     data-testid="drawer-menu"

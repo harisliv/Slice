@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   useReactTable,
   getCoreRowModel,
@@ -6,14 +6,14 @@ import {
   getSortedRowModel,
   createColumnHelper,
   flexRender,
-  type ColumnFiltersState,
-} from "@tanstack/react-table";
-import { TableCell, Stack } from "@mui/material";
+  type ColumnFiltersState
+} from '@tanstack/react-table';
+import { TableCell, Stack } from '@mui/material';
 import type {
   TProgressReportingData,
-  TProgressReportingTableActions,
-} from "@app/types";
-import { EditIcon, PlusIcon, ShowIcon, TrashBinIcon } from "@app/lib/icons";
+  TProgressReportingTableActions
+} from '@app/types';
+import { EditIcon, PlusIcon, ShowIcon, TrashBinIcon } from '@app/lib/icons';
 import {
   CustomTag,
   FormModal,
@@ -24,25 +24,25 @@ import {
   StyledTableRow,
   SubHeader,
   TableComponent,
-  TableSort,
-} from "@app/lib/ui";
-import { ButtonComponent } from "@app/lib/ui";
-import { FormSection } from "@app/lib/ui";
-import { useNavigate } from "react-router";
+  TableSort
+} from '@app/lib/ui';
+import { ButtonComponent } from '@app/lib/ui';
+import { FormSection } from '@app/lib/ui';
+import { useNavigate } from 'react-router';
 import {
   useActiveInitiative,
   useCreateNewReport,
   useDeleteProgressReporting,
   useGlobalLoading,
-  useProgressReporting,
-} from "@app/hooks";
-import ViewReportModal from "./components/ViewReportModal";
+  useProgressReporting
+} from '@app/hooks';
+import ViewReportModal from './components/ViewReportModal';
 
 const ActionButtons = ({
   actions,
   id,
   deleteReport,
-  viewReport,
+  viewReport
 }: {
   actions: TProgressReportingTableActions[];
   id: string;
@@ -57,7 +57,7 @@ const ActionButtons = ({
 
   const getActionButton = (action: TProgressReportingTableActions) => {
     switch (action) {
-      case "EDIT":
+      case 'EDIT':
         return (
           <ButtonComponent
             customVariant="terciary-m"
@@ -67,7 +67,7 @@ const ActionButtons = ({
             Continue draft
           </ButtonComponent>
         );
-      case "DELETE":
+      case 'DELETE':
         return (
           <ButtonComponent
             customVariant="terciary-m"
@@ -77,7 +77,7 @@ const ActionButtons = ({
             Delete draft
           </ButtonComponent>
         );
-      case "VIEW":
+      case 'VIEW':
         return (
           <ButtonComponent
             title="View assignment"
@@ -105,21 +105,21 @@ const ActionButtons = ({
 const columnHelper = createColumnHelper<TProgressReportingData>();
 
 const parseDate = (dateStr: string): Date => {
-  const [day, month, year] = dateStr.split("-");
+  const [day, month, year] = dateStr.split('-');
   return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 };
 
 const parseDateRange = (dateRange: string): Date => {
-  const startDate = dateRange.split(" to ")[0];
+  const startDate = dateRange.split(' to ')[0];
   return parseDate(startDate);
 };
 
 export default function ProgressReporting() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
+    []
   );
-  const [reportToDelete, setReportToDelete] = React.useState<string>("");
-  const [reportToView, setReportToView] = React.useState<string>("");
+  const [reportToDelete, setReportToDelete] = React.useState<string>('');
+  const [reportToView, setReportToView] = React.useState<string>('');
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] =
     React.useState<boolean>(false);
@@ -133,31 +133,31 @@ export default function ProgressReporting() {
 
   const columns = React.useMemo(
     () => [
-      columnHelper.accessor("timeframeOfInformation", {
-        header: "Timeframe of information",
+      columnHelper.accessor('timeframeOfInformation', {
+        header: 'Timeframe of information',
         cell: (info) => info.getValue(),
         sortingFn: (rowA, rowB, columnId) => {
           const dateA = parseDateRange(rowA.getValue(columnId));
           const dateB = parseDateRange(rowB.getValue(columnId));
           return dateA.getTime() - dateB.getTime();
-        },
+        }
       }),
-      columnHelper.accessor("draftLatestUpdate", {
-        header: "Draft latest update / Assignment submission date",
+      columnHelper.accessor('draftLatestUpdate', {
+        header: 'Draft latest update / Assignment submission date',
         cell: (info) => info.getValue(),
         sortingFn: (rowA, rowB, columnId) => {
           const dateA = parseDate(rowA.getValue(columnId));
           const dateB = parseDate(rowB.getValue(columnId));
           return dateA.getTime() - dateB.getTime();
-        },
+        }
       }),
-      columnHelper.accessor("reportingStatus", {
-        header: "Assignment status",
+      columnHelper.accessor('reportingStatus', {
+        header: 'Assignment status',
         cell: (info) => <CustomTag variant={info.getValue()} />,
-        enableSorting: false,
+        enableSorting: false
       }),
       columnHelper.display({
-        id: "actions",
+        id: 'actions',
         cell: (info) => (
           <ActionButtons
             actions={info.row.original.actions}
@@ -172,10 +172,10 @@ export default function ProgressReporting() {
             }}
           />
         ),
-        enableSorting: false,
-      }),
+        enableSorting: false
+      })
     ],
-    [],
+    []
   );
 
   const table = useReactTable({
@@ -183,7 +183,7 @@ export default function ProgressReporting() {
     columns,
     filterFns: {},
     state: {
-      columnFilters,
+      columnFilters
     },
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -192,7 +192,7 @@ export default function ProgressReporting() {
     enableMultiSort: false,
     debugTable: false,
     debugHeaders: false,
-    debugColumns: false,
+    debugColumns: false
   });
 
   const headerGroups = table.getHeaderGroups().map((headerGroup) => (
@@ -201,12 +201,12 @@ export default function ProgressReporting() {
         <TableCell key={header.id} colSpan={header.colSpan}>
           {header.isPlaceholder ? null : (
             <div
-              style={{ display: "flex", alignItems: "center", gap: "8px" }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
               {...{
                 className: header.column.getCanSort()
-                  ? "cursor-pointer select-none"
-                  : "",
-                onClick: header.column.getToggleSortingHandler(),
+                  ? 'cursor-pointer select-none'
+                  : '',
+                onClick: header.column.getToggleSortingHandler()
               }}
             >
               {flexRender(header.column.columnDef.header, header.getContext())}
@@ -244,7 +244,7 @@ export default function ProgressReporting() {
         <Stack mb={3} direction="row" justifyContent="flex-end">
           <ButtonComponent
             disabled={
-              activeInitiative?.initiativeStatus?.toLowerCase() === "concluded"
+              activeInitiative?.initiativeStatus?.toLowerCase() === 'concluded'
             }
             customVariant="primary-m"
             startIcon={<PlusIcon />}

@@ -1,5 +1,5 @@
-import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { InitiativeProfileControlledSelect } from "@app/components";
+import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
+import { InitiativeProfileControlledSelect } from '@app/components';
 
 export default function LaunchEvent() {
   return (

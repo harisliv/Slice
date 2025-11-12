@@ -1,16 +1,16 @@
 import type {
   OrganizationalStructureFormData,
-  TempModalPayload,
-} from "@app/types";
-import { useFormContext } from "react-hook-form";
-import { useModalStore } from "../useModalStore";
+  TempModalPayload
+} from '@app/types';
+import { useFormContext } from 'react-hook-form';
+import { useModalStore } from '../useModalStore';
 
 interface AddInitiativeConfirmationModalActions {
   onConfirm: (selectedInitiativeRelationship: TempModalPayload) => void;
 }
 
 export const useAddInitiativeConfirmationModal = ({
-  onConfirm,
+  onConfirm
 }: AddInitiativeConfirmationModalActions) => {
   const { showModal, hideModal } = useModalStore();
   const { getValues } = useFormContext<OrganizationalStructureFormData>();
@@ -22,28 +22,28 @@ export const useAddInitiativeConfirmationModal = ({
     const initiativeName = tempOption?.name;
 
     showModal({
-      title: "Attention",
-      subtitle: "Adding a new initiative",
+      title: 'Attention',
+      subtitle: 'Adding a new initiative',
       content: `You are about to create a relationship with "${initiativeName}". You can revoke this decision by exiting the edit mode without  submitting changes. Once you submit changes, a validation request will be sent to  "${initiativeName}".`,
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           action: () => {
             hideModal();
-          },
+          }
         },
         {
-          text: "Continue",
+          text: 'Continue',
           action: () => {
             hideModal();
             onConfirm({
-              relationshipType: tempRelationshipType ?? "",
-              id: tempOption?.id ?? "",
-              name: tempOption?.name ?? "",
+              relationshipType: tempRelationshipType ?? '',
+              id: tempOption?.id ?? '',
+              name: tempOption?.name ?? ''
             });
-          },
-        },
-      ],
+          }
+        }
+      ]
     });
   };
 

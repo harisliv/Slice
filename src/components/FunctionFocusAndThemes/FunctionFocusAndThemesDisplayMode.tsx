@@ -1,12 +1,12 @@
-import { InfoCard, TitleAction } from "@app/lib/ui";
-import { NavLink } from "react-router";
-import { Divider, Stack } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { FUNCTION_FOCUS_THEMES_FIELD_INFO } from "@app/constants";
-import type { InitiativeProfileFormData } from "@app/types";
+import { InfoCard, TitleAction } from '@app/lib/ui';
+import { NavLink } from 'react-router';
+import { Divider, Stack } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import { FUNCTION_FOCUS_THEMES_FIELD_INFO } from '@app/constants';
+import type { InitiativeProfileFormData } from '@app/types';
 
 export default function FunctionFocusAndThemesDisplayMode({
-  initiativeProfile,
+  initiativeProfile
 }: {
   initiativeProfile?: InitiativeProfileFormData;
 }) {
@@ -18,23 +18,23 @@ export default function FunctionFocusAndThemesDisplayMode({
     regions,
     countries,
     marrakechPartnershipThemes,
-    sustainableDevelopmentGoals,
+    sustainableDevelopmentGoals
   } = initiativeProfile || {};
 
   let doubleTitle;
   let doubleTitleOptions;
 
   switch (initiativeGeographicalFocus) {
-    case "Regional":
-      doubleTitle = "Regions";
+    case 'Regional':
+      doubleTitle = 'Regions';
       doubleTitleOptions = regions;
       break;
-    case "Multinational":
-      doubleTitle = "Countries";
+    case 'Multinational':
+      doubleTitle = 'Countries';
       doubleTitleOptions = countries;
       break;
-    case "National":
-      doubleTitle = "Country";
+    case 'National':
+      doubleTitle = 'Country';
       doubleTitleOptions = countries;
       break;
     default:
@@ -55,15 +55,15 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.functions.subtitle}
             content={{
-              type: "list",
+              type: 'list',
               value: !initiativeSecondaryFunction
                 ? (initiativePrimaryFunction && [initiativePrimaryFunction]) ||
                   []
                 : (initiativePrimaryFunction && [
                     initiativePrimaryFunction,
-                    ...initiativeSecondaryFunction,
+                    ...initiativeSecondaryFunction
                   ]) ||
-                  [],
+                  []
             }}
           />
         </Grid>
@@ -79,8 +79,8 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.focuses.subtitle}
             content={{
-              type: "list",
-              value: initiativeFocus ? [initiativeFocus] : [],
+              type: 'list',
+              value: initiativeFocus ? [initiativeFocus] : []
             }}
           />
         </Grid>
@@ -88,9 +88,9 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={doubleTitle}
             content={{
-              type: "list",
-              doubleTitle: "Geographical Focus",
-              value: doubleTitleOptions,
+              type: 'list',
+              doubleTitle: 'Geographical Focus',
+              value: doubleTitleOptions
             }}
           />
         </Grid>
@@ -106,10 +106,10 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.themes.subtitle}
             content={{
-              type: "list",
+              type: 'list',
               value: marrakechPartnershipThemes
                 ? [...marrakechPartnershipThemes]
-                : [],
+                : []
             }}
           />
         </Grid>
@@ -119,10 +119,10 @@ export default function FunctionFocusAndThemesDisplayMode({
               FUNCTION_FOCUS_THEMES_FIELD_INFO.sustainableDevGoals.subtitle
             }
             content={{
-              type: "list",
+              type: 'list',
               value: sustainableDevelopmentGoals
                 ? [...sustainableDevelopmentGoals]
-                : [],
+                : []
             }}
           />
         </Grid>

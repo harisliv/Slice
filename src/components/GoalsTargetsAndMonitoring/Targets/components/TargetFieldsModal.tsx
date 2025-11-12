@@ -1,18 +1,18 @@
-import Grid from "@mui/material/Grid2";
-import { ButtonComponent, Modal, RequiredLabel } from "@app/lib/ui";
-import { Stack } from "@mui/system";
-import { ControlledInput } from "@app/components";
+import Grid from '@mui/material/Grid2';
+import { ButtonComponent, Modal, RequiredLabel } from '@app/lib/ui';
+import { Stack } from '@mui/system';
+import { ControlledInput } from '@app/components';
 import {
   isTargetsSchema,
-  type GoalsTargetsAndMonitoringShape,
-} from "@app/types";
-import { useFormContext } from "react-hook-form";
+  type GoalsTargetsAndMonitoringShape
+} from '@app/types';
+import { useFormContext } from 'react-hook-form';
 import {
   ControlledSelectWithDropdown,
-  NumericControlledInput,
-} from "@app/components/ControlledInput";
-import { CREATE_TARGET_FIELD_INFO } from "@app/constants";
-import { ControlledMultiSelectWithDropdown } from "@app/components/ControlledInput";
+  NumericControlledInput
+} from '@app/components/ControlledInput';
+import { CREATE_TARGET_FIELD_INFO } from '@app/constants';
+import { ControlledMultiSelectWithDropdown } from '@app/components/ControlledInput';
 
 interface TargetFieldsModalProps {
   lastFieldIndex: number;
@@ -27,7 +27,7 @@ export default function TargetFieldsModal({
   isModalOpen,
   setIsModalOpen,
   remove,
-  onRequestCreate,
+  onRequestCreate
 }: TargetFieldsModalProps) {
   const handleClose = () => {
     setIsModalOpen(false);
@@ -47,10 +47,10 @@ export default function TargetFieldsModal({
       $width="720px"
       footerChildren={
         <Stack
-          direction={"row"}
+          direction={'row'}
           gap={2}
-          width={"100%"}
-          justifyContent={"flex-end"}
+          width={'100%'}
+          justifyContent={'flex-end'}
         >
           <ButtonComponent onClick={handleClose} customVariant="secondary-m">
             Cancel
@@ -133,7 +133,7 @@ export default function TargetFieldsModal({
             helperText={CREATE_TARGET_FIELD_INFO.target.type.help}
           />
         </Grid>
-        {currentTarget?.type?.includes("Other") && (
+        {currentTarget?.type?.includes('Other') && (
           <Grid size={{ sm: 4, xs: 12, xxs: 12 }}>
             <ControlledInput
               name={`newTargets.${lastFieldIndex}.typeDescription`}

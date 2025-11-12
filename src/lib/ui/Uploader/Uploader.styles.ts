@@ -1,6 +1,6 @@
-import { Box, Link } from "@mui/material";
-import styled from "styled-components";
-import { EnumWeight } from "@app/lib/types";
+import { Box, Link } from '@mui/material';
+import styled from 'styled-components';
+import { EnumWeight } from '@app/lib/types';
 
 export const UploaderContainer = styled(Box)`
   width: 100%;
@@ -23,18 +23,18 @@ export const DragAndDropContainer = styled(Box)<{
   border-radius: 8px;
   background-color: ${(props) => {
     if (props.$isLoading || props.$isSelected) {
-      return "transparent";
+      return 'transparent';
     } else if (props.$isDragAccept) {
       return props.theme.palette.background.azur4;
     } else if (props.$isDragReject) {
       return props.theme.palette.error.errorPinkLight;
     } else {
-      return "transparent";
+      return 'transparent';
     }
   }};
   border: ${(props) => {
     if (props.$isLoading || props.$isSelected) {
-      return "none";
+      return 'none';
     } else if (props.$isDragAccept) {
       return `2.5px dashed ${props.theme.palette.primary.ocean}`;
     } else if (props.$isDragReject) {
@@ -164,9 +164,9 @@ export const StyledGrid = styled(Box)<{
   margin-top: 10px;
   border: 1px solid
     ${(props) =>
-      props.error === "true"
+      props.error === 'true'
         ? props.theme.palette.error.errorPink
-        : "transparent"};
+        : 'transparent'};
 `;
 
 export const UploaderInfoCol = styled(Box)`

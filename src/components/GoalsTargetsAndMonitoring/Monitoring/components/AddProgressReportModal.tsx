@@ -1,14 +1,14 @@
-import { ButtonComponent, Modal } from "@app/lib/ui";
-import { ControlledInput } from "@app/components";
-import { useFieldArray, useFormContext } from "react-hook-form";
-import ProgressReportUpload from "./ProgressReportUpload";
-import { Stack } from "@mui/material";
-import { NumericControlledInput } from "@app/components/ControlledInput";
+import { ButtonComponent, Modal } from '@app/lib/ui';
+import { ControlledInput } from '@app/components';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import ProgressReportUpload from './ProgressReportUpload';
+import { Stack } from '@mui/material';
+import { NumericControlledInput } from '@app/components/ControlledInput';
 import {
   isReportFormData,
-  type GoalsTargetsAndMonitoringShape,
-} from "@app/types";
-import { MONITORING_FIELD_INFO } from "@app/constants";
+  type GoalsTargetsAndMonitoringShape
+} from '@app/types';
+import { MONITORING_FIELD_INFO } from '@app/constants';
 
 interface TargetFieldsModalProps {
   isModalOpen: boolean;
@@ -19,13 +19,13 @@ interface TargetFieldsModalProps {
 export default function AddProgressReportModal({
   isModalOpen,
   setIsModalOpen,
-  fieldIndex,
+  fieldIndex
 }: TargetFieldsModalProps) {
   const { control } = useFormContext();
 
   const { remove } = useFieldArray({
     control,
-    name: "periodicalProgressReport",
+    name: 'periodicalProgressReport'
   });
 
   const handleClose = () => {
@@ -34,7 +34,7 @@ export default function AddProgressReportModal({
   const { watch } = useFormContext<GoalsTargetsAndMonitoringShape>();
 
   const periodicalProgressReport = watch(
-    `periodicalProgressReport.${fieldIndex}`,
+    `periodicalProgressReport.${fieldIndex}`
   );
 
   const isValid = isReportFormData(periodicalProgressReport);

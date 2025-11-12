@@ -1,4 +1,4 @@
-import { StyledFormControlLabel, StyledMuiCheckbox } from "./Checkbox.styles";
+import { StyledFormControlLabel, StyledMuiCheckbox } from './Checkbox.styles';
 
 type CheckboxProps = {
   label: string;
@@ -11,7 +11,7 @@ export default function Checkbox({
   label,
   checked,
   disabled,
-  onChange,
+  onChange
 }: CheckboxProps) {
   return (
     <StyledFormControlLabel

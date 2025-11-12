@@ -1,8 +1,8 @@
-import { Theme } from "@app/lib/general";
-import type { IIconProps } from "@app/lib/types";
+import { Theme } from '@app/lib/general';
+import type { IIconProps } from '@app/lib/types';
 
 export default function PlusIcon({
-  fill = Theme.palette.primary.snow,
+  fill = Theme.palette.primary.snow
 }: IIconProps) {
   return (
     <svg

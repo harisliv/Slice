@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import { Theme } from "@app/lib/general";
-import type { IIconProps } from "@app/lib/types";
+import type { FC } from 'react';
+import { Theme } from '@app/lib/general';
+import type { IIconProps } from '@app/lib/types';
 
 const AlertTriangleIcon: FC<IIconProps> = ({
-  fill = Theme.palette.primary.snow,
+  fill = Theme.palette.primary.snow
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

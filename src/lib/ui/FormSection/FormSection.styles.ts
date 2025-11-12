@@ -1,6 +1,6 @@
-import { Box } from "@mui/material";
-import { WizardStepUnderlineIcon } from "@app/lib/icons";
-import styled from "styled-components";
+import { Box } from '@mui/material';
+import { WizardStepUnderlineIcon } from '@app/lib/icons';
+import styled from 'styled-components';
 
 export const FormWrapper = styled(Box)`
   display: flex;
@@ -49,6 +49,6 @@ export const DividingLine = styled.hr`
 
 export const FormContainer = styled(Box)<{ $fullWidth?: boolean }>`
   display: flex;
-  gap: ${(props) => (props.$fullWidth ? "20px" : "10px")};
-  flex-direction: ${(props) => (props.$fullWidth ? "row" : "column")};
+  gap: ${(props) => (props.$fullWidth ? '20px' : '10px')};
+  flex-direction: ${(props) => (props.$fullWidth ? 'row' : 'column')};
 `;

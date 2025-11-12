@@ -1,5 +1,5 @@
-import { logger } from "@app/utils";
-import { MutationCache, QueryCache, QueryClient } from "@tanstack/react-query";
+import { logger } from '@app/utils';
+import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -7,11 +7,11 @@ export const queryClient = new QueryClient({
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
       throwOnError: true,
-      retry: 3,
+      retry: 3
     },
     mutations: {
-      throwOnError: false,
-    },
+      throwOnError: false
+    }
   },
   queryCache: new QueryCache({
     onError: (error, query) => {
@@ -19,7 +19,7 @@ export const queryClient = new QueryClient({
     },
     onSuccess: (data, query) => {
       logger.info(`Query Client Response: ${query.queryKey}`, data);
-    },
+    }
   }),
   mutationCache: new MutationCache({
     onError: (error, variables) => {
@@ -27,6 +27,6 @@ export const queryClient = new QueryClient({
     },
     onSuccess: (data, variables) => {
       logger.info(`Mutation Client Response: ${variables}`, data);
-    },
-  }),
+    }
+  })
 });

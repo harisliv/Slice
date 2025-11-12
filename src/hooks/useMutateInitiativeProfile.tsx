@@ -1,13 +1,13 @@
-import { useQueryClient, type UseMutationResult } from "@tanstack/react-query";
-import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
+import { useQueryClient, type UseMutationResult } from '@tanstack/react-query';
+import useMutatePrivateRoutes from './useMutatePrivateRoutes';
 import {
   type InitiativeProfileDTO,
-  type InitiativeProfileFormData,
-} from "@app/types";
-import { convertToServerEntity } from "@app/utils/InitiativeProfile";
-import { useActiveInitiative } from "./useActiveInitiative";
-import { ToasterType, useToasterStore } from "./Toaster";
-import axios from "axios";
+  type InitiativeProfileFormData
+} from '@app/types';
+import { convertToServerEntity } from '@app/utils/InitiativeProfile';
+import { useActiveInitiative } from './useActiveInitiative';
+import { ToasterType, useToasterStore } from './Toaster';
+import axios from 'axios';
 
 export default function useMutateInitiativeProfile(): UseMutationResult<
   InitiativeProfileFormData,
@@ -24,17 +24,17 @@ export default function useMutateInitiativeProfile(): UseMutationResult<
   >({
     endpoint: `/functions/v1/initiative-profile/${activeInitiative?.id}`,
     convertToServerEntity: convertToServerEntity,
-    action: "put",
+    action: 'put',
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["initiativeProfile"],
+        queryKey: ['initiativeProfile']
       });
       queryClient.invalidateQueries({
-        queryKey: ["initiative-info"],
+        queryKey: ['initiative-info']
       });
       showToaster({
-        message: "Your changes have been saved successfully.",
-        toasterType: ToasterType.SUCCESS,
+        message: 'Your changes have been saved successfully.',
+        toasterType: ToasterType.SUCCESS
       });
     },
     onError: (error) => {
@@ -42,11 +42,11 @@ export default function useMutateInitiativeProfile(): UseMutationResult<
         ? error.response?.data
         : error;
       showToaster({
-        message: "An error occurred while saving your changes.",
+        message: 'An error occurred while saving your changes.',
         toasterType: ToasterType.ERROR,
-        errorDetails: errorResponse,
+        errorDetails: errorResponse
       });
-    },
+    }
   });
 
   return mutation;

@@ -1,15 +1,15 @@
-import type { FC } from "react";
-import { useState } from "react";
+import type { FC } from 'react';
+import { useState } from 'react';
 import {
   StyledAppCard,
   IconWrapper,
   CardTopWrapper,
   StyledH3,
-  StyledParagraph,
-} from "./AppCard.styles";
-import type { AppCardProps } from "./AppCard.types";
-import { ChevronRightIcon } from "@app/lib/icons";
-import ButtonComponent from "../Button";
+  StyledParagraph
+} from './AppCard.styles';
+import type { AppCardProps } from './AppCard.types';
+import { ChevronRightIcon } from '@app/lib/icons';
+import ButtonComponent from '../Button';
 
 const AppCard: FC<AppCardProps> = ({
   icon,
@@ -51,7 +51,7 @@ const AppCard: FC<AppCardProps> = ({
         <ButtonComponent
           customVariant="primary-m-full-width"
           RouterLink={LinkComponent}
-          to={to ?? ""}
+          to={to ?? ''}
           endIcon={<ChevronRightIcon />}
         >
           Enter

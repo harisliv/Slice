@@ -38,6 +38,6 @@ export interface IDocument {
 }
 
 export enum IUploaderError {
-  LARGE_FILE = "file-too-large",
-  INVALID_FILE_TYPE = "file-invalid-type",
+  LARGE_FILE = 'file-too-large',
+  INVALID_FILE_TYPE = 'file-invalid-type'
 }

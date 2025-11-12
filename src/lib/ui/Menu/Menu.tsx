@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import { Fragment, useState } from "react";
-import { OptionsVerticleIcon } from "@app/lib/icons";
-import { StyledIconButton, StyledMenu, StyledTitle } from "./Menu.styles";
-import type { IMenu } from "./Menu.types";
-import ButtonComponent from "../Button";
+import type { FC } from 'react';
+import { Fragment, useState } from 'react';
+import { OptionsVerticleIcon } from '@app/lib/icons';
+import { StyledIconButton, StyledMenu, StyledTitle } from './Menu.styles';
+import type { IMenu } from './Menu.types';
+import ButtonComponent from '../Button';
 
 const Menu: FC<IMenu> = ({ title, options }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -33,15 +33,15 @@ const Menu: FC<IMenu> = ({ title, options }) => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button'
         }}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center'
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center'
         }}
       >
         {options?.map((option) => (

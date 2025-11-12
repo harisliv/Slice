@@ -1,2 +1,2 @@
-export { default } from "./FormModal";
-export * from "./FormModal.types";
+export { default } from './FormModal';
+export * from './FormModal.types';

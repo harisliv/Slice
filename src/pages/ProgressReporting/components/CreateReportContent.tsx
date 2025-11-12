@@ -1,17 +1,17 @@
-import Grid from "@mui/material/Grid2";
+import Grid from '@mui/material/Grid2';
 import {
   CustomTag,
   Header3,
   Paragraph,
-  ShadowContainerWithTopPadding,
-} from "@app/lib/ui";
-import { MainWrapperWithHeader } from "@app/lib/ui";
-import { Stack } from "@mui/material";
-import { useActiveInitiative, useMultiStepFormValues } from "@app/hooks";
-import { FormStepperWithContext } from "@app/components";
-import { type TProgressReportingShape } from "@app/types";
-import { formatDateTime } from "@app/utils";
-import RenderSteps from "./RenderSteps";
+  ShadowContainerWithTopPadding
+} from '@app/lib/ui';
+import { MainWrapperWithHeader } from '@app/lib/ui';
+import { Stack } from '@mui/material';
+import { useActiveInitiative, useMultiStepFormValues } from '@app/hooks';
+import { FormStepperWithContext } from '@app/components';
+import { type TProgressReportingShape } from '@app/types';
+import { formatDateTime } from '@app/utils';
+import RenderSteps from './RenderSteps';
 
 export default function CreateReportContent() {
   const { draftLatestUpdate } =

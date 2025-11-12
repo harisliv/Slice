@@ -1,6 +1,6 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { Theme } from "@app/lib/general";
+import { Checkbox, FormControlLabel } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Theme } from '@app/lib/general';
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
   display: inline-flex;

@@ -1,5 +1,5 @@
-import type { ButtonProps } from "@mui/material";
-import type { EnumWeight } from "./Global";
+import type { ButtonProps } from '@mui/material';
+import type { EnumWeight } from './Global';
 
 export type TButtonStyling = {
   $backgroundColor?: string;
@@ -7,7 +7,7 @@ export type TButtonStyling = {
   $fontSize?: string;
   $lineHeight?: string;
   $fontFamily?: string;
-  $fontStyle?: "normal" | "italic";
+  $fontStyle?: 'normal' | 'italic';
   $height?: EButtonHeight;
   $width?: string;
   $minWidth?: string;
@@ -31,22 +31,22 @@ export interface IButton {
 }
 // TODO remove
 export enum EButtonType {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  TERTIARY = "tertiary",
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  TERTIARY = 'tertiary'
 }
 
 export enum EButtonHeight {
-  MEDIUM = "40px",
-  SMALL = "32px",
+  MEDIUM = '40px',
+  SMALL = '32px'
 }
 
 // TODO remove
 export enum EButtonSize {
-  EXTRA_BIG = "40px",
-  BIG = "32px",
-  MEDIUM = "24px",
-  SMALL = "20px",
+  EXTRA_BIG = '40px',
+  BIG = '32px',
+  MEDIUM = '24px',
+  SMALL = '20px'
 }
 
 export type TButtonProps<T extends string> = {
@@ -54,13 +54,13 @@ export type TButtonProps<T extends string> = {
 };
 
 export type TCustomButtonVariant =
-  | "primary-m"
-  | "primary-m-full-width"
-  | "primary-s"
-  | "secondary-m"
-  | "secondary-s"
-  | "terciary-m"
-  | "terciary-s"
-  | "header-menu"
-  | "header-menu-drawer"
-  | "edit";
+  | 'primary-m'
+  | 'primary-m-full-width'
+  | 'primary-s'
+  | 'secondary-m'
+  | 'secondary-s'
+  | 'terciary-m'
+  | 'terciary-s'
+  | 'header-menu'
+  | 'header-menu-drawer'
+  | 'edit';

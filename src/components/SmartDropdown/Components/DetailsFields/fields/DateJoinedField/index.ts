@@ -1,1 +1,1 @@
-export { default } from "./DateJoinedField";
+export { default } from './DateJoinedField';

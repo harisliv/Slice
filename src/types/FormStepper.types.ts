@@ -1,4 +1,4 @@
-import type { IStepProps, StepStatus } from "@app/lib/types";
+import type { IStepProps, StepStatus } from '@app/lib/types';
 
 export interface FormStepperState {
   currentStep: number;
@@ -13,7 +13,7 @@ export interface FormStepperActions {
   goToNextStep: () => void;
   goToPreviousStep: () => void;
   completeStep: (index: number) => void;
-  uncompleteStep: (index: number, mode: "serial" | "random") => void;
+  uncompleteStep: (index: number, mode: 'serial' | 'random') => void;
   resetSteps: () => void;
   getStepStates: () => IStepProps[];
   toggleStepStatus: (index: number, toggle: boolean) => void;

@@ -1,12 +1,12 @@
-import { IconButton } from "@mui/material";
-import { StyledItemContainer } from "./RemovableItem.styles";
-import { ClearIcon, TrashBinIcon } from "@app/lib/icons";
-import { Paragraph } from "../Global";
-import { Theme } from "@app/lib/general";
+import { IconButton } from '@mui/material';
+import { StyledItemContainer } from './RemovableItem.styles';
+import { ClearIcon, TrashBinIcon } from '@app/lib/icons';
+import { Paragraph } from '../Global';
+import { Theme } from '@app/lib/general';
 
 type RemovableItemProps = {
   label: string;
-  icon?: "clear" | "trash";
+  icon?: 'clear' | 'trash';
   disabled?: boolean;
   onRemove?: () => void;
 };
@@ -14,8 +14,8 @@ type RemovableItemProps = {
 export default function RemovableItem({
   label,
   onRemove,
-  icon = "clear",
-  disabled = false,
+  icon = 'clear',
+  disabled = false
 }: RemovableItemProps) {
   return (
     <StyledItemContainer elevation={1}>
@@ -28,16 +28,16 @@ export default function RemovableItem({
           onClick={onRemove}
           disabled={disabled}
         >
-          {icon === "clear" ? (
+          {icon === 'clear' ? (
             <ClearIcon
               {...(disabled && {
-                fill: Theme.palette.controlsAndStatus.disabled,
+                fill: Theme.palette.controlsAndStatus.disabled
               })}
             />
           ) : (
             <TrashBinIcon
               {...(disabled && {
-                fill: Theme.palette.controlsAndStatus.disabled,
+                fill: Theme.palette.controlsAndStatus.disabled
               })}
             />
           )}

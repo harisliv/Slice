@@ -1,23 +1,23 @@
-import { useMemo, useState, useCallback } from "react";
+import { useMemo, useState, useCallback } from 'react';
 import {
   type AutocompleteInputChangeReason,
   type AutocompleteRenderOptionState,
   createFilterOptions,
-  TextField,
-} from "@mui/material";
-import { ClearIcon, SearchIcon } from "@app/lib/icons";
+  TextField
+} from '@mui/material';
+import { ClearIcon, SearchIcon } from '@app/lib/icons';
 import {
   AdornmentStart,
   AdornmentEnd,
   StyledAutocomplete,
-  ClearText,
-} from "./Autocomplete.styles";
+  ClearText
+} from './Autocomplete.styles';
 import type {
   AccountEntityOption,
   ACProps,
-  TAutocompleteProps,
-} from "./Autocomplete.types";
-import { highlightParts, normalize } from "./Autocomplete.utils";
+  TAutocompleteProps
+} from './Autocomplete.types';
+import { highlightParts, normalize } from './Autocomplete.utils';
 
 export default function Autocomplete({
   required,
@@ -28,14 +28,14 @@ export default function Autocomplete({
   value,
   onChange,
   minChars = 1,
-  onClear,
+  onClear
 }: TAutocompleteProps) {
   const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const belowThreshold = inputValue.trim().length < minChars;
   const effectivePlaceholder =
-    placeholder ?? "Search entity by keyword, filter (list from CRM)";
+    placeholder ?? 'Search entity by keyword, filter (list from CRM)';
 
   const canClear = !disabled && (inputValue.trim().length > 0 || !!value);
 
@@ -63,23 +63,23 @@ export default function Autocomplete({
   const baseFilter = createFilterOptions<AccountEntityOption>({
     ignoreAccents: true,
     ignoreCase: true,
-    matchFrom: "any",
+    matchFrom: 'any',
     limit: 200,
-    stringify: (opt) => opt.name, // only search in name
+    stringify: (opt) => opt.name // only search in name
   });
 
   const handleClear = () => {
     onChange(null);
-    setInputValue("");
+    setInputValue('');
     setOpen(false);
     onClear?.();
   };
 
   // ---- Autocomplete props (extracted) ----
-  const getOptionLabel = (o: AccountEntityOption) => o.name || "";
+  const getOptionLabel = (o: AccountEntityOption) => o.name || '';
   const isOptionEqualToValue = (
     a: AccountEntityOption,
-    b: AccountEntityOption,
+    b: AccountEntityOption
   ) => a?.id === b?.id;
 
   const handleOpen = useCallback(() => {
@@ -90,35 +90,35 @@ export default function Autocomplete({
 
   const handleInputChange = useCallback(
     (_: unknown, v: string, reason: AutocompleteInputChangeReason) => {
-      if (reason === "reset") {
-        const next = value?.name ?? "";
+      if (reason === 'reset') {
+        const next = value?.name ?? '';
         setInputValue(next);
         setOpen(next.trim().length >= minChars); // keep open if enough chars
         return;
       }
 
-      if (reason === "clear") {
-        setInputValue("");
+      if (reason === 'clear') {
+        setInputValue('');
         setOpen(false);
         return;
       }
       setInputValue(v);
       setOpen(v.trim().length >= minChars);
     },
-    [minChars, value?.name],
+    [minChars, value?.name]
   );
 
   const handleSelectChange = useCallback(
     (_: unknown, opt: AccountEntityOption | null) => {
       onChange(opt);
-      setInputValue(opt?.name ?? "");
+      setInputValue(opt?.name ?? '');
       setOpen(false);
     },
-    [onChange],
+    [onChange]
   );
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
       (e as any).defaultMuiPrevented = true;
@@ -127,30 +127,29 @@ export default function Autocomplete({
 
   const listboxSlot = useMemo(
     () => ({
-      onMouseDown: (e: React.MouseEvent<HTMLUListElement>) =>
-        e.preventDefault(),
+      onMouseDown: (e: React.MouseEvent<HTMLUListElement>) => e.preventDefault()
     }),
-    [],
+    []
   );
 
   const renderOption = useCallback(
     (
       props: React.HTMLAttributes<HTMLLIElement>,
       option: AccountEntityOption,
-      state: AutocompleteRenderOptionState,
+      state: AutocompleteRenderOptionState
     ) => {
       // ensure unique key (id first; fallback to label+index)
       const key = option.id ?? `${option.name}-${state.index}`;
       return (
         <li {...props} key={key}>
-          {highlightParts(option.name, state.inputValue || "")}
+          {highlightParts(option.name, state.inputValue || '')}
         </li>
       );
     },
-    [],
+    []
   );
 
-  const filterOptions: NonNullable<ACProps["filterOptions"]> = useCallback(
+  const filterOptions: NonNullable<ACProps['filterOptions']> = useCallback(
     (opts, state) => {
       const q = normalize(state.inputValue);
 
@@ -169,7 +168,7 @@ export default function Autocomplete({
       const prelim = baseFilter(opts, state);
       return prelim.filter((o) => o.name && normalize(o.name).includes(q));
     },
-    [baseFilter, belowThreshold, value],
+    [baseFilter, belowThreshold, value]
   );
 
   const renderInput = useCallback(
@@ -205,13 +204,13 @@ export default function Autocomplete({
                   <ClearIcon />
                   <ClearText>Clear</ClearText>
                 </AdornmentEnd>
-              ),
-            },
+              )
+            }
           }}
         />
       );
     },
-    [required, error, effectivePlaceholder, handleClear, canClear],
+    [required, error, effectivePlaceholder, handleClear, canClear]
   );
 
   return (

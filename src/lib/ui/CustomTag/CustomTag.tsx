@@ -1,22 +1,22 @@
-import type { CustomTagProps } from "./CustomTag.types";
-import { getCustomTagVariant } from "./CustomTag.constants";
+import type { CustomTagProps } from './CustomTag.types';
+import { getCustomTagVariant } from './CustomTag.constants';
 import {
   TagContainer,
   IconFrame,
   IconContainer,
-  LabelText,
-} from "./CustomTag.styles";
-import type { TagStatus } from "@app/lib/types";
+  LabelText
+} from './CustomTag.styles';
+import type { TagStatus } from '@app/lib/types';
 
 const isTagStatus = (status?: string | null): status is TagStatus =>
   [
-    "SUBMITTED",
-    "DRAFT",
-    "CONCLUDED",
-    "ACTIVE",
-    "ACCOMPLISHED",
-    "INACTIVE",
-  ].includes(status ?? "");
+    'SUBMITTED',
+    'DRAFT',
+    'CONCLUDED',
+    'ACTIVE',
+    'ACCOMPLISHED',
+    'INACTIVE'
+  ].includes(status ?? '');
 
 export default function CustomTag({ variant }: CustomTagProps) {
   const upperCaseVariant = variant?.toUpperCase();

@@ -1,4 +1,4 @@
-import { CustomAccordion } from "@app/lib/ui";
+import { CustomAccordion } from '@app/lib/ui';
 interface ClimateRelatedAlignmentTitleProps {
   title?: string;
   text?: string;
@@ -12,16 +12,16 @@ export default function ClimateRelatedAlignmentTitle({
   text,
   onActionClick,
   expanded,
-  isEditMode = true,
+  isEditMode = true
 }: ClimateRelatedAlignmentTitleProps) {
   return (
     <CustomAccordion
-      title={title ?? ""}
+      title={title ?? ''}
       onActionClick={onActionClick ?? (() => {})}
       expanded={expanded}
       withDelete={isEditMode}
     >
-      {text ?? ""}
+      {text ?? ''}
     </CustomAccordion>
   );
 }

@@ -1,13 +1,13 @@
-import { NoPermission } from "@app/lib/icons";
-import { Theme } from "@app/lib/general";
-import { Box } from "@mui/material";
+import { NoPermission } from '@app/lib/icons';
+import { Theme } from '@app/lib/general';
+import { Box } from '@mui/material';
 import {
   Header2,
   Header3,
   Paragraph,
-  MainWrapperWithHeader,
-} from "@app/lib/ui";
-import { Divider, Stack } from "@mui/material";
+  MainWrapperWithHeader
+} from '@app/lib/ui';
+import { Divider, Stack } from '@mui/material';
 
 export default function Unauthorized() {
   return (
@@ -19,12 +19,12 @@ export default function Unauthorized() {
         <Divider
           sx={{
             borderColor: Theme.palette.background.grey,
-            borderBottomWidth: 1,
+            borderBottomWidth: 1
           }}
         />
         <>
           <Box
-            width={"100%"}
+            width={'100%'}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -37,7 +37,7 @@ export default function Unauthorized() {
               flexDirection="column"
             >
               <Box
-                sx={{ marginBottom: "24px" }}
+                sx={{ marginBottom: '24px' }}
                 width={112}
                 height={112}
                 borderRadius="100%"
@@ -50,10 +50,10 @@ export default function Unauthorized() {
                   <NoPermission />
                 </Box>
               </Box>
-              <Box sx={{ marginBottom: "14px" }}>
+              <Box sx={{ marginBottom: '14px' }}>
                 <Header3>No permissions to use the application</Header3>
               </Box>
-              <Box sx={{ marginBottom: "14px" }}>
+              <Box sx={{ marginBottom: '14px' }}>
                 <Paragraph variant="small-regular">
                   You do not have the required permissions to use this
                   application. Please contact the UNFCCC secretariat focal point

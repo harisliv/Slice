@@ -1,16 +1,16 @@
-import { useSelectedReport, useActiveInitiative } from "@app/hooks";
-import { DownloadExportIcon } from "@app/lib/icons";
-import { ButtonComponent, SkeletonComponent } from "@app/lib/ui";
-import { Modal } from "@app/lib/ui";
-import { Report } from "@app/components";
-import ReportPDF from "@app/components/CreateReport/Report/ReportPDF";
+import { useSelectedReport, useActiveInitiative } from '@app/hooks';
+import { DownloadExportIcon } from '@app/lib/icons';
+import { ButtonComponent, SkeletonComponent } from '@app/lib/ui';
+import { Modal } from '@app/lib/ui';
+import { Report } from '@app/components';
+import ReportPDF from '@app/components/CreateReport/Report/ReportPDF';
 import {
   defaultProgressReportingFormValues,
-  type TProgressReportingShape,
-} from "@app/types";
-import { Box } from "@mui/material";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import dayjs from "dayjs";
+  type TProgressReportingShape
+} from '@app/types';
+import { Box } from '@mui/material';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import dayjs from 'dayjs';
 
 interface ViewReportModalProps {
   reportId: string;
@@ -21,7 +21,7 @@ interface ViewReportModalProps {
 export default function ViewReportModal({
   reportId,
   isModalOpen,
-  setIsModalOpen,
+  setIsModalOpen
 }: ViewReportModalProps) {
   const { activeInitiative } = useActiveInitiative();
 
@@ -30,7 +30,7 @@ export default function ViewReportModal({
   };
 
   const { data: selectedReport, isLoading } = useSelectedReport({
-    id: reportId,
+    id: reportId
   });
 
   const fullData: TProgressReportingShape = {
@@ -39,13 +39,13 @@ export default function ViewReportModal({
     actions:
       selectedReport?.actions?.map((action) => ({
         ...action,
-        associatedTargets: action.associatedTargets?.map((target) => target),
-      })) || [],
+        associatedTargets: action.associatedTargets?.map((target) => target)
+      })) || []
   };
 
   const fileName = `${activeInitiative?.name.replace(
     / /g,
-    "-",
+    '-'
   )}_Progress_${dayjs().year()}.pdf`;
 
   return (
@@ -80,7 +80,7 @@ export default function ViewReportModal({
       }
     >
       {isLoading ? (
-        <Box sx={{ padding: "80px 0" }}>
+        <Box sx={{ padding: '80px 0' }}>
           <SkeletonComponent />
         </Box>
       ) : (

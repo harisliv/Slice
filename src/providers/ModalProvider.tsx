@@ -1,8 +1,8 @@
-import { type ReactNode } from "react";
-import { Modal, ButtonComponent, Paragraph } from "@app/lib/ui";
-import { useModalStore } from "@app/hooks";
-import { AlertTriangleIcon } from "@app/lib/icons";
-import { Theme } from "@app/lib/general";
+import { type ReactNode } from 'react';
+import { Modal, ButtonComponent, Paragraph } from '@app/lib/ui';
+import { useModalStore } from '@app/hooks';
+import { AlertTriangleIcon } from '@app/lib/icons';
+import { Theme } from '@app/lib/general';
 
 interface ModalProviderProps {
   children: ReactNode;

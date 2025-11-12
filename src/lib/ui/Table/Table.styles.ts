@@ -1,6 +1,6 @@
-import { Table, TableContainer, TableRow } from "@mui/material";
-import { Theme } from "@app/lib/general";
-import styled from "styled-components";
+import { Table, TableContainer, TableRow } from '@mui/material';
+import { Theme } from '@app/lib/general';
+import styled from 'styled-components';
 
 export const StyledTableContainer = styled(TableContainer)`
   box-shadow: var(--box-shadow-base);
@@ -19,7 +19,7 @@ export const StyledTableRow = styled(TableRow)`
   border-radius: 6px 6px 0px 0px;
 
   padding: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #424245;
@@ -46,7 +46,7 @@ export const StyledTableRow = styled(TableRow)`
 
 export const StyledTableHeader = styled(TableRow)`
   background-color: ${Theme.palette.primary.azur};
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
   transform: translateY(-6px);

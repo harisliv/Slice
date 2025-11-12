@@ -1,6 +1,6 @@
-import type { FC } from "react";
-import { StyledTabPanel } from "./Tabs.styles";
-import type { ITabPanelProps } from "./Tabs.types";
+import type { FC } from 'react';
+import { StyledTabPanel } from './Tabs.styles';
+import type { ITabPanelProps } from './Tabs.types';
 
 const TabContent: FC<ITabPanelProps> = ({
   children,
@@ -12,7 +12,7 @@ const TabContent: FC<ITabPanelProps> = ({
     role="tabpanel"
     id={`tabpanel-${index}`}
     aria-labelledby={`tab-${index}`}
-    style={{ display: value === index ? "block" : "none" }}
+    style={{ display: value === index ? 'block' : 'none' }}
     {...props}
   >
     {children}

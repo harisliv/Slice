@@ -1,4 +1,4 @@
-export { useModalStore } from "./useModalStore";
+export { useModalStore } from './useModalStore';
 export {
   useAddInitiativeConfirmationModal,
   useDeleteModal,
@@ -7,6 +7,6 @@ export {
   useRemovalConfirmationModal,
   useSubmitModal,
   useValidationDecisionModal,
-  useDeleteParticipantModal,
-} from "./variants";
-export { useCreateModal } from "./variants/useCreateModal";
+  useDeleteParticipantModal
+} from './variants';
+export { useCreateModal } from './variants/useCreateModal';

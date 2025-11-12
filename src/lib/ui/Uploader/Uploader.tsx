@@ -1,8 +1,8 @@
-import { CircularProgress } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import type { FC, MouseEvent } from "react";
-import { Fragment, useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
+import { CircularProgress } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import type { FC, MouseEvent } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import {
   DeleteIconWrapper,
   DragAndDropContainer,
@@ -18,12 +18,12 @@ import {
   UploaderInfoCol,
   UploadLink,
   WrapperBeforeUpload,
-  WrapperUploadIcon,
-} from "./Uploader.styles";
-import type { IUploader, UploaderErrorMessage } from "./Uploader.types";
-import { generateErrorMessage } from "./Uploader.utils";
-import { convertFileSize, valueIsEmpty } from "@app/lib/general";
-import { ClearIcon, FileUploadImportIcon } from "@app/lib/icons";
+  WrapperUploadIcon
+} from './Uploader.styles';
+import type { IUploader, UploaderErrorMessage } from './Uploader.types';
+import { generateErrorMessage } from './Uploader.utils';
+import { convertFileSize, valueIsEmpty } from '@app/lib/general';
+import { ClearIcon, FileUploadImportIcon } from '@app/lib/icons';
 
 const CustomUploader: FC<IUploader> = ({
   value,
@@ -39,11 +39,11 @@ const CustomUploader: FC<IUploader> = ({
   handleDeleteServerValue,
   tempDoc,
   onDrop,
-  serverValue,
+  serverValue
 }) => {
   const id = `${name}_${Date.now()}`;
   const [errorMessage, setErrorMessage] = useState<UploaderErrorMessage | null>(
-    null,
+    null
   );
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const CustomUploader: FC<IUploader> = ({
     getRootProps,
     getInputProps,
     isDragAccept,
-    isDragReject,
+    isDragReject
   } = useDropzone({
     noClick: true,
     multiple: false,
@@ -68,28 +68,28 @@ const CustomUploader: FC<IUploader> = ({
     onDropRejected: (fileRejections) => {
       if (fileRejections.length > 0) {
         const { errors } = fileRejections[0] || {};
-        const errorType = errors?.[0]?.code || "";
+        const errorType = errors?.[0]?.code || '';
         const errorMessages = generateErrorMessage(
           fileMaxSize,
           errorType,
-          accept,
+          accept
         );
         setErrorMessage(errorMessages);
       }
     },
     onDragEnter: () => {
-      const test = generateErrorMessage(fileMaxSize, "", accept);
+      const test = generateErrorMessage(fileMaxSize, '', accept);
       setErrorMessage(test);
     },
     onDragLeave: () => {
       setErrorMessage(null);
-    },
+    }
   });
 
   let files = acceptedFiles;
 
   const removeServerFiles = (
-    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
     files = [];
@@ -100,7 +100,7 @@ const CustomUploader: FC<IUploader> = ({
   };
 
   const removeFiles = (
-    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
     files = [];
@@ -127,7 +127,7 @@ const CustomUploader: FC<IUploader> = ({
             name,
             required,
             alt: label,
-            role: "button",
+            role: 'button'
           })}
         />
         {!loading ? (
@@ -197,12 +197,12 @@ const CustomUploader: FC<IUploader> = ({
                   {isDragReject && !valueIsEmpty(errorMessage) ? (
                     <SelectLabelContainer>
                       <SelectErrorTitle>
-                        {" "}
-                        {errorMessage?.selectError}{" "}
+                        {' '}
+                        {errorMessage?.selectError}{' '}
                       </SelectErrorTitle>
                       <SelectErrorSubtitle>
-                        {" "}
-                        {errorMessage?.selectErrorAfter}{" "}
+                        {' '}
+                        {errorMessage?.selectErrorAfter}{' '}
                       </SelectErrorSubtitle>
                       <DeleteIconWrapper data-testid="uploader-grid.delete.one">
                         <div onClick={(e) => removeFiles(e)}>
@@ -212,18 +212,18 @@ const CustomUploader: FC<IUploader> = ({
                     </SelectLabelContainer>
                   ) : (
                     <>
-                      <span> {"Drag and drop or"} </span>
+                      <span> {'Drag and drop or'} </span>
                       <UploadLink
                         onClick={open}
                         aria-label="Import"
                         data-testid="uploader-uploadLink"
                       >
-                        {"Select"}
+                        {'Select'}
                       </UploadLink>
                       <span>
-                        {" "}
-                        {uploaderAfterLabel ?? "a file to upload"}
-                      </span>{" "}
+                        {' '}
+                        {uploaderAfterLabel ?? 'a file to upload'}
+                      </span>{' '}
                     </>
                   )}
                 </WrapperBeforeUpload>
@@ -235,7 +235,7 @@ const CustomUploader: FC<IUploader> = ({
             <Grid size={{ xs: 1 }} data-testid="uploader-grid.progress">
               <CircularProgress
                 size={20}
-                style={{ color: "#1E8BC3" }}
+                style={{ color: '#1E8BC3' }}
                 data-testid="uploader-circularProgress"
               />
             </Grid>

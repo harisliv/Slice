@@ -1,12 +1,12 @@
 import {
   stringSchemaMandatoryType,
-  stringSchemaOptionalType,
-} from "@app/utils";
-import { z } from "zod";
+  stringSchemaOptionalType
+} from '@app/utils';
+import { z } from 'zod';
 
 export const AccountEntityOptionSchema = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.string()
 });
 
 export type AccountEntityOption = z.infer<typeof AccountEntityOptionSchema>;
@@ -21,20 +21,20 @@ export const AccountEntityDetailsSchema = z.object({
   id: z.string(),
   category: stringSchemaMandatoryType(),
   dateJoined: z
-    .string({ message: "Date joined is required" })
-    .datetime({ message: "Date joined is required" }),
+    .string({ message: 'Date joined is required' })
+    .datetime({ message: 'Date joined is required' }),
   legalName: stringSchemaOptionalType(),
   identityType: stringSchemaOptionalType(),
   identityNumber: stringSchemaOptionalType(),
   businessActivity: stringSchemaOptionalType(),
   subnationalGovernmentType: stringSchemaOptionalType(),
   subnationalGovernmentTypeOther: stringSchemaOptionalType(),
-  assignedRoles: z.array(z.string()).min(1, "Required field"),
-  tempOption: AccountEntityOptionSchema.optional(),
+  assignedRoles: z.array(z.string()).min(1, 'Required field'),
+  tempOption: AccountEntityOptionSchema.optional()
 });
 
 export const AccountEntityDetailsShape = z.object({
-  ...AccountEntityDetailsSchema._def.shape,
+  ...AccountEntityDetailsSchema._def.shape
 });
 
 export type AccountEntityDetails = z.infer<typeof AccountEntityDetailsSchema>;
@@ -50,7 +50,7 @@ export const contactOrganizationSchema = AccountEntityDetailsSchema.pick({
   businessActivity: true,
   subnationalGovernmentType: true,
   subnationalGovernmentTypeOther: true,
-  tempOption: true,
+  tempOption: true
 });
 
 export type ContactOrganizationSchema = z.infer<
@@ -58,7 +58,7 @@ export type ContactOrganizationSchema = z.infer<
 >;
 
 export const isContactOrganizationSchema = (
-  v: unknown,
+  v: unknown
 ): v is ContactOrganizationSchema =>
   contactOrganizationSchema.safeParse(v).success;
 
@@ -74,51 +74,51 @@ export const leadOrganizationsSchema = AccountEntityDetailsSchema.pick({
   subnationalGovernmentType: true,
   subnationalGovernmentTypeOther: true,
   assignedRoles: true,
-  tempOption: true,
+  tempOption: true
 });
 
 export type LeadOrganizationsSchema = z.infer<typeof leadOrganizationsSchema>;
 
 export const contactOrganizationSchemaDefault: ContactOrganizationSchema = {
-  id: "",
-  name: "",
-  country: "",
-  type: "",
-  legalName: "",
-  identityType: "",
-  identityNumber: "",
-  businessActivity: "",
-  subnationalGovernmentType: "",
-  subnationalGovernmentTypeOther: "",
+  id: '',
+  name: '',
+  country: '',
+  type: '',
+  legalName: '',
+  identityType: '',
+  identityNumber: '',
+  businessActivity: '',
+  subnationalGovernmentType: '',
+  subnationalGovernmentTypeOther: ''
 };
 
 export const leadOrganizationsSchemaDefault: LeadOrganizationsSchema = {
-  id: "",
-  name: "",
-  country: "",
-  type: "",
-  legalName: "",
-  identityType: "",
-  identityNumber: "",
-  businessActivity: "",
-  subnationalGovernmentType: "",
-  subnationalGovernmentTypeOther: "",
-  assignedRoles: [],
+  id: '',
+  name: '',
+  country: '',
+  type: '',
+  legalName: '',
+  identityType: '',
+  identityNumber: '',
+  businessActivity: '',
+  subnationalGovernmentType: '',
+  subnationalGovernmentTypeOther: '',
+  assignedRoles: []
 };
 
 export const participantCreationSchemaDefault: ParticipantCreationSchema = {
-  id: "",
-  name: "",
-  country: "",
-  type: "",
-  category: "",
-  legalName: "",
-  dateJoined: "",
-  identityType: "",
-  identityNumber: "",
-  businessActivity: "",
-  subnationalGovernmentType: "",
-  subnationalGovernmentTypeOther: "",
+  id: '',
+  name: '',
+  country: '',
+  type: '',
+  category: '',
+  legalName: '',
+  dateJoined: '',
+  identityType: '',
+  identityNumber: '',
+  businessActivity: '',
+  subnationalGovernmentType: '',
+  subnationalGovernmentTypeOther: ''
 };
 
 export const participantCreationSchema = AccountEntityDetailsSchema.pick({
@@ -134,7 +134,7 @@ export const participantCreationSchema = AccountEntityDetailsSchema.pick({
   businessActivity: true,
   subnationalGovernmentType: true,
   subnationalGovernmentTypeOther: true,
-  tempOption: true,
+  tempOption: true
 });
 
 export type ParticipantCreationSchema = z.infer<
@@ -144,29 +144,29 @@ export type ParticipantCreationSchema = z.infer<
 const participantUpdateSchema = AccountEntityDetailsSchema.pick({
   category: true,
   dateJoined: true,
-  id: true,
+  id: true
 });
 
 export type ParticipantUpdateSchema = z.infer<typeof participantUpdateSchema>;
 
 export const isParticipantUpdateSchema = (
-  v: unknown,
+  v: unknown
 ): v is ParticipantUpdateSchema => participantUpdateSchema.safeParse(v).success;
 
 // Default values for discriminated union schemas
 export const smartDropdownSchemaDefaults = {
   contactOrganization: {
-    schemaType: "contactOrganization",
-    ...contactOrganizationSchemaDefault,
+    schemaType: 'contactOrganization',
+    ...contactOrganizationSchemaDefault
   },
   leadOrganizations: {
-    schemaType: "leadOrganizations",
-    ...leadOrganizationsSchemaDefault,
+    schemaType: 'leadOrganizations',
+    ...leadOrganizationsSchemaDefault
   },
   participantCreation: {
-    schemaType: "participantCreation",
-    ...participantCreationSchemaDefault,
-  },
+    schemaType: 'participantCreation',
+    ...participantCreationSchemaDefault
+  }
 } as const;
 
 // -------------------------------------
@@ -204,47 +204,47 @@ export type SmartDropdownProps = {
   onSubmit: (items: Option, details: SmartDropdownData) => void;
 };
 
-export type spanOption = "full" | "half" | "third";
+export type spanOption = 'full' | 'half' | 'third';
 
 export type SCHEMA_TYPE =
-  | "contactOrganization"
-  | "leadOrganizations"
-  | "participantCreation";
+  | 'contactOrganization'
+  | 'leadOrganizations'
+  | 'participantCreation';
 
 // Discriminated union schema that automatically validates based on schemaType
 export const SmartDropdownSchema = z
-  .discriminatedUnion("schemaType", [
+  .discriminatedUnion('schemaType', [
     z.object({
-      schemaType: z.literal("contactOrganization"),
-      ...contactOrganizationSchema.shape,
+      schemaType: z.literal('contactOrganization'),
+      ...contactOrganizationSchema.shape
     }),
     z.object({
-      schemaType: z.literal("leadOrganizations"),
-      ...leadOrganizationsSchema.shape,
+      schemaType: z.literal('leadOrganizations'),
+      ...leadOrganizationsSchema.shape
     }),
     z.object({
-      schemaType: z.literal("participantCreation"),
-      ...participantCreationSchema.shape,
-    }),
+      schemaType: z.literal('participantCreation'),
+      ...participantCreationSchema.shape
+    })
   ])
   .superRefine((data, ctx) => {
-    if (data.type === "Subnational Government Agency") {
+    if (data.type === 'Subnational Government Agency') {
       if (!data.subnationalGovernmentType) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: "Subnational government type is required",
-          path: ["subnationalGovernmentType"],
+          message: 'Subnational government type is required',
+          path: ['subnationalGovernmentType']
         });
       }
 
       if (
-        data.subnationalGovernmentType === "Other" &&
+        data.subnationalGovernmentType === 'Other' &&
         !data.subnationalGovernmentTypeOther
       ) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: "Subnational government type other is required",
-          path: ["subnationalGovernmentTypeOther"],
+          message: 'Subnational government type other is required',
+          path: ['subnationalGovernmentTypeOther']
         });
       }
     }
@@ -254,16 +254,16 @@ export type SmartDropdownData = z.infer<typeof SmartDropdownSchema>;
 
 // Type guards for better type safety
 export const isContactOrganizationData = (
-  data: SmartDropdownData,
-): data is SmartDropdownData & { schemaType: "contactOrganization" } =>
-  data.schemaType === "contactOrganization";
+  data: SmartDropdownData
+): data is SmartDropdownData & { schemaType: 'contactOrganization' } =>
+  data.schemaType === 'contactOrganization';
 
 export const isLeadOrganizationsData = (
-  data: SmartDropdownData,
-): data is SmartDropdownData & { schemaType: "leadOrganizations" } =>
-  data.schemaType === "leadOrganizations";
+  data: SmartDropdownData
+): data is SmartDropdownData & { schemaType: 'leadOrganizations' } =>
+  data.schemaType === 'leadOrganizations';
 
 export const isParticipantCreationData = (
-  data: SmartDropdownData,
-): data is SmartDropdownData & { schemaType: "participantCreation" } =>
-  data.schemaType === "participantCreation";
+  data: SmartDropdownData
+): data is SmartDropdownData & { schemaType: 'participantCreation' } =>
+  data.schemaType === 'participantCreation';

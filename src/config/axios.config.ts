@@ -1,7 +1,7 @@
 import axios, {
   type AxiosInstance,
-  type InternalAxiosRequestConfig,
-} from "axios";
+  type InternalAxiosRequestConfig
+} from 'axios';
 
 // const headers = {
 //   'Content-Type': 'application/json',
@@ -13,14 +13,14 @@ import axios, {
 
 const createAxiosInstance = (): AxiosInstance => {
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: import.meta.env.VITE_API_URL
   });
 
   instance.interceptors.request.use(
     (
       config: InternalAxiosRequestConfig<{
         token?: string;
-      }>,
+      }>
     ) => {
       // Add Supabase anon key as default Authorization header
       const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -36,7 +36,7 @@ const createAxiosInstance = (): AxiosInstance => {
       }
       return config;
     },
-    (error) => Promise.reject(error),
+    (error) => Promise.reject(error)
   );
 
   return instance;
