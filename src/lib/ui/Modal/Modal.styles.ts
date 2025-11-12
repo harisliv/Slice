@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import { EnumWeight } from '@app/lib/types';
-import styled from 'styled-components';
-import { H4 } from '../Global';
-import IconButton from '../IconButton';
-import type { ModalType } from './Modal.types';
+import { Box } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import { EnumWeight } from "@app/lib/types";
+import styled from "styled-components";
+import { H4 } from "../Global";
+import IconButton from "../IconButton";
+import type { ModalType } from "./Modal.types";
 
 export const StyledDialog = styled(Dialog)<{
   $modalType: ModalType;
@@ -16,11 +16,11 @@ export const StyledDialog = styled(Dialog)<{
   .MuiPaper-root {
     position: relative;
     border-radius: 8px;
-    width: ${(props) => props.$width || '500px'};
+    width: ${(props) => props.$width || "500px"};
     gap: 10px;
     max-height: 80vh;
     overflow: hidden;
-    max-width: ${() => '100%'};
+    max-width: ${() => "100%"};
   }
 
   .MuiDialog-container {

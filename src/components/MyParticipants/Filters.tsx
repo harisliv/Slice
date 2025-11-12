@@ -1,13 +1,13 @@
-import Grid from '@mui/material/Grid2';
-import { useFormContext } from 'react-hook-form';
-import { pledges, type TFilters } from '@app/types';
-import DatePicker from '../ControlledInput/DatePicker/DatePicker';
-import { ButtonComponent } from '@app/lib/ui';
-import type { VisibilityState } from '@tanstack/react-table';
+import Grid from "@mui/material/Grid2";
+import { useFormContext } from "react-hook-form";
+import { pledges, type TFilters } from "@app/types";
+import DatePicker from "../ControlledInput/DatePicker/DatePicker";
+import { ButtonComponent } from "@app/lib/ui";
+import type { VisibilityState } from "@tanstack/react-table";
 import {
   ControlledSelect,
-  ControlledSelectWithDropdown
-} from '@app/components/ControlledInput';
+  ControlledSelectWithDropdown,
+} from "@app/components/ControlledInput";
 interface FiltersProps {
   onSubmit: (data: TFilters) => void;
   onClear: () => void;
@@ -17,15 +17,15 @@ interface FiltersProps {
 export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
   const {
     handleSubmit,
-    formState: { isDirty, isValid }
+    formState: { isDirty, isValid },
   } = useFormContext<TFilters>();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container rowSpacing={4} columnSpacing={2} padding={'15px 0'}>
+      <Grid container rowSpacing={4} columnSpacing={2} padding={"15px 0"}>
         <Grid
           container
-          justifyContent={'flex-start'}
+          justifyContent={"flex-start"}
           size={{ sm: 12, xs: 12, xxs: 12 }}
         >
           <Grid size={{ sm: 4, xs: 4, xxs: 4 }}>
@@ -53,7 +53,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             placeholder="Select a Participant Type"
             dropdownEnpoint="ParticipantType"
             disabled={!visibility.type}
-            inputProps={{ 'aria-label': 'Select Participant Type' }}
+            inputProps={{ "aria-label": "Select Participant Type" }}
             noOptionsFallbackTitle="No participant type found"
             noOptionsFallbackSubtitle="Please select a different participant type"
           />
@@ -67,7 +67,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             dropdownEnpoint="SubNationalGovernmentType"
             placeholder="Subnational Government Type"
             disabled={!visibility.subnationalGovernment}
-            inputProps={{ 'aria-label': 'Select Subnational Government Type' }}
+            inputProps={{ "aria-label": "Select Subnational Government Type" }}
             noOptionsFallbackTitle="No Subnational Government Type found"
             noOptionsFallbackSubtitle="Please select a different Subnational Government Type"
           />
@@ -80,7 +80,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             dropdownEnpoint="Countries"
             placeholder="Select a Participant Country"
             disabled={!visibility.country}
-            inputProps={{ 'aria-label': 'Select Participant Country' }}
+            inputProps={{ "aria-label": "Select Participant Country" }}
             noOptionsFallbackTitle="No participant country found"
             noOptionsFallbackSubtitle="Please select a different participant country"
           />
@@ -93,7 +93,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             dropdownEnpoint="ParticipantCategory"
             placeholder="Select a Category"
             disabled={!visibility.category}
-            inputProps={{ 'aria-label': 'Select Participant Category' }}
+            inputProps={{ "aria-label": "Select Participant Category" }}
             noOptionsFallbackTitle="No participant category found"
             noOptionsFallbackSubtitle="Please select a different participant category"
           />
@@ -105,11 +105,11 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             name="pledge"
             options={pledges?.map((pledge) => ({
               label: pledge.name,
-              value: pledge.id
+              value: pledge.id,
             }))}
             placeholder="Pledge"
             disabled={!visibility.pledge}
-            inputProps={{ 'aria-label': 'Select pledge' }}
+            inputProps={{ "aria-label": "Select pledge" }}
             noOptionsFallbackTitle="No pledge found"
             noOptionsFallbackSubtitle="Please select a different pledge"
           />
@@ -122,7 +122,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             dropdownEnpoint="IdentifyProviderType"
             placeholder="Identity type"
             disabled={!visibility.identityType}
-            inputProps={{ 'aria-label': 'Select Identity type' }}
+            inputProps={{ "aria-label": "Select Identity type" }}
             noOptionsFallbackTitle="No Identity type found"
             noOptionsFallbackSubtitle="Please select a different Identity type"
           />
@@ -135,7 +135,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
             dropdownEnpoint="BusinessActivities"
             placeholder="Business Activity"
             disabled={!visibility.businessActivity}
-            inputProps={{ 'aria-label': 'Select Business Activity' }}
+            inputProps={{ "aria-label": "Select Business Activity" }}
             noOptionsFallbackTitle="No Business acticity found"
             noOptionsFallbackSubtitle="Please select a different Business acticity"
           />
@@ -143,7 +143,7 @@ export function Filters({ onSubmit, onClear, visibility = {} }: FiltersProps) {
 
         <Grid
           container
-          justifyContent={'flex-end'}
+          justifyContent={"flex-end"}
           size={{ sm: 12, xs: 12, xxs: 12 }}
         >
           <ButtonComponent

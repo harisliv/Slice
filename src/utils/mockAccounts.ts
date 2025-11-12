@@ -1,5 +1,5 @@
 import { apiClient } from "@app/config/axios.config";
-import type { AccountEntityOption } from "@app/types";
+import type { AccountEntityCreateDTO } from "@app/types";
 
 // Sample data for generating realistic account names
 const companyTypes = [
@@ -146,6 +146,89 @@ const nouns = [
   "Networks",
 ];
 
+// Categories
+const categories = ["Member", "Signatory", "Partner", "Observer", "Supporter"];
+
+// Countries (sample from the dropdown)
+const countries = [
+  "United States",
+  "United Kingdom",
+  "Germany",
+  "France",
+  "Spain",
+  "Italy",
+  "Netherlands",
+  "Belgium",
+  "Sweden",
+  "Norway",
+  "Denmark",
+  "Finland",
+  "Poland",
+  "Czech Republic",
+  "Austria",
+  "Switzerland",
+  "Portugal",
+  "Greece",
+  "Ireland",
+  "Japan",
+  "China",
+  "India",
+  "Brazil",
+  "Canada",
+  "Australia",
+  "South Africa",
+  "Mexico",
+  "Argentina",
+  "Chile",
+  "Colombia",
+];
+
+// Identity types
+const identityTypes = [
+  "Tax ID",
+  "Registration Number",
+  "Business License",
+  "EIN",
+  "VAT Number",
+  "Company Number",
+];
+
+// Business activities
+const businessActivities = [
+  "Technology Services",
+  "Financial Services",
+  "Healthcare",
+  "Energy",
+  "Manufacturing",
+  "Retail",
+  "Transportation",
+  "Construction",
+  "Real Estate",
+  "Education",
+  "Media",
+  "Telecommunications",
+  "Agriculture",
+  "Pharmaceuticals",
+  "Automotive",
+  "Aerospace",
+  "Food & Beverage",
+  "Hospitality",
+  "Consulting",
+  "Legal Services",
+];
+
+// Subnational government types
+const subnationalGovernmentTypes = [
+  "State",
+  "Province",
+  "Region",
+  "County",
+  "Municipality",
+  "City",
+  "District",
+  "Other",
+];
+
 /**
  * Generates a random element from an array
  */
@@ -161,49 +244,70 @@ function randomInt(min: number, max: number): number {
 }
 
 /**
- * Generates a single mock account
+ * Generates a random date within the last 5 years
  */
-function generateMockAccount(index: number): AccountEntityOption {
-  const accountType = randomInt(1, 4);
-  let name: string;
+function randomDate(): string {
+  const now = new Date();
+  const fiveYearsAgo = new Date(now.getFullYear() - 5, 0, 1);
+  const randomTime =
+    fiveYearsAgo.getTime() +
+    Math.random() * (now.getTime() - fiveYearsAgo.getTime());
+  return new Date(randomTime).toISOString();
+}
 
-  switch (accountType) {
+/**
+ * Generates a single mock account with full details
+ */
+function generateMockAccount(index: number): AccountEntityCreateDTO {
+  const accountTypeNum = randomInt(1, 4);
+  let name: string;
+  let type: string;
+  let subnationalGovernmentType: string | null = null;
+  let subnationalGovernmentTypeOther: string | null = null;
+
+  switch (accountTypeNum) {
     case 1: // Company
       if (Math.random() > 0.5) {
-        // Format: "Adjective Noun CompanyType"
         name = `${randomElement(adjectives)} ${randomElement(
-          nouns
+          nouns,
         )} ${randomElement(companyTypes)}`;
       } else {
-        // Format: "Sector CompanyType"
         name = `${randomElement(businessSectors)} ${randomElement(
-          companyTypes
+          companyTypes,
         )}`;
       }
+      type = "Company";
       break;
 
     case 2: // City/Government
       if (Math.random() > 0.5) {
-        // Format: "CityName OrganizationType"
         name = `${randomElement(cityNames)} ${randomElement(
-          organizationTypes
+          organizationTypes,
         )}`;
       } else {
-        // Format: "CityName City Council"
         name = `${randomElement(cityNames)} City Council`;
+      }
+      type = Math.random() > 0.5 ? "City" : "Subnational Government Agency";
+      if (type === "Subnational Government Agency") {
+        subnationalGovernmentType = randomElement(subnationalGovernmentTypes);
+        if (subnationalGovernmentType === "Other") {
+          subnationalGovernmentTypeOther = "Custom Government Type";
+        }
       }
       break;
 
     case 3: // Combined format
       name = `${randomElement(adjectives)} ${randomElement(
-        cityNames
+        cityNames,
       )} ${randomElement(organizationTypes)}`;
+      type = randomElement(["NGO", "International Organization", "Foundation"]);
       break;
 
     default: // Simple company name
       name = `${randomElement(businessSectors)} ${randomElement(
-        companyTypes
+        companyTypes,
       )} ${randomInt(100, 9999)}`;
+      type = "Company";
   }
 
   // Add some variety with numbers or additional descriptors
@@ -211,19 +315,41 @@ function generateMockAccount(index: number): AccountEntityOption {
     name = `${name} ${randomInt(1, 5)}`;
   }
 
+  const accountId = `account-${String(index + 1).padStart(6, "0")}`;
+  const selectedCountry = randomElement(countries);
+  const selectedCategory = randomElement(categories);
+  const selectedIdentityType =
+    Math.random() > 0.5 ? randomElement(identityTypes) : null;
+  const selectedBusinessActivity =
+    type === "Company" && Math.random() > 0.3
+      ? randomElement(businessActivities)
+      : null;
+
   return {
-    id: `account-${String(index + 1).padStart(6, "0")}`,
+    id: accountId,
     name: name.trim(),
+    country: selectedCountry,
+    type: type,
+    category: selectedCategory,
+    dateJoined: randomDate(),
+    legalName: Math.random() > 0.3 ? `${name.trim()} Legal Entity` : null,
+    identityType: selectedIdentityType,
+    identityNumber: selectedIdentityType
+      ? `${randomInt(100000, 999999)}`
+      : null,
+    businessActivity: selectedBusinessActivity,
+    subnationalGovernmentType: subnationalGovernmentType,
+    subnationalGovernmentTypeOther: subnationalGovernmentTypeOther,
   };
 }
 
 /**
- * Generates an array of mock accounts
+ * Generates an array of mock accounts with full details
  */
 export function generateMockAccounts(
-  count: number = 2000
-): AccountEntityOption[] {
-  const accounts: AccountEntityOption[] = [];
+  count: number = 2000,
+): AccountEntityCreateDTO[] {
+  const accounts: AccountEntityCreateDTO[] = [];
   const usedNames = new Set<string>();
 
   for (let i = 0; i < count; i++) {
@@ -247,7 +373,7 @@ export function generateMockAccounts(
  * Populates Supabase with mock accounts
  */
 export async function populateMockAccounts(
-  count: number = 2000
+  count: number = 2000,
 ): Promise<void> {
   console.log(`Generating ${count} mock accounts...`);
   const accounts = generateMockAccounts(count);
@@ -261,7 +387,7 @@ export async function populateMockAccounts(
   for (let i = 0; i < accounts.length; i += batchSize) {
     const batch = accounts.slice(i, i + batchSize);
     try {
-      await apiClient.put("/dropdown/accounts", batch);
+      await apiClient.put("/functions/v1/dropdown-accounts", batch);
       inserted += batch.length;
       console.log(`Inserted ${inserted}/${accounts.length} accounts...`);
     } catch (error) {

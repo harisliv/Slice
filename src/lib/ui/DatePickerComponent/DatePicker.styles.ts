@@ -1,5 +1,5 @@
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { styled } from 'styled-components';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { styled } from "styled-components";
 
 export const StyleDatePicker = styled(DatePicker)`
   width: 100%;

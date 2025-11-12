@@ -1,12 +1,12 @@
-import { Box, Button, Step, StepLabel } from '@mui/material';
-import type { DefaultTheme } from 'styled-components';
-import styled from 'styled-components';
-import { P } from '@app/lib/ui';
+import { Box, Button, Step, StepLabel } from "@mui/material";
+import type { DefaultTheme } from "styled-components";
+import styled from "styled-components";
+import { P } from "@app/lib/ui";
 
 export const StepperContainer = styled(Box)<{ $isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => (props.$isMobile ? '10px' : '48px')};
+  gap: ${(props) => (props.$isMobile ? "10px" : "48px")};
 `;
 
 export const StepWrapper = styled(Box)<{
@@ -17,16 +17,16 @@ export const StepWrapper = styled(Box)<{
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${({ active }) => (active ? '#e3f2fd' : '#f5f5f5')};
+  background-color: ${({ active }) => (active ? "#e3f2fd" : "#f5f5f5")};
   border-left: 4px solid
     ${({ completed, active }) =>
-      completed ? '#4caf50' : active ? '#2196f3' : '#bdbdbd'};
+      completed ? "#4caf50" : active ? "#2196f3" : "#bdbdbd"};
 `;
 
 const getStepCircleBgColor = (
   completed?: boolean,
   active?: boolean,
-  theme?: DefaultTheme
+  theme?: DefaultTheme,
 ) => {
   if (!theme) {
     return null;
@@ -36,7 +36,7 @@ const getStepCircleBgColor = (
   } else if (active) {
     return theme.palette.primary.azur;
   } else {
-    return '#BBBBBC';
+    return "#BBBBBC";
   }
 };
 
@@ -110,14 +110,14 @@ export const StyledStepLabel = styled(StepLabel)<{
     font-style: normal !important;
     color: ${({ theme }) => theme.palette.primary.darkerGrey} !important;
     font-weight: 400 !important;
-    margin-left: '10px';
+    margin-left: "10px";
     p {
       font-family: ${({ theme }) => theme.fontFamilies.Roboto};
       font-size: 13px;
       margin: 0;
-      margin-left: '0px';
+      margin-left: "0px";
     }
-    cursor: ${(props) => (props.$clickable ? 'pointer' : 'cursor')};
+    cursor: ${(props) => (props.$clickable ? "pointer" : "cursor")};
     ${({ $completed, $disabled, $active, theme }) => {
       if ($disabled) {
         return `color:
@@ -139,7 +139,7 @@ export const StyledStepLabel = styled(StepLabel)<{
           font-weight: 700 !important;
         `;
       }
-      return ''; // Default return value
+      return ""; // Default return value
     }}
   }
 
@@ -173,12 +173,12 @@ export const StyledStepIcon = styled(P)<{
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: ${(props) => (props.$clickable ? 'pointer' : 'cursor')};
+  cursor: ${(props) => (props.$clickable ? "pointer" : "cursor")};
   color: ${({ $active, $disabled, theme, $completed }) => {
     if ($disabled) {
       return `${theme.palette.controlsAndStatus.disabled}`;
     } else if ($active || $completed) {
-      return 'white';
+      return "white";
     } else {
       return `${theme.palette.primary.azur}`;
     }
@@ -186,13 +186,13 @@ export const StyledStepIcon = styled(P)<{
 
   background-color: ${({ $active, $disabled, $completed, theme }) => {
     if ($disabled) {
-      return 'white';
+      return "white";
     } else if ($completed) {
       return `${theme.palette.secondary.successGreen}`;
     } else if ($active) {
       return `${theme.palette.primary.azur}`;
     } else {
-      return 'white';
+      return "white";
     }
   }};
 
@@ -200,7 +200,7 @@ export const StyledStepIcon = styled(P)<{
     if ($active) {
       return `1px solid`;
     }
-    return 'none';
+    return "none";
   }};
 
   outline-color: ${({ $active, $completed, $disabled, theme }) => {
@@ -211,7 +211,7 @@ export const StyledStepIcon = styled(P)<{
     } else if ($active) {
       return `${theme.palette.primary.azur}`;
     } else {
-      return 'transparent'; // Default return value
+      return "transparent"; // Default return value
     }
   }};
 
@@ -221,7 +221,7 @@ export const StyledStepIcon = styled(P)<{
     } else if ($completed && !$active) {
       return `2px solid ${theme.palette.secondary.successGreen}`;
     } else if ($active) {
-      return '2px solid white';
+      return "2px solid white";
     } else {
       return `1px solid ${theme.palette.primary.azur}`;
     }

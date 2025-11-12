@@ -1,6 +1,6 @@
-import { Box, List } from '@mui/material';
-import Drawer from '@mui/material/Drawer';
-import styled from 'styled-components';
+import { Box, List } from "@mui/material";
+import Drawer from "@mui/material/Drawer";
+import styled from "styled-components";
 
 export const StyledDrawer = styled(Drawer)`
   &.MuiDrawer-root {

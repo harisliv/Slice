@@ -1,14 +1,14 @@
-import '@mui/system';
-import 'styled-components';
+import "@mui/system";
+import "styled-components";
 
-declare module '@mui/system' {
+declare module "@mui/system" {
   interface BreakpointOverrides {
     xxs: true;
     xxl: true;
   }
 }
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     palette: {
       primary: {

@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import React, { type FC } from "react";
 import {
   StyledPagination,
   StyledPaginationContainer,
@@ -6,9 +6,9 @@ import {
   StyledPaginationText,
   StyledPaginationWrapper,
   StyledSelect,
-  StyledSelectContainer
-} from './Pagination.styles';
-import { itemsPerPageOptions, type IPaginationProps } from '@app/types';
+  StyledSelectContainer,
+} from "./Pagination.styles";
+import { itemsPerPageOptions, type IPaginationProps } from "@app/types";
 
 const Pagination: FC<IPaginationProps> = ({ paginationText, table }) => {
   const itemsPerPage = table.getState().pagination.pageSize;
@@ -19,12 +19,12 @@ const Pagination: FC<IPaginationProps> = ({ paginationText, table }) => {
     table.getState().pagination.pageIndex * Number(itemsPerPage);
   const endItem = Math.min(
     (table.getState().pagination.pageIndex + 1) * Number(itemsPerPage),
-    totalItems
+    totalItems,
   );
 
   const handlePageChange = (
     _event: React.ChangeEvent<unknown>,
-    value: number
+    value: number,
   ) => {
     table.setPageIndex(value - 1);
   };
@@ -42,26 +42,26 @@ const Pagination: FC<IPaginationProps> = ({ paginationText, table }) => {
       <StyledPaginationContainer>
         <StyledPaginationContentContainer>
           <StyledPaginationText>
-            {paginationText ?? 'Rows per page'}:
+            {paginationText ?? "Rows per page"}:
           </StyledPaginationText>
           <StyledSelectContainer>
             <StyledSelect
               defaultValue={
                 itemsPerPageOptions.find(
-                  (opt) => Number(opt.value) === itemsPerPage
+                  (opt) => Number(opt.value) === itemsPerPage,
                 )?.value
               }
               onSelectChange={handleItemsPerPageChange}
-              data-testid={'items-per-page'}
+              data-testid={"items-per-page"}
               fullWidth={false}
-              name={'items-per-page'}
+              name={"items-per-page"}
               error={false}
               shrink={true}
               options={itemsPerPageOptions}
             />
           </StyledSelectContainer>
           <StyledPaginationText>
-            {startItem + 1}-{endItem} {'Pagination of'} {totalItems}
+            {startItem + 1}-{endItem} {"Pagination of"} {totalItems}
           </StyledPaginationText>
         </StyledPaginationContentContainer>
 

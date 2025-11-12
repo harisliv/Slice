@@ -1,2 +1,2 @@
-export * from './MyParticipants.types';
-export * from './ParticipantManagement.types';
+export * from "./MyParticipants.types";
+export * from "./ParticipantManagement.types";

@@ -1,5 +1,5 @@
-import type { DialogProps } from '@mui/material';
-import type { ReactNode } from 'react';
+import type { DialogProps } from "@mui/material";
+import type { ReactNode } from "react";
 
 export interface IModal extends DialogProps {
   modalTitle?: ReactNode | string;
@@ -16,7 +16,7 @@ export interface IModal extends DialogProps {
 }
 
 export enum ModalType {
-  NORMAL = 'normal',
-  DOCUMENTS = 'documents',
-  COMMENTS = 'comments'
+  NORMAL = "normal",
+  DOCUMENTS = "documents",
+  COMMENTS = "comments",
 }

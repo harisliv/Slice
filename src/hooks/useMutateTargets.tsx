@@ -1,18 +1,18 @@
-import type { UseMutationResult } from '@tanstack/react-query';
-import useMutatePrivateRoutes from './useMutatePrivateRoutes';
-import { type InitiativeProfileDTO, type TargetFormData } from '@app/types';
-import { useActiveInitiative } from './useActiveInitiative';
-import { normalizeNumber, normalizeString } from '@app/utils';
+import type { UseMutationResult } from "@tanstack/react-query";
+import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
+import { type InitiativeProfileDTO, type TargetFormData } from "@app/types";
+import { useActiveInitiative } from "./useActiveInitiative";
+import { normalizeNumber, normalizeString } from "@app/utils";
 
 type TargetDTO = {
   initiativeId: string;
-  targets: InitiativeProfileDTO['targets'];
+  targets: InitiativeProfileDTO["targets"];
 };
-type TargetFormEntity = TargetFormData['targets'];
+type TargetFormEntity = TargetFormData["targets"];
 
 const convertToServerEntity = (
   value: TargetFormEntity,
-  initiativeId: string
+  initiativeId: string,
 ): TargetDTO => ({
   initiativeId,
   targets: value.map((target) => ({
@@ -27,8 +27,8 @@ const convertToServerEntity = (
     value: normalizeNumber(target.value),
     updateTarget: target.updateTarget,
     targetProgess: target.targetProgress,
-    statusReason: target.statusReason
-  }))
+    statusReason: target.statusReason,
+  })),
 });
 
 export default function useMutateTargets(): UseMutationResult<
@@ -40,7 +40,7 @@ export default function useMutateTargets(): UseMutationResult<
   const mutation = useMutatePrivateRoutes<TargetFormEntity, TargetDTO>({
     endpoint: `/target`,
     convertToServerEntity: (value) =>
-      convertToServerEntity(value, activeInitiative?.id || '')
+      convertToServerEntity(value, activeInitiative?.id || ""),
   });
 
   return mutation;

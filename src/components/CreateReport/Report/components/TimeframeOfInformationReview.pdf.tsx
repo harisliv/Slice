@@ -1,7 +1,7 @@
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import type { TProgressReportingShape } from '@app/types';
-import { formatDate } from '@app/utils';
-import dayjs from 'dayjs';
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import type { TProgressReportingShape } from "@app/types";
+import { formatDate } from "@app/utils";
+import dayjs from "dayjs";
 
 interface TimeframeOfInformationReviewProps {
   data: TProgressReportingShape;
@@ -9,40 +9,40 @@ interface TimeframeOfInformationReviewProps {
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 15
+    marginBottom: 15,
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10
+    fontWeight: "bold",
+    marginBottom: 10,
   },
   card: {
     marginBottom: 10,
     padding: 10,
-    backgroundColor: '#f5f5f5',
-    borderRadius: 4
+    backgroundColor: "#f5f5f5",
+    borderRadius: 4,
   },
   cardTitle: {
     fontSize: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
-    color: '#666'
+    color: "#666",
   },
   cardContent: {
     fontSize: 11,
-    color: '#333'
+    color: "#333",
   },
   row: {
-    flexDirection: 'row',
-    gap: 10
+    flexDirection: "row",
+    gap: 10,
   },
   column: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default function TimeframeOfInformationReviewPDF({
-  data
+  data,
 }: TimeframeOfInformationReviewProps) {
   return (
     <View style={styles.section}>
@@ -51,7 +51,7 @@ export default function TimeframeOfInformationReviewPDF({
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Type of timeframe of information</Text>
         <Text style={styles.cardContent}>
-          {data?.timeframeOfInformation || '-'}
+          {data?.timeframeOfInformation || "-"}
         </Text>
       </View>
 
@@ -65,9 +65,9 @@ export default function TimeframeOfInformationReviewPDF({
             <Text style={styles.cardTitle}>End date</Text>
             <Text style={styles.cardContent}>
               {dayjs(data.startDate)
-                .add(1, 'year')
-                .subtract(1, 'day')
-                .format('DD-MM-YYYY')}
+                .add(1, "year")
+                .subtract(1, "day")
+                .format("DD-MM-YYYY")}
             </Text>
           </View>
         </View>

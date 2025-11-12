@@ -1,4 +1,4 @@
-import type { TRouterLink } from '@app/lib/types';
+import type { TRouterLink } from "@app/lib/types";
 
 export interface IHeader {
   handleLogout: () => void;

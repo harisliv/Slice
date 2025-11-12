@@ -1,1 +1,1 @@
-export { default } from './TimeframeOfInformation';
+export { default } from "./TimeframeOfInformation";

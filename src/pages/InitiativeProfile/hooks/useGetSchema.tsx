@@ -9,20 +9,20 @@ import {
   organizationalStructureSchema,
   type InitiativeProfileFormData,
   initiativeProfileShape,
-  defaultInitiativeProfileFormValues
-} from '@app/types';
-import { isEmpty, pick } from 'lodash';
+  defaultInitiativeProfileFormValues,
+} from "@app/types";
+import { isEmpty, pick } from "lodash";
 import {
   useInitiativeProfile,
   useMultiStepFormActions,
-  useMultiStepFormValues
-} from '@app/hooks';
-import { getStepStatusArray } from '@app/utils/InitiativeProfile';
+  useMultiStepFormValues,
+} from "@app/hooks";
+import { getStepStatusArray } from "@app/utils/InitiativeProfile";
 import {
   useCurrentStep,
-  useFormStepperActions
-} from '@app/hooks/useFormStepper';
-import { useEffect, useMemo } from 'react';
+  useFormStepperActions,
+} from "@app/hooks/useFormStepper";
+import { useEffect, useMemo } from "react";
 
 export default function useGetSchema(step: number) {
   const { updateFormValues } = useMultiStepFormActions();
@@ -44,7 +44,7 @@ export default function useGetSchema(step: number) {
 
   const formData = useMemo(
     () => ({ ...initiativeProfile, ...savedFormData }),
-    [initiativeProfile, savedFormData]
+    [initiativeProfile, savedFormData],
   );
 
   return useMemo(() => {
@@ -52,7 +52,7 @@ export default function useGetSchema(step: number) {
       case 0: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultInitiativeInformationFormValues)
+          Object.keys(defaultInitiativeInformationFormValues),
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -61,18 +61,18 @@ export default function useGetSchema(step: number) {
 
         return {
           schema: initiativeInformationSchema,
-          defaultValues
+          defaultValues,
         };
       }
       case 1: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultGoalsTargetsAndMonitoringFormValues)
+          Object.keys(defaultGoalsTargetsAndMonitoringFormValues),
         );
 
         const withEmptyTargets = {
           ...pickedValues,
-          targets: []
+          targets: [],
         };
 
         const defaultValues = !isEmpty(withEmptyTargets)
@@ -81,13 +81,13 @@ export default function useGetSchema(step: number) {
 
         return {
           schema: goalsTargetsAndMonitoringSchema,
-          defaultValues
+          defaultValues,
         };
       }
       case 2: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultOrganizationalStructureFormValues)
+          Object.keys(defaultOrganizationalStructureFormValues),
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -96,13 +96,13 @@ export default function useGetSchema(step: number) {
 
         return {
           schema: organizationalStructureSchema,
-          defaultValues
+          defaultValues,
         };
       }
       case 3: {
         const pickedValues = pick(
           formData,
-          Object.keys(defaultFunctionFocusAndThemesFormValues)
+          Object.keys(defaultFunctionFocusAndThemesFormValues),
         );
 
         const defaultValues = !isEmpty(pickedValues)
@@ -111,13 +111,13 @@ export default function useGetSchema(step: number) {
 
         return {
           schema: FunctionFocusAndThemesSchema,
-          defaultValues
+          defaultValues,
         };
       }
       default:
         return {
           schema: initiativeProfileShape,
-          defaultValues: defaultInitiativeProfileFormValues
+          defaultValues: defaultInitiativeProfileFormValues,
         };
     }
   }, [step, formData]);

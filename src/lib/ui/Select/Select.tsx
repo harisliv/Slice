@@ -1,19 +1,19 @@
-import { type FC } from 'react';
+import { type FC } from "react";
 import {
   StyledFormControl,
   StyledFormHelperText,
   StyledInput,
   StyledInputLabel,
   StyledMenuItem,
-  StyledSelect
-} from './Select.styles';
-import { gridSizeMap, type ISelect, type Option } from '@app/lib/types';
-import { Grid2, Skeleton } from '@mui/material';
-import { ButtonComponent } from '@app/lib/ui';
+  StyledSelect,
+} from "./Select.styles";
+import { gridSizeMap, type ISelect, type Option } from "@app/lib/types";
+import { Grid2, Skeleton } from "@mui/material";
+import { ButtonComponent } from "@app/lib/ui";
 import {
   StyledFooterBox,
-  StyledFooterListItem
-} from '../Multiselect/Multiselect.styles';
+  StyledFooterListItem,
+} from "../Multiselect/Multiselect.styles";
 
 const Select: FC<ISelect> = ({
   label,
@@ -26,10 +26,10 @@ const Select: FC<ISelect> = ({
   onSelectChange,
   handleClear,
   inputProps = {},
-  noOptionsFallbackTitle = '',
-  noOptionsFallbackSubtitle = '',
-  helperText = '',
-  customGridSize = 'full',
+  noOptionsFallbackTitle = "",
+  noOptionsFallbackSubtitle = "",
+  helperText = "",
+  customGridSize = "full",
   loading,
   borderless = false,
   ...props
@@ -44,7 +44,7 @@ const Select: FC<ISelect> = ({
   const renderInputLabel = (
     <StyledInputLabel
       id={`${name}-label`}
-      data-testid={'select.inputLabel'}
+      data-testid={"select.inputLabel"}
       required={required}
     >
       {label}
@@ -53,7 +53,7 @@ const Select: FC<ISelect> = ({
 
   const handleClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    option: Option
+    option: Option,
   ) => {
     event.stopPropagation();
     onSelectChange?.(option);
@@ -89,14 +89,14 @@ const Select: FC<ISelect> = ({
               variant="rectangular"
               width="100%"
               height={48}
-              sx={{ boarderRadius: '8px' }}
+              sx={{ boarderRadius: "8px" }}
             />
           ) : (
             <StyledSelect
               {...props}
               fullWidth
               labelId={`${name}-label`}
-              data-testid={'select'}
+              data-testid={"select"}
               MenuProps={{ keepMounted: true, disablePortal: true }}
               displayEmpty
               disabled={options.length === 0 || disabled}
@@ -106,7 +106,7 @@ const Select: FC<ISelect> = ({
                   $borderless={borderless}
                   inputProps={{
                     ...inputProps,
-                    'data-testid': 'select.input'
+                    "data-testid": "select.input",
                   }}
                 />
               }

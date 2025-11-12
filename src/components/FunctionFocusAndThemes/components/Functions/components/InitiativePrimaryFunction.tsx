@@ -1,19 +1,19 @@
-import Grid from '@mui/material/Grid2';
+import Grid from "@mui/material/Grid2";
 import {
   FunctionsFocusesAndThemesControlledSelect,
   FunctionsFocusesAndThemesControlledMultiSelect,
-  FormInputDescription
-} from '@app/components';
-import { useFormContext } from 'react-hook-form';
-import { type FunctionFormData } from '@app/types';
-import FunctionsFocusesAndThemesControlledInput from '@app/components/ControlledInput/Variants/FunctionsFocusesAndThemesControlledInput';
-import { Paragraph } from '@app/lib/ui';
+  FormInputDescription,
+} from "@app/components";
+import { useFormContext } from "react-hook-form";
+import { type FunctionFormData } from "@app/types";
+import FunctionsFocusesAndThemesControlledInput from "@app/components/ControlledInput/Variants/FunctionsFocusesAndThemesControlledInput";
+import { Paragraph } from "@app/lib/ui";
 
 export default function InitiativeProfileFunctions() {
   const { watch, setValue } = useFormContext<FunctionFormData>();
 
-  const initiativePrimaryFunction = watch('initiativePrimaryFunction');
-  const initiativeSecondaryFunction = watch('initiativeSecondaryFunction');
+  const initiativePrimaryFunction = watch("initiativePrimaryFunction");
+  const initiativeSecondaryFunction = watch("initiativeSecondaryFunction");
 
   return (
     <Grid container rowSpacing={3} columnSpacing={4}>
@@ -31,7 +31,7 @@ export default function InitiativeProfileFunctions() {
           required
           inputDescriptionTitle="Primary function"
           onChange={() => {
-            setValue('initiativePrimaryFunctionOther', null);
+            setValue("initiativePrimaryFunctionOther", null);
           }}
         />
       </Grid>
@@ -39,7 +39,7 @@ export default function InitiativeProfileFunctions() {
         <FunctionsFocusesAndThemesControlledInput
           name="initiativePrimaryFunctionOther"
           required
-          disabled={initiativePrimaryFunction !== 'Other, please explain'}
+          disabled={initiativePrimaryFunction !== "Other, please explain"}
           inputDescriptionTitle="Primary function other description"
         />
       </Grid>
@@ -50,8 +50,8 @@ export default function InitiativeProfileFunctions() {
           maxOptions={2}
           dropdownEnpoint="InitiativePrimaryFunctionTypes"
           onApplyCapture={(value: string[]) => {
-            if (!value.includes('Other, please explain')) {
-              setValue('initiativeSecondaryFunctionOther', null);
+            if (!value.includes("Other, please explain")) {
+              setValue("initiativeSecondaryFunctionOther", null);
             }
           }}
         />
@@ -61,7 +61,7 @@ export default function InitiativeProfileFunctions() {
           name="initiativeSecondaryFunctionOther"
           required
           disabled={
-            !initiativeSecondaryFunction?.includes('Other, please explain')
+            !initiativeSecondaryFunction?.includes("Other, please explain")
           }
           inputDescriptionTitle="Secondary function other description"
         />

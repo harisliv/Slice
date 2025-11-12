@@ -1,6 +1,6 @@
-import { Theme } from '@app/lib/general';
-import type { IIconProps } from '@app/lib/types';
-import type { FC } from 'react';
+import { Theme } from "@app/lib/general";
+import type { IIconProps } from "@app/lib/types";
+import type { FC } from "react";
 
 const ClearIcon: FC<IIconProps> = ({ fill = Theme.palette.primary.azur }) => (
   <svg

@@ -1,21 +1,21 @@
-import { InputComponent } from '@app/lib/ui';
-import { Controller, useFormContext } from 'react-hook-form';
-import { FormInputDescription } from '@app/components';
-import { Stack } from '@mui/material';
-import { type ControlledInputProps } from '@app/types';
-import { get } from 'lodash';
+import { InputComponent } from "@app/lib/ui";
+import { Controller, useFormContext } from "react-hook-form";
+import { FormInputDescription } from "@app/components";
+import { Stack } from "@mui/material";
+import { type ControlledInputProps } from "@app/types";
+import { get } from "lodash";
 
 export default function ControlledInput<T extends string>({
   name,
   required,
-  customGridSize = 'full',
+  customGridSize = "full",
   inputDescriptionTitle,
   inputDescriptionSubtitle,
   ...restProps
 }: ControlledInputProps<T>) {
   const {
     control,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext();
 
   return (
@@ -39,7 +39,7 @@ export default function ControlledInput<T extends string>({
             customGridSize={customGridSize}
             {...restProps}
             {...field}
-            value={field.value ?? ''}
+            value={field.value ?? ""}
           />
         )}
       />

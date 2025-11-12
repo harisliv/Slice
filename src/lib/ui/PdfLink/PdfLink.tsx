@@ -1,9 +1,9 @@
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import { ExternalLinkIcon } from '@app/lib/icons';
-import type { PdfLinkProps } from './PdfLink.types';
-import { IconWrapper } from './PdfLink.styles';
-import { Paragraph } from '../Global';
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import { ExternalLinkIcon } from "@app/lib/icons";
+import type { PdfLinkProps } from "./PdfLink.types";
+import { IconWrapper } from "./PdfLink.styles";
+import { Paragraph } from "../Global";
 
 export default function PdfLink({ filename, url, size }: PdfLinkProps) {
   return (
@@ -15,7 +15,7 @@ export default function PdfLink({ filename, url, size }: PdfLinkProps) {
         rel="noopener noreferrer"
         color="primary"
         fontWeight={500}
-        sx={{ fontSize: 16, display: 'flex', alignItems: 'center' }}
+        sx={{ fontSize: 16, display: "flex", alignItems: "center" }}
       >
         {filename}
         <IconWrapper>

@@ -1,5 +1,5 @@
-import type { CustomSize } from './Global';
-import type { ISelectBase } from './SelectBase';
+import type { CustomSize } from "./Global";
+import type { ISelectBase } from "./SelectBase";
 
 export type Option = {
   label: string;

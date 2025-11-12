@@ -1,9 +1,9 @@
-import { queryClient } from '@app/config';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { queryClient } from "@app/config";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export default function HydratedQueryClientProvider({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

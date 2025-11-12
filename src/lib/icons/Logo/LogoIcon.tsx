@@ -1,6 +1,6 @@
-import type { FC } from 'react';
-import { Theme } from '@app/lib/general';
-import type { IIconProps } from '@app/lib/types';
+import type { FC } from "react";
+import { Theme } from "@app/lib/general";
+import type { IIconProps } from "@app/lib/types";
 
 const LogoIcon: FC<IIconProps> = ({ fill = Theme.palette.primary.azur }) => (
   <svg
@@ -9,7 +9,7 @@ const LogoIcon: FC<IIconProps> = ({ fill = Theme.palette.primary.azur }) => (
     viewBox="0 0 35 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    data-testid={'mainLogo.icon'}
+    data-testid={"mainLogo.icon"}
   >
     <g clipPath="url(#clip0_565_1545)">
       <path

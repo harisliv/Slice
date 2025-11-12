@@ -1,1 +1,1 @@
-export { default } from './AssignedRolesField';
+export { default } from "./AssignedRolesField";

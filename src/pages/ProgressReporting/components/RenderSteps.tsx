@@ -1,30 +1,26 @@
-import { useCurrentStep } from '@app/hooks/useFormStepper';
-import { FormSection, ButtonComponent, Paragraph } from '@app/lib/ui';
-import { Stack } from '@mui/material';
+import { useCurrentStep } from "@app/hooks/useFormStepper";
+import { FormSection, ButtonComponent, Paragraph } from "@app/lib/ui";
+import { Stack } from "@mui/material";
 import {
   ActionsOutcomesAndImpacts,
   TimeframeOfInformation,
   ProgressOfTargets,
   ChallengesAndOpportunities,
-  ReviewAndSubmission
-} from '@app/components';
-import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
-import { DownloadExportIcon } from '@app/lib/icons';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import ReportPDF from '@app/components/CreateReport/Report/ReportPDF';
-import {
-  useMultiStepFormValues,
-  useActiveInitiative,
-  useDropdownValues
-} from '@app/hooks';
-import type { TProgressReportingShape } from '@app/types';
-import { defaultProgressReportingFormValues } from '@app/types';
-import dayjs from 'dayjs';
+  ReviewAndSubmission,
+} from "@app/components";
+import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
+import { DownloadExportIcon } from "@app/lib/icons";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ReportPDF from "@app/components/CreateReport/Report/ReportPDF";
+import { useMultiStepFormValues, useActiveInitiative } from "@app/hooks";
+import type { TProgressReportingShape } from "@app/types";
+import { defaultProgressReportingFormValues } from "@app/types";
+import dayjs from "dayjs";
 
 const getStepConfigurations = (data: TProgressReportingShape) => [
   {
-    step: '1',
-    title: 'Timeframe of information',
+    step: "1",
+    title: "Timeframe of information",
     subtitle: (
       <Stack spacing={3}>
         <Paragraph variant="small-regular">
@@ -49,45 +45,44 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
       </Stack>
     ),
     content: <TimeframeOfInformation />,
-    hasRequiredLabel: true
+    hasRequiredLabel: true,
   },
   {
-    step: '2',
+    step: "2",
     title: CREATE_REPORT_FIELD_INFO.actions.title,
     subtitle: CREATE_REPORT_FIELD_INFO.actions.subtitle,
     content: <ActionsOutcomesAndImpacts />,
-    hasRequiredLabel: true
+    hasRequiredLabel: true,
   },
   {
-    step: '3',
-    title: 'Progress of targets',
+    step: "3",
+    title: "Progress of targets",
     subtitle:
-      'In this section, you should provide information on the progress of the targets set by the initiative.',
+      "In this section, you should provide information on the progress of the targets set by the initiative.",
     content: <ProgressOfTargets />,
-    hasRequiredLabel: true
+    hasRequiredLabel: true,
   },
   {
-    step: '4',
-    title: 'Challenges and opportunities',
+    step: "4",
+    title: "Challenges and opportunities",
     subtitle:
-      'In this section, you should provide information on the challenges faced and opportunities identified by the initiative.',
+      "In this section, you should provide information on the challenges faced and opportunities identified by the initiative.",
     content: <ChallengesAndOpportunities />,
-    hasRequiredLabel: true
+    hasRequiredLabel: true,
   },
   {
-    step: '5',
-    title: 'Review and submission',
+    step: "5",
+    title: "Review and submission",
     subtitle: undefined,
     content: <ReviewAndSubmission data={data} />,
-    hasRequiredLabel: false
-  }
+    hasRequiredLabel: false,
+  },
 ];
 
 export default function RenderSteps() {
   const currentStep = useCurrentStep();
   const { activeInitiative } = useActiveInitiative();
   const savedFormData = useMultiStepFormValues<TProgressReportingShape>();
-  const { mappedData: targetsMappedData } = useDropdownValues('Targets');
 
   const fullData: TProgressReportingShape = {
     ...defaultProgressReportingFormValues,
@@ -95,10 +90,8 @@ export default function RenderSteps() {
     actions:
       savedFormData.actions?.map((action) => ({
         ...action,
-        associatedTargets: action.associatedTargets?.map(
-          (target) => targetsMappedData[target] || target
-        )
-      })) || []
+        associatedTargets: action.associatedTargets?.map((target) => target),
+      })) || [],
   };
 
   const stepConfigurations = getStepConfigurations(fullData);
@@ -110,7 +103,10 @@ export default function RenderSteps() {
 
   const getHeaderChildren = () => {
     if (currentStep === 4) {
-      const fileName = `${activeInitiative?.name.replace(/ /g, '-')}_Progress_${dayjs().year()}.pdf`;
+      const fileName = `${activeInitiative?.name.replace(
+        / /g,
+        "-",
+      )}_Progress_${dayjs().year()}.pdf`;
 
       return (
         <PDFDownloadLink

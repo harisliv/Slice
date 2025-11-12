@@ -1,9 +1,9 @@
-import { Stack, Divider } from '@mui/material';
-import TimeframeOfInformationReview from './components/TimeframeOfInformationReview';
-import ActionsOutcomesImpactsReview from './components/ActionsOutcomesImpactsReview';
-import ProgressOfTargetsReview from './components/ProgressOfTargetsReview';
-import ChallengesAndOpportunitiesReview from './components/ChallengesAndOpportunitiesReview';
-import type { TProgressReportingShape } from '@app/types';
+import { Stack, Divider } from "@mui/material";
+import TimeframeOfInformationReview from "./components/TimeframeOfInformationReview";
+import ActionsOutcomesImpactsReview from "./components/ActionsOutcomesImpactsReview";
+import ProgressOfTargetsReview from "./components/ProgressOfTargetsReview";
+import ChallengesAndOpportunitiesReview from "./components/ChallengesAndOpportunitiesReview";
+import type { TProgressReportingShape } from "@app/types";
 
 interface ReportProps {
   data: TProgressReportingShape;

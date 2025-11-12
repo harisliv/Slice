@@ -1,13 +1,12 @@
-import { InfoCard, TitleAction } from '@app/lib/ui';
-import { NavLink } from 'react-router';
-import { Divider, Stack } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import { FUNCTION_FOCUS_THEMES_FIELD_INFO } from '@app/constants';
-import type { InitiativeProfileFormData } from '@app/types';
-import { useDropdownValues } from '@app/hooks';
+import { InfoCard, TitleAction } from "@app/lib/ui";
+import { NavLink } from "react-router";
+import { Divider, Stack } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { FUNCTION_FOCUS_THEMES_FIELD_INFO } from "@app/constants";
+import type { InitiativeProfileFormData } from "@app/types";
 
 export default function FunctionFocusAndThemesDisplayMode({
-  initiativeProfile
+  initiativeProfile,
 }: {
   initiativeProfile?: InitiativeProfileFormData;
 }) {
@@ -19,40 +18,24 @@ export default function FunctionFocusAndThemesDisplayMode({
     regions,
     countries,
     marrakechPartnershipThemes,
-    sustainableDevelopmentGoals
+    sustainableDevelopmentGoals,
   } = initiativeProfile || {};
 
   let doubleTitle;
   let doubleTitleOptions;
 
-  const { mappedData: countriesMappedData } = useDropdownValues('Countries');
-  const { mappedData: regionsMappedData } = useDropdownValues('Regions');
-  const { mappedData: sustainableDevelopmentGoalsMappedData } =
-    useDropdownValues('SustainableDevelopmentGoals');
-  const { mappedData: marrakechPartnershipThemesMappedData } =
-    useDropdownValues('MarrakechPartnershipThemes');
-
-  const mappedRegions = regions?.map((i) => regionsMappedData[i]);
-  const mappedCountries = countries?.map((i) => countriesMappedData[i]);
-  const mappedSustainableDevelopmentGoals = sustainableDevelopmentGoals?.map(
-    (i) => sustainableDevelopmentGoalsMappedData[i]
-  );
-  const mappedMarrakechPartnershipThemes = marrakechPartnershipThemes?.map(
-    (i) => marrakechPartnershipThemesMappedData[i]
-  );
-
   switch (initiativeGeographicalFocus) {
-    case 'Regional':
-      doubleTitle = 'Regions';
-      doubleTitleOptions = mappedRegions;
+    case "Regional":
+      doubleTitle = "Regions";
+      doubleTitleOptions = regions;
       break;
-    case 'Multinational':
-      doubleTitle = 'Countries';
-      doubleTitleOptions = mappedCountries;
+    case "Multinational":
+      doubleTitle = "Countries";
+      doubleTitleOptions = countries;
       break;
-    case 'National':
-      doubleTitle = 'Country';
-      doubleTitleOptions = mappedCountries;
+    case "National":
+      doubleTitle = "Country";
+      doubleTitleOptions = countries;
       break;
     default:
       doubleTitle = undefined;
@@ -72,15 +55,15 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.functions.subtitle}
             content={{
-              type: 'list',
+              type: "list",
               value: !initiativeSecondaryFunction
                 ? (initiativePrimaryFunction && [initiativePrimaryFunction]) ||
                   []
                 : (initiativePrimaryFunction && [
                     initiativePrimaryFunction,
-                    ...initiativeSecondaryFunction
+                    ...initiativeSecondaryFunction,
                   ]) ||
-                  []
+                  [],
             }}
           />
         </Grid>
@@ -96,8 +79,8 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.focuses.subtitle}
             content={{
-              type: 'list',
-              value: initiativeFocus ? [initiativeFocus] : []
+              type: "list",
+              value: initiativeFocus ? [initiativeFocus] : [],
             }}
           />
         </Grid>
@@ -105,9 +88,9 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={doubleTitle}
             content={{
-              type: 'list',
-              doubleTitle: 'Geographical Focus',
-              value: doubleTitleOptions
+              type: "list",
+              doubleTitle: "Geographical Focus",
+              value: doubleTitleOptions,
             }}
           />
         </Grid>
@@ -123,10 +106,10 @@ export default function FunctionFocusAndThemesDisplayMode({
           <InfoCard
             title={FUNCTION_FOCUS_THEMES_FIELD_INFO.themes.subtitle}
             content={{
-              type: 'list',
-              value: mappedMarrakechPartnershipThemes
-                ? [...mappedMarrakechPartnershipThemes]
-                : []
+              type: "list",
+              value: marrakechPartnershipThemes
+                ? [...marrakechPartnershipThemes]
+                : [],
             }}
           />
         </Grid>
@@ -136,10 +119,10 @@ export default function FunctionFocusAndThemesDisplayMode({
               FUNCTION_FOCUS_THEMES_FIELD_INFO.sustainableDevGoals.subtitle
             }
             content={{
-              type: 'list',
-              value: mappedSustainableDevelopmentGoals
-                ? [...mappedSustainableDevelopmentGoals]
-                : []
+              type: "list",
+              value: sustainableDevelopmentGoals
+                ? [...sustainableDevelopmentGoals]
+                : [],
             }}
           />
         </Grid>

@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import { ExitIcon } from '@app/lib/icons';
+import type { FC } from "react";
+import { ExitIcon } from "@app/lib/icons";
 import {
   CloseButton,
   DialogBody,
@@ -8,12 +8,12 @@ import {
   StyledDialog,
   StyledDividingLine,
   StyledHeaderTitle,
-  StyledTitle
-} from './Modal.styles';
-import type { IModal } from './Modal.types';
-import { ModalType } from './Modal.types';
-import { Box } from '@mui/material';
-import SkeletonComponent from '../Skeleton';
+  StyledTitle,
+} from "./Modal.styles";
+import type { IModal } from "./Modal.types";
+import { ModalType } from "./Modal.types";
+import { Box } from "@mui/material";
+import SkeletonComponent from "../Skeleton";
 
 const Modal: FC<IModal> = ({
   headerIcon,
@@ -37,7 +37,7 @@ const Modal: FC<IModal> = ({
     className="modal-wrapper"
     data-testid="modal.wrapper"
     onClose={(_, r) => {
-      if (r === 'backdropClick') return;
+      if (r === "backdropClick") return;
       onClose();
     }}
     $modalType={modalType}
@@ -63,7 +63,7 @@ const Modal: FC<IModal> = ({
     </DialogHeaderContainer>
     <StyledDividingLine />
     {loading ? (
-      <Box sx={{ minHeight: $minHeight ?? 'auto', position: 'relative' }}>
+      <Box sx={{ minHeight: $minHeight ?? "auto", position: "relative" }}>
         <SkeletonComponent />
       </Box>
     ) : (

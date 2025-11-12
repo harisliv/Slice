@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
-import styled from 'styled-components';
+import { Box } from "@mui/material";
+import styled from "styled-components";
 
 export const StyledFormActionWrapper = styled(Box)`
   display: flex;
@@ -45,17 +45,17 @@ export const MobileGlobalContainer = styled(Box)<{ $isExpanded?: boolean }>`
   gap: 20px;
   bottom: 0px;
   width: 100%;
-  height: ${(props) => (props.$isExpanded ? 'fit-content' : '25px')};
+  height: ${(props) => (props.$isExpanded ? "fit-content" : "25px")};
   position: fixed;
   background: white;
   border-top: 1px solid ${(props) => props.theme.palette.secondary.lightGreen};
-  padding: ${(props) => (props.$isExpanded ? '15px 24px' : '5px 24px')};
+  padding: ${(props) => (props.$isExpanded ? "15px 24px" : "5px 24px")};
   z-index: 123;
   box-shadow: 0px 4px 12px 4px rgba(25, 25, 112, 0.08);
 `;
 
 export const MobileChildrenContainer = styled(Box)<{ $isExpanded?: boolean }>`
-  display: ${(props) => (props.$isExpanded ? 'flex' : 'none')};
+  display: ${(props) => (props.$isExpanded ? "flex" : "none")};
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -74,7 +74,7 @@ export const StyledIcon = styled(Box)`
 export const StyledIconContainer = styled(Box)<{ $isExpanded?: boolean }>`
   position: absolute;
   left: 10px;
-  bottom: ${(props) => (props.$isExpanded ? '126px' : '24px')};
+  bottom: ${(props) => (props.$isExpanded ? "126px" : "24px")};
   border-bottom: 1px solid
     ${(props) => props.theme.palette.secondary.lightGreen} !important;
   width: 30px;

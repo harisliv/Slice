@@ -1,15 +1,15 @@
 import {
   convertToTableEntity,
-  isParticipantManagementFormData
-} from '@app/utils/MyParticipants';
-import useGetPrivateRoute from './useGetPrivateRoutes';
+  isParticipantManagementFormData,
+} from "@app/utils/MyParticipants";
+import useGetPrivateRoute from "./useGetPrivateRoutes";
 import type {
   ParticipantManagementDTO,
-  ParticipantManagementFormData
-} from '@app/types';
-import { useActiveInitiative } from './useActiveInitiative';
-import type { Option } from '@app/lib/types';
-import { useMemo } from 'react';
+  ParticipantManagementFormData,
+} from "@app/types";
+import { useActiveInitiative } from "./useActiveInitiative";
+import type { Option } from "@app/lib/types";
+import { useMemo } from "react";
 
 export default function useMyParticipants() {
   const { activeInitiative } = useActiveInitiative();
@@ -17,10 +17,10 @@ export default function useMyParticipants() {
     ParticipantManagementFormData,
     ParticipantManagementDTO
   >({
-    endpoint: `/participant/initiative/${activeInitiative?.id}`,
-    queryKey: ['getMyParticipants', activeInitiative?.id],
+    endpoint: `/functions/v1/participant/initiative/${activeInitiative?.id}`,
+    queryKey: ["getMyParticipants", activeInitiative?.id],
     typeGuard: isParticipantManagementFormData,
-    convertToClientEntity: convertToTableEntity
+    convertToClientEntity: convertToTableEntity,
   });
 
   const selectOptions: Option[] = useMemo(() => {
@@ -28,13 +28,13 @@ export default function useMyParticipants() {
 
     return queryResult.data.map((participant) => ({
       label:
-        participant.entityOperatingName || participant.legalName || 'Unknown',
-      value: participant.accountId
+        participant.entityOperatingName || participant.legalName || "Unknown",
+      value: participant.accountId,
     }));
   }, [queryResult.data]);
 
   return {
     ...queryResult,
-    selectOptions
+    selectOptions,
   };
 }

@@ -1,7 +1,7 @@
-import { OrganizationalStructureControlledMultiSelect } from '@app/components/ControlledInput';
-import { useFormContext } from 'react-hook-form';
-import { type InvolvedEntitiesFormData } from '@app/types';
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
+import { OrganizationalStructureControlledMultiSelect } from "@app/components/ControlledInput";
+import { useFormContext } from "react-hook-form";
+import { type InvolvedEntitiesFormData } from "@app/types";
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
 
 export default function SignatoryCriteria() {
   const { setValue } = useFormContext<InvolvedEntitiesFormData>();
@@ -18,15 +18,15 @@ export default function SignatoryCriteria() {
       }
       dropdownEnpoint="SignatoriesAndMembers"
       onApplyCapture={(value) => {
-        if (!value.includes('Signatories')) {
-          setValue('signatoryCriteria', '');
-          setValue('signatoryFollowUps', []);
-          setValue('signatoryFollowUpsOther', '');
-          setValue('signatoryRemoval', '');
+        if (!value.includes("Signatories")) {
+          setValue("signatoryCriteria", "");
+          setValue("signatoryFollowUps", []);
+          setValue("signatoryFollowUpsOther", "");
+          setValue("signatoryRemoval", "");
         }
 
-        if (!value.includes('Members')) {
-          setValue('memberInformation', '');
+        if (!value.includes("Members")) {
+          setValue("memberInformation", "");
         }
 
         // if (value.includes('We do not have participants')) {

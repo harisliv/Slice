@@ -1,18 +1,18 @@
-import { useMediaQuery, useTheme } from '@mui/system';
-import type { FC } from 'react';
-import React, { useMemo, useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@app/lib/icons';
-import { Theme } from '@app/lib/general';
-import { valueIsEmpty } from '@app/lib/general';
-import TabContent from './TabContent';
+import { useMediaQuery, useTheme } from "@mui/system";
+import type { FC } from "react";
+import React, { useMemo, useState } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@app/lib/icons";
+import { Theme } from "@app/lib/general";
+import { valueIsEmpty } from "@app/lib/general";
+import TabContent from "./TabContent";
 import {
   NavigationButton,
   StyledNavigationWrapper,
   StyledTab,
   StyledTabs,
-  StyledTabsWrapper
-} from './Tabs.styles';
-import type { ITabItem, ITabsProps } from './Tabs.types';
+  StyledTabsWrapper,
+} from "./Tabs.styles";
+import type { ITabItem, ITabsProps } from "./Tabs.types";
 
 const Tabs: FC<ITabsProps> = ({
   tabs,
@@ -50,7 +50,7 @@ const Tabs: FC<ITabsProps> = ({
           aria-controls={`tabpanel-${index}`}
         />
       )),
-    [tabs, value]
+    [tabs, value],
   );
 
   const renderedTabContent = useMemo(
@@ -65,9 +65,9 @@ const Tabs: FC<ITabsProps> = ({
             >
               {tab.content}
             </TabContent>
-          )
+          ),
       ),
-    [tabs, value]
+    [tabs, value],
   );
 
   return (
@@ -90,10 +90,10 @@ const Tabs: FC<ITabsProps> = ({
           slotProps={{
             indicator: {
               style: {
-                border: '0px solid',
-                borderRadius: '25px'
-              }
-            }
+                border: "0px solid",
+                borderRadius: "25px",
+              },
+            },
           }}
           {...props}
         >

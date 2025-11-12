@@ -1,15 +1,15 @@
-import { Select } from '@app/lib/ui';
-import { Controller, useFormContext } from 'react-hook-form';
-import { type ControlledSelectProps } from '@app/types';
-import { Stack } from '@mui/material';
-import FormInputDescription from '../FormInputDescription';
-import { get } from 'lodash';
+import { Select } from "@app/lib/ui";
+import { Controller, useFormContext } from "react-hook-form";
+import { type ControlledSelectProps } from "@app/types";
+import { Stack } from "@mui/material";
+import FormInputDescription from "../FormInputDescription";
+import { get } from "lodash";
 
 export default function ControlledSelect<T extends string>({
   name,
   inputDescriptionTitle,
   inputDescriptionSubtitle,
-  customGridSize = 'full',
+  customGridSize = "full",
   required,
   helperText,
   inputPlaceholder,
@@ -18,7 +18,7 @@ export default function ControlledSelect<T extends string>({
 }: ControlledSelectProps<T>) {
   const {
     control,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext();
 
   return (
@@ -43,11 +43,11 @@ export default function ControlledSelect<T extends string>({
             customGridSize={customGridSize}
             {...restProps}
             {...field}
-            value={field.value ?? ''}
+            value={field.value ?? ""}
             handleClear={() => {
-              field?.onChange('', { shouldValidate: true });
+              field?.onChange("", { shouldValidate: true });
             }}
-            defaultValue={''}
+            defaultValue={""}
             onChange={(event, option) => {
               field.onChange(event);
               restProps.onChange?.(event, option);

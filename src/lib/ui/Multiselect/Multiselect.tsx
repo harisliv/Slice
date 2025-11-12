@@ -1,16 +1,16 @@
-import { Grid2, MenuItem, Skeleton } from '@mui/material';
-import { useState } from 'react';
-import { ButtonComponent, Checkbox, MaxOptions } from '@app/lib/ui';
-import type { IMultiSelect } from './Multiselect.types';
+import { Grid2, MenuItem, Skeleton } from "@mui/material";
+import { useState } from "react";
+import { ButtonComponent, Checkbox, MaxOptions } from "@app/lib/ui";
+import type { IMultiSelect } from "./Multiselect.types";
 import {
   StyledFormControl,
   StyledFormHelperText,
   StyledInput,
   StyledInputLabel,
-  StyledSelect
-} from '../Select/Select.styles';
-import { StyledFooterBox, StyledFooterListItem } from './Multiselect.styles';
-import { gridSizeMap } from '@app/lib/types';
+  StyledSelect,
+} from "../Select/Select.styles";
+import { StyledFooterBox, StyledFooterListItem } from "./Multiselect.styles";
+import { gridSizeMap } from "@app/lib/types";
 
 export default function MultiSelect({
   label,
@@ -23,7 +23,7 @@ export default function MultiSelect({
   error,
   inputProps = {},
   onApply,
-  customGridSize = 'full',
+  customGridSize = "full",
   loading,
   disabled,
   ...props
@@ -38,14 +38,14 @@ export default function MultiSelect({
     <StyledInputLabel
       required={required}
       id={`${name}-label`}
-      data-testid={'multiselect.inputLabel'}
+      data-testid={"multiselect.inputLabel"}
     >
       {label}
     </StyledInputLabel>
   );
 
   const maxOptionsValue =
-    typeof maxOptions === 'number' ? maxOptions : options.length;
+    typeof maxOptions === "number" ? maxOptions : options.length;
 
   const showMaxOptionsNotification = tempValue.length === maxOptionsValue;
 
@@ -60,12 +60,12 @@ export default function MultiSelect({
                 variant="rectangular"
                 width="100%"
                 height={48}
-                sx={{ boarderRadius: '8px' }}
+                sx={{ boarderRadius: "8px" }}
               />
             ) : (
               <StyledSelect
                 {...props}
-                defaultValue={['']}
+                defaultValue={[""]}
                 name={name}
                 required={required}
                 disabled={disabled || !options || options.length === 0}
@@ -76,7 +76,7 @@ export default function MultiSelect({
                     name={name}
                     inputProps={{
                       ...inputProps,
-                      'data-testid': 'select.input'
+                      "data-testid": "select.input",
                     }}
                   />
                 }
@@ -100,20 +100,20 @@ export default function MultiSelect({
                   const labels = options
                     .filter((o) => vals.includes(o.value))
                     .map((o) => o.label);
-                  return labels.join(', ');
+                  return labels.join(", ");
                 }}
                 MenuProps={{
                   PaperProps: {
-                    sx: { maxHeight: 360 }
+                    sx: { maxHeight: 360 },
                   },
                   MenuListProps: {
                     sx: {
                       maxHeight: 300,
-                      overflowY: 'auto',
-                      position: 'relative',
-                      p: 0
-                    }
-                  }
+                      overflowY: "auto",
+                      position: "relative",
+                      p: 0,
+                    },
+                  },
                 }}
               >
                 {options.map((opt) => (
@@ -147,7 +147,7 @@ export default function MultiSelect({
                       onClick={(e) => {
                         e.stopPropagation();
                         const filteredValue = tempValue.filter(
-                          (item) => String(item).trim() !== ''
+                          (item) => String(item).trim() !== "",
                         );
                         onApply(filteredValue);
                         setMenuOpen(false);

@@ -1,1 +1,1 @@
-export { default } from './IdentityTypeField';
+export { default } from "./IdentityTypeField";

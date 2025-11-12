@@ -1,4 +1,4 @@
-import type { SelectProps } from '@mui/material';
+import type { SelectProps } from "@mui/material";
 
 export type ISelectBase = SelectProps & {
   name: string;

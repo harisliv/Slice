@@ -1,18 +1,18 @@
-import { Grid2, TableCell } from '@mui/material';
+import { Grid2, TableCell } from "@mui/material";
 import {
   StyledHeader2Cell,
   StyledTable2Header,
   StyledTable2Row,
   TableComponent,
-  TableSort2
-} from '@app/lib/ui';
+  TableSort2,
+} from "@app/lib/ui";
 import {
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
   flexRender,
-  type ColumnDef
-} from '@tanstack/react-table';
+  type ColumnDef,
+} from "@tanstack/react-table";
 
 type Props<T> = {
   columns: ColumnDef<T, any>[];
@@ -25,11 +25,11 @@ export default function GenericTable<T>({ columns, data }: Props<T>) {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    enableMultiSort: true
+    enableMultiSort: true,
   });
 
   const pickWidth = (col: any) =>
-    (col?.columnDef?.meta?.width as string) ?? 'auto';
+    (col?.columnDef?.meta?.width as string) ?? "auto";
 
   const headerGroups = table.getHeaderGroups()?.map((hg) => (
     <StyledTable2Header key={hg.id}>
@@ -46,7 +46,7 @@ export default function GenericTable<T>({ columns, data }: Props<T>) {
               wrap="nowrap"
               alignItems="center"
               onClick={h.column.getToggleSortingHandler()}
-              className={h.column.getCanSort() ? 'sortable' : undefined}
+              className={h.column.getCanSort() ? "sortable" : undefined}
             >
               {flexRender(h.column.columnDef.header, h.getContext())}
               {h.column.getCanSort() && <TableSort2 column={h.column} />}
@@ -64,7 +64,7 @@ export default function GenericTable<T>({ columns, data }: Props<T>) {
           key={cell.id}
           style={{
             width: pickWidth(cell.column),
-            padding: '4px 8px'
+            padding: "4px 8px",
           }}
         >
           {flexRender(cell.column.columnDef.cell, cell.getContext())}

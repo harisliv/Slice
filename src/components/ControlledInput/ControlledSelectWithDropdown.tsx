@@ -1,19 +1,19 @@
-import { type ControlledSelectWithDropdownProps } from '@app/types';
-import { useDropdownValues } from '@app/hooks';
-import ControlledSelect from './ControlledSelect';
+import { type ControlledSelectWithDropdownProps } from "@app/types";
+import { useDropdownValues } from "@app/hooks";
+import ControlledSelect from "./ControlledSelect";
 
 export default function ControlledSelectWithDropdown<T extends string>({
   name,
   inputDescriptionTitle,
   inputDescriptionSubtitle,
-  customGridSize = 'full',
+  customGridSize = "full",
   required,
   helperText,
   inputPlaceholder,
   dropdownEnpoint,
   ...restProps
 }: ControlledSelectWithDropdownProps<T>) {
-  const { data: dropdownData, isLoading } = useDropdownValues(dropdownEnpoint);
+  const { data: options, isLoading } = useDropdownValues(dropdownEnpoint);
 
   return (
     <ControlledSelect
@@ -24,7 +24,7 @@ export default function ControlledSelectWithDropdown<T extends string>({
       required={required}
       helperText={helperText}
       inputPlaceholder={inputPlaceholder}
-      options={dropdownData}
+      options={options}
       loading={isLoading}
       {...restProps}
     />

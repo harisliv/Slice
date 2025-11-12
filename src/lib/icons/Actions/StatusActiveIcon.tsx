@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import type { IIconProps } from '@app/lib/types';
+import type { FC } from "react";
+import type { IIconProps } from "@app/lib/types";
 
 const StatusActiveIcon: FC<IIconProps> = () => (
   <svg

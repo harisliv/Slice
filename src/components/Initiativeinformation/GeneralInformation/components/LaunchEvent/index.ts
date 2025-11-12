@@ -1,1 +1,1 @@
-export { default } from './LaunchEvent';
+export { default } from "./LaunchEvent";

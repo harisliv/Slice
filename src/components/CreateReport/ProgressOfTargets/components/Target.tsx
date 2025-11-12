@@ -1,27 +1,32 @@
-import Grid from '@mui/material/Grid2';
-import { CustomAccordion, Paragraph, Table2Component, Tooltip } from '@app/lib/ui';
+import Grid from "@mui/material/Grid2";
+import {
+  CustomAccordion,
+  Paragraph,
+  Table2Component,
+  Tooltip,
+} from "@app/lib/ui";
 import {
   isProgressOfTargetsSchema,
-  type ProgressOfTargetsFormData
-} from '@app/types';
+  type ProgressOfTargetsFormData,
+} from "@app/types";
 import {
   StyledHeader2Cell,
   StyledTable2Header,
-  StyledTable2Row
-} from '@app/lib/ui';
-import { Box, TableCell } from '@mui/material';
-import { PendingIcon, ProvidedIcon } from '@app/lib/icons';
+  StyledTable2Row,
+} from "@app/lib/ui";
+import { Box, TableCell } from "@mui/material";
+import { PendingIcon, ProvidedIcon } from "@app/lib/icons";
 import ControlledInput, {
   ControlledSelectWithDropdown,
-  NumericControlledInput
-} from '@app/components/ControlledInput';
-import { PROGRESS_OF_TARGETS_FIELD_INFO } from '@app/constants';
-import { useFormContext } from 'react-hook-form';
-import { renderValueOrHyphen } from '@app/utils';
-import { TagStatus } from '@app/lib/types';
+  NumericControlledInput,
+} from "@app/components/ControlledInput";
+import { PROGRESS_OF_TARGETS_FIELD_INFO } from "@app/constants";
+import { useFormContext } from "react-hook-form";
+import { renderValueOrHyphen } from "@app/utils";
+import { TagStatus } from "@app/lib/types";
 
 interface TargetDisplayItemProps {
-  target: ProgressOfTargetsFormData['targets'][0];
+  target: ProgressOfTargetsFormData["targets"][0];
   index: number;
   onActionClick?: (event?: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 }
@@ -29,7 +34,7 @@ interface TargetDisplayItemProps {
 export default function Target({
   target,
   index,
-  onActionClick = () => {}
+  onActionClick = () => {},
 }: TargetDisplayItemProps) {
   const { watch } = useFormContext<ProgressOfTargetsFormData>();
   const currentTarget = watch(`targets.${index}`);
@@ -37,21 +42,21 @@ export default function Target({
 
   const isValid = isProgressOfTargetsSchema(
     { targets: [currentTarget] },
-    false
+    false,
   );
 
   const getColumns = () => [
-    'Target year',
-    'Target base year',
-    'Target type',
-    'Target unit',
-    'Target value'
+    "Target year",
+    "Target base year",
+    "Target type",
+    "Target unit",
+    "Target value",
   ];
   const getColumns2 = () => [
-    'Latest Reported Year',
-    'Latest target overall status',
-    'Latest progress description',
-    'Current value'
+    "Latest Reported Year",
+    "Latest target overall status",
+    "Latest progress description",
+    "Current value",
   ];
 
   const headerGroups = (
@@ -60,7 +65,7 @@ export default function Target({
         <StyledHeader2Cell
           key={`${headerGroup}-${index}`}
           colSpan={1}
-          style={{ width: '20%' }}
+          style={{ width: "20%" }}
         >
           {headerGroup}
         </StyledHeader2Cell>
@@ -73,14 +78,14 @@ export default function Target({
       {[
         target.year,
         target.baseYear,
-        target.types?.join(', '),
+        target.types?.join(", "),
         target.unit,
-        target.value
+        target.value,
       ].map((value, index) => (
         <TableCell
           key={`${value}-${index}`}
           colSpan={1}
-          style={{ width: '20%' }}
+          style={{ width: "20%" }}
         >
           {renderValueOrHyphen(value)}
         </TableCell>
@@ -94,7 +99,7 @@ export default function Target({
         <StyledHeader2Cell
           key={`${headerGroup}-${index}`}
           colSpan={1}
-          style={{ width: index === 2 ? '40%' : '20%' }}
+          style={{ width: index === 2 ? "40%" : "20%" }}
         >
           {headerGroup}
         </StyledHeader2Cell>
@@ -105,15 +110,15 @@ export default function Target({
   const rows2 = (
     <StyledTable2Row>
       {[
-        target?.latestReportedYear || '-',
-        target?.updateStatus || '-',
-        target?.descriptionStatus || '-',
-        target?.reportValue || '-'
+        target?.latestReportedYear || "-",
+        target?.updateStatus || "-",
+        target?.descriptionStatus || "-",
+        target?.reportValue || "-",
       ].map((value, index) => (
         <TableCell
           key={`${value}-${index}`}
           colSpan={1}
-          style={{ width: index === 2 ? '40%' : '20%' }}
+          style={{ width: index === 2 ? "40%" : "20%" }}
         >
           {renderValueOrHyphen(value)}
         </TableCell>
@@ -124,7 +129,7 @@ export default function Target({
   return (
     <Grid size={{ sm: 12, xs: 12 }}>
       <CustomAccordion
-        title={target.title || ''}
+        title={target.title || ""}
         onActionClick={() => onActionClick()}
         tagStatus={TagStatus.ACTIVE}
         panelContent={
@@ -146,8 +151,8 @@ export default function Target({
           </>
         }
       >
-        <Box display={'flex'} gap={2} flexDirection={'column'}>
-          <Box display={'flex'} gap={1} flexDirection={'column'}>
+        <Box display={"flex"} gap={2} flexDirection={"column"}>
+          <Box display={"flex"} gap={1} flexDirection={"column"}>
             <Paragraph variant="medium-bold">Target description</Paragraph>
             <Paragraph variant="medium-regular">{target.description}</Paragraph>
           </Box>

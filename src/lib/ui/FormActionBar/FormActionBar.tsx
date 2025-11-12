@@ -1,49 +1,49 @@
-import type { FC } from 'react';
-import { ExitIcon, SaveIcon, SendIcon } from '@app/lib/icons';
-import { ChevronLeftIcon, ChevronRightIcon } from '@app/lib/icons';
+import type { FC } from "react";
+import { ExitIcon, SaveIcon, SendIcon } from "@app/lib/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@app/lib/icons";
 import {
   StyledFormActionWrapper,
   StyledLeftWrapper,
-  StyledRightWrapper
-} from './FormActionBar.styles';
-import type { IFormActionBar } from '@app/lib/types';
-import ButtonComponent from '../Button';
+  StyledRightWrapper,
+} from "./FormActionBar.styles";
+import type { IFormActionBar } from "@app/lib/types";
+import ButtonComponent from "../Button";
 const FormActionBar: FC<IFormActionBar> = (props) => {
   const { next, previous, submit, draft: saveDraft, exit } = props;
 
   const {
     enabled: nextEnabled = false,
     action: nextAction,
-    title: nextTitle = 'Next',
-    display: nextDisplay
+    title: nextTitle = "Next",
+    display: nextDisplay,
   } = next;
 
   const {
     enabled: previousEnabled = false,
     action: previousAction,
-    title: previousTitle = 'Previous',
-    display: previousDisplay
+    title: previousTitle = "Previous",
+    display: previousDisplay,
   } = previous;
 
   const {
     enabled: submitEnabled = false,
-    title: submitTitle = 'Submit',
+    title: submitTitle = "Submit",
     display: submitDisplay,
-    action: submitAction
+    action: submitAction,
   } = submit;
 
   const {
     enabled: saveDraftEnabled = false,
-    title: saveDraftTitle = 'Save as a draft',
+    title: saveDraftTitle = "Save as a draft",
     display: saveDraftDisplay,
-    action: saveDraftAction
+    action: saveDraftAction,
   } = saveDraft || {};
 
   const {
     enabled: exitEnabled = false,
     action: exitAction,
-    title: exitTitle = 'Exit',
-    display: exitDisplay
+    title: exitTitle = "Exit",
+    display: exitDisplay,
   } = exit;
 
   return (

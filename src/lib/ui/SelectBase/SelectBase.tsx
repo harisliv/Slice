@@ -1,11 +1,11 @@
-import type { FC } from 'react';
-import { ChevronDownIcon } from '@app/lib/icons';
-import { StyledSelectBase, WrapperIcon } from './SelectBase.styles';
-import type { ISelectBase } from '@app/lib/types';
-import { Theme } from '@app/lib/general';
+import type { FC } from "react";
+import { ChevronDownIcon } from "@app/lib/icons";
+import { StyledSelectBase, WrapperIcon } from "./SelectBase.styles";
+import type { ISelectBase } from "@app/lib/types";
+import { Theme } from "@app/lib/general";
 
 const SelectBase: FC<ISelectBase> = ({
-  className = '',
+  className = "",
   disabled,
   labelId,
   ...props

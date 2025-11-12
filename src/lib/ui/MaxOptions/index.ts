@@ -1,2 +1,2 @@
-export { default } from './MaxOptions';
-export * from './MaxOptions';
+export { default } from "./MaxOptions";
+export * from "./MaxOptions";

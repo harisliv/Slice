@@ -1,8 +1,8 @@
-import { type FilterFn } from '@tanstack/react-table';
-import { dateFormat } from './MyParticipants.types';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import type { TFilters, TMyParticipants } from '@app/types';
+import { type FilterFn } from "@tanstack/react-table";
+import { dateFormat } from "./MyParticipants.types";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import type { TFilters, TMyParticipants } from "@app/types";
 
 export const convertFormValuesToColumnFilters = (data: TFilters) => {
   const filterObject = {
@@ -20,7 +20,7 @@ export const convertFormValuesToColumnFilters = (data: TFilters) => {
     identityNumber: data.identityNumber,
     participantFocalPoint: data.participantFocalPoint,
     participantEmail: data.participantEmail,
-    gcapId: data.gcapId
+    gcapId: data.gcapId,
   };
 
   const result: {
@@ -30,19 +30,19 @@ export const convertFormValuesToColumnFilters = (data: TFilters) => {
     ...Object.entries(filterObject)
       .filter(
         ([id, value]) =>
-          Boolean(value) && id !== 'dateJoinedFrom' && id !== 'dateJoinedTo'
+          Boolean(value) && id !== "dateJoinedFrom" && id !== "dateJoinedTo",
       )
-      .map(([id, value]) => ({ id, value }))
+      .map(([id, value]) => ({ id, value })),
   ];
 
   if (
     ![filterObject.dateJoinedFrom, filterObject.dateJoinedTo].includes(
-      'Invalid Date'
+      "Invalid Date",
     )
   ) {
     result.unshift({
-      id: 'dateJoined',
-      value: [filterObject.dateJoinedFrom, filterObject.dateJoinedTo]
+      id: "dateJoined",
+      value: [filterObject.dateJoinedFrom, filterObject.dateJoinedTo],
     });
   }
 
@@ -52,7 +52,7 @@ export const convertFormValuesToColumnFilters = (data: TFilters) => {
 export const dateFilterFn: FilterFn<TMyParticipants> = (
   row,
   columnId,
-  filterValue
+  filterValue,
 ) => {
   dayjs.extend(customParseFormat);
 

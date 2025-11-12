@@ -28,7 +28,7 @@ export default function useIndexedDbAccounts(isOpen: boolean): {
     queryFn: async () =>
       idbBootstrapList<AccountEntityOption>(
         IDB_STORES.accountsStore,
-        VERSION_KEYS.accounts
+        VERSION_KEYS.accounts,
       ),
     staleTime: Infinity,
     gcTime: Infinity,
@@ -37,7 +37,7 @@ export default function useIndexedDbAccounts(isOpen: boolean): {
 
   // 2) Poll last-update
   const versionQuery = useGetPrivateRoutes({
-    endpoint: "/dropdown/accounts/lastUpdate",
+    endpoint: "/functions/v1/dropdown-accounts/lastUpdate",
     queryKey: ["accounts", "version"],
     convertToClientEntity,
     typeGuard: isString,
@@ -86,7 +86,7 @@ export default function useIndexedDbAccounts(isOpen: boolean): {
 
   const optionsQuery: UseQueryResult<AccountEntityOption[], Error> =
     useGetPrivateRoutes<AccountEntityOption[], DropdownAccountsDTO[]>({
-      endpoint: "/dropdown/accounts",
+      endpoint: "/functions/v1/dropdown-accounts",
       queryKey: ["accounts", "accountsList"],
       convertToClientEntity: (v) => (Array.isArray(v) ? v : []),
       typeGuard: isAccountEntityOptionArray,
@@ -98,7 +98,7 @@ export default function useIndexedDbAccounts(isOpen: boolean): {
           IDB_STORES.accountsStore,
           VERSION_KEYS.accounts,
           fresh,
-          version
+          version,
         );
         qc.setQueryData(["accounts", "idb"], {
           dropdownAccounts: fresh,

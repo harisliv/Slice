@@ -1,17 +1,17 @@
-import { Divider, Grid2 } from '@mui/material';
-import { CHALLENGES_FIELD_INFO } from '@app/constants';
-import ControlledInput from '@app/components/ControlledInput';
-import { useFormContext } from 'react-hook-form';
-import type { ChallengesAndOpportunitiesFormData } from '@app/types';
-import { ControlledMultiSelectWithDropdown } from '@app/components/ControlledInput';
+import { Divider, Grid2 } from "@mui/material";
+import { CHALLENGES_FIELD_INFO } from "@app/constants";
+import ControlledInput from "@app/components/ControlledInput";
+import { useFormContext } from "react-hook-form";
+import type { ChallengesAndOpportunitiesFormData } from "@app/types";
+import { ControlledMultiSelectWithDropdown } from "@app/components/ControlledInput";
 
 export default function ChallengesAndOpportunities() {
   const { watch, setValue } =
     useFormContext<ChallengesAndOpportunitiesFormData>();
-  const typesOfChallengesFaced = watch('typesOfChallengesFaced') || [];
+  const typesOfChallengesFaced = watch("typesOfChallengesFaced") || [];
 
   return (
-    <Grid2 container direction={'column'} spacing={4}>
+    <Grid2 container direction={"column"} spacing={4}>
       <Grid2 size={{ sm: 6, xs: 12, xxs: 12 }}>
         <ControlledMultiSelectWithDropdown
           required
@@ -23,11 +23,11 @@ export default function ChallengesAndOpportunities() {
           dropdownEnpoint="TypesOfChallengesFaced"
           maxOptions={2}
           onApplyCapture={() => {
-            setValue('othersTypesOfChallengesFaced', null);
+            setValue("othersTypesOfChallengesFaced", null);
           }}
         />
       </Grid2>
-      {typesOfChallengesFaced.includes('Other') && (
+      {typesOfChallengesFaced.includes("Other") && (
         <Grid2 size={{ sm: 12, xs: 12, xxs: 12 }}>
           <ControlledInput
             istextArea

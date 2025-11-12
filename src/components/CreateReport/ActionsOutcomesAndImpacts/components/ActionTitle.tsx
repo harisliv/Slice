@@ -1,5 +1,5 @@
-import { ControlledInput } from '@app/components';
-import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
+import { ControlledInput } from "@app/components";
+import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
 
 export default function ActionTitle({ index }: { index: number }) {
   return (

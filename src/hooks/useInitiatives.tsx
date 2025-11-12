@@ -19,7 +19,7 @@ export default function useInitiatives({ enabled = true } = {}): UseQueryResult<
     onQueryFnSuccess: (data) => {
       const initiativeIdInLocalStorage = localStorage.getItem("initiativeId");
       const foundInitiative = data.find(
-        (initiative) => initiative.id === initiativeIdInLocalStorage
+        (initiative) => initiative.id === initiativeIdInLocalStorage,
       );
       if (!isEmpty(foundInitiative)) {
         setActiveInitiative(foundInitiative);

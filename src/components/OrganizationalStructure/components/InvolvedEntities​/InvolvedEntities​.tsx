@@ -1,23 +1,23 @@
-import { Divider, Stack } from '@mui/material';
-import { useFormContext } from 'react-hook-form';
-import type { InvolvedEntitiesFormData } from '@app/types';
-import LeadOrganizationsFiscalSponsorsFunders from './components/LeadOrganizationsFiscalSponsorsFunders';
-import Participants from './components/Participants';
-import SignatoriesMembers from './components/SignatoriesMembers';
-import SignatoryCriteria from './components/SignatoryCriteria';
-import SignatoryFollowUps from './components/SignatoryFollowUps';
-import SignatoryFollowUpsOther from './components/SignatoryFollowUpsOther';
-import SignatoryRemoval from './components/SignatoryRemoval';
-import MemberInformation from './components/MemberInformation';
+import { Divider, Stack } from "@mui/material";
+import { useFormContext } from "react-hook-form";
+import type { InvolvedEntitiesFormData } from "@app/types";
+import LeadOrganizationsFiscalSponsorsFunders from "./components/LeadOrganizationsFiscalSponsorsFunders";
+import Participants from "./components/Participants";
+import SignatoriesMembers from "./components/SignatoriesMembers";
+import SignatoryCriteria from "./components/SignatoryCriteria";
+import SignatoryFollowUps from "./components/SignatoryFollowUps";
+import SignatoryFollowUpsOther from "./components/SignatoryFollowUpsOther";
+import SignatoryRemoval from "./components/SignatoryRemoval";
+import MemberInformation from "./components/MemberInformation";
 
 export default function InvolvedEntities() {
   const { watch } = useFormContext<InvolvedEntitiesFormData>();
-  const signatoriesMembers = watch('signatoriesMembers');
-  const signatoryFollowUps = watch('signatoryFollowUps');
+  const signatoriesMembers = watch("signatoriesMembers");
+  const signatoryFollowUps = watch("signatoryFollowUps");
 
-  const hasSignatories = signatoriesMembers?.includes('Signatories');
-  const hasMembers = signatoriesMembers?.includes('Members');
-  const hasOtherFollowUp = signatoryFollowUps?.includes('Other');
+  const hasSignatories = signatoriesMembers?.includes("Signatories");
+  const hasMembers = signatoriesMembers?.includes("Members");
+  const hasOtherFollowUp = signatoryFollowUps?.includes("Other");
 
   return (
     <Stack spacing={2}>

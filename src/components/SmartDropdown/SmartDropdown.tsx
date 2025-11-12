@@ -1,37 +1,37 @@
-import { Box, Stack } from '@mui/material';
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { Box, Stack } from "@mui/material";
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   useCreateAccountEntity,
   useGetAccountEntity,
   useIndexedDbAccounts,
-  useUpdateParticipantLoading
-} from '@app/hooks';
+  useUpdateParticipantLoading,
+} from "@app/hooks";
 import {
   ButtonComponent,
   Checkbox,
   IconButton,
   Modal,
-  RequiredLabel
-} from '@app/lib/ui';
-import { DetailsFields } from './Components/DetailsFields';
-import type { Option } from '@app/lib/types';
-import { Body, TitleRight } from './SmartDropdown.styles';
-import { SmartDropdownSchema, smartDropdownSchemaDefaults } from '@app/types';
-import { PlusIcon } from '@app/lib/icons';
-import { ControlledAutocomplete } from '../ControlledInput';
-import { useMemo, useState } from 'react';
-import { Theme } from '@app/lib/general';
+  RequiredLabel,
+} from "@app/lib/ui";
+import { DetailsFields } from "./Components/DetailsFields";
+import type { Option } from "@app/lib/types";
+import { Body, TitleRight } from "./SmartDropdown.styles";
+import { SmartDropdownSchema, smartDropdownSchemaDefaults } from "@app/types";
+import { PlusIcon } from "@app/lib/icons";
+import { ControlledAutocomplete } from "../ControlledInput";
+import { useMemo, useState } from "react";
+import { Theme } from "@app/lib/general";
 import type {
   ParticipantManagementFormData,
   SCHEMA_TYPE,
-  SmartDropdownData
-} from '@app/types';
-import { useQueryClient } from '@tanstack/react-query';
-import { useActiveInitiative } from '@app/hooks/useActiveInitiative';
-import { isParticipantCreationData } from '@app/types';
-import { convertSmartDropdownDataToTableEntity } from '@app/utils/MyParticipants';
-import { logger } from '@app/utils';
+  SmartDropdownData,
+} from "@app/types";
+import { useQueryClient } from "@tanstack/react-query";
+import { useActiveInitiative } from "@app/hooks/useActiveInitiative";
+import { isParticipantCreationData } from "@app/types";
+import { convertSmartDropdownDataToTableEntity } from "@app/utils/MyParticipants";
+import { logger } from "@app/utils";
 
 export type TSmartDropdownModalProps = {
   open: boolean;
@@ -54,16 +54,16 @@ export default function SmartDropdown({
   canAddMore,
   onSubmit,
   selectOptions,
-  schemaType
+  schemaType,
 }: TSmartDropdownModalProps) {
-  const isParticipantCreation = schemaType === 'participantCreation';
+  const isParticipantCreation = schemaType === "participantCreation";
   const { options, isLoading: isLoadingOptions } = useIndexedDbAccounts(open);
   const queryClient = useQueryClient();
   const { activeInitiative } = useActiveInitiative();
   const methods = useForm<SmartDropdownData>({
     resolver: zodResolver(SmartDropdownSchema),
     defaultValues: smartDropdownSchemaDefaults[schemaType],
-    mode: 'onChange'
+    mode: "onChange",
   });
 
   const [notListed, setNotListed] = useState(false);
@@ -74,11 +74,11 @@ export default function SmartDropdown({
     getValues,
     watch,
     reset,
-    formState: { isSubmitting, isValid, errors }
+    formState: { isSubmitting, isValid, errors },
   } = methods;
 
   if (Object.keys(errors).length > 0) {
-    logger.error('Smart Dropwdown error', new Error('Smart Dropwdown'), errors);
+    logger.error("Smart Dropwdown error", new Error("Smart Dropwdown"), errors);
   }
 
   logger.info(`Smart Dropwdown ${title} values`, getValues());
@@ -92,7 +92,7 @@ export default function SmartDropdown({
       return;
     }
 
-    const queryKey = ['getMyParticipants', activeInitiative?.id];
+    const queryKey = ["getMyParticipants", activeInitiative?.id];
 
     queryClient.setQueryData<ParticipantManagementFormData>(
       queryKey,
@@ -102,17 +102,17 @@ export default function SmartDropdown({
         const newParticipant = convertSmartDropdownDataToTableEntity(data);
 
         return [...oldData, newParticipant];
-      }
+      },
     );
   };
 
-  const tempOption = watch('tempOption');
+  const tempOption = watch("tempOption");
 
   const { isLoading: detailsLoading } = useGetAccountEntity(
-    tempOption?.id || '',
+    tempOption?.id || "",
     (data) => {
       reset({ schemaType, tempOption, ...data });
-    }
+    },
   );
 
   const readOnly = !!tempOption?.id;
@@ -127,14 +127,14 @@ export default function SmartDropdown({
     onClose();
     if (hasMutated && isParticipantCreation) {
       queryClient.invalidateQueries({
-        queryKey: ['getMyParticipants', activeInitiative?.id]
+        queryKey: ["getMyParticipants", activeInitiative?.id],
       });
     }
   };
 
   const addAcountOrSelectOption = async (
     data: SmartDropdownData,
-    optimisticUpdate = false
+    optimisticUpdate = false,
   ) => {
     if (notListed) {
       const created = await addAccount(data);
@@ -142,7 +142,7 @@ export default function SmartDropdown({
         await onSubmit({
           ...data,
           ...created,
-          ...('assignedRoles' in data && { assignedRoles: data.assignedRoles })
+          ...("assignedRoles" in data && { assignedRoles: data.assignedRoles }),
         });
       }
     } else {
@@ -158,14 +158,14 @@ export default function SmartDropdown({
   };
 
   const addAcountOrSelectOptionAndCloseModal = async (
-    data: SmartDropdownData
+    data: SmartDropdownData,
   ) => {
     await addAcountOrSelectOption(data);
     onClose();
 
     if (isParticipantCreation) {
       queryClient.invalidateQueries({
-        queryKey: ['getMyParticipants', activeInitiative?.id]
+        queryKey: ["getMyParticipants", activeInitiative?.id],
       });
     }
   };
@@ -173,7 +173,7 @@ export default function SmartDropdown({
   const onFormSubmit = handleSubmit(addAcountOrSelectOptionAndCloseModal);
 
   const handleAddAnother = handleSubmit((data) =>
-    addAcountOrSelectOption(data, isParticipantCreation)
+    addAcountOrSelectOption(data, isParticipantCreation),
   );
 
   const handleNotListedChange = (e: React.ChangeEvent<HTMLInputElement>) => {

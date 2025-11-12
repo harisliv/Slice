@@ -1,70 +1,70 @@
-import type { Theme } from '@app/lib/general';
+import type { Theme } from "@app/lib/general";
 import {
   CheckCircleIcon,
   CheckedIcon,
   EditIcon,
   StarIcon,
-  StatusLockIcon
-} from '@app/lib/icons';
-import type { IIconProps, TagStatus } from '@app/lib/types';
+  StatusLockIcon,
+} from "@app/lib/icons";
+import type { IIconProps, TagStatus } from "@app/lib/types";
 
 export const getCustomTagVariant = (
-  variant: TagStatus
+  variant: TagStatus,
 ): {
-  backgroundColor: keyof (typeof Theme)['palette']['secondary'];
+  backgroundColor: keyof (typeof Theme)["palette"]["secondary"];
   textColor: string;
   Icon: React.FC<IIconProps>;
   label: string;
 } => {
   switch (variant) {
-    case 'SUBMITTED':
+    case "SUBMITTED":
       return {
-        backgroundColor: 'lightGreen',
-        textColor: '#FFFFFF',
+        backgroundColor: "lightGreen",
+        textColor: "#FFFFFF",
         Icon: CheckedIcon,
-        label: 'Submitted'
+        label: "Submitted",
       };
-    case 'DRAFT':
+    case "DRAFT":
       return {
-        backgroundColor: 'warningOrange',
-        textColor: '#FFFFFF',
+        backgroundColor: "warningOrange",
+        textColor: "#FFFFFF",
         Icon: EditIcon,
-        label: 'Draft'
+        label: "Draft",
       };
-    case 'CONCLUDED':
+    case "CONCLUDED":
       return {
-        backgroundColor: 'successGreen',
-        textColor: '#FFFFFF',
+        backgroundColor: "successGreen",
+        textColor: "#FFFFFF",
         Icon: CheckCircleIcon,
-        label: 'Concluded'
+        label: "Concluded",
       };
-    case 'ACTIVE':
+    case "ACTIVE":
       return {
-        backgroundColor: 'informationBlue',
-        textColor: '#FFFFFF',
+        backgroundColor: "informationBlue",
+        textColor: "#FFFFFF",
         Icon: StarIcon,
-        label: 'Active'
+        label: "Active",
       };
-    case 'ACCOMPLISHED':
+    case "ACCOMPLISHED":
       return {
-        backgroundColor: 'informationBlue20',
-        textColor: '#424245',
+        backgroundColor: "informationBlue20",
+        textColor: "#424245",
         Icon: StatusLockIcon,
-        label: 'Accomplished'
+        label: "Accomplished",
       };
-    case 'INACTIVE':
+    case "INACTIVE":
       return {
-        backgroundColor: 'darkerGrey36',
-        textColor: '#424245',
+        backgroundColor: "darkerGrey36",
+        textColor: "#424245",
         Icon: StatusLockIcon,
-        label: 'Inactive'
+        label: "Inactive",
       };
     default:
       return {
-        backgroundColor: 'darkerGrey36',
-        textColor: '#424245',
+        backgroundColor: "darkerGrey36",
+        textColor: "#424245",
         Icon: StatusLockIcon,
-        label: 'Unknown'
+        label: "Unknown",
       };
   }
 };

@@ -1,5 +1,5 @@
-import { EnumWeight } from '@app/lib/types';
-import styled from 'styled-components';
+import { EnumWeight } from "@app/lib/types";
+import styled from "styled-components";
 
 export const StyledMaxOptions = styled.div`
   && {

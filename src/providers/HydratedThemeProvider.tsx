@@ -1,10 +1,10 @@
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './global';
-import { Theme, muiDefaultTheme } from '@app/lib/general';
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./global";
+import { Theme, muiDefaultTheme } from "@app/lib/general";
 
 export default function HydratedThemeProvider({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

@@ -1,6 +1,6 @@
-import { Box } from '@mui/material';
-import styled from 'styled-components';
-import { ContentContainer } from '@app/lib/ui';
+import { Box } from "@mui/material";
+import styled from "styled-components";
+import { ContentContainer } from "@app/lib/ui";
 
 export const SubHeaderWrapper = styled(Box)<{ $backgroundColor?: string }>`
   display: flex;

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const MyParticipantsSchema = z.object({
   id: z.string(),
@@ -16,26 +16,26 @@ export const MyParticipantsSchema = z.object({
   participantFocalPoint: z.string().nullable(),
   participantEmail: z.string().nullable(),
   gcapId: z.string().nullable(),
-  dateJoined: z.string().nullable()
+  dateJoined: z.string().nullable(),
 });
 
 export type TMyParticipants = z.infer<typeof MyParticipantsSchema>;
 
 export const defaultMyParticipantsFormValues: TMyParticipants = {
-  id: '',
-  country: '',
-  type: '',
-  category: '',
-  entityOperatingName: '',
-  pledge: '',
-  legalName: '',
-  identityType: '',
-  identityNumber: '',
-  businessActivity: '',
-  subnationalGovernment: '',
-  subnationalGovernmentOther: '',
-  participantFocalPoint: '',
-  participantEmail: '',
-  gcapId: '',
-  dateJoined: ''
+  id: "",
+  country: "",
+  type: "",
+  category: "",
+  entityOperatingName: "",
+  pledge: "",
+  legalName: "",
+  identityType: "",
+  identityNumber: "",
+  businessActivity: "",
+  subnationalGovernment: "",
+  subnationalGovernmentOther: "",
+  participantFocalPoint: "",
+  participantEmail: "",
+  gcapId: "",
+  dateJoined: "",
 };

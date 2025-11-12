@@ -1,21 +1,20 @@
-import { type InitiativeProfileFormData } from '@app/types';
-import { InfoCard, Paragraph, TitleAction } from '@app/lib/ui';
-import { NavLink } from 'react-router';
-import { Divider, Stack } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import TargetDisplayItem from './Targets/components/TargetDisplayItem';
-import { GOALS_TARGETS_MONITORING_FIELD_INFO } from '@app/constants';
-import ClimateRelatedAlignmentTitle from './Goals/components/ClimateRelatedAlignmentTitle';
-import { useDropdownValues } from '@app/hooks';
+import { type InitiativeProfileFormData } from "@app/types";
+import { InfoCard, Paragraph, TitleAction } from "@app/lib/ui";
+import { NavLink } from "react-router";
+import { Divider, Stack } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import TargetDisplayItem from "./Targets/components/TargetDisplayItem";
+import { GOALS_TARGETS_MONITORING_FIELD_INFO } from "@app/constants";
+import ClimateRelatedAlignmentTitle from "./Goals/components/ClimateRelatedAlignmentTitle";
 import {
   isStatusKey,
   mapPublicReportingOptions,
   mapStatus,
-  statusOrder
-} from '@app/utils/InitiativeProfile';
+  statusOrder,
+} from "@app/utils/InitiativeProfile";
 
 export default function GoalsTargetsAndMonitoringDisplayMode({
-  initiativeProfile
+  initiativeProfile,
 }: {
   initiativeProfile?: InitiativeProfileFormData;
 }) {
@@ -29,10 +28,8 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
     progress,
     publicReportingOptions,
     periodicalProgressReport,
-    publicReportingOther
+    publicReportingOther,
   } = initiativeProfile || {};
-
-  const { mappedData } = useDropdownValues('Agreements');
 
   const mappedStatusTargets = targets
     ?.map((target) => {
@@ -62,19 +59,19 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
             title={
               GOALS_TARGETS_MONITORING_FIELD_INFO.goalImpactStatement.title
             }
-            content={{ type: 'text', value: climateRelatedGoalImpactStatement }}
+            content={{ type: "text", value: climateRelatedGoalImpactStatement }}
           />
         </Grid>
         <Grid size={{ sm: 12, xs: 12 }}>
           <InfoCard
             title={GOALS_TARGETS_MONITORING_FIELD_INFO.goalDescription.title}
-            content={{ type: 'text', value: climateRelatedGoalDescription }}
+            content={{ type: "text", value: climateRelatedGoalDescription }}
           />
         </Grid>
         <Grid size={{ sm: 12, xs: 12 }}>
           <InfoCard
             title={GOALS_TARGETS_MONITORING_FIELD_INFO.goalAlignement.title}
-            content={{ type: 'text', value: climateRelatedGoalAlignmentParis }}
+            content={{ type: "text", value: climateRelatedGoalAlignmentParis }}
           />
         </Grid>
         {(climateRelatedGoalAlignmentMultilateral?.length ?? 0) > 0 && (
@@ -89,8 +86,8 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
               {climateRelatedGoalAlignmentMultilateral?.map((item, index) => (
                 <ClimateRelatedAlignmentTitle
                   key={item.agreement ?? String(index)}
-                  title={mappedData[item.agreement ?? '']}
-                  text={item.description ?? ''}
+                  title={item.agreement ?? ""}
+                  text={item.description ?? ""}
                   isEditMode={false}
                 />
               ))}
@@ -101,7 +98,7 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
           <Grid size={{ sm: 12, xs: 12 }}>
             <InfoCard
               title={GOALS_TARGETS_MONITORING_FIELD_INFO.additionalValue.title}
-              content={{ type: 'text', value: additionalValueInitiative }}
+              content={{ type: "text", value: additionalValueInitiative }}
             />
           </Grid>
         )}
@@ -134,7 +131,7 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
       <Grid size={{ sm: 4, xs: 12 }}>
         <InfoCard
           title={GOALS_TARGETS_MONITORING_FIELD_INFO.monitoringProgress.title}
-          content={{ type: 'text', value: progress }}
+          content={{ type: "text", value: progress }}
         />
       </Grid>
       <Grid size={{ sm: 4, xs: 12 }}>
@@ -143,20 +140,20 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
             GOALS_TARGETS_MONITORING_FIELD_INFO.typesOfPublicReporting.title
           }
           content={{
-            type: 'list',
+            type: "list",
             showDot: false,
             value: [
               ...mapPublicReportingOptions(
                 publicReportingOptions || {
                   checkbox1: false,
                   checkbox2: false,
-                  checkbox3: false
-                }
+                  checkbox3: false,
+                },
               ),
               ...(publicReportingOther && publicReportingOther.trim().length > 0
                 ? [publicReportingOther]
-                : [])
-            ]
+                : []),
+            ],
           }}
         />
       </Grid>
@@ -167,12 +164,12 @@ export default function GoalsTargetsAndMonitoringDisplayMode({
               .previouslySubmittedProgressReports.title
           }
           content={{
-            type: 'docMultiple',
+            type: "docMultiple",
             value: periodicalProgressReport?.map((rep) => ({
-              filename: rep.title || '',
-              url: rep.report?.url || '',
-              size: rep.report?.size || 0
-            }))
+              filename: rep.title || "",
+              url: rep.report?.url || "",
+              size: rep.report?.size || 0,
+            })),
           }}
         />
       </Grid>

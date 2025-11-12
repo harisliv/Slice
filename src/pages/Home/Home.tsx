@@ -1,15 +1,15 @@
-import type { FC } from 'react';
-import { Initiative } from '@app/components';
-import { Header2, MainWrapperWithHeader, Paragraph } from '@app/lib/ui';
-import { Theme } from '@app/lib/general';
-import { Divider, Stack } from '@mui/material';
+import type { FC } from "react";
+import { Initiative } from "@app/components";
+import { Header2, MainWrapperWithHeader, Paragraph } from "@app/lib/ui";
+import { Theme } from "@app/lib/general";
+import { Divider, Stack } from "@mui/material";
 
 const Homepage: FC = () => {
   const content = (
     <Paragraph variant="large-regular-blue">
       Using this app, you can view, manage and submit information about the
-      Course(s) and Program(s) for which you are the instructor or administrator,
-      to enable effective course management and student tracking.
+      Course(s) and Program(s) for which you are the instructor or
+      administrator, to enable effective course management and student tracking.
     </Paragraph>
   );
 
@@ -23,7 +23,7 @@ const Homepage: FC = () => {
         <Divider
           sx={{
             borderColor: Theme.palette.background.grey,
-            borderBottomWidth: 1
+            borderBottomWidth: 1,
           }}
         />
         <Initiative />

@@ -1,6 +1,6 @@
-import { Divider, Stack } from '@mui/material';
-import Email from './components/Email';
-import ContactOrganization from './components/ContactOrganization';
+import { Divider, Stack } from "@mui/material";
+import Email from "./components/Email";
+import ContactOrganization from "./components/ContactOrganization";
 
 export default function ContactInformation() {
   return (

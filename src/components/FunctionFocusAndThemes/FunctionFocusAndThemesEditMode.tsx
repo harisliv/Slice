@@ -1,8 +1,8 @@
-import { Tabs } from '@app/lib/ui';
-import { useLoaderData } from 'react-router';
-import Functions from './components/Functions';
-import Themes from './components/Themes';
-import Focus from './components/Focus';
+import { Tabs } from "@app/lib/ui";
+import { useLoaderData } from "react-router";
+import Functions from "./components/Functions";
+import Themes from "./components/Themes";
+import Focus from "./components/Focus";
 
 export default function FunctionFocusAndThemesEditMode() {
   const { initialTab } = useLoaderData() || { initialTab: 0 };
@@ -13,16 +13,16 @@ export default function FunctionFocusAndThemesEditMode() {
       tabs={[
         {
           content: <Functions />,
-          label: 'Functions​'
+          label: "Functions​",
         },
         {
           content: <Focus />,
-          label: 'Focuses'
+          label: "Focuses",
         },
         {
           content: <Themes />,
-          label: 'Themes'
-        }
+          label: "Themes",
+        },
       ]}
     />
   );

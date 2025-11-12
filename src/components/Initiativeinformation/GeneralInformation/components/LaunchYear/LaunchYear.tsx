@@ -1,7 +1,7 @@
-import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
-import { InitiativeProfileNumericControlledInput } from '@app/components';
-import { useFormContext } from 'react-hook-form';
-import type { InitiativeInformationFormData } from '@app/types';
+import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
+import { InitiativeProfileNumericControlledInput } from "@app/components";
+import { useFormContext } from "react-hook-form";
+import type { InitiativeInformationFormData } from "@app/types";
 
 export default function LaunchYear() {
   const { trigger } = useFormContext<InitiativeInformationFormData>();
@@ -15,7 +15,7 @@ export default function LaunchYear() {
         INITIATIVE_INFORMATION_FIELD_INFO.launchDate.subtitle
       }
       onChange={() => {
-        trigger('expectedEndDate');
+        trigger("expectedEndDate");
       }}
     />
   );

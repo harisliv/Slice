@@ -1,11 +1,11 @@
-import { ControlledInput, FormInputDescription } from '@app/components';
-import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
-import { Stack } from '@mui/material';
-import { Theme } from '@app/lib/general';
-import { PlusIcon } from '@app/lib/icons';
-import { ButtonComponent } from '@app/lib/ui';
-import { useEffect } from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { ControlledInput, FormInputDescription } from "@app/components";
+import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
+import { Stack } from "@mui/material";
+import { Theme } from "@app/lib/general";
+import { PlusIcon } from "@app/lib/icons";
+import { ButtonComponent } from "@app/lib/ui";
+import { useEffect } from "react";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
 export default function OutcomesUrl({ index: actionIndex }: { index: number }) {
   const { control } = useFormContext();
@@ -13,12 +13,12 @@ export default function OutcomesUrl({ index: actionIndex }: { index: number }) {
     control,
     name: `actions.${actionIndex}.outcomesUrl`,
     rules: {
-      maxLength: 3
-    }
+      maxLength: 3,
+    },
   });
 
   const addUrlField = () => {
-    append('');
+    append("");
   };
 
   useEffect(() => {

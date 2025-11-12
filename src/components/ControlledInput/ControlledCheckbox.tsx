@@ -1,10 +1,10 @@
-import type { ControlledCheckboxProps } from '@app/types';
-import { Checkbox } from '@app/lib/ui';
-import { Controller, useFormContext } from 'react-hook-form';
+import type { ControlledCheckboxProps } from "@app/types";
+import { Checkbox } from "@app/lib/ui";
+import { Controller, useFormContext } from "react-hook-form";
 
 export default function ControlledCheckbox<T extends string>({
   name,
-  onCheckboxChange
+  onCheckboxChange,
 }: ControlledCheckboxProps<T>) {
   const { control } = useFormContext();
   return (

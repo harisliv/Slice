@@ -1,13 +1,13 @@
-import { withFormProvider } from '@app/providers';
-import type { ReactNode } from 'react';
-import type { IFormActionBar } from '@app/lib/types';
-import { useMemo } from 'react';
-import { useCurrentStep } from '@app/hooks/useFormStepper';
-import useGetSchema from '../hooks/useGetSchema';
-import { isProgressReportingSchema } from '@app/types';
-import { useMutateProgressReporting, useSubmitModal } from '@app/hooks';
-import { useNavigate } from 'react-router';
-import { useQueryClient } from '@tanstack/react-query';
+import { withFormProvider } from "@app/providers";
+import type { ReactNode } from "react";
+import type { IFormActionBar } from "@app/lib/types";
+import { useMemo } from "react";
+import { useCurrentStep } from "@app/hooks/useFormStepper";
+import useGetSchema from "../hooks/useGetSchema";
+import { isProgressReportingSchema } from "@app/types";
+import { useMutateProgressReporting, useSubmitModal } from "@app/hooks";
+import { useNavigate } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface CreateReportProfileContextProviderProps {
   children: ReactNode;
@@ -16,7 +16,7 @@ interface CreateReportProfileContextProviderProps {
 
 const FormContextProvider = ({
   children,
-  reportId
+  reportId,
 }: CreateReportProfileContextProviderProps) => {
   const currentStep = useCurrentStep();
   const navigate = useNavigate();
@@ -29,12 +29,12 @@ const FormContextProvider = ({
     onConfirm: async (data) => {
       if (data) {
         navigate(`/assignment-management`);
-        await mutateProgressReporting({ ...data, reportStatus: 'Submitted' });
+        await mutateProgressReporting({ ...data, reportStatus: "Submitted" });
         queryClient.invalidateQueries({
-          queryKey: ['submittedReports']
+          queryKey: ["submittedReports"],
         });
       }
-    }
+    },
   });
 
   const formActionBarProps: IFormActionBar = {
@@ -42,25 +42,25 @@ const FormContextProvider = ({
       action: async (data) => {
         showSubmitModal(data);
       },
-      title: 'Submit assignment',
+      title: "Submit assignment",
       display: currentStep === 4,
-      enabled: true
+      enabled: true,
     },
     next: {
-      display: currentStep < 4
+      display: currentStep < 4,
     },
     previous: {
-      display: true
+      display: true,
     },
     exit: {
       display: true,
-      title: 'Exit'
+      title: "Exit",
     },
     draft: {
       display: true,
-      title: 'Save as a draft',
-      action: mutateProgressReporting
-    }
+      title: "Save as a draft",
+      action: mutateProgressReporting,
+    },
   };
 
   const { schema, defaultValues } = useGetSchema(currentStep, reportId);
@@ -70,10 +70,10 @@ const FormContextProvider = ({
       withFormProvider(
         schema,
         defaultValues,
-        '/assignment-management',
-        isProgressReportingSchema
+        "/assignment-management",
+        isProgressReportingSchema,
       ),
-    [schema, defaultValues]
+    [schema, defaultValues],
   );
 
   return (

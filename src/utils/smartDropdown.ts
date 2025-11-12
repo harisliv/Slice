@@ -1,44 +1,44 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 import {
   AccountEntityDetailsShape,
   AccountEntityOptionSchema,
   type AccountEntityCreateDTO,
   type AccountEntityDetails,
-  type AccountEntityOption
-} from '@app/types';
-import { constructErrorResponseFromZod } from './error';
+  type AccountEntityOption,
+} from "@app/types";
+import { constructErrorResponseFromZod } from "./error";
 import {
   convertToValidSelectValue,
   normalizeDateTime,
-  normalizeString
-} from './general';
-import { logger } from './logger';
+  normalizeString,
+} from "./general";
+import { logger } from "./logger";
 
 export const isAccountEntityOptionArray = (
-  u: unknown
+  u: unknown,
 ): u is AccountEntityOption[] =>
   z.array(AccountEntityOptionSchema).safeParse(u).success;
 
 export const isAccountEntityDetails = (
   u: unknown,
-  withLogs: boolean = true
+  withLogs: boolean = true,
 ): u is AccountEntityDetails => {
   const result = AccountEntityDetailsShape.safeParse(u);
   if (result.error && withLogs) {
     logger.error(
-      'Invalid response format',
-      new Error('Smart Dropdown'),
-      constructErrorResponseFromZod(result)
+      "Invalid response format",
+      new Error("Smart Dropdown"),
+      constructErrorResponseFromZod(result),
     );
   }
   return result.success;
 };
 
 export const convertToClientEntity = (
-  value: AccountEntityCreateDTO
+  value: AccountEntityCreateDTO,
 ): AccountEntityDetails => ({
-  id: value.id || '',
+  id: value.id || "",
   name: normalizeString(value.name),
   country: normalizeString(value.country),
   type: normalizeString(value.type),
@@ -50,13 +50,13 @@ export const convertToClientEntity = (
   businessActivity: normalizeString(value.businessActivity),
   subnationalGovernmentType: normalizeString(value.subnationalGovernmentType),
   subnationalGovernmentTypeOther: normalizeString(
-    value.subnationalGovernmentTypeOther
+    value.subnationalGovernmentTypeOther,
   ),
-  assignedRoles: []
+  assignedRoles: [],
 });
 
 export const convertToServerEntity = (
-  value: Partial<AccountEntityDetails> & { initiativeId?: string }
+  value: Partial<AccountEntityDetails> & { initiativeId?: string },
 ): AccountEntityCreateDTO => ({
   ...(value.id ? { id: value.id } : {}),
   ...(value.initiativeId ? { initiativeId: value.initiativeId } : {}),
@@ -70,9 +70,9 @@ export const convertToServerEntity = (
   identityNumber: normalizeString(value.identityNumber),
   businessActivity: convertToValidSelectValue(value.businessActivity),
   subnationalGovernmentType: convertToValidSelectValue(
-    value.subnationalGovernmentType
+    value.subnationalGovernmentType,
   ),
   subnationalGovernmentTypeOther: convertToValidSelectValue(
-    value.subnationalGovernmentTypeOther
-  )
+    value.subnationalGovernmentTypeOther,
+  ),
 });

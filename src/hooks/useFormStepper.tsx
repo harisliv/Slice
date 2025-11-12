@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { useStore } from 'zustand';
-import FormStepperStoreContext from '@app/providers/FormStepperStoreContext';
-import type { FormStepperStore } from '@app/types';
+import { useContext } from "react";
+import { useStore } from "zustand";
+import FormStepperStoreContext from "@app/providers/FormStepperStoreContext";
+import type { FormStepperStore } from "@app/types";
 
 export const useFormStepper = <T,>(
-  selector: (state: FormStepperStore) => T
+  selector: (state: FormStepperStore) => T,
 ) => {
   const store = useContext(FormStepperStoreContext);
   if (!store) {
-    throw new Error('Missing FormStepperProvider');
+    throw new Error("Missing FormStepperProvider");
   }
   return useStore(store, selector);
 };

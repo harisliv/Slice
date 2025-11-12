@@ -1,21 +1,18 @@
-import { FormInputDescription } from '@app/components';
-import { CREATE_REPORT_FIELD_INFO } from '@app/constants';
-import { Stack } from '@mui/material';
-import { useFieldArray, useFormContext } from 'react-hook-form';
-import { useDropdownValues } from '@app/hooks';
-import { RemovableItem } from '@app/lib/ui';
-import { ControlledMultiSelectWithDropdown } from '@app/components/ControlledInput';
+import { FormInputDescription } from "@app/components";
+import { CREATE_REPORT_FIELD_INFO } from "@app/constants";
+import { Stack } from "@mui/material";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import { RemovableItem } from "@app/lib/ui";
+import { ControlledMultiSelectWithDropdown } from "@app/components/ControlledInput";
 
 export default function AssociatedTargets({ index }: { index: number }) {
   const { control, watch } = useFormContext();
-
-  const { mappedData: targetsMappedData } = useDropdownValues('Targets');
 
   const associatedTargets = watch(`actions.${index}.associatedTargets`);
 
   const { remove } = useFieldArray({
     control,
-    name: `actions.${index}.associatedTargets`
+    name: `actions.${index}.associatedTargets`,
   });
 
   return (
@@ -28,7 +25,7 @@ export default function AssociatedTargets({ index }: { index: number }) {
         associatedTargets?.map((target: string, arrayIndex: number) => (
           <RemovableItem
             key={`${target}-(${arrayIndex})`}
-            label={targetsMappedData[target]}
+            label={target}
             onRemove={() => remove(arrayIndex)}
             icon="trash"
           />

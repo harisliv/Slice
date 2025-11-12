@@ -1,4 +1,4 @@
-import type { FC, HTMLAttributes, ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from "react";
 
 export interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
   cardTitle: ReactNode;

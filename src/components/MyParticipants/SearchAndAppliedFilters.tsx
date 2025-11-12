@@ -1,13 +1,13 @@
-import { Box, Divider, Grid2 } from '@mui/material';
-import { ClearIcon, FilterIcon, SearchIcon } from '@app/lib/icons';
-import React from 'react';
-import { ButtonComponent, Chip, Paragraph } from '@app/lib/ui';
-import InputBase from '@app/lib/ui/Input/Input';
-import { Theme } from '@app/lib/general';
-import type { ColumnFiltersState } from '@tanstack/react-table';
-import { useFormContext } from 'react-hook-form';
-import { labelMap } from './MyParticipants.types';
-import { useDropdownValues } from '@app/hooks';
+import { Box, Divider, Grid2 } from "@mui/material";
+import { ClearIcon, FilterIcon, SearchIcon } from "@app/lib/icons";
+import React from "react";
+import { ButtonComponent, Chip, Paragraph } from "@app/lib/ui";
+import InputBase from "@app/lib/ui/Input/Input";
+import { Theme } from "@app/lib/general";
+import type { ColumnFiltersState } from "@tanstack/react-table";
+import { useFormContext } from "react-hook-form";
+import { labelMap } from "./MyParticipants.types";
+import { useDropdownValues } from "@app/hooks";
 
 interface SearchProps {
   columnFilters: ColumnFiltersState;
@@ -24,19 +24,20 @@ export default function SearchAndAppliedFilters({
   resetFiltersToEmpty,
   setIsModalOpen,
   setGlobalFilter,
-  globalFilter
+  globalFilter,
 }: SearchProps) {
   const { setValue, resetField } = useFormContext();
-  const { mappedData: countries } = useDropdownValues('Countries');
-  const { mappedData: businessActivities } =
-    useDropdownValues('BusinessActivities');
+  const { data: countriesData } = useDropdownValues("Countries");
+  const { data: businessActivitiesData } =
+    useDropdownValues("BusinessActivities");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGlobalFilter(e.target.value);
   };
 
   //TODO MAYBE PUT IT IN THE FORM
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
       <InputBase
         id="search-filters-my-participants"
         value={globalFilter}
@@ -52,12 +53,12 @@ export default function SearchAndAppliedFilters({
                   customVariant="terciary-m"
                   startIcon={<ClearIcon />}
                   onClick={() => {
-                    setGlobalFilter('');
+                    setGlobalFilter("");
                   }}
                 >
                   Clear
                 </ButtonComponent>
-                |{' '}
+                |{" "}
               </>
             )}
 
@@ -72,35 +73,48 @@ export default function SearchAndAppliedFilters({
         }
       />
       {!!columnFilters.length && (
-        <Grid2 container rowGap={1} alignItems={'center'}>
+        <Grid2 container rowGap={1} alignItems={"center"}>
           <Paragraph variant="extrasmall-medium">Filtering by:</Paragraph>
           {columnFilters.map((item) => {
             if (
-              item.id !== 'entityOperatingName' &&
-              item.id !== 'legalName' &&
-              item.id !== 'identityNumber'
+              item.id !== "entityOperatingName" &&
+              item.id !== "legalName" &&
+              item.id !== "identityNumber"
             ) {
               const labelPrefix = labelMap[item.id] ?? item.id;
               return (
                 <Chip
                   key={item.id}
                   label={
-                    item.id === 'dateJoined'
-                      ? `${labelPrefix}: ${Array.isArray(item.value) ? `${item.value[0]} to ${item.value[1]}` : item.value}`
-                      : item.id === 'country'
-                        ? `${labelPrefix}: ${countries[String(item.value) ?? '']}`
-                        : item.id === 'businessActivity'
-                          ? `${labelPrefix}: ${businessActivities[String(item.value) ?? '']}`
+                    item.id === "dateJoined"
+                      ? `${labelPrefix}: ${
+                          Array.isArray(item.value)
+                            ? `${item.value[0]} to ${item.value[1]}`
+                            : item.value
+                        }`
+                      : item.id === "country"
+                        ? `${labelPrefix}: ${
+                            countriesData?.find(
+                              (country) => country.value === item.value,
+                            )?.label ?? ""
+                          }`
+                        : item.id === "businessActivity"
+                          ? `${labelPrefix}: ${
+                              businessActivitiesData?.find(
+                                (businessActivity) =>
+                                  businessActivity.value === item.value,
+                              )?.label ?? ""
+                            }`
                           : `${labelPrefix}: ${String(item.value)}`
                   }
                   onDelete={() => {
-                    if (item.id === 'dateJoined') {
-                      setValue('dateJoinedFrom', '');
-                      setValue('dateJoinedTo', '');
+                    if (item.id === "dateJoined") {
+                      setValue("dateJoinedFrom", "");
+                      setValue("dateJoinedTo", "");
                     }
-                    setValue(item.id, '');
+                    setValue(item.id, "");
                     setColumnFilters((prev) =>
-                      prev.filter((filter) => filter.id !== item.id)
+                      prev.filter((filter) => filter.id !== item.id),
                     );
                     resetField(item.id);
                   }}
@@ -114,8 +128,8 @@ export default function SearchAndAppliedFilters({
               flexItem
               sx={{
                 height: 16,
-                alignSelf: 'center',
-                borderColor: Theme.palette.primary.darkerGrey
+                alignSelf: "center",
+                borderColor: Theme.palette.primary.darkerGrey,
               }}
             />
             <ButtonComponent
@@ -123,7 +137,7 @@ export default function SearchAndAppliedFilters({
               startIcon={<ClearIcon />}
               onClick={() => {
                 resetFiltersToEmpty();
-                setGlobalFilter('');
+                setGlobalFilter("");
               }}
             >
               Clear Filters

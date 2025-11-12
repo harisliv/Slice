@@ -1,8 +1,8 @@
-import { Tabs } from '@app/lib/ui';
-import { useLoaderData } from 'react-router';
-import Goals from './Goals';
-import Targets from './Targets';
-import Monitoring from './Monitoring';
+import { Tabs } from "@app/lib/ui";
+import { useLoaderData } from "react-router";
+import Goals from "./Goals";
+import Targets from "./Targets";
+import Monitoring from "./Monitoring";
 
 export default function GoalsTargetsAndMonitoring() {
   const { initialTab } = useLoaderData() || { initialTab: 0 };
@@ -13,16 +13,16 @@ export default function GoalsTargetsAndMonitoring() {
       tabs={[
         {
           content: <Goals />,
-          label: 'Learning objectives​'
+          label: "Learning objectives​",
         },
         {
           content: <Targets />,
-          label: 'Assessment criteria'
+          label: "Assessment criteria",
         },
         {
           content: <Monitoring />,
-          label: 'Evaluation methods​'
-        }
+          label: "Evaluation methods​",
+        },
       ]}
     />
   );

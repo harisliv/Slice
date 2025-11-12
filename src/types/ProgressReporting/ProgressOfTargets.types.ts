@@ -3,16 +3,16 @@ import {
   numberOptionalSchemaType,
   stringSchemaMandatoryType,
   stringSchemaOptionalType,
-  yearOptionalSchemaType
-} from '@app/utils';
-import { constructErrorResponseFromZod } from '@app/utils/error';
-import { z } from 'zod';
+  yearOptionalSchemaType,
+} from "@app/utils";
+import { constructErrorResponseFromZod } from "@app/utils/error";
+import { z } from "zod";
 
 export const progressOfTargetsBaseShape = z.object({
   reportValue: numberOptionalSchemaType,
   updateStatus: stringSchemaMandatoryType(),
   descriptionStatus: stringSchemaMandatoryType({
-    maxChars: 500
+    maxChars: 500,
   }),
   baseYear: yearOptionalSchemaType,
   description: stringSchemaOptionalType(),
@@ -24,11 +24,11 @@ export const progressOfTargetsBaseShape = z.object({
   types: z.array(z.string()).nullable(),
   unit: stringSchemaOptionalType(),
   value: numberOptionalSchemaType,
-  year: yearOptionalSchemaType
+  year: yearOptionalSchemaType,
 });
 
 export const progressOfTargetsShape = z.object({
-  targets: z.array(progressOfTargetsBaseShape)
+  targets: z.array(progressOfTargetsBaseShape),
 });
 
 export const progressOfTargetsSchema = progressOfTargetsShape.superRefine(
@@ -46,27 +46,27 @@ export const progressOfTargetsSchema = progressOfTargetsShape.superRefine(
         ) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: 'Report Value is mandatory if there is target value',
-            path: ['reportValue']
+            message: "Report Value is mandatory if there is target value",
+            path: ["reportValue"],
           });
         }
       }
     });
-  }
+  },
 );
 
 export type ProgressOfTargetsFormData = z.infer<typeof progressOfTargetsSchema>;
 
 export const isProgressOfTargetsSchema = (
   value: unknown,
-  withLogs: boolean = true
+  withLogs: boolean = true,
 ): value is ProgressOfTargetsFormData => {
   const result = progressOfTargetsSchema.safeParse(value);
   if (result.error && withLogs) {
     logger.error(
-      'Invalid response format',
-      new Error('Progress of targets'),
-      constructErrorResponseFromZod(result)
+      "Invalid response format",
+      new Error("Progress of targets"),
+      constructErrorResponseFromZod(result),
     );
   }
   return result.success;
@@ -76,19 +76,19 @@ export const defaultTProgressOfTargetsFormValues: ProgressOfTargetsFormData = {
   targets: [
     {
       reportValue: NaN,
-      updateStatus: '',
-      descriptionStatus: '',
+      updateStatus: "",
+      descriptionStatus: "",
       baseYear: NaN,
-      description: '',
-      id: '',
+      description: "",
+      id: "",
       targetId: null,
       latestReportedYear: NaN,
-      status: '',
-      title: '',
-      types: [''],
-      unit: '',
+      status: "",
+      title: "",
+      types: [""],
+      unit: "",
       value: NaN,
-      year: NaN
-    }
-  ]
+      year: NaN,
+    },
+  ],
 };

@@ -1,28 +1,28 @@
-import type { FC } from 'react';
-import { DividingLine, FormWrapper, StepIcon } from './FormSection.styles';
-import type { IFormSection } from './FormSection.types';
-import { Header1, Paragraph } from '../Global';
-import Grid from '@mui/material/Grid2';
-import { Box } from '@mui/material';
-import CustomTag from '../CustomTag';
-import { Stack } from '@mui/system';
-import { RequiredLabel } from '../Input';
+import type { FC } from "react";
+import { DividingLine, FormWrapper, StepIcon } from "./FormSection.styles";
+import type { IFormSection } from "./FormSection.types";
+import { Header1, Paragraph } from "../Global";
+import Grid from "@mui/material/Grid2";
+import { Box } from "@mui/material";
+import CustomTag from "../CustomTag";
+import { Stack } from "@mui/system";
+import { RequiredLabel } from "../Input";
 
 const FormSection: FC<IFormSection> = ({
-  title = '',
+  title = "",
   subtitle,
   step,
   children,
   isMandatory,
   variant,
   headerChildren,
-  divider = true
+  divider = true,
 }) => (
   <FormWrapper data-testid="form-section-wrapper">
     <Grid container spacing={3}>
       {step && (
         <Grid size={{ sm: 1 }}>
-          <Stack spacing={0.5} alignItems={'center'}>
+          <Stack spacing={0.5} alignItems={"center"}>
             <Header1>{step}</Header1>
             <StepIcon />
           </Stack>
@@ -46,7 +46,7 @@ const FormSection: FC<IFormSection> = ({
           {subtitle && (
             <Stack spacing={2}>
               {!!subtitle &&
-                (typeof subtitle === 'string' ? (
+                (typeof subtitle === "string" ? (
                   <Paragraph variant="small-regular">{subtitle}</Paragraph>
                 ) : (
                   subtitle

@@ -1,11 +1,11 @@
-import type { IIconProps } from '@app/lib/types';
-import type { FC } from 'react';
-import { Theme } from '@app/lib/general';
+import type { IIconProps } from "@app/lib/types";
+import type { FC } from "react";
+import { Theme } from "@app/lib/general";
 
 const SortIcon: FC<IIconProps & { fillUp?: string; fillDown?: string }> = ({
   fillUp = Theme.palette.primary.azur,
   fillDown = Theme.palette.primary.azur,
-  size = 20
+  size = 20,
 }) => (
   <svg
     width={size}

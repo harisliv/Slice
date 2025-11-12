@@ -1,4 +1,4 @@
-import type { TabsProps } from '@mui/material/Tabs';
+import type { TabsProps } from "@mui/material/Tabs";
 
 export interface ITabPanelProps {
   children?: React.ReactNode;
@@ -15,18 +15,18 @@ export interface ITabItem {
 }
 
 export enum ITabItemType {
-  ACTIVITY_INFORMATION = 'ACTIVITY_INFORMATION',
-  CP_LIST = 'CP_LIST',
-  PROCESS_INFORMATION = 'PROCESS_INFORMATION',
-  ACTIVITY_LOG = 'ACTIVITY_LOG'
+  ACTIVITY_INFORMATION = "ACTIVITY_INFORMATION",
+  CP_LIST = "CP_LIST",
+  PROCESS_INFORMATION = "PROCESS_INFORMATION",
+  ACTIVITY_LOG = "ACTIVITY_LOG",
 }
 
 export enum ICpListTabState {
-  LOADING = 'LOADING',
-  SUCCESS_EMPTY_STATE = 'SUCCESS_EMPTY_STATE',
-  SUCCESS_TABLE = 'SUCCESS_TABLE',
-  SUCCESS_TABLE_WITH_PAGINATION = 'SUCCESS_TABLE_WITH_PAGINATION',
-  ERROR = 'ERROR'
+  LOADING = "LOADING",
+  SUCCESS_EMPTY_STATE = "SUCCESS_EMPTY_STATE",
+  SUCCESS_TABLE = "SUCCESS_TABLE",
+  SUCCESS_TABLE_WITH_PAGINATION = "SUCCESS_TABLE_WITH_PAGINATION",
+  ERROR = "ERROR",
 }
 
 export interface ITabsProps extends TabsProps {

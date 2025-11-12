@@ -1,5 +1,5 @@
-import { OrganizationalStructureControlledInput } from '@app/components/ControlledInput';
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
+import { OrganizationalStructureControlledInput } from "@app/components/ControlledInput";
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
 
 export default function MemberInformation() {
   return (

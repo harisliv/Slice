@@ -1,5 +1,5 @@
-import { OrganizationalStructureControlledSelect } from '@app/components/ControlledInput';
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
+import { OrganizationalStructureControlledSelect } from "@app/components/ControlledInput";
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
 
 export default function DedicatedStaff() {
   return (

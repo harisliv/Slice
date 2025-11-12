@@ -1,16 +1,16 @@
-import { useActiveInitiative, useGlobalLoading } from '@app/hooks';
-import { Theme } from '@app/lib/general';
-import { ChevronRightIcon } from '@app/lib/icons';
-import { ButtonComponent, Card, SquaresContainer } from '@app/lib/ui';
+import { useActiveInitiative, useGlobalLoading } from "@app/hooks";
+import { Theme } from "@app/lib/general";
+import { ChevronRightIcon } from "@app/lib/icons";
+import { ButtonComponent, Card, SquaresContainer } from "@app/lib/ui";
 import {
   FormSection,
   MainWrapperWithSubHeader,
   ShadowContainerWithTopPadding,
   SkeletonComponent,
-  SubHeader
-} from '@app/lib/ui';
-import { NavLink } from 'react-router';
-import { ParticipantCount } from '@app/components/MyParticipants';
+  SubHeader,
+} from "@app/lib/ui";
+import { NavLink } from "react-router";
+import { ParticipantCount } from "@app/components/MyParticipants";
 
 export default function ParticipantManagement() {
   const isLoading = useGlobalLoading();
@@ -43,7 +43,7 @@ export default function ParticipantManagement() {
               >
                 <ButtonComponent
                   RouterLink={NavLink}
-                  to={'my-students'}
+                  to={"my-students"}
                   customVariant="secondary-s"
                   endIcon={
                     <ChevronRightIcon fill={Theme.palette.primary.azur} />
@@ -58,7 +58,7 @@ export default function ParticipantManagement() {
               >
                 <ButtonComponent
                   RouterLink={NavLink}
-                  to={'work-centre'}
+                  to={"work-centre"}
                   customVariant="secondary-s"
                   endIcon={
                     <ChevronRightIcon fill={Theme.palette.primary.azur} />

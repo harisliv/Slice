@@ -1,2 +1,2 @@
-export * from './RemovableItem';
-export { default } from './RemovableItem';
+export * from "./RemovableItem";
+export { default } from "./RemovableItem";

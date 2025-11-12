@@ -1,1 +1,1 @@
-export { default } from './InvolvedEntities​';
+export { default } from "./InvolvedEntities​";

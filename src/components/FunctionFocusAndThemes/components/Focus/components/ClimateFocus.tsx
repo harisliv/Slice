@@ -1,4 +1,4 @@
-import { FunctionsFocusesAndThemesControlledSelect } from '@app/components';
+import { FunctionsFocusesAndThemesControlledSelect } from "@app/components";
 
 export default function ClimateFocus() {
   return (

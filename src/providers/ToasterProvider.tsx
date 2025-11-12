@@ -1,6 +1,6 @@
-import { type ReactNode } from 'react';
-import { Toaster } from '@app/lib/ui';
-import { useToasterStore } from '@app/hooks';
+import { type ReactNode } from "react";
+import { Toaster } from "@app/lib/ui";
+import { useToasterStore } from "@app/hooks";
 
 interface ToasterProviderProps {
   children: ReactNode;

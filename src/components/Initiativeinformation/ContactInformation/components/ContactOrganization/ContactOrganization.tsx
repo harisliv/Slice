@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { FormInputDescription } from '@app/components';
-import { INITIATIVE_INFORMATION_FIELD_INFO } from '@app/constants';
-import SmartDropdown from '@app/components/SmartDropdown';
-import { Stack } from '@mui/material';
-import { Theme } from '@app/lib/general';
-import { PlusIcon } from '@app/lib/icons';
-import { ButtonComponent, RemovableItem } from '@app/lib/ui';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { useState } from "react";
+import { FormInputDescription } from "@app/components";
+import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
+import SmartDropdown from "@app/components/SmartDropdown";
+import { Stack } from "@mui/material";
+import { Theme } from "@app/lib/general";
+import { PlusIcon } from "@app/lib/icons";
+import { ButtonComponent, RemovableItem } from "@app/lib/ui";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import {
   isContactOrganizationData,
   type InitiativeProfileFormData,
-  type SmartDropdownData
-} from '@app/types';
-import { useDeleteModal } from '@app/hooks';
+  type SmartDropdownData,
+} from "@app/types";
+import { useDeleteModal } from "@app/hooks";
 
 const MAX_ORGS = 3;
 
@@ -21,25 +21,25 @@ export default function ContactOrganization() {
   const { control, watch } = useFormContext<InitiativeProfileFormData>();
   const { fields, remove, append } = useFieldArray({
     control,
-    name: 'contactOrganizations',
-    rules: { maxLength: MAX_ORGS }
+    name: "contactOrganizations",
+    rules: { maxLength: MAX_ORGS },
   });
 
-  const contactOrganizations = watch('contactOrganizations');
+  const contactOrganizations = watch("contactOrganizations");
   const [openSmartDd, setOpenSmartDd] = useState(false);
 
   const handleSubmit = (item: SmartDropdownData) => {
     if (isContactOrganizationData(item)) {
-      append({ label: item.name, value: item.id ?? '' });
+      append({ label: item.name, value: item.id ?? "" });
     }
   };
 
   const openRemoveModal = (index: number) => {
-    const orgName = fields[index]?.label ?? 'this organization';
+    const orgName = fields[index]?.label ?? "this organization";
     showDeleteModal({
-      subtitle: 'Are you sure you want to delete this organization?',
+      subtitle: "Are you sure you want to delete this organization?",
       content: `You're about to permanently delete "${orgName}". This cannot be undone.`,
-      onConfirm: () => remove(index)
+      onConfirm: () => remove(index),
     });
   };
 
@@ -58,7 +58,7 @@ export default function ContactOrganization() {
         <RemovableItem
           disabled={canRemoveAny}
           key={field.id ?? idx}
-          label={field?.label ?? '-'}
+          label={field?.label ?? "-"}
           onRemove={() => openRemoveModal(idx)}
           icon="trash"
         />

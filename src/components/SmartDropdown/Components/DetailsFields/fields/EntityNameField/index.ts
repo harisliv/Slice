@@ -1,1 +1,1 @@
-export { default } from './EntityNameField';
+export { default } from "./EntityNameField";

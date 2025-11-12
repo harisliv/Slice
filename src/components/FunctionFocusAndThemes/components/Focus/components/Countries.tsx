@@ -1,13 +1,13 @@
 import {
   FormInputDescription,
-  FunctionsFocusesAndThemesControlledMultiSelect
-} from '@app/components';
-import { useFormContext } from 'react-hook-form';
-import type { FocusesFormData } from '@app/types';
+  FunctionsFocusesAndThemesControlledMultiSelect,
+} from "@app/components";
+import { useFormContext } from "react-hook-form";
+import type { FocusesFormData } from "@app/types";
 
 export default function Countries() {
   const { watch } = useFormContext<FocusesFormData>();
-  const initiativeGeographicalFocus = watch('initiativeGeographicalFocus');
+  const initiativeGeographicalFocus = watch("initiativeGeographicalFocus");
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function Countries() {
         customGridSize="half"
         dropdownEnpoint="Countries"
         inputDescriptionTitle="Country"
-        maxOptions={initiativeGeographicalFocus === 'National' ? 1 : undefined}
+        maxOptions={initiativeGeographicalFocus === "National" ? 1 : undefined}
       />
     </>
   );

@@ -1,23 +1,23 @@
 export type InfoCardContent =
-  | { type: 'text'; value?: string | null }
-  | { type: 'number'; value?: number | null }
-  | { type: 'url'; value?: string | null }
-  | { type: 'social'; value?: SocialLink | null }
+  | { type: "text"; value?: string | null }
+  | { type: "number"; value?: number | null }
+  | { type: "url"; value?: string | null }
+  | { type: "social"; value?: SocialLink | null }
   | {
-      type: 'list';
+      type: "list";
       value?: string[] | null;
       doubleTitle?: string;
       showDot?: boolean;
     }
   | {
-      type: 'doc';
+      type: "doc";
       value?: { filename: string; url: string; size: string } | null;
     }
   | {
-      type: 'docMultiple';
+      type: "docMultiple";
       value?: { filename: string; url: string; size: number }[] | null;
     }
-  | { type: 'image'; src?: string | null; alt?: string | null };
+  | { type: "image"; src?: string | null; alt?: string | null };
 
 export interface InfoCardProps {
   title?: string;

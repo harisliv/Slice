@@ -1,9 +1,9 @@
-import { Document, Page, View, StyleSheet } from '@react-pdf/renderer';
-import TimeframeOfInformationReviewPDF from './components/TimeframeOfInformationReview.pdf';
-import ActionsOutcomesImpactsReviewPDF from './components/ActionsOutcomesImpactsReview.pdf';
-import ProgressOfTargetsReviewPDF from './components/ProgressOfTargetsReview.pdf';
-import ChallengesAndOpportunitiesReviewPDF from './components/ChallengesAndOpportunitiesReview.pdf';
-import type { TProgressReportingShape } from '@app/types';
+import { Document, Page, View, StyleSheet } from "@react-pdf/renderer";
+import TimeframeOfInformationReviewPDF from "./components/TimeframeOfInformationReview.pdf";
+import ActionsOutcomesImpactsReviewPDF from "./components/ActionsOutcomesImpactsReview.pdf";
+import ProgressOfTargetsReviewPDF from "./components/ProgressOfTargetsReview.pdf";
+import ChallengesAndOpportunitiesReviewPDF from "./components/ChallengesAndOpportunitiesReview.pdf";
+import type { TProgressReportingShape } from "@app/types";
 
 interface ReportPDFProps {
   data: TProgressReportingShape;
@@ -12,16 +12,16 @@ interface ReportPDFProps {
 const styles = StyleSheet.create({
   page: {
     padding: 40,
-    fontSize: 11
+    fontSize: 11,
   },
   section: {
-    marginBottom: 20
+    marginBottom: 20,
   },
   divider: {
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
-    marginVertical: 20
-  }
+    borderTopColor: "#e0e0e0",
+    marginVertical: 20,
+  },
 });
 
 const ReportPDF = ({ data }: ReportPDFProps) => (

@@ -1,1 +1,1 @@
-export { default } from './TypeField';
+export { default } from "./TypeField";

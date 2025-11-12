@@ -1,4 +1,4 @@
-import { MONITORING_FIELD_INFO } from '@app/constants';
+import { MONITORING_FIELD_INFO } from "@app/constants";
 import {
   isFunctionFocusAndThemesSchema,
   isGoalsTargetsAndMonitoringSchema,
@@ -7,18 +7,18 @@ import {
   isValidationStatusSchema,
   type InitiativeProfileDTO,
   type InitiativeProfileFormData,
-  type RelatedInitiative
-} from '@app/types';
-import { StepStatus, TagStatus } from '@app/lib/types';
+  type RelatedInitiative,
+} from "@app/types";
+import { StepStatus, TagStatus } from "@app/lib/types";
 import {
   convertToValidEmail,
   convertToValidUrl,
   normalizeNumber,
-  normalizeString
-} from './general';
+  normalizeString,
+} from "./general";
 
 export const getStepStatusArray = (
-  initiativeProfile: InitiativeProfileFormData
+  initiativeProfile: InitiativeProfileFormData,
 ): StepStatus[] => {
   return [
     isInitiativeInformationSchema(initiativeProfile)
@@ -32,35 +32,35 @@ export const getStepStatusArray = (
       : StepStatus.ACTIVE,
     isFunctionFocusAndThemesSchema(initiativeProfile)
       ? StepStatus.COMPLETED
-      : StepStatus.ACTIVE
+      : StepStatus.ACTIVE,
   ];
 };
 
-export const mapStatus = (target: InitiativeProfileFormData['targets'][0]) => {
+export const mapStatus = (target: InitiativeProfileFormData["targets"][0]) => {
   const { statusReason, status } = target;
 
-  if (statusReason?.toLowerCase() === 'inactive') {
+  if (statusReason?.toLowerCase() === "inactive") {
     return TagStatus.INACTIVE;
   }
 
-  if (statusReason?.toLowerCase() === 'active') {
-    if (status?.includes('accomplished')) {
+  if (statusReason?.toLowerCase() === "active") {
+    if (status?.includes("accomplished")) {
       return TagStatus.ACCOMPLISHED;
     }
-    if (status?.includes('no longer active')) {
+    if (status?.includes("no longer active")) {
       return TagStatus.INACTIVE;
     }
-    if (status?.includes('halfway') || !status || status === '') {
+    if (status?.includes("halfway") || !status || status === "") {
       return TagStatus.ACTIVE;
     }
   }
 
-  return 'undefinedStatus';
+  return "undefinedStatus";
 };
 
 export const isStatusKey = (key: string): key is keyof StatusOrder => {
-  return ['ACTIVE', 'ACCOMPLISHED', 'INACTIVE', 'undefinedStatus'].includes(
-    key
+  return ["ACTIVE", "ACCOMPLISHED", "INACTIVE", "undefinedStatus"].includes(
+    key,
   );
 };
 
@@ -75,7 +75,7 @@ export const statusOrder: StatusOrder = {
   ACTIVE: 1,
   ACCOMPLISHED: 2,
   INACTIVE: 3,
-  undefinedStatus: 4
+  undefinedStatus: 4,
 };
 
 export const mapPublicReportingOptions = (options: {
@@ -99,21 +99,21 @@ export const mapPublicReportingOptions = (options: {
 };
 
 export const filterManualRelatedInitiatives = (
-  relatedInitiatives?: RelatedInitiative[]
+  relatedInitiatives?: RelatedInitiative[],
 ) => relatedInitiatives?.filter((ri) => !ri.needsConfirmation);
 
 export const filterRelationshipRelatedInitiatives = (
-  relatedInitiatives?: RelatedInitiative[]
+  relatedInitiatives?: RelatedInitiative[],
 ) => relatedInitiatives?.filter((ri) => ri.needsConfirmation);
 
 const publicReportingOptions = {
-  1: 'The Cooperative Climate Initiative will fully participate in GCAP’s annual Cooperative Climate Initiative progress tracking process',
-  2: 'The Cooperative Climate Initiative publishes periodical progress reports (at least annually) regarding its work',
-  3: 'The Cooperative Climate Initiative reports progress in another way'
+  1: "The Cooperative Climate Initiative will fully participate in GCAP’s annual Cooperative Climate Initiative progress tracking process",
+  2: "The Cooperative Climate Initiative publishes periodical progress reports (at least annually) regarding its work",
+  3: "The Cooperative Climate Initiative reports progress in another way",
 };
 
 export const convertToClientEntity = (
-  value: InitiativeProfileDTO
+  value: InitiativeProfileDTO,
 ): InitiativeProfileFormData => ({
   id: value.id,
   name: value.name,
@@ -127,18 +127,18 @@ export const convertToClientEntity = (
   explanationStatus: normalizeString(value.explanationStatus),
   summaryOutcomes: normalizeString(value.summaryOutcomes),
   closureReport: value.closureReport,
-  contactEmail: convertToValidEmail(value.contactEmail || ''),
+  contactEmail: convertToValidEmail(value.contactEmail || ""),
   contactOrganizations:
     value.contactOrganizations?.map((organization) => ({
       label: organization.organizationName,
-      value: organization.id
+      value: organization.id,
     })) || [],
   climateRelatedGoalImpactStatement: normalizeString(value.goalImpactStatement),
   climateRelatedGoalDescription: normalizeString(value.goalDescription),
   climateRelatedGoalAlignmentParis: normalizeString(value.goalAlignmentParis),
   climateRelatedGoalAlignmentMultilateral: value.goalAlignmentOthers ?? [],
   climateRelatedGoalAlignmentOtherDescription:
-    'The Cooperative Climate Initiative does not have any dedicated staff', // TODO REMOVE THIS
+    "The Cooperative Climate Initiative does not have any dedicated staff", // TODO REMOVE THIS
   additionalValueInitiative: normalizeString(value.additionalValue),
   newTargets: [],
   targets:
@@ -156,14 +156,14 @@ export const convertToClientEntity = (
           status: normalizeString(target.status),
           targetProgress: target.targetProgess,
           updateTarget: target.updateTarget ?? null,
-          statusReason: target.statusReason ?? null
+          statusReason: target.statusReason ?? null,
         }))
       : [],
   progress: normalizeString(value.monitoringProgress),
   publicReportingOptions: {
     checkbox1: value.publicReportingOptions.includes(publicReportingOptions[1]),
     checkbox2: value.publicReportingOptions.includes(publicReportingOptions[2]),
-    checkbox3: value.publicReportingOptions.includes(publicReportingOptions[3])
+    checkbox3: value.publicReportingOptions.includes(publicReportingOptions[3]),
   },
   publicReportingOther: normalizeString(value.publicReportingOther),
   periodicalProgressReport:
@@ -178,21 +178,21 @@ export const convertToClientEntity = (
             name: null,
             size: null,
             url: null,
-            sharePointId: null
-          }
+            sharePointId: null,
+          },
         }))
       : [],
   initiativePrimaryFunction: normalizeString(value.initiativePrimaryFunction),
   initiativePrimaryFunctionOther: normalizeString(
-    value.initiativePrimaryFunctionOther
+    value.initiativePrimaryFunctionOther,
   ),
   initiativeSecondaryFunction: value.initiativeSecondaryFunction || [],
   initiativeSecondaryFunctionOther: normalizeString(
-    value.initiativeSecondaryFunctionOther
+    value.initiativeSecondaryFunctionOther,
   ),
   initiativeFocus: normalizeString(value.initiativeFocus?.[0]), // TODO FIX THAT
   initiativeGeographicalFocus: normalizeString(
-    value.initiativeGeographicalFocus
+    value.initiativeGeographicalFocus,
   ),
   regions: value.regions || [],
   countries: value.countries || [],
@@ -206,11 +206,11 @@ export const convertToClientEntity = (
   signatoryRemoval: normalizeString(value.signatoryRemoval),
   memberInformation: normalizeString(value.memberInformation),
   leadOrganizations: value.involvedEntities.map((entity) => ({
-    id: entity.id || '',
+    id: entity.id || "",
     name: entity.entityOperatingName,
     type: entity.accountType,
     country: entity.country,
-    assignedRoles: entity.entityRoles
+    assignedRoles: entity.entityRoles,
   })),
   signatoriesMembers: value.signatoriesAndMembers || [],
   signatoryFollowUps: value.signatoryFollowUps || [],
@@ -225,14 +225,14 @@ export const convertToClientEntity = (
           contactEmail: normalizeString(ri.contactEmail),
           validationStatus: isValidationStatusSchema(ri.validationStatus)
             ? ri.validationStatus
-            : 'Pending',
-          needsConfirmation: ri.needsConfirmation
+            : "Pending",
+          needsConfirmation: ri.needsConfirmation,
         }))
-      : []
+      : [],
 });
 
 export const convertToServerEntity = (
-  value: InitiativeProfileFormData
+  value: InitiativeProfileFormData,
 ): InitiativeProfileDTO => ({
   id: value.id,
   name: value.name,
@@ -251,20 +251,20 @@ export const convertToServerEntity = (
     value.contactOrganizations?.length > 0
       ? value.contactOrganizations.map((organization) => ({
           id: organization.value,
-          organizationName: organization.label
+          organizationName: organization.label,
         }))
       : [],
   initiativePrimaryFunction: normalizeString(value.initiativePrimaryFunction),
   initiativePrimaryFunctionOther: normalizeString(
-    value.initiativePrimaryFunctionOther
+    value.initiativePrimaryFunctionOther,
   ),
   initiativeSecondaryFunction: value.initiativeSecondaryFunction || [],
   initiativeSecondaryFunctionOther: normalizeString(
-    value.initiativeSecondaryFunctionOther
+    value.initiativeSecondaryFunctionOther,
   ),
   initiativeFocus: value.initiativeFocus ? [value.initiativeFocus] : [],
   initiativeGeographicalFocus: normalizeString(
-    value.initiativeGeographicalFocus
+    value.initiativeGeographicalFocus,
   ),
   regions: value.regions || [],
   countries: value.countries || [],
@@ -290,18 +290,18 @@ export const convertToServerEntity = (
       : []),
     ...(value.publicReportingOptions.checkbox3
       ? [publicReportingOptions[3]]
-      : [])
+      : []),
   ],
   publicReportingOther: normalizeString(value.publicReportingOther),
   periodicalProgressReports:
     value.periodicalProgressReport?.length > 0 &&
     value.publicReportingOptions.checkbox2
       ? value.periodicalProgressReport.map((r) => ({
-          id: r.id === '' ? null : r.id,
+          id: r.id === "" ? null : r.id,
           report: r.report,
           title: normalizeString(r.title),
           year: normalizeNumber(r.year),
-          status: r.status || 'Draft'
+          status: r.status || "Draft",
         }))
       : [],
   organizationalArrangements: normalizeString(value.organizationalArrangements),
@@ -310,9 +310,9 @@ export const convertToServerEntity = (
   involvedEntities: value.leadOrganizations.map((entity) => ({
     ...(entity.id ? { id: entity.id } : {}),
     entityOperatingName: entity.name,
-    accountType: entity.type || '',
-    country: entity.country || '',
-    entityRoles: entity.assignedRoles
+    accountType: entity.type || "",
+    country: entity.country || "",
+    entityRoles: entity.assignedRoles,
   })),
   signatoriesAndMembers: value.signatoriesMembers || [],
   signatoryCriteria: normalizeString(value.signatoryCriteria),
@@ -329,6 +329,6 @@ export const convertToServerEntity = (
       contactName: normalizeString(initiative.contactName),
       contactEmail: normalizeString(initiative.contactEmail),
       validationStatus: initiative.validationStatus,
-      needsConfirmation: initiative.needsConfirmation
-    })) || []
+      needsConfirmation: initiative.needsConfirmation,
+    })) || [],
 });

@@ -1,6 +1,6 @@
-import { Box } from '@mui/material';
-import { type ITypography } from '@app/lib/types';
-import styled from 'styled-components';
+import { Box } from "@mui/material";
+import { type ITypography } from "@app/lib/types";
+import styled from "styled-components";
 
 /*
  * GLOBAL TYPOGRAPHY COMPONENTS
@@ -103,7 +103,7 @@ export const Wrapper = styled(Box)`
 const CONTAINER_WIDTH = {
   M: 920,
   L: 1200,
-  XL: 1440
+  XL: 1440,
 };
 
 export const MainWrapperWithHeader = styled(Box)<{
@@ -114,7 +114,7 @@ export const MainWrapperWithHeader = styled(Box)<{
   min-height: calc((100vh - ${(props) => props.theme.footerNav.height}));
   max-width: ${(props) => CONTAINER_WIDTH[props.$containerWidth]}px;
   margin: 32px auto;
-  padding-bottom: ${(props) => (props.$withFooter ? '60px' : '0')};
+  padding-bottom: ${(props) => (props.$withFooter ? "60px" : "0")};
 `;
 
 export const MainWrapperWithSubHeader = styled(Box)<{

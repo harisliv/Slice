@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -8,10 +8,10 @@ import {
   flexRender,
   type ColumnFiltersState,
   type VisibilityState,
-  type Row
-} from '@tanstack/react-table';
-import { Stack, TableCell } from '@mui/material';
-import { defaultVisibileColumns } from './MyParticipants.types';
+  type Row,
+} from "@tanstack/react-table";
+import { Stack, TableCell } from "@mui/material";
+import { defaultVisibileColumns } from "./MyParticipants.types";
 import {
   ButtonComponent,
   MainWrapperWithSubHeader,
@@ -23,25 +23,25 @@ import {
   StyledTable2Row,
   SubHeader,
   TableComponent,
-  TableSort2
-} from '@app/lib/ui';
-import Pagination from './Pagination/Pagination';
-import { FormSection } from '@app/lib/ui';
-import { convertFormValuesToColumnFilters } from './MyParticipants.helpers';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import TableActions from './TableActions';
-import { ChevronLeftIcon } from '@app/lib/icons';
-import { NavLink } from 'react-router';
-import { type TFilters, defaultFiltersValues, filtersSchema } from '@app/types';
-import { Filters } from './Filters';
-import SearchAndAppliedFilters from './SearchAndAppliedFilters';
-import { FormProvider, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import useMyParticipants from '@app/hooks/useMyParticipants';
-import { useParticipantColumns } from './useParticipantColumns';
-import { useActiveInitiative, useParticipantLoading } from '@app/hooks';
-import { ParticipantCount } from '@app/components/MyParticipants';
+  TableSort2,
+} from "@app/lib/ui";
+import Pagination from "./Pagination/Pagination";
+import { FormSection } from "@app/lib/ui";
+import { convertFormValuesToColumnFilters } from "./MyParticipants.helpers";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import TableActions from "./TableActions";
+import { ChevronLeftIcon } from "@app/lib/icons";
+import { NavLink } from "react-router";
+import { type TFilters, defaultFiltersValues, filtersSchema } from "@app/types";
+import { Filters } from "./Filters";
+import SearchAndAppliedFilters from "./SearchAndAppliedFilters";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import useMyParticipants from "@app/hooks/useMyParticipants";
+import { useParticipantColumns } from "./useParticipantColumns";
+import { useActiveInitiative, useParticipantLoading } from "@app/hooks";
+import { ParticipantCount } from "@app/components/MyParticipants";
 
 dayjs.extend(customParseFormat);
 
@@ -50,7 +50,7 @@ export default function MyParticipants() {
 
   const methods = useForm({
     defaultValues: defaultFiltersValues,
-    resolver: zodResolver(filtersSchema)
+    resolver: zodResolver(filtersSchema),
   });
 
   const { data: dataMyPrticipantsTable } = useMyParticipants();
@@ -58,33 +58,33 @@ export default function MyParticipants() {
 
   const { reset } = methods;
 
-  const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [globalFilter, setGlobalFilter] = useState<string>("");
 
   const globalFilterFn = (
     row: Row<any>,
     columnId: string,
-    filterValue: string
+    filterValue: string,
   ) => {
     const search = String(filterValue.toLowerCase());
     const columnsToSearch = [
-      'entityOperatingName',
-      'legalName',
-      'identityNumber'
+      "entityOperatingName",
+      "legalName",
+      "identityNumber",
     ];
     if (!columnsToSearch.includes(columnId)) return false;
     return columnsToSearch.some((col) => {
-      let value = String(row.getValue(col) ?? '');
+      let value = String(row.getValue(col) ?? "");
       value = value.toLowerCase();
       return value.includes(search);
     });
   };
 
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
 
   const [visibility, setVisibility] = useState<VisibilityState>(
-    defaultVisibileColumns
+    defaultVisibileColumns,
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -112,14 +112,14 @@ export default function MyParticipants() {
     columns,
     filterFns: {
       includesString: (row, columnId, filterValue: string) => {
-        const value = row.getValue<string>(columnId) ?? '';
+        const value = row.getValue<string>(columnId) ?? "";
         return value.toLowerCase().includes(filterValue.toLowerCase());
-      }
+      },
     },
     state: {
       columnFilters: columnFilters,
       globalFilter: globalFilter,
-      columnVisibility: visibility
+      columnVisibility: visibility,
     },
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: globalFilterFn,
@@ -132,7 +132,7 @@ export default function MyParticipants() {
     enableMultiSort: true,
     debugTable: false,
     debugHeaders: false,
-    debugColumns: false
+    debugColumns: false,
   });
 
   const headerGroups = table.getHeaderGroups().map((headerGroup) => (
@@ -141,12 +141,12 @@ export default function MyParticipants() {
         <StyledHeader2Cell key={header.id} colSpan={header.colSpan}>
           {header.isPlaceholder ? null : (
             <div
-              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+              style={{ display: "flex", alignItems: "center", gap: "8px" }}
               {...{
                 className: header.column.getCanSort()
-                  ? 'cursor-pointer select-none'
-                  : '',
-                onClick: header.column.getToggleSortingHandler()
+                  ? "cursor-pointer select-none"
+                  : "",
+                onClick: header.column.getToggleSortingHandler(),
               }}
             >
               {flexRender(header.column.columnDef.header, header.getContext())}

@@ -1,19 +1,19 @@
-import { Divider, Stack } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import { PlusIcon } from '@app/lib/icons';
-import { ButtonComponent } from '@app/lib/ui';
-import FormInputDescription from '@app/components/FormInputDescription';
-import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from '@app/constants';
-import { AddInitiativeModal } from './components';
-import { useRelatedInitiatives, useValidationDecisionModal } from '@app/hooks';
-import { GenericTable } from '@app/components';
+import { Divider, Stack } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { PlusIcon } from "@app/lib/icons";
+import { ButtonComponent } from "@app/lib/ui";
+import FormInputDescription from "@app/components/FormInputDescription";
+import { ORGANIZATIONAL_STRUCTURE_FIELD_INFO } from "@app/constants";
+import { AddInitiativeModal } from "./components";
+import { useRelatedInitiatives, useValidationDecisionModal } from "@app/hooks";
+import { GenericTable } from "@app/components";
 
 import {
   usePendingInitiativesEditModecolumns,
-  useRelatedInitiativesEditModeColumns
-} from '../../hooks';
-import { useState } from 'react';
-import type { TempModalPayload } from '@app/types';
+  useRelatedInitiativesEditModeColumns,
+} from "../../hooks";
+import { useState } from "react";
+import type { TempModalPayload } from "@app/types";
 
 export default function RelatedInitiatives() {
   const {
@@ -26,7 +26,7 @@ export default function RelatedInitiatives() {
     resetTempoOptionFields,
     resetTempValidationsFields,
     tempValidations,
-    isValidTempModalPayload
+    isValidTempModalPayload,
   } = useRelatedInitiatives();
 
   const addManualInitiativeAndCloseModal = (tempOption: TempModalPayload) => {
@@ -46,11 +46,11 @@ export default function RelatedInitiatives() {
     onConfirm: () => {
       mergeUpdatedValidations();
       resetTempValidationsFields();
-    }
+    },
   });
 
   const relatedInitiativesColumns = useRelatedInitiativesEditModeColumns({
-    removeRow: removeManualInitiative
+    removeRow: removeManualInitiative,
   });
 
   const pendingInitiativesColumns = usePendingInitiativesEditModecolumns();
@@ -105,7 +105,7 @@ export default function RelatedInitiatives() {
               }
               onClick={showValidationDecisionModal}
               sx={{
-                padding: '6px 17.5px !important'
+                padding: "6px 17.5px !important",
               }}
             >
               Confirm

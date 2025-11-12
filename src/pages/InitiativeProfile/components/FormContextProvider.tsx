@@ -1,9 +1,9 @@
-import { withFormProvider } from '@app/providers';
-import type { ReactNode } from 'react';
-import type { IFormActionBar } from '@app/lib/types';
-import { useCurrentStep } from '@app/hooks/useFormStepper';
-import useGetSchema from '../hooks/useGetSchema';
-import { isInitiativeProfileSchema } from '@app/types';
+import { withFormProvider } from "@app/providers";
+import type { ReactNode } from "react";
+import type { IFormActionBar } from "@app/lib/types";
+import { useCurrentStep } from "@app/hooks/useFormStepper";
+import useGetSchema from "../hooks/useGetSchema";
+import { isInitiativeProfileSchema } from "@app/types";
 
 interface FormContextProviderProps extends IFormActionBar {
   children: ReactNode;
@@ -22,7 +22,7 @@ const FormContextProvider = ({
     schema,
     defaultValues,
     exitRoute,
-    isInitiativeProfileSchema
+    isInitiativeProfileSchema,
   );
 
   return <DynamicFormProvider {...props}>{children}</DynamicFormProvider>;

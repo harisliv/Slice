@@ -1,8 +1,8 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 export enum ToasterType {
-  SUCCESS = 'success',
-  ERROR = 'error'
+  SUCCESS = "success",
+  ERROR = "error",
 }
 
 type ToasterConfig = {
@@ -13,27 +13,27 @@ type ToasterConfig = {
 };
 
 type ToasterStore = ToasterConfig & {
-  showToaster: (config: Omit<ToasterConfig, 'show'>) => void;
+  showToaster: (config: Omit<ToasterConfig, "show">) => void;
   hideToaster: () => void;
 };
 
 export const useToasterStore = create<ToasterStore>((set) => ({
   show: false,
-  message: '',
+  message: "",
   toasterType: ToasterType.SUCCESS,
   errorDetails: undefined,
 
   showToaster: (config) => {
     set({
       ...config,
-      show: true
+      show: true,
     });
   },
 
   hideToaster: () => {
     set((state) => ({
       ...state,
-      show: false
+      show: false,
     }));
-  }
+  },
 }));

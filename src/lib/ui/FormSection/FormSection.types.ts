@@ -1,6 +1,6 @@
-import type { SxProps } from '@mui/material';
-import type { ReactNode } from 'react';
-import React from 'react';
+import type { SxProps } from "@mui/material";
+import type { ReactNode } from "react";
+import React from "react";
 export interface IFormSection {
   title?: string;
   step?: string;

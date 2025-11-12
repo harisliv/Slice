@@ -1,6 +1,6 @@
-import type { FC } from 'react';
+import type { FC } from "react";
 
-import { StyledMaxOptions } from './MaxOptions.styles';
+import { StyledMaxOptions } from "./MaxOptions.styles";
 
 const MaxOptions: FC = () => (
   <StyledMaxOptions>

@@ -1,6 +1,6 @@
-import { IconButton as MuiIconButton } from '@mui/material';
-import styled from 'styled-components';
-import { EnumWeight } from '@app/lib/types';
+import { IconButton as MuiIconButton } from "@mui/material";
+import styled from "styled-components";
+import { EnumWeight } from "@app/lib/types";
 
 export const StyledButton = styled(MuiIconButton)`
   && {

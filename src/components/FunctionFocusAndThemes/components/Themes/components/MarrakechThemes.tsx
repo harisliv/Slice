@@ -1,7 +1,7 @@
 import {
   FormInputDescription,
-  FunctionsFocusesAndThemesControlledMultiSelect
-} from '@app/components';
+  FunctionsFocusesAndThemesControlledMultiSelect,
+} from "@app/components";
 
 export default function MarrakechThemes() {
   return (

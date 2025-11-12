@@ -1,11 +1,11 @@
-import { GOALS_FIELD_INFO } from '@app/constants';
-import { GoalsTargetsAndMonitoringControlledInput } from '@app/components';
+import { GOALS_FIELD_INFO } from "@app/constants";
+import { GoalsTargetsAndMonitoringControlledInput } from "@app/components";
 
 export default function GoalDescription() {
   return (
     <GoalsTargetsAndMonitoringControlledInput
       istextArea
-      name={'climateRelatedGoalDescription'}
+      name={"climateRelatedGoalDescription"}
       required
       customGridSize="full"
       helperText="Maximum 3,000 characters"

@@ -1,30 +1,30 @@
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 import {
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
   XIcon,
-  YoutubeIcon
-} from '@app/lib/icons';
-import type { SocialLinkProps } from './SocialMediaLink.types';
+  YoutubeIcon,
+} from "@app/lib/icons";
+import type { SocialLinkProps } from "./SocialMediaLink.types";
 import {
   LinkWrapper,
   IconWrapper,
-  TextWrapper
-} from './SocialMediaLink.styles';
-import { Box } from '@mui/material';
+  TextWrapper,
+} from "./SocialMediaLink.styles";
+import { Box } from "@mui/material";
 
 const IconComponent = ({ platform }: { platform: string }) => {
   switch (platform) {
-    case 'Facebook':
+    case "Facebook":
       return <FacebookIcon />;
-    case 'Instagram':
+    case "Instagram":
       return <InstagramIcon />;
-    case 'LinkedIn':
+    case "LinkedIn":
       return <LinkedinIcon />;
-    case 'Twitter':
+    case "Twitter":
       return <XIcon />;
-    case 'YouTube':
+    case "YouTube":
       return <YoutubeIcon />;
     default:
       return null;

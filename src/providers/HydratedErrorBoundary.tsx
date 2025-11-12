@@ -1,6 +1,6 @@
-import { ErrorCard, MainWrapperWithHeader } from '@app/lib/ui';
-import { Header } from '@app/components';
-import { useActiveInitiative, useCustomRouteError } from '@app/hooks';
+import { ErrorCard, MainWrapperWithHeader } from "@app/lib/ui";
+import { Header } from "@app/components";
+import { useActiveInitiative, useCustomRouteError } from "@app/hooks";
 
 export default function HydratedErrorBoundary() {
   const error = useCustomRouteError();

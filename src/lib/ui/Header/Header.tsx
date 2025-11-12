@@ -1,8 +1,8 @@
-import { useMediaQuery, useTheme } from '@mui/material';
-import type { FC } from 'react';
-import { memo, useState } from 'react';
-import { BurgerMenuIcon, ExitIcon, LogoutIcon, LogoIcon } from '@app/lib/icons';
-import Drawer from '../Drawer';
+import { useMediaQuery, useTheme } from "@mui/material";
+import type { FC } from "react";
+import { memo, useState } from "react";
+import { BurgerMenuIcon, ExitIcon, LogoutIcon, LogoIcon } from "@app/lib/icons";
+import Drawer from "../Drawer";
 import {
   HeaderWrapper,
   InfoWrapper,
@@ -15,24 +15,24 @@ import {
   StyledNavActionButton,
   StyledNavItems,
   StyledPageInfo,
-  StyledPageName
-} from './Header.styles';
-import type { IHeader } from './Header.types';
-import { Theme } from '@app/lib/general';
-import { Header5 } from '../Global';
-import ButtonComponent from '../Button';
+  StyledPageName,
+} from "./Header.styles";
+import type { IHeader } from "./Header.types";
+import { Theme } from "@app/lib/general";
+import { Header5 } from "../Global";
+import ButtonComponent from "../Button";
 
 const Header: FC<IHeader> = ({
   handleLogout,
   menuItems,
   disableHeaderLinks = false,
-  LinkComponent
+  LinkComponent,
 }) => {
   const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down(Theme.breakpoints.md));
   const isSmallMobile = useMediaQuery(
-    theme.breakpoints.down(Theme.breakpoints.xxs)
+    theme.breakpoints.down(Theme.breakpoints.xxs),
   );
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
@@ -63,7 +63,7 @@ const Header: FC<IHeader> = ({
               <LogoIcon aria-label="Main Logo" />
               <StyledPageName data-testid="header-nav.page-name">
                 <Header5 variant="default">
-                  {isSmallMobile ? 'ISS' : 'INITIATIVE self-service'}
+                  {isSmallMobile ? "ISS" : "INITIATIVE self-service"}
                 </Header5>
               </StyledPageName>
             </StyledPageInfo>

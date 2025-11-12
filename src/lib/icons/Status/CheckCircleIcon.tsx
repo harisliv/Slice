@@ -1,9 +1,9 @@
-import type { FC } from 'react';
-import { Theme } from '@app/lib/general';
-import type { IIconProps } from '@app/lib/types';
+import type { FC } from "react";
+import { Theme } from "@app/lib/general";
+import type { IIconProps } from "@app/lib/types";
 
 const CheckCircleIcon: FC<IIconProps> = ({
-  fill = Theme.palette.primary.azur
+  fill = Theme.palette.primary.azur,
 }) => (
   <svg
     width="20"

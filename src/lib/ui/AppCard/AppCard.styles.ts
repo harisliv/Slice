@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { animation } from '@app/lib/general';
-import { Header3, Paragraph } from '../Global';
+import styled from "styled-components";
+import { animation } from "@app/lib/general";
+import { Header3, Paragraph } from "../Global";
 
 export const StyledAppCard = styled.div`
-  ${animation({ time: '0.3s' })}
+  ${animation({ time: "0.3s" })}
   display: flex;
   flex-direction: column;
   padding: 29px 24px;

@@ -1,6 +1,6 @@
-import type { FC } from 'react';
-import type { IIconProps } from '@app/lib/types';
-import { Theme } from '@app/lib/general';
+import type { FC } from "react";
+import type { IIconProps } from "@app/lib/types";
+import { Theme } from "@app/lib/general";
 
 const SaveIcon: FC<IIconProps> = ({ fill = Theme.palette.primary.azur }) => (
   <svg

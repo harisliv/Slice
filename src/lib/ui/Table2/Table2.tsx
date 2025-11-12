@@ -1,6 +1,6 @@
-import React from 'react';
-import { Table, TableBody, TableHead } from '@mui/material';
-import { StyledTable2Container } from './Table2.styles';
+import React from "react";
+import { Table, TableBody, TableHead } from "@mui/material";
+import { StyledTable2Container } from "./Table2.styles";
 
 interface TableProps {
   headerGroups: React.ReactNode[];

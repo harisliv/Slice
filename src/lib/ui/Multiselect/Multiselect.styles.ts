@@ -1,5 +1,5 @@
-import { Box, ListItem } from '@mui/material';
-import { styled } from 'styled-components';
+import { Box, ListItem } from "@mui/material";
+import { styled } from "styled-components";
 
 export const StyledFooterListItem = styled(ListItem)`
   position: sticky;

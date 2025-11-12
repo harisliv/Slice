@@ -1,8 +1,8 @@
-import { Button } from '@mui/material';
-import { Theme } from '@app/lib/general';
-import type { TButtonStyling } from '@app/lib/types';
-import { EnumWeight } from '@app/lib/types';
-import styled, { css } from 'styled-components';
+import { Button } from "@mui/material";
+import { Theme } from "@app/lib/general";
+import type { TButtonStyling } from "@app/lib/types";
+import { EnumWeight } from "@app/lib/types";
+import styled, { css } from "styled-components";
 
 export const StyledButton = styled(Button)<TButtonStyling>`
   && {
@@ -10,7 +10,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
     background-color: ${(props) => props.$backgroundColor};
     font-weight: ${(props) => props.$fontWeight};
     font-size: ${(props) => props.$fontSize};
-    line-height: ${(props) => props.$lineHeight ?? 'unset'};
+    line-height: ${(props) => props.$lineHeight ?? "unset"};
     font-family: ${(props) => props.$fontFamily};
     font-style: ${(props) => props.$fontStyle};
     height: ${(props) => props.$height};
@@ -22,8 +22,8 @@ export const StyledButton = styled(Button)<TButtonStyling>`
     display: ${(props) => props.$display};
     padding: ${(props) => props.$padding};
     gap: ${(props) => props.$gap};
-    border-radius: ${(props) => props.$borderRadius ?? '2px'};
-    text-transform: ${(props) => props.$textTransform ?? 'unset'};
+    border-radius: ${(props) => props.$borderRadius ?? "2px"};
+    text-transform: ${(props) => props.$textTransform ?? "unset"};
     box-shadow: ${(props) => props.$boxShadow};
     ${(props) =>
       props.$isHeaderMenuButton &&
@@ -38,7 +38,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
           color: ${Theme.palette.primary.snow};
         }
         &.active::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 15px;
           right: 19px;
@@ -48,7 +48,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
           background-color: ${Theme.palette.secondary.lightGreen};
         }
         &:not(.active)::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 15px;
           right: 19px;
@@ -72,7 +72,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
           outline: 2px solid ${Theme.palette.secondary.lightGreen};
         }
         &.active::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           width: 4px;
@@ -80,7 +80,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
           background-color: ${Theme.palette.secondary.lightGreen};
         }
         &:not(.active)::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           width: 0;
@@ -99,7 +99,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
       ${(props) =>
       !props.$isHeaderMenuButton &&
       !props.$isHeaderMenuButton &&
-      props.variant === 'contained' &&
+      props.variant === "contained" &&
       css`
         &:hover {
           background-color: ${Theme.palette.controlsAndStatus.hoverBlue};
@@ -122,7 +122,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
       `}
       ${(props) =>
       !props.$isHeaderMenuButton &&
-      props.variant === 'outlined' &&
+      props.variant === "outlined" &&
       css`
         &:hover {
           border-color: ${Theme.palette.controlsAndStatus.hoverBlue};
@@ -149,7 +149,7 @@ export const StyledButton = styled(Button)<TButtonStyling>`
       `}
       ${(props) =>
       !props.$isHeaderMenuButton &&
-      props.variant === 'text' &&
+      props.variant === "text" &&
       css`
         &:hover {
           color: ${Theme.palette.controlsAndStatus.hoverBlue};

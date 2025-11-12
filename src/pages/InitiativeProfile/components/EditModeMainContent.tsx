@@ -1,21 +1,21 @@
-import Grid from '@mui/material/Grid2';
+import Grid from "@mui/material/Grid2";
 import {
   Header3,
   ShadowContainerWithTopPadding,
-  SkeletonComponent
-} from '@app/lib/ui';
-import { FormStepperWithContext } from '@app/components';
-import { MainWrapperWithHeader } from '@app/lib/ui';
-import { useActiveInitiative, useGlobalLoading } from '@app/hooks';
-import { Stack } from '@mui/material';
-import { useFormContext } from 'react-hook-form';
-import RenderSteps from './RenderSteps';
+  SkeletonComponent,
+} from "@app/lib/ui";
+import { FormStepperWithContext } from "@app/components";
+import { MainWrapperWithHeader } from "@app/lib/ui";
+import { useActiveInitiative, useGlobalLoading } from "@app/hooks";
+import { Stack } from "@mui/material";
+import { useFormContext } from "react-hook-form";
+import RenderSteps from "./RenderSteps";
 
 export default function EditModeMainContent() {
   const { activeInitiative } = useActiveInitiative();
   const isLoading = useGlobalLoading();
   const {
-    formState: { isReady }
+    formState: { isReady },
   } = useFormContext();
 
   return (

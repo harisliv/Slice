@@ -1,2 +1,2 @@
-export * from './SocialMediaLink';
-export { default } from './SocialMediaLink';
+export * from "./SocialMediaLink";
+export { default } from "./SocialMediaLink";

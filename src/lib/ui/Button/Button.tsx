@@ -1,14 +1,14 @@
-import type { TButtonStyling } from '@app/lib/types';
-import { EButtonHeight, type TRouterLink } from '@app/lib/types';
+import type { TButtonStyling } from "@app/lib/types";
+import { EButtonHeight, type TRouterLink } from "@app/lib/types";
 import {
   EnumWeight,
   type IButton,
   type TButtonProps,
-  type TCustomButtonVariant
-} from '@app/lib/types';
-import { type ButtonProps } from '@mui/material';
-import { Theme } from '@app/lib/general';
-import { StyledButton } from './Button.styles';
+  type TCustomButtonVariant,
+} from "@app/lib/types";
+import { type ButtonProps } from "@mui/material";
+import { Theme } from "@app/lib/general";
+import { StyledButton } from "./Button.styles";
 
 interface ButtonComponentProps extends ButtonProps {
   to?: string;
@@ -18,183 +18,183 @@ interface ButtonComponentProps extends ButtonProps {
 
 const primaryButtonBaseProps: IButton = {
   buttonProps: {
-    variant: 'contained'
+    variant: "contained",
   },
   styling: {
     $fontFamily: Theme.fontFamilies.Roboto,
-    $fontStyle: 'normal'
-  }
+    $fontStyle: "normal",
+  },
 };
 
 const secondaryButtonBaseProps: IButton = {
   buttonProps: {
-    variant: 'outlined'
+    variant: "outlined",
   },
   styling: {
     $fontFamily: Theme.fontFamilies.Roboto,
-    $fontStyle: 'normal'
-  }
+    $fontStyle: "normal",
+  },
 };
 
 const terciaryButtonBaseProps: IButton = {
   buttonProps: {
-    variant: 'text'
+    variant: "text",
   },
   styling: {
     $fontFamily: Theme.fontFamilies.Roboto,
-    $fontStyle: 'normal'
-  }
+    $fontStyle: "normal",
+  },
 };
 
 const commonSxStylesM: TButtonStyling = {
   $height: EButtonHeight.MEDIUM,
-  $padding: '4px 16px',
-  $boxShadow: 'none',
-  $gap: '3px',
-  $borderRadius: '2px',
-  $textTransform: 'none'
+  $padding: "4px 16px",
+  $boxShadow: "none",
+  $gap: "3px",
+  $borderRadius: "2px",
+  $textTransform: "none",
 };
 
 const commonSxStylesS: TButtonStyling = {
   $height: EButtonHeight.SMALL,
-  $padding: '4px 8px',
-  $boxShadow: 'none',
-  $gap: '3px',
-  $borderRadius: '2px',
-  $textTransform: 'none'
+  $padding: "4px 8px",
+  $boxShadow: "none",
+  $gap: "3px",
+  $borderRadius: "2px",
+  $textTransform: "none",
 };
 
 const buttonVariants: TButtonProps<TCustomButtonVariant> = {
-  'primary-m': {
+  "primary-m": {
     buttonProps: {
       ...primaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...primaryButtonBaseProps.styling,
       ...commonSxStylesM,
-      $width: 'fit-content',
-      $backgroundColor: Theme.palette.primary.azur
-    }
+      $width: "fit-content",
+      $backgroundColor: Theme.palette.primary.azur,
+    },
   },
-  'primary-m-full-width': {
+  "primary-m-full-width": {
     buttonProps: {
       ...primaryButtonBaseProps.buttonProps,
       disableElevation: true,
-      fullWidth: true
+      fullWidth: true,
     },
     styling: {
       ...commonSxStylesM,
-      $backgroundColor: Theme.palette.primary.azur
-    }
+      $backgroundColor: Theme.palette.primary.azur,
+    },
   },
-  'primary-s': {
+  "primary-s": {
     buttonProps: {
       ...primaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesS,
-      $width: 'fit-content',
-      $backgroundColor: Theme.palette.primary.azur
-    }
+      $width: "fit-content",
+      $backgroundColor: Theme.palette.primary.azur,
+    },
   },
-  'secondary-m': {
+  "secondary-m": {
     buttonProps: {
       ...secondaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesM,
       $borderColor: Theme.palette.primary.azur,
       $color: Theme.palette.primary.azur,
-      $width: 'fit-content',
-      $backgroundColor: Theme.palette.primary.snow
-    }
+      $width: "fit-content",
+      $backgroundColor: Theme.palette.primary.snow,
+    },
   },
   edit: {
     buttonProps: {
       ...secondaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesS,
       $borderColor: Theme.palette.primary.azur,
       $color: Theme.palette.primary.azur,
-      $width: 'fit-content',
-      $minWidth: '86px',
-      $justifyItems: 'center',
-      $backgroundColor: Theme.palette.primary.snow
-    }
+      $width: "fit-content",
+      $minWidth: "86px",
+      $justifyItems: "center",
+      $backgroundColor: Theme.palette.primary.snow,
+    },
   },
-  'secondary-s': {
+  "secondary-s": {
     buttonProps: {
       ...secondaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesS,
       $borderColor: Theme.palette.primary.azur,
       $color: Theme.palette.primary.azur,
-      $width: 'fit-content',
-      $backgroundColor: Theme.palette.primary.snow
-    }
+      $width: "fit-content",
+      $backgroundColor: Theme.palette.primary.snow,
+    },
   },
-  'terciary-m': {
+  "terciary-m": {
     buttonProps: {
       ...terciaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesM,
       $color: Theme.palette.primary.azur,
-      $width: 'fit-content'
-    }
+      $width: "fit-content",
+    },
   },
-  'terciary-s': {
+  "terciary-s": {
     buttonProps: {
       ...terciaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesS,
       $color: Theme.palette.primary.azur,
-      $width: 'fit-content'
-    }
+      $width: "fit-content",
+    },
   },
-  'header-menu': {
+  "header-menu": {
     buttonProps: {
       ...terciaryButtonBaseProps.buttonProps,
-      color: 'inherit',
-      disableElevation: true
+      color: "inherit",
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesM,
-      $width: 'fit-content',
+      $width: "fit-content",
       $fontSize: Theme.fontSizes.body.m,
       $fontWeight: EnumWeight.normal,
-      $isHeaderMenuButton: true
-    }
+      $isHeaderMenuButton: true,
+    },
   },
-  'header-menu-drawer': {
+  "header-menu-drawer": {
     buttonProps: {
       ...terciaryButtonBaseProps.buttonProps,
-      disableElevation: true
+      disableElevation: true,
     },
     styling: {
       ...commonSxStylesM,
-      $display: 'block',
+      $display: "block",
       $color: Theme.palette.primary.snow,
-      $width: '100%',
-      $padding: '6px 24px',
+      $width: "100%",
+      $padding: "6px 24px",
       $fontSize: Theme.fontSizes.body.s,
-      $isDrawerMenuButton: true
-    }
-  }
+      $isDrawerMenuButton: true,
+    },
+  },
 };
 
 export default function ButtonComponent({
-  customVariant = 'primary-m',
+  customVariant = "primary-m",
   children,
   to,
   startIcon,

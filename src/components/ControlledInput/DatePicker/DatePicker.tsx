@@ -1,15 +1,15 @@
-import { DatePickerComponent } from '@app/lib/ui';
-import { Controller, useFormContext } from 'react-hook-form';
-import { FormInputDescription } from '@app/components';
-import { Stack } from '@mui/material';
-import { type ControlledDatePickerProps } from '@app/types';
-import dayjs from 'dayjs';
-import { get } from 'lodash';
+import { DatePickerComponent } from "@app/lib/ui";
+import { Controller, useFormContext } from "react-hook-form";
+import { FormInputDescription } from "@app/components";
+import { Stack } from "@mui/material";
+import { type ControlledDatePickerProps } from "@app/types";
+import dayjs from "dayjs";
+import { get } from "lodash";
 
 export default function ControlledDatePicker<T extends string>({
   name,
   required,
-  customGridSize = 'full',
+  customGridSize = "full",
   inputDescriptionTitle,
   inputDescriptionSubtitle,
   shouldChange = () => true,
@@ -18,7 +18,7 @@ export default function ControlledDatePicker<T extends string>({
 }: ControlledDatePickerProps<T>) {
   const {
     control,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext();
 
   const hasErrors = !!get(errors, name);

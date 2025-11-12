@@ -1,7 +1,7 @@
-import React from 'react';
-import { TableBody, TableHead } from '@mui/material';
-import { StyledTable, StyledTableContainer } from './Table.styles';
-import SkeletonComponent from '../Skeleton';
+import React from "react";
+import { TableBody, TableHead } from "@mui/material";
+import { StyledTable, StyledTableContainer } from "./Table.styles";
+import SkeletonComponent from "../Skeleton";
 
 interface TableProps {
   headerGroups: React.ReactNode[];
@@ -12,10 +12,10 @@ interface TableProps {
 export default function TableComponent({
   headerGroups,
   rows,
-  loading
+  loading,
 }: TableProps) {
   return (
-    <StyledTableContainer sx={{ overflowY: 'hidden', overflowX: 'auto' }}>
+    <StyledTableContainer sx={{ overflowY: "hidden", overflowX: "auto" }}>
       <StyledTable>
         <TableHead>{headerGroups}</TableHead>
         {loading ? <SkeletonComponent /> : <TableBody>{rows}</TableBody>}

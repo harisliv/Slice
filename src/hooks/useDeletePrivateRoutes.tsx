@@ -1,13 +1,13 @@
 import {
   useMutation,
   type UseMutationOptions,
-  type UseMutationResult
-} from '@tanstack/react-query';
-import type { AxiosRequestConfig } from 'axios';
-import { apiClient } from '@app/config/axios.config';
+  type UseMutationResult,
+} from "@tanstack/react-query";
+import type { AxiosRequestConfig } from "axios";
+import { apiClient } from "@app/config/axios.config";
 
 interface useDeletePrivateRoutesOptions<T, Error>
-  extends Omit<UseMutationOptions<T, Error, Partial<T>>, 'mutationFn'> {
+  extends Omit<UseMutationOptions<T, Error, Partial<T>>, "mutationFn"> {
   endpoint: string;
 }
 
@@ -32,6 +32,6 @@ export default function useDeletePrivateRoutes<T = unknown>({
       const response = await apiClient.delete(endpoint, config);
 
       return response.data;
-    }
+    },
   });
 }

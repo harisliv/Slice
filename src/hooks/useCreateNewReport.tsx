@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router';
-import useMutatePrivateRoutes from './useMutatePrivateRoutes';
-import { type ProgressReportingDTO } from '@app/types';
-import { useActiveInitiative } from './useActiveInitiative';
-import { useSubmittedReports } from '@app/hooks';
-import { findFirstAvailableSlot } from '@app/utils/ProgressReporting';
-import dayjs from 'dayjs';
-import { useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from "react-router";
+import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
+import { type ProgressReportingDTO } from "@app/types";
+import { useActiveInitiative } from "./useActiveInitiative";
+import { useSubmittedReports } from "@app/hooks";
+import { findFirstAvailableSlot } from "@app/utils/ProgressReporting";
+import dayjs from "dayjs";
+import { useQueryClient } from "@tanstack/react-query";
 
 type TCreateNewReportShape = {
-  reportStatus: 'Draft';
+  reportStatus: "Draft";
   typesOfChallengesFaced: [];
   actions: [];
   targets: [];
@@ -28,14 +28,14 @@ export default function useCreateNewReport() {
     TCreateNewReportShape,
     ProgressReportingDTO
   >({
-    endpoint: `/progressReport`,
-    action: 'post',
+    endpoint: `/functions/v1/progress-report`,
+    action: "post",
     onMutationFnSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ['progressReportList', activeInitiative?.id]
+        queryKey: ["progressReportList", activeInitiative?.id],
       });
       navigate(`/assignment-management/create-assignment/${data.id}`); //TODO NAVIGATION GLITCH FIX
-    }
+    },
   });
 
   return {
@@ -43,20 +43,20 @@ export default function useCreateNewReport() {
     mutateAsync: async () => {
       const startDate = findFirstAvailableSlot(allProgressReportsDateRanges);
       const endDate = dayjs(startDate)
-        .add(1, 'year')
-        .subtract(1, 'day')
+        .add(1, "year")
+        .subtract(1, "day")
         .toISOString();
 
       return mutation.mutateAsync({
-        reportStatus: 'Draft',
+        reportStatus: "Draft",
         typesOfChallengesFaced: [],
         actions: [],
         targets: [],
-        initiativeId: activeInitiative?.id || '',
+        initiativeId: activeInitiative?.id || "",
         reportingStartDate: startDate,
         reportingEndDate: endDate,
-        submissionOrDraftDate: new Date().toISOString()
+        submissionOrDraftDate: new Date().toISOString(),
       });
-    }
+    },
   };
 }

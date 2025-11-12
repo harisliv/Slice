@@ -1,1 +1,1 @@
-export { default } from './ProgessOfTargets';
+export { default } from "./ProgessOfTargets";

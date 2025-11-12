@@ -1,6 +1,6 @@
-import { Stack } from '@mui/material';
-import { SortIcon } from '@app/lib/icons';
-import { Theme } from '@app/lib/general';
+import { Stack } from "@mui/material";
+import { SortIcon } from "@app/lib/icons";
+import { Theme } from "@app/lib/general";
 
 export default function TableSort({ column }: any) {
   const sortDirection = column.getIsSorted();
@@ -9,12 +9,12 @@ export default function TableSort({ column }: any) {
     <Stack direction="column">
       <SortIcon
         fillUp={
-          sortDirection === 'asc'
+          sortDirection === "asc"
             ? Theme.palette.primary.snow
             : Theme.palette.controlsAndStatus.disabled
         }
         fillDown={
-          sortDirection === 'desc'
+          sortDirection === "desc"
             ? Theme.palette.primary.snow
             : Theme.palette.controlsAndStatus.disabled
         }

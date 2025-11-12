@@ -1,23 +1,23 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 export const normalize = (s: unknown) =>
-  String(s ?? '')
-    .normalize('NFKD')
-    .replace(/\p{Diacritic}/gu, '')
+  String(s ?? "")
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
     .trim();
 
-const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 export const highlightParts = (label: string, query: string) => {
-  const q = (query ?? '').trim();
+  const q = (query ?? "").trim();
   if (!q)
     return (
-      <span className="option-label" style={{ whiteSpace: 'pre' }}>
+      <span className="option-label" style={{ whiteSpace: "pre" }}>
         {label}
       </span>
     );
 
-  const re = new RegExp(escapeRegExp(q), 'ig');
+  const re = new RegExp(escapeRegExp(q), "ig");
   const nodes: ReactNode[] = [];
   let last = 0;
   let m: RegExpExecArray | null;
@@ -28,9 +28,9 @@ export const highlightParts = (label: string, query: string) => {
 
     if (start > last) {
       nodes.push(
-        <span key={`t-${last}`} style={{ whiteSpace: 'pre' }}>
+        <span key={`t-${last}`} style={{ whiteSpace: "pre" }}>
           {label.slice(last, start)}
-        </span>
+        </span>,
       );
     }
 
@@ -40,9 +40,9 @@ export const highlightParts = (label: string, query: string) => {
 
   if (last < label.length) {
     nodes.push(
-      <span key={`t-${last}`} style={{ whiteSpace: 'pre' }}>
+      <span key={`t-${last}`} style={{ whiteSpace: "pre" }}>
         {label.slice(last)}
-      </span>
+      </span>,
     );
   }
 

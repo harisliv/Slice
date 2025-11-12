@@ -1,4 +1,4 @@
-import type { CustomSize, ISelectBase, Option } from '@app/lib/types';
+import type { CustomSize, ISelectBase, Option } from "@app/lib/types";
 
 export interface MultiSelectOption {
   label: string;

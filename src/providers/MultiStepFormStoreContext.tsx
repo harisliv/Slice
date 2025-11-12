@@ -1,6 +1,6 @@
-import { type StoreApi } from 'zustand';
-import type { MultiStepFormStore } from '@app/types';
-import { createContext } from 'react';
+import { type StoreApi } from "zustand";
+import type { MultiStepFormStore } from "@app/types";
+import { createContext } from "react";
 
 const MultiStepFormStoreContext = createContext<StoreApi<
   MultiStepFormStore<any>

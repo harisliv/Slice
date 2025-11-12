@@ -1,10 +1,10 @@
-import useMutatePrivateRoutes from './useMutatePrivateRoutes';
+import useMutatePrivateRoutes from "./useMutatePrivateRoutes";
 import {
   isParticipantUpdateSchema,
   type AccountEntityCreateDTO,
-  type ParticipantUpdateSchema
-} from '@app/types';
-import { useActiveInitiative } from './useActiveInitiative';
+  type ParticipantUpdateSchema,
+} from "@app/types";
+import { useActiveInitiative } from "./useActiveInitiative";
 
 type TUpdateParticipantBody = ParticipantUpdateSchema & {
   initiativeId: string;
@@ -18,18 +18,18 @@ export function useUpdateParticipant() {
     AccountEntityCreateDTO,
     TUpdateParticipantBody
   >({
-    endpoint: `/participant`,
-    mutationKey: ['updateParticipant'],
-    typeGuard: isParticipantUpdateSchema
+    endpoint: `/functions/v1/participant`,
+    mutationKey: ["updateParticipant"],
+    typeGuard: isParticipantUpdateSchema,
   });
   return {
     ...mutation,
     mutateAsync: async (data: ParticipantUpdateSchema) => {
       return mutation.mutateAsync({
         ...data,
-        initiativeId: activeInitiative?.id || '',
-        accountId: data.id
+        initiativeId: activeInitiative?.id || "",
+        accountId: data.id,
       });
-    }
+    },
   };
 }

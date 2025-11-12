@@ -1,10 +1,10 @@
-import React from 'react';
-import { Stack, Popover } from '@mui/material';
-import { FileUploadImportIcon } from '@app/lib/icons';
-import { ButtonComponent } from '@app/lib/ui';
-import { useExcelExport } from '@app/hooks';
-import type { Table } from '@tanstack/react-table';
-import type { TMyParticipants } from '@app/types';
+import React from "react";
+import { Stack, Popover } from "@mui/material";
+import { FileUploadImportIcon } from "@app/lib/icons";
+import { ButtonComponent } from "@app/lib/ui";
+import { useExcelExport } from "@app/hooks";
+import type { Table } from "@tanstack/react-table";
+import type { TMyParticipants } from "@app/types";
 
 interface ExportActionsProps {
   table: Table<TMyParticipants>;
@@ -13,12 +13,12 @@ interface ExportActionsProps {
 
 export default function ExportActions({
   table,
-  hasActiveFilters
+  hasActiveFilters,
 }: ExportActionsProps) {
   const { handleExportFilteredTableToExcel, handleExportAllDataToExcel } =
     useExcelExport({
       table,
-      excludeColumnId: 'id'
+      excludeColumnId: "id",
     });
 
   const [anchorElExport, setAnchorElExport] =
@@ -33,7 +33,7 @@ export default function ExportActions({
   };
 
   const openExportPopover = Boolean(anchorElExport);
-  const idExportPopover = openExportPopover ? 'simple-popover' : undefined;
+  const idExportPopover = openExportPopover ? "simple-popover" : undefined;
 
   return (
     <>
@@ -50,13 +50,13 @@ export default function ExportActions({
         anchorEl={anchorElExport}
         onClose={handleCloseExport}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left'
+          vertical: "bottom",
+          horizontal: "left",
         }}
         slotProps={{
           paper: {
-            className: 'popover-paper'
-          }
+            className: "popover-paper",
+          },
         }}
       >
         <Stack direction="column" spacing={1} padding={1}>

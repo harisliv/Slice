@@ -1,7 +1,7 @@
-import { Box, Pagination } from '@mui/material';
-import styled from 'styled-components';
-import { EnumWeight } from '@app/lib/types';
-import { Select } from '@app/lib/ui';
+import { Box, Pagination } from "@mui/material";
+import styled from "styled-components";
+import { EnumWeight } from "@app/lib/types";
+import { Select } from "@app/lib/ui";
 
 export const StyledPaginationWrapper = styled(Box)``;
 

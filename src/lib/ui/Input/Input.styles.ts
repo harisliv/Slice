@@ -1,7 +1,7 @@
-import { Box } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import type { Theme } from '@app/lib/general';
-import styled from 'styled-components';
+import { Box } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import type { Theme } from "@app/lib/general";
+import styled from "styled-components";
 
 export const StyledRequiredLabelStar = styled.span`
   color: ${(props) => props.theme.palette.secondary.errorPink};
@@ -12,7 +12,7 @@ export const StyledRequiredLabelSpan = styled.span<{
 }>`
   color: ${(props) => props.theme.palette.primary.darkerGrey};
   font-size: ${(props) =>
-    props.$fontSize ? props.theme.fontSizes.body[props.$fontSize] : '16px'};
+    props.$fontSize ? props.theme.fontSizes.body[props.$fontSize] : "16px"};
 
   &.Mui-focused {
     color: ${(props) => props.theme.palette.primary.azur};
@@ -106,7 +106,7 @@ export const StyledTextField = styled(TextField)<{
   .MuiOutlinedInput-root textarea {
     font-size: ${(props) => props.theme.fontSizes.body.s};
     color: ${(props) => props.theme.palette.primary.darkerGrey};
-    resize: ${(p) => (!p.$hasResize ? '' : 'vertical')};
+    resize: ${(p) => (!p.$hasResize ? "" : "vertical")};
   }
 
   .MuiInputBase-multiline {

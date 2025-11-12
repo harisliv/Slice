@@ -1,11 +1,11 @@
-import { z } from 'zod';
-import { MyParticipantsSchema } from './MyParticipants.types';
+import { z } from "zod";
+import { MyParticipantsSchema } from "./MyParticipants.types";
 
 export const ParticipantManagementFormDataSchema = z.array(
   z.object({
     ...MyParticipantsSchema.shape,
-    accountId: z.string()
-  })
+    accountId: z.string(),
+  }),
 );
 
 export type ParticipantManagementDTO = {

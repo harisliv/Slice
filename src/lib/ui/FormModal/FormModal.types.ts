@@ -1,10 +1,10 @@
-import type { JSX } from 'react';
-import type { ModalType } from '../Modal/Modal.types';
+import type { JSX } from "react";
+import type { ModalType } from "../Modal/Modal.types";
 
 export enum IModalAction {
-  DRAFT = 'draft',
-  EXIT = 'exit',
-  SUBMIT = 'submit'
+  DRAFT = "draft",
+  EXIT = "exit",
+  SUBMIT = "submit",
 }
 
 export interface FormModalProps {

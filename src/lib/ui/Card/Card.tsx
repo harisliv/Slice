@@ -1,14 +1,14 @@
-import type { FC } from 'react';
-import { Theme } from '@app/lib/general';
+import type { FC } from "react";
+import { Theme } from "@app/lib/general";
 import {
   CardButtonContainer,
   CardContentContainer,
   CardTitleContainer,
   CardWrapper,
-  StyledIconContainer
-} from './Card.styles';
-import type { ICard } from './Card.types';
-import { Header3, Paragraph } from '../Global';
+  StyledIconContainer,
+} from "./Card.styles";
+import type { ICard } from "./Card.types";
+import { Header3, Paragraph } from "../Global";
 
 const Card: FC<ICard> = ({
   icon,
@@ -16,7 +16,7 @@ const Card: FC<ICard> = ({
   subtitle,
   backgroundColor = Theme.palette.background.azur8,
   fullWidth = false,
-  children
+  children,
 }) => (
   <CardWrapper $backgroundColor={backgroundColor} data-testid="card-wrapper">
     {icon && (

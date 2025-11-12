@@ -1,11 +1,11 @@
-import { Divider, Stack } from '@mui/material';
-import InitiativeNameField from './components/InitiativeNameField';
-import WebsiteField from './components/WebsiteField';
-import SocialMedia from './components/SocialMedia';
-import LogoUploader from './components/LogoUploader/LogoUploader';
-import LaunchYear from './components/LaunchYear/LaunchYear';
-import LaunchEvent from './components/LaunchEvent/LaunchEvent';
-import ExpectedEndYear from './components/ExpectedEndYear';
+import { Divider, Stack } from "@mui/material";
+import InitiativeNameField from "./components/InitiativeNameField";
+import WebsiteField from "./components/WebsiteField";
+import SocialMedia from "./components/SocialMedia";
+import LogoUploader from "./components/LogoUploader/LogoUploader";
+import LaunchYear from "./components/LaunchYear/LaunchYear";
+import LaunchEvent from "./components/LaunchEvent/LaunchEvent";
+import ExpectedEndYear from "./components/ExpectedEndYear";
 
 export default function GeneralInformation() {
   return (

@@ -1,4 +1,4 @@
-import { useModalStore } from '../useModalStore';
+import { useModalStore } from "../useModalStore";
 
 interface SubmitModalActions {
   onConfirm: (data: any) => void;
@@ -9,25 +9,25 @@ export const useSubmitModal = ({ onConfirm }: SubmitModalActions) => {
 
   const showSubmitModal = (data: any) => {
     showModal({
-      title: 'Attention',
-      subtitle: 'Submitting report',
+      title: "Attention",
+      subtitle: "Submitting report",
       content:
-        'Your are about to submit a report. Once you submit this report, you will not be able to edit or delete it. This action cannot be undone.',
+        "Your are about to submit a report. Once you submit this report, you will not be able to edit or delete it. This action cannot be undone.",
       buttons: [
         {
-          text: 'Return',
+          text: "Return",
           action: () => {
             hideModal();
-          }
+          },
         },
         {
-          text: 'Continue',
+          text: "Continue",
           action: () => {
             hideModal();
             onConfirm(data);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
   };
 

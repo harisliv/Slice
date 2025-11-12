@@ -1,45 +1,45 @@
-import { logger } from '@app/utils';
-import { constructErrorResponseFromZod } from '@app/utils/error';
-import type { TagStatus } from '@app/lib/types';
-import { z } from 'zod';
+import { logger } from "@app/utils";
+import { constructErrorResponseFromZod } from "@app/utils/error";
+import type { TagStatus } from "@app/lib/types";
+import { z } from "zod";
 import {
   actionShape,
   defaultActionValues,
-  isActionSchema
-} from './Action.types';
+  isActionSchema,
+} from "./Action.types";
 import {
   challengesAndOpportunitiesShape,
   defaultChallengesAndOpportunitiesFormValues,
-  isChallengesAndOpportunitiesSchema
-} from './ChallengesAndOpportunities.types';
+  isChallengesAndOpportunitiesSchema,
+} from "./ChallengesAndOpportunities.types";
 import {
   defaultTProgressOfTargetsFormValues,
   isProgressOfTargetsSchema,
-  progressOfTargetsShape
-} from './ProgressOfTargets.types';
+  progressOfTargetsShape,
+} from "./ProgressOfTargets.types";
 import {
   defaultTimeframeOfInformationFormValues,
   isTimeframeOfInformationSchema,
-  timeframeOfInformationShape
-} from './TimeFrameOfInformation.types';
+  timeframeOfInformationShape,
+} from "./TimeFrameOfInformation.types";
 
 export const progressReportingShape = z.object({
   id: z.string().optional(),
   ...timeframeOfInformationShape.shape,
   ...actionShape.shape,
   ...progressOfTargetsShape.shape,
-  ...challengesAndOpportunitiesShape.shape
+  ...challengesAndOpportunitiesShape.shape,
 });
 
 export const isProgressReportingShape = (
-  value: unknown
+  value: unknown,
 ): value is TProgressReportingShape => {
   const result = progressReportingShape.safeParse(value);
   if (result.error) {
     logger.error(
-      'Invalid response format',
-      new Error('Progress Reporting'),
-      constructErrorResponseFromZod(result)
+      "Invalid response format",
+      new Error("Progress Reporting"),
+      constructErrorResponseFromZod(result),
     );
   }
   return result.success;
@@ -47,17 +47,17 @@ export const isProgressReportingShape = (
 
 export const isProgressReportingSchema = (
   value: unknown,
-  withLogs: boolean = true
+  withLogs: boolean = true,
 ): value is TProgressReportingShape => {
   const isTimeframeOfInformation = isTimeframeOfInformationSchema(
     value,
-    withLogs
+    withLogs,
   );
   const isAction = isActionSchema(value, withLogs);
   const isProgressOfTargets = isProgressOfTargetsSchema(value, withLogs);
   const isChallengesAndOpportunities = isChallengesAndOpportunitiesSchema(
     value,
-    withLogs
+    withLogs,
   );
 
   return (
@@ -72,7 +72,7 @@ export const defaultProgressReportingFormValues: TProgressReportingShape = {
   ...defaultTimeframeOfInformationFormValues,
   ...defaultActionValues,
   ...defaultTProgressOfTargetsFormValues,
-  ...defaultChallengesAndOpportunitiesFormValues
+  ...defaultChallengesAndOpportunitiesFormValues,
 };
 
 export type ProgressReportingDTO = {
@@ -123,7 +123,7 @@ export type TProgressReportingShape = z.infer<typeof progressReportingShape> & {
   reportStatus?: string;
 };
 
-export type TProgressReportingTableActions = 'VIEW' | 'EDIT' | 'DELETE';
+export type TProgressReportingTableActions = "VIEW" | "EDIT" | "DELETE";
 
 export interface TProgressReportingData {
   id: string;

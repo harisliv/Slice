@@ -1,4 +1,4 @@
-import { useModalStore } from '../useModalStore';
+import { useModalStore } from "../useModalStore";
 
 type DeleteArgs = {
   subtitle?: string;
@@ -10,31 +10,31 @@ export const useDeleteModal = () => {
   const { showModal, hideModal } = useModalStore();
 
   const showDeleteModal = ({
-    subtitle = 'Are you sure you want to remove',
-    content = '',
-    onConfirm
+    subtitle = "Are you sure you want to remove",
+    content = "",
+    onConfirm,
   }: DeleteArgs) => {
     showModal({
-      title: 'Attention',
+      title: "Attention",
       subtitle: subtitle,
       content: content,
       buttons: [
         {
-          text: 'Cancel',
+          text: "Cancel",
           action: () => {
             hideModal();
           },
-          customVariant: 'secondary-m'
+          customVariant: "secondary-m",
         },
         {
-          text: 'Delete',
+          text: "Delete",
           action: () => {
             hideModal();
             onConfirm?.();
           },
-          customVariant: 'primary-m'
-        }
-      ]
+          customVariant: "primary-m",
+        },
+      ],
     });
   };
 

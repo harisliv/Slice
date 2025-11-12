@@ -4,18 +4,18 @@ import {
   Header3,
   Paragraph,
   Select,
-  SkeletonComponent
-} from '@app/lib/ui';
-import { AppCardWrapper, InitiativeCardsContainer } from './Initiative.styles';
-import { DianaIcon, FileTextIcon, UserIcon } from '@app/lib/icons';
-import { Box, Grid2, Stack } from '@mui/material';
+  SkeletonComponent,
+} from "@app/lib/ui";
+import { AppCardWrapper, InitiativeCardsContainer } from "./Initiative.styles";
+import { DianaIcon, FileTextIcon, UserIcon } from "@app/lib/icons";
+import { Box, Grid2, Stack } from "@mui/material";
 import {
   useActiveInitiative,
   useGlobalLoading,
-  useInitiatives
-} from '@app/hooks';
-import { NavLink } from 'react-router';
-import { formatAndSplitDateTime } from '@app/utils';
+  useInitiatives,
+} from "@app/hooks";
+import { NavLink } from "react-router";
+import { formatAndSplitDateTime } from "@app/utils";
 
 export default function Initiative() {
   const { data: initiatives } = useInitiatives();
@@ -45,18 +45,18 @@ export default function Initiative() {
                   required
                   options={initiatives?.map((initiative) => ({
                     label: initiative.name,
-                    value: initiative.id
+                    value: initiative.id,
                   }))}
                   defaultValue={activeInitiative?.id}
                   placeholder="Select a Course"
                   onSelectChange={(option) => {
                     const initiative = initiatives?.find(
-                      (initiative) => initiative.id === option.value
+                      (initiative) => initiative.id === option.value,
                     );
-                    localStorage.setItem('initiativeId', initiative?.id ?? '');
+                    localStorage.setItem("initiativeId", initiative?.id ?? "");
                     setActiveInitiative(initiative);
                   }}
-                  inputProps={{ 'aria-label': 'Select Course' }}
+                  inputProps={{ "aria-label": "Select Course" }}
                   noOptionsFallbackTitle="No courses found"
                   noOptionsFallbackSubtitle="Please select a different entity or create a new course."
                 />
@@ -66,7 +66,7 @@ export default function Initiative() {
           <Stack spacing={1}>
             <Stack direction="row" spacing={2}>
               <Header3>
-                Course:{' '}
+                Course:{" "}
                 <span style={{ fontWeight: 700 }}>
                   {activeInitiative?.name}
                 </span>
@@ -75,20 +75,20 @@ export default function Initiative() {
             </Stack>
             <Box>
               <Paragraph variant="medium-regular">
-                {'Profile updated:'}{' '}
+                {"Profile updated:"}{" "}
                 <span style={{ fontWeight: 700 }}>
                   {lastUpdatedDate} | {lastUpdatedHour}
                 </span>
               </Paragraph>
               <Paragraph variant="medium-regular">
-                {'Assignment submitted:'}{' '}
+                {"Assignment submitted:"}{" "}
                 <span style={{ fontWeight: 700 }}>
                   {lastProgressSubmittedDate} | {lastProgressSubmittedHour}
                 </span>
               </Paragraph>
 
               <Paragraph variant="medium-regular">
-                {'Students information updated:'}{' '}
+                {"Students information updated:"}{" "}
                 <span style={{ fontWeight: 700 }}>
                   {lastParticipantUpdatedDate} | {lastParticipantUpdatedHour}
                 </span>
@@ -99,34 +99,34 @@ export default function Initiative() {
             <AppCardWrapper>
               <AppCard
                 icon={<FileTextIcon />}
-                cardTitle={'Course profile'}
+                cardTitle={"Course profile"}
                 cardSubtitle={
-                  'Provide or update profile information about the course'
+                  "Provide or update profile information about the course"
                 }
                 LinkComponent={NavLink}
-                to={'/course-profile'}
+                to={"/course-profile"}
               />
             </AppCardWrapper>
             <AppCardWrapper>
               <AppCard
                 icon={<DianaIcon />}
-                cardTitle={'Assignment management'}
+                cardTitle={"Assignment management"}
                 cardSubtitle={
-                  'Manage assignments and track student submissions'
+                  "Manage assignments and track student submissions"
                 }
                 LinkComponent={NavLink}
-                to={'/assignment-management'}
+                to={"/assignment-management"}
               />
             </AppCardWrapper>
             <AppCardWrapper>
               <AppCard
                 icon={<UserIcon />}
-                cardTitle={'Student management'}
+                cardTitle={"Student management"}
                 cardSubtitle={
-                  'Manage students, export lists, and handle enrollments and applications.'
+                  "Manage students, export lists, and handle enrollments and applications."
                 }
                 LinkComponent={NavLink}
-                to={'/student-management'}
+                to={"/student-management"}
               />
             </AppCardWrapper>
           </InitiativeCardsContainer>

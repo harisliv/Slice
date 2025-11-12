@@ -1,11 +1,11 @@
-import ControlledInput from '@app/components/ControlledInput';
+import ControlledInput from "@app/components/ControlledInput";
 import {
   type ControlledInputProps,
-  type FunctionFocusAndThemesShape
-} from '@app/types';
+  type FunctionFocusAndThemesShape,
+} from "@app/types";
 
 export default function FunctionsFocusesAndThemesControlledInput(
-  props: ControlledInputProps<keyof FunctionFocusAndThemesShape>
+  props: ControlledInputProps<keyof FunctionFocusAndThemesShape>,
 ) {
   return <ControlledInput {...props} />;
 }

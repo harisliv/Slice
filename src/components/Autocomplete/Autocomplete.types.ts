@@ -1,4 +1,4 @@
-import type { AutocompleteProps } from '@mui/material';
+import type { AutocompleteProps } from "@mui/material";
 
 export type AccountEntityOption = {
   id: string;

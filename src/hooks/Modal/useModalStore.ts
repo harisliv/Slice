@@ -1,6 +1,6 @@
-import type { TCustomButtonVariant } from '@app/lib/types';
-import type { ReactNode } from 'react';
-import { create } from 'zustand';
+import type { TCustomButtonVariant } from "@app/lib/types";
+import type { ReactNode } from "react";
+import { create } from "zustand";
 
 type ModalButtons = {
   text: string;
@@ -23,23 +23,23 @@ type ModalStore = ModalConfig & {
 
 export const useModalStore = create<ModalStore>((set) => ({
   show: false,
-  title: '',
-  subtitle: '',
-  content: '',
+  title: "",
+  subtitle: "",
+  content: "",
   buttons: [],
 
   showModal: (config) => {
     set((state) => ({
       ...state,
       ...config,
-      show: true
+      show: true,
     }));
   },
 
   hideModal: () => {
     set((state) => ({
       ...state,
-      show: false
+      show: false,
     }));
-  }
+  },
 }));

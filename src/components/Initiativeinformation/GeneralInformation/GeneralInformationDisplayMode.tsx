@@ -4,7 +4,6 @@ import { NavLink } from "react-router";
 import { Divider, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { INITIATIVE_INFORMATION_FIELD_INFO } from "@app/constants";
-import { useDropdownValues } from "@app/hooks";
 import { convertFileSize } from "@app/lib/general";
 
 export default function GeneralInformationDisplayMode({
@@ -27,8 +26,6 @@ export default function GeneralInformationDisplayMode({
     contactEmail,
     contactOrganizations,
   } = initiativeProfile || {};
-
-  const { mappedData: launchEventMappedData } = useDropdownValues("Sessions");
 
   return (
     <Stack direction="column" spacing={3}>
@@ -84,7 +81,7 @@ export default function GeneralInformationDisplayMode({
             title={INITIATIVE_INFORMATION_FIELD_INFO.launchEvent.title}
             content={{
               type: "text",
-              value: launchEventMappedData[launchEvent ?? ""],
+              value: launchEvent ?? "",
             }}
           />
         </Grid>
@@ -168,7 +165,7 @@ export default function GeneralInformationDisplayMode({
             content={{
               type: "list",
               value: contactOrganizations?.map(
-                (organization) => organization?.label || ""
+                (organization) => organization?.label || "",
               ),
             }}
           />

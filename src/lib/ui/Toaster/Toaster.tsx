@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC } from "react";
 import {
   CloseButton,
   CloseButtonWrapper,
@@ -9,15 +9,15 @@ import {
   StyledToaster,
   StyledToasterContent,
   ToasterBody,
-  CopyButton
-} from './Toaster.styles';
-import type { IToasterOptions, TToasterCloseReason } from './Toaster.types';
-import { ToasterType } from './Toaster.types';
-import { CheckCircleIcon, ClearIcon, ExitIcon } from '@app/lib/icons';
-import { Theme } from '@app/lib/general';
+  CopyButton,
+} from "./Toaster.styles";
+import type { IToasterOptions, TToasterCloseReason } from "./Toaster.types";
+import { ToasterType } from "./Toaster.types";
+import { CheckCircleIcon, ClearIcon, ExitIcon } from "@app/lib/icons";
+import { Theme } from "@app/lib/general";
 
 const Toaster: FC<IToasterOptions> = ({
-  anchorOrigin = { vertical: 'top', horizontal: 'right' },
+  anchorOrigin = { vertical: "top", horizontal: "right" },
   message,
   toastertype,
   onCloseToaster,
@@ -34,26 +34,26 @@ const Toaster: FC<IToasterOptions> = ({
     try {
       await navigator.clipboard.writeText(JSON.stringify(errorDetails));
     } catch (err) {
-      console.error('Failed to copy error message: ', err);
+      console.error("Failed to copy error message: ", err);
     }
   };
 
   const handleOnClose = (
     event: React.SyntheticEvent<unknown> | Event,
-    reason: TToasterCloseReason
+    reason: TToasterCloseReason,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
-    onCloseToaster?.(event, 'clickCloseButton');
+    onCloseToaster?.(event, "clickCloseButton");
   };
 
   const action = (
     <CloseButtonWrapper data-testid="toaster.closeButtonWrapper">
       <CloseButton
         aria-label="close"
-        onClick={(e) => handleOnClose(e, 'clickCloseButton')}
+        onClick={(e) => handleOnClose(e, "clickCloseButton")}
         data-testid="close-toaster-testid"
         toastertype={toastertype}
       >
@@ -100,7 +100,7 @@ const Toaster: FC<IToasterOptions> = ({
             {renderIcon()}
             <StyledTextWrapper data-testid="toaster.textWrapper">
               <StyledTitle data-testid="toaster.title">
-                {message}{' '}
+                {message}{" "}
                 {toastertype === ToasterType.ERROR && errorDetails && (
                   <CopyButton onClick={handleCopyError}>Copy error</CopyButton>
                 )}

@@ -1,13 +1,13 @@
-import { CHALLENGES_FIELD_INFO } from '@app/constants';
-import type { TProgressReportingShape } from '@app/types';
-import { Grid2 } from '@mui/material';
-import { Stack } from '@mui/system';
-import { Header3, InfoCard } from '@app/lib/ui';
+import { CHALLENGES_FIELD_INFO } from "@app/constants";
+import type { TProgressReportingShape } from "@app/types";
+import { Grid2 } from "@mui/material";
+import { Stack } from "@mui/system";
+import { Header3, InfoCard } from "@app/lib/ui";
 interface ChallengesAndOpportunitiesReviewProps {
   data: TProgressReportingShape;
 }
 export default function ChallengesAndOpportunitiesReview({
-  data
+  data,
 }: ChallengesAndOpportunitiesReviewProps) {
   return (
     <Stack direction="column" spacing={4}>
@@ -17,10 +17,10 @@ export default function ChallengesAndOpportunitiesReview({
           <InfoCard
             title={CHALLENGES_FIELD_INFO.typesOfChallenges.title}
             content={{
-              type: 'list',
+              type: "list",
               value: data?.typesOfChallengesFaced?.map(
-                (challenge) => challenge || '-'
-              )
+                (challenge) => challenge || "-",
+              ),
             }}
           />
         </Grid2>
@@ -29,8 +29,8 @@ export default function ChallengesAndOpportunitiesReview({
             <InfoCard
               title={CHALLENGES_FIELD_INFO.typesOfChallengesOther.title}
               content={{
-                type: 'text',
-                value: data?.othersTypesOfChallengesFaced
+                type: "text",
+                value: data?.othersTypesOfChallengesFaced,
               }}
             />
           </Grid2>
@@ -40,8 +40,8 @@ export default function ChallengesAndOpportunitiesReview({
             <InfoCard
               title={CHALLENGES_FIELD_INFO.descriptionOfChallenges.title}
               content={{
-                type: 'text',
-                value: data?.descriptionOfChallenges
+                type: "text",
+                value: data?.descriptionOfChallenges,
               }}
             />
           </Grid2>
@@ -51,8 +51,8 @@ export default function ChallengesAndOpportunitiesReview({
             <InfoCard
               title={CHALLENGES_FIELD_INFO.descriptionOfOpportunities.title}
               content={{
-                type: 'text',
-                value: data?.descriptionOfOpportunitiesIdentified
+                type: "text",
+                value: data?.descriptionOfOpportunitiesIdentified,
               }}
             />
           </Grid2>

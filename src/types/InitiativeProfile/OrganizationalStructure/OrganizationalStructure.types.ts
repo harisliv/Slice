@@ -1,33 +1,33 @@
-import { z } from 'zod';
+import { z } from "zod";
 import {
   defaultInvolvedEntitiesFormValues,
   involvedEntitiesShape,
-  isInvolvedEntitiesSchema
-} from './InvolvedEntities.types.ts';
+  isInvolvedEntitiesSchema,
+} from "./InvolvedEntities.types.ts";
 import {
   defaultOrganizationalArrangementsFormValues,
   isOrganizationalArrangementsShape,
-  organizationalArrangementsShape
-} from './OrganizationalArrangements.types';
+  organizationalArrangementsShape,
+} from "./OrganizationalArrangements.types";
 import {
   defaultRelatedInitiativesFormValues,
   isRelatedInitiativesSchema,
-  relatedInitiativesShape
-} from './RelatedInitiatives.types';
+  relatedInitiativesShape,
+} from "./RelatedInitiatives.types";
 
 export const organizationalStructureSchema = z.object({
   ...organizationalArrangementsShape.shape,
   ...involvedEntitiesShape.shape,
-  ...relatedInitiativesShape.shape
+  ...relatedInitiativesShape.shape,
 });
 
 export const isOrganizationalStructureSchema = (
   value: unknown,
-  withLogs: boolean = true
+  withLogs: boolean = true,
 ): value is OrganizationalStructureFormData => {
   const isOrganizationalArrangements = isOrganizationalArrangementsShape(
     value,
-    withLogs
+    withLogs,
   );
   const isInvolvedEntities = isInvolvedEntitiesSchema(value, withLogs);
   const isRelatedInitiatives = isRelatedInitiativesSchema(value, withLogs);
@@ -44,5 +44,5 @@ export const defaultOrganizationalStructureFormValues: OrganizationalStructureFo
   {
     ...defaultInvolvedEntitiesFormValues,
     ...defaultOrganizationalArrangementsFormValues,
-    ...defaultRelatedInitiativesFormValues
+    ...defaultRelatedInitiativesFormValues,
   };

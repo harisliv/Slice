@@ -1,1 +1,1 @@
-export { default } from './ClosureReport';
+export { default } from "./ClosureReport";

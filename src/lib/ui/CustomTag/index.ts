@@ -1,1 +1,1 @@
-export { default } from './CustomTag';
+export { default } from "./CustomTag";

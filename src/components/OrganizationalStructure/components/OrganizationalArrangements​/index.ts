@@ -1,1 +1,1 @@
-export { default } from './OrganizationalArrangements​';
+export { default } from "./OrganizationalArrangements​";
