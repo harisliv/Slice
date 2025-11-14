@@ -15,9 +15,12 @@ export default function InvolvedEntities() {
   const signatoriesMembers = watch('signatoriesMembers');
   const signatoryFollowUps = watch('signatoryFollowUps');
 
-  const hasSignatories = signatoriesMembers?.includes('Signatories');
-  const hasMembers = signatoriesMembers?.includes('Members');
-  const hasOtherFollowUp = signatoryFollowUps?.includes('Other');
+  const hasSignatories =
+    signatoriesMembers && signatoriesMembers.includes('Enrolled Students');
+  const hasMembers =
+    signatoriesMembers && signatoriesMembers.includes('Registered Students');
+  const hasOtherFollowUp =
+    signatoryFollowUps && signatoryFollowUps.includes('Other');
 
   return (
     <Stack spacing={2}>

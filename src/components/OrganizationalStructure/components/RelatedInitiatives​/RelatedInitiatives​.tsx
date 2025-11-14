@@ -69,7 +69,7 @@ export default function RelatedInitiatives() {
         startIcon={<PlusIcon />}
         onClick={() => setAddModalOpen(true)}
       >
-        Add initiative
+        Add course
       </ButtonComponent>
 
       {manualInitiatives && manualInitiatives.length > 0 && (
@@ -79,39 +79,42 @@ export default function RelatedInitiatives() {
         />
       )}
 
-      <Divider />
-
-      <FormInputDescription
-        title={
-          ORGANIZATIONAL_STRUCTURE_FIELD_INFO.relatedInitiativesPending.title
-        }
-        subtitle={
-          ORGANIZATIONAL_STRUCTURE_FIELD_INFO.relatedInitiativesPending.subtitle
-        }
-      />
-
       {relationshipInitiatives && relationshipInitiatives.length > 0 && (
-        <Stack spacing={2}>
-          <Grid container justifyContent="flex-end" gap={1}>
-            <GenericTable
-              columns={pendingInitiativesColumns}
-              data={relationshipInitiatives}
-            />
+        <>
+          <Divider />
+          <FormInputDescription
+            title={
+              ORGANIZATIONAL_STRUCTURE_FIELD_INFO.relatedInitiativesPending
+                .title
+            }
+            subtitle={
+              ORGANIZATIONAL_STRUCTURE_FIELD_INFO.relatedInitiativesPending
+                .subtitle
+            }
+          />
 
-            <ButtonComponent
-              customVariant="secondary-m"
-              disabled={
-                !tempValidations || Object.keys(tempValidations).length === 0
-              }
-              onClick={showValidationDecisionModal}
-              sx={{
-                padding: '6px 17.5px !important'
-              }}
-            >
-              Confirm
-            </ButtonComponent>
-          </Grid>
-        </Stack>
+          <Stack spacing={2}>
+            <Grid container justifyContent="flex-end" gap={1}>
+              <GenericTable
+                columns={pendingInitiativesColumns}
+                data={relationshipInitiatives}
+              />
+
+              <ButtonComponent
+                customVariant="secondary-m"
+                disabled={
+                  !tempValidations || Object.keys(tempValidations).length === 0
+                }
+                onClick={showValidationDecisionModal}
+                sx={{
+                  padding: '6px 17.5px !important'
+                }}
+              >
+                Confirm
+              </ButtonComponent>
+            </Grid>
+          </Stack>
+        </>
       )}
 
       <AddInitiativeModal

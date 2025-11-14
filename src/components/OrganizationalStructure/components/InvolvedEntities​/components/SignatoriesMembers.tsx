@@ -18,19 +18,19 @@ export default function SignatoryCriteria() {
       }
       dropdownEnpoint="SignatoriesAndMembers"
       onApplyCapture={(value) => {
-        if (!value.includes('Signatories')) {
+        if (!value.includes('Enrolled Students')) {
           setValue('signatoryCriteria', '');
           setValue('signatoryFollowUps', []);
           setValue('signatoryFollowUpsOther', '');
           setValue('signatoryRemoval', '');
         }
 
-        if (!value.includes('Members')) {
+        if (!value.includes('Registered Students')) {
           setValue('memberInformation', '');
         }
 
-        // if (value.includes('We do not have participants')) {
-        //   setValue('signatoriesMembers', ['We do not have participants']);
+        // if (value.includes('We do not have students')) {
+        //   setValue('signatoriesMembers', ['We do not have students']);
         // }
       }}
     />

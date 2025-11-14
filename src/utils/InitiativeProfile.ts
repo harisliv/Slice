@@ -1,4 +1,5 @@
 import { MONITORING_FIELD_INFO } from '@app/constants';
+import { StepStatus, TagStatus } from '@app/lib/types';
 import {
   isFunctionFocusAndThemesSchema,
   isGoalsTargetsAndMonitoringSchema,
@@ -9,7 +10,6 @@ import {
   type InitiativeProfileFormData,
   type RelatedInitiative
 } from '@app/types';
-import { StepStatus, TagStatus } from '@app/lib/types';
 import {
   convertToValidEmail,
   convertToValidUrl,
@@ -107,9 +107,9 @@ export const filterRelationshipRelatedInitiatives = (
 ) => relatedInitiatives?.filter((ri) => ri.needsConfirmation);
 
 const publicReportingOptions = {
-  1: 'The Cooperative Climate Initiative will fully participate in GCAP’s annual Cooperative Climate Initiative progress tracking process',
-  2: 'The Cooperative Climate Initiative publishes periodical progress reports (at least annually) regarding its work',
-  3: 'The Cooperative Climate Initiative reports progress in another way'
+  1: 'The course will fully participate in the annual course progress tracking process',
+  2: 'The course publishes periodical progress reports (at least annually) regarding its work',
+  3: 'The course reports progress in another way'
 };
 
 export const convertToClientEntity = (
@@ -118,7 +118,7 @@ export const convertToClientEntity = (
   id: value.id,
   name: value.name,
   website: value.website ? convertToValidUrl(value.website) : null,
-  logoBase64: value.logoBase64,
+  logoUrl: value.logoUrl,
   socialProfiles: value.socialProfiles,
   launchDate: normalizeNumber(value.launchDate),
   launchEvent: normalizeString(value.launchEvent),
@@ -237,7 +237,7 @@ export const convertToServerEntity = (
   id: value.id,
   name: value.name,
   website: normalizeString(value.website),
-  logoBase64: value.logoBase64,
+  logoUrl: value.logoUrl,
   socialProfiles: value.socialProfiles,
   launchDate: normalizeNumber(value.launchDate),
   launchEvent: normalizeString(value.launchEvent),
@@ -279,7 +279,24 @@ export const convertToServerEntity = (
       ? value.climateRelatedGoalAlignmentMultilateral
       : [],
   additionalValue: normalizeString(value.additionalValueInitiative),
-  targets: [],
+  targets:
+    value.targets.length > 0
+      ? value.targets.map((target) => ({
+          id: target.id || null,
+          updateTarget: normalizeString(target.updateTarget),
+          title: normalizeString(target.title),
+          description: normalizeString(target.description),
+          status: normalizeString(target.status),
+          baseYear: normalizeNumber(target.baseyear),
+          year: normalizeNumber(target.year),
+          types: target.type,
+          customType: normalizeString(target.typeDescription),
+          unit: normalizeString(target.unit),
+          value: normalizeNumber(target.value),
+          targetProgess: target.targetProgress,
+          statusReason: normalizeString(target.statusReason)
+        }))
+      : [],
   monitoringProgress: normalizeString(value.progress),
   publicReportingOptions: [
     ...(value.publicReportingOptions.checkbox1

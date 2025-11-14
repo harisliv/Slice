@@ -47,7 +47,7 @@ export const CREATE_REPORT_FIELD_INFO = {
   actions: {
     title: 'Actions, outcomes and impacts',
     subtitle:
-      'In this section, you should provide information on the actions undertaken by the initiative and explain their outcomes and impacts.'
+      'In this section, you should provide information on the actions undertaken by the course and explain their outcomes and impacts.'
   },
   action: {
     title: {
@@ -79,17 +79,17 @@ export const CREATE_REPORT_FIELD_INFO = {
     impactExplanation: {
       title: 'Impact of the action',
       subtitle:
-        'Explain the overall impact of the action with reference to the goal of the initiative.',
+        'Explain the overall impact of the action with reference to the goals of the course.',
       helper: 'Maximum 5,000 characters'
     },
     contributionToMultilateralProcess: {
-      title: 'Contribution of the action to the multilateral process',
+      title: 'Contribution of the action to educational standards',
       subtitle:
-        'Indicate whether your action has contributed to any of the following UNFCCC multilateral processes'
+        'Indicate whether your action has contributed to any of the following educational standards or accreditation frameworks'
     },
     contributionToMultilateralProcessDescription: {
       title:
-        'Contribution of the action to the multilateral process description',
+        'Contribution of the action to educational standards description',
       helper: 'Maximum 3,000 characters'
     },
     outcomes: {
@@ -120,9 +120,9 @@ export const ASSOCIATED_TARGET_OPTIONS = [
 ];
 
 export const MULTILATERAL_PROCESS_OPTIONS = [
-  { value: 'unfccc-process-1', label: 'UNFCCC Process 1' },
-  { value: 'unfccc-process-2', label: 'UNFCCC Process 2' },
-  { value: 'unfccc-process-3', label: 'UNFCCC Process 3' }
+  { value: 'accreditation-standard-1', label: 'Accreditation Standard 1' },
+  { value: 'accreditation-standard-2', label: 'Accreditation Standard 2' },
+  { value: 'accreditation-standard-3', label: 'Accreditation Standard 3' }
 ];
 
 export const PROGRESS_OF_TARGETS_FIELD_INFO = {
@@ -142,21 +142,21 @@ export const CHALLENGES_FIELD_INFO = {
   typesOfChallenges: {
     title: 'Types of challenges faced​​​',
     subtitle:
-      'Select up to two most applicable challenge(s) the Initiative faced.​'
+      'Select up to two most applicable challenge(s) the course faced.​'
   },
   typesOfChallengesOther: {
     title: 'Types of challenges faced (other)​​​​​',
-    subtitle: 'Write most applicable challenge(s) the Initiative faced.​​',
+    subtitle: 'Write most applicable challenge(s) the course faced.​​',
     helper: 'Maximum 100 characters'
   },
   descriptionOfChallenges: {
     title: 'Description of challenges​',
-    subtitle: 'Describe most applicable challenge(s) the Initiative faced.',
+    subtitle: 'Describe most applicable challenge(s) the course faced.',
     helper: 'Maximum 1500 characters'
   },
   descriptionOfOpportunities: {
     title: 'Description of opportunities identified​​​​​',
-    subtitle: 'Explain opportunities identified by the Initiative.',
+    subtitle: 'Explain opportunities identified by the course.',
     helper: 'Maximum 1500 characters'
   }
 };

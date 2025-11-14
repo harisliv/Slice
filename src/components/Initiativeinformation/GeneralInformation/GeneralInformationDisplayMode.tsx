@@ -15,7 +15,7 @@ export default function GeneralInformationDisplayMode({
     name,
     website,
     socialProfiles,
-    logoBase64,
+    logoUrl,
     launchDate,
     launchEvent,
     expectedEndDate,
@@ -62,11 +62,11 @@ export default function GeneralInformationDisplayMode({
 
         <Grid size={{ sm: 12, xs: 12 }}>
           <InfoCard
-            title={INITIATIVE_INFORMATION_FIELD_INFO.logoBase64.title}
+            title={INITIATIVE_INFORMATION_FIELD_INFO.logoUrl.title}
             content={{
               type: 'image',
-              src: logoBase64,
-              alt: 'Logo of the initiative'
+              src: logoUrl || null,
+              alt: 'Logo of the course'
             }}
           />
         </Grid>

@@ -27,7 +27,8 @@ export default function ProgressReportUpload({
       <Grid2 size={12}>
         <ControlledUploader
           name={`periodicalProgressReport.${fieldIndex}.report`}
-          type="Initiative"
+          type="ProgressReport"
+          fileMaxSize={2 * 1024 * 1024}
           serverValue={reportValue}
           accept={{
             'application/pdf': []

@@ -7,32 +7,40 @@ import type { InitiativeInformationFormData } from '@app/types';
 
 export default function LogoUploader() {
   const { watch } = useFormContext<InitiativeInformationFormData>();
-  const logoBase64 = watch('logoBase64');
+  const logoUrl = watch('logoUrl');
+
+  const logoName = logoUrl
+    ? logoUrl.split('/').pop() || 'logo.jpg'
+    : 'logo.jpg';
 
   return (
     <Grid2 container spacing={2}>
       <Grid2 size={12}>
         <FormInputDescription
-          title={INITIATIVE_INFORMATION_FIELD_INFO.logoBase64.title}
-          subtitle={INITIATIVE_INFORMATION_FIELD_INFO.logoBase64.subtitle}
+          title={INITIATIVE_INFORMATION_FIELD_INFO.logoUrl.title}
+          subtitle={INITIATIVE_INFORMATION_FIELD_INFO.logoUrl.subtitle}
         />
       </Grid2>
       <Grid2 size={6}>
         <ControlledUploader
           fileMaxSize={1 * 1024 * 1024}
-          name="logoBase64"
+          name="logoUrl"
           accept={{
             'image/jpeg': ['.jpeg', '.jpg'],
             'image/png': ['.png']
           }}
           type="Initiative"
-          serverValue={{
-            url: logoBase64,
-            name: 'logo.jpg',
-            size: logoBase64?.length || 0,
-            id: null,
-            sharePointId: null
-          }}
+          serverValue={
+            logoUrl
+              ? {
+                  url: logoUrl,
+                  name: logoName,
+                  size: null,
+                  id: null,
+                  sharePointId: null
+                }
+              : null
+          }
         />
       </Grid2>
     </Grid2>

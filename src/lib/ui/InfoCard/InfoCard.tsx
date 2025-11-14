@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Stack } from '@mui/system';
 import { InfoCardList, InfoCardUrl } from './InfoCard.styles';
 import type { InfoCardProps } from './InfoCard.types';
 import Grid from '@mui/material/Grid2';
+import { CircularProgress, Box } from '@mui/material';
 import SocialLink from '../SocialMediaLink';
 import PdfLink from '../PdfLink';
 import { Paragraph } from '../Global';
@@ -96,15 +98,15 @@ export default function InfoCard({ title, content }: InfoCardProps) {
         );
 
       case 'image':
-        return content?.src ? (
-          <img
-            src={`data:image/png;base64,${content.src}`}
+        if (!content?.src) {
+          return <Paragraph variant="medium-regular">-</Paragraph>;
+        }
+
+        return (
+          <ImageWithLoading
+            src={content.src}
             alt={content.alt || 'Logo image'}
-            className="file-thumbnail"
-            style={{ maxWidth: 150 }}
           />
-        ) : (
-          <Paragraph variant="medium-regular">-</Paragraph>
         );
 
       default:
@@ -120,5 +122,54 @@ export default function InfoCard({ title, content }: InfoCardProps) {
       <Paragraph variant="medium-bold">{title}</Paragraph>
       {renderContent()}
     </Stack>
+  );
+}
+
+// Component to handle image loading state for URL images
+function ImageWithLoading({ src, alt }: { src: string; alt: string }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
+
+  return (
+    <Box sx={{ position: 'relative', display: 'inline-block', maxWidth: 150 }}>
+      {isLoading && (
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 1
+          }}
+        >
+          <CircularProgress size={24} />
+        </Box>
+      )}
+      {hasError ? (
+        <Paragraph variant="medium-regular">Failed to load image</Paragraph>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className="file-thumbnail"
+          style={{
+            maxWidth: 150,
+            opacity: isLoading ? 0 : 1,
+            transition: 'opacity 0.3s ease-in-out'
+          }}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
+      )}
+    </Box>
   );
 }

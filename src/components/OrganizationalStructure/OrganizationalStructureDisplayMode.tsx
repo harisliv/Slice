@@ -34,8 +34,10 @@ export default function OrganizationalStructureDisplayMode({
     memberInformation
   } = initiativeProfile || {};
 
-  const signatories = signatoriesMembers?.includes('Signatories');
-  const members = signatoriesMembers?.includes('Members');
+  const signatories =
+    signatoriesMembers && signatoriesMembers.includes('Enrolled Students');
+  const members =
+    signatoriesMembers && signatoriesMembers.includes('Registered Students');
 
   const leadOrgcolumns = useLeadOrganizationsDisplayModeColumns();
 
@@ -115,7 +117,7 @@ export default function OrganizationalStructureDisplayMode({
             {signatories && (
               <Stack spacing={1.5}>
                 <Paragraph variant="medium-bold">
-                  Signatory information
+                  Enrolled student information
                 </Paragraph>
 
                 {signatories && (

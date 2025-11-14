@@ -59,12 +59,12 @@ export const involvedEntitiesSuperRefine = (
     }
   }
 
-  if (signatoriesMembers && signatoriesMembers.includes('Signatories')) {
+  if (signatoriesMembers && signatoriesMembers.includes('Enrolled Students')) {
     if (isInvalidString(signatoryCriteria)) {
       ctx.addIssue({
         path: ['signatoryCriteria'],
         message:
-          'Please complete signatory criteria when signatories are selected',
+          'Please complete signatory criteria when enrolled students are selected',
         code: z.ZodIssueCode.custom
       });
     }
@@ -72,16 +72,20 @@ export const involvedEntitiesSuperRefine = (
       ctx.addIssue({
         path: ['signatoryFollowUps'],
         message:
-          'Please select signatory follow ups when signatories are selected',
+          'Please select signatory follow ups when enrolled students are selected',
         code: z.ZodIssueCode.custom
       });
     }
   }
-  if (signatoriesMembers && signatoriesMembers.includes('Members')) {
+  if (
+    signatoriesMembers &&
+    signatoriesMembers.includes('Registered Students')
+  ) {
     if (isInvalidString(memberInformation)) {
       ctx.addIssue({
         path: ['memberInformation'],
-        message: 'Please complete member information when members are selected',
+        message:
+          'Please complete member information when registered students are selected',
         code: z.ZodIssueCode.custom
       });
     }

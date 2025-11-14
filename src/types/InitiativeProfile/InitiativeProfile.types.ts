@@ -106,7 +106,7 @@ export type InitiativeProfileDTO = {
   id: string;
   name: string;
   website: string | null;
-  logoBase64: string | null;
+  logoUrl: string | null;
   socialProfiles: {
     Facebook?: string | null;
     Twitter?: string | null;

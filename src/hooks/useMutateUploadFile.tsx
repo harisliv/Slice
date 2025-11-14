@@ -26,15 +26,18 @@ export default function useMutateUploadFile(
       formData.append('name', file?.name);
 
       try {
+        // Use Supabase Edge Function for file uploads
         const response = await apiClient['post'](
-          `/document/upload/${activeInitiative?.id}/type/${type}`,
+          `/functions/v1/document/upload/${activeInitiative?.id}/type/${type}`,
           formData,
           config
         );
 
+        // Response is the file path from Supabase Storage
         return response.data;
       } catch (error) {
-        logger.error(`Failure in uploading file: ${File.name}`, error as Error);
+        logger.error(`Failure in uploading file: ${file.name}`, error as Error);
+        throw error;
       }
     }
   });

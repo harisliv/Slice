@@ -63,7 +63,7 @@ const Header: FC<IHeader> = ({
               <LogoIcon aria-label="Main Logo" />
               <StyledPageName data-testid="header-nav.page-name">
                 <Header5 variant="default">
-                  {isSmallMobile ? 'ISS' : 'INITIATIVE self-service'}
+                  {isSmallMobile ? 'Slice' : 'Slice'}
                 </Header5>
               </StyledPageName>
             </StyledPageInfo>

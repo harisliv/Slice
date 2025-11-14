@@ -73,7 +73,7 @@ export const convertFileSize = (
 };
 
 /**
- * Converts a File object into a Base64 string.
+ * Converts a File object into a Base64 string (deprecated - use Supabase Storage instead).
  *
  * @param {File} fileToConvert - The file to be converted into a Base64 string.
  * @returns {Promise<string>} A promise that resolves with the Base64 string representation of the file.

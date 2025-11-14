@@ -24,7 +24,7 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
     subtitle: (
       <Stack spacing={3}>
         <Paragraph variant="small-regular">
-          In a given submission period, CCIs are invited to report information
+          In a given submission period, courses are invited to report information
           on the activities they have conducted during the timeframe of
           information.
         </Paragraph>
@@ -36,7 +36,7 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
           </Paragraph>
           <Paragraph variant="small-regular">
             <b>Custom Timeframe of Information: </b>
-            If a CCI cannot apply the Default Timeframe of Information, it may
+            If a course cannot apply the Default Timeframe of Information, it may
             define a custom Timeframe of Information. The Custom Timeframe of
             Information shall be 12 months in duration and shall not overlap
             with a previous Timeframe of Information.
@@ -58,7 +58,7 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
     step: '3',
     title: 'Progress of targets',
     subtitle:
-      'In this section, you should provide information on the progress of the targets set by the initiative.',
+      'In this section, you should provide information on the progress of the targets set by the course.',
     content: <ProgressOfTargets />,
     hasRequiredLabel: true
   },
@@ -66,7 +66,7 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
     step: '4',
     title: 'Challenges and opportunities',
     subtitle:
-      'In this section, you should provide information on the challenges faced and opportunities identified by the initiative.',
+      'In this section, you should provide information on the challenges faced and opportunities identified by the course.',
     content: <ChallengesAndOpportunities />,
     hasRequiredLabel: true
   },

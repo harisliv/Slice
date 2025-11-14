@@ -27,7 +27,7 @@ export const initiativeInformationShape = z.object({
     Instagram: socialProfileSchemaType,
     YouTube: socialProfileSchemaType
   }),
-  logoBase64: z.string().nullable(),
+  logoUrl: z.string().nullable(),
   launchDate: maxCurrentYearMandatorySchemaType(),
   launchEvent: stringSchemaOptionalType(),
   expectedEndDate: yearOptionalSchemaType,
@@ -152,7 +152,7 @@ export const defaultInitiativeInformationFormValues: InitiativeInformationFormDa
       Instagram: '',
       YouTube: ''
     },
-    logoBase64: '',
+    logoUrl: '',
     launchDate: NaN,
     launchEvent: '',
     expectedEndDate: NaN,

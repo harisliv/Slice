@@ -5,9 +5,6 @@ import {
   HydratedRouterProvider,
   HydratedThemeProvider
 } from '@app/providers';
-import { printEnvVars } from './utils';
-
-printEnvVars();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -27,7 +27,26 @@ export default function ControlledUploader({
 
   const { mutateAsync, isPending } = useMutateUploadFile(type);
 
-  const baseUrl = import.meta.env.VITE_API_URL;
+  const supabaseUrl = import.meta.env.VITE_API_URL; // Supabase project URL
+
+  // Helper function to get Supabase Storage public URL
+  // Detects bucket from file path: if path contains "reports/" it's course-documents, otherwise course-assets
+  const getSupabaseStorageUrl = (
+    filePath: string,
+    fileType: 'Initiative' | 'ProgressReport'
+  ): string => {
+    // Determine bucket based on file path pattern
+    // Files in "reports/" folder go to course-documents, "logos/" go to course-assets
+    const bucket = filePath.includes('/reports/')
+      ? 'course-documents'
+      : filePath.includes('/logos/')
+        ? 'course-assets'
+        : fileType === 'ProgressReport'
+          ? 'course-documents'
+          : 'course-assets';
+    // Supabase Storage public URL format: {projectUrl}/storage/v1/object/public/{bucket}/{path}
+    return `${supabaseUrl}/storage/v1/object/public/${bucket}/${filePath}`;
+  };
 
   const transformToFieldValue = (
     accFiles: File[],
@@ -37,31 +56,46 @@ export default function ControlledUploader({
 
     if (file) {
       setFileLocally(file);
-      const reader = new FileReader();
-      reader.onload = async () => {
-        const base64 = reader.result?.toString().split(',')[1];
-        if (typeof base64 === 'string') {
-          if (name === 'logoBase64') {
-            field.onChange(base64);
-          } else {
-            const pureFile = new File([file], file.name, {
-              type: file.type,
-              lastModified: file.lastModified
-            });
-            const id = await mutateAsync(pureFile);
-            if (id) {
+
+      if (name === 'logoUrl') {
+        // Upload logo to Supabase Storage
+        const pureFile = new File([file], file.name, {
+          type: file.type,
+          lastModified: file.lastModified
+        });
+        mutateAsync(pureFile)
+          .then((filePath) => {
+            if (filePath) {
+              const storageUrl = getSupabaseStorageUrl(filePath, 'Initiative');
+              field.onChange(storageUrl);
+            }
+          })
+          .catch((error) => {
+            console.error('Logo upload failed:', error);
+          });
+      } else {
+        // For other files (PDFs, etc.), upload to Supabase Storage
+        const pureFile = new File([file], file.name, {
+          type: file.type,
+          lastModified: file.lastModified
+        });
+        mutateAsync(pureFile)
+          .then((filePath) => {
+            if (filePath) {
+              const storageUrl = getSupabaseStorageUrl(filePath, type);
               field.onChange({
                 id: null,
                 size: file.size,
-                sharePointId: id,
+                sharePointId: filePath, // Store the file path as sharePointId
                 name: file.name,
-                url: `${baseUrl}/document/download/${id}`
+                url: storageUrl
               });
             }
-          }
-        }
-      };
-      reader.readAsDataURL(file);
+          })
+          .catch((error) => {
+            console.error('File upload failed:', error);
+          });
+      }
     }
   };
 
