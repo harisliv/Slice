@@ -1,5 +1,7 @@
 # Slice - Educational Platform Course Management System
 
+demo: https://slice-5zop345h6-harislivs-projects.vercel.app/
+
 ## 🎯 Project Overview
 
 Slice is an educational platform that enables instructors and administrators to manage course profiles, track student progress, create assignments, and generate comprehensive reports. The application features a sophisticated multi-step form interface with advanced validation, real-time data synchronization, and offline support. Built to showcase advanced React patterns, state management, and TypeScript best practices.
