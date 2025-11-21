@@ -77,11 +77,6 @@ export default function withFormProvider<T extends z.ZodTypeAny>(
       formState: { isValid, errors, isDirty, dirtyFields }
     } = methods;
 
-    // useEffect(() => {
-    //     logger.info('Triggering form Validation');
-    //     trigger();
-    // }, [trigger]);
-
     const contextValues = useMultiStepFormValues<T>();
 
     const formValues = watch();
