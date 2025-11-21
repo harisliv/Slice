@@ -1,6 +1,6 @@
 # Slice - Educational Platform Course Management System
 
-demo: https://slice-5zop345h6-harislivs-projects.vercel.app/
+demo: https://slice-livid.vercel.app/
 
 ## 🎯 Project Overview
 
@@ -162,3 +162,4 @@ Offline-first caching for dropdown data:
 - [ ] Add latestUpdate implementation
 - [ ] Fix new report undefined id
 - [ ] Add form wide validation messages
+- [ ] Fix initiative dummy data
