@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { useQueryClient } from '@tanstack/react-query';
 
 type TCreateNewReportShape = {
+  id: string;
   reportStatus: 'Draft';
   typesOfChallengesFaced: [];
   actions: [];
@@ -48,6 +49,7 @@ export default function useCreateNewReport() {
         .toISOString();
 
       return mutation.mutateAsync({
+        id: crypto.randomUUID(),
         reportStatus: 'Draft',
         typesOfChallengesFaced: [],
         actions: [],

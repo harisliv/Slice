@@ -1,31 +1,20 @@
-import {
-  type ProgressReportingDTO,
-  type TProgressReportingData
-} from '@app/types';
-import { convertToTableData } from '@app/utils/ProgressReporting';
-import useGetPrivateRoutes from './useGetPrivateRoutes';
 import { useActiveInitiative } from './useActiveInitiative';
 import useInitiatives from './useInitiatives';
+import { useProgressReporting } from './useProgressReporting';
+import { TagStatus } from '@app/lib/types';
 
 export function useSubmittedReports(enabled: boolean = true) {
   const { activeInitiative } = useActiveInitiative();
 
   useInitiatives({ enabled: !!activeInitiative?.id });
 
-  let endpointUrl = `/functions/v1/progress-report/initiative/${activeInitiative?.id}?status=Submitted`;
+  const { data, ...rest } = useProgressReporting({ enabled });
 
-  const { data, ...rest } = useGetPrivateRoutes<
-    TProgressReportingData[],
-    ProgressReportingDTO[]
-  >({
-    endpoint: endpointUrl,
-    queryKey: ['submittedReports', activeInitiative?.id],
-    typeGuard: Array.isArray,
-    convertToClientEntity: convertToTableData,
-    enabled: !!activeInitiative?.id && enabled
-  });
+  const submittedReports = data?.filter(
+    (report) => report.reportingStatus === TagStatus.SUBMITTED
+  );
 
-  const allProgressReportsDateRanges = data
+  const allProgressReportsDateRanges = submittedReports
     ?.map((report) => [
       report?.timeframeOfInformation?.split(' to ')?.[0],
       report?.timeframeOfInformation?.split(' to ')?.[1]

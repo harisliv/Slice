@@ -1,6 +1,6 @@
+import type { TagStatus } from '@app/lib/types';
 import { logger } from '@app/utils';
 import { constructErrorResponseFromZod } from '@app/utils/error';
-import type { TagStatus } from '@app/lib/types';
 import { z } from 'zod';
 import {
   actionShape,

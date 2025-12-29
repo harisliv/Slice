@@ -14,18 +14,11 @@ import CategoryField from './fields/CategoryField';
 import DateJoinedField from './fields/DateJoinedField';
 import { SkeletonComponent } from '@app/lib/ui';
 import { Box } from '@mui/material';
+import { DROPDOWN_DATA } from '@app/constants';
 
 type TDetailsFields = { schemaType: SCHEMA_TYPE; loading: boolean };
 
-// AccountType values from useDropdownValues
-const ACCOUNT_TYPES = [
-  'Public University',
-  'Private University',
-  'Community College',
-  'Vocational School',
-  'Online Learning Platform',
-  'Educational Institution'
-];
+const ACCOUNT_TYPES = DROPDOWN_DATA.AccountType;
 
 function DetailsFields({ schemaType, loading = false }: TDetailsFields) {
   const { watch } = useFormContext<SmartDropdownData>();

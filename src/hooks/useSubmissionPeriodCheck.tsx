@@ -73,5 +73,5 @@ export const useSubmissionPeriodCheck = (data: any) => {
     }
   };
 
-  return { canSubmit: validationState.canSubmit, showSubmissionModal };
+  return { canSubmit: true, showSubmissionModal };
 };

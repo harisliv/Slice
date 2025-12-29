@@ -24,9 +24,9 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
     subtitle: (
       <Stack spacing={3}>
         <Paragraph variant="small-regular">
-          In a given submission period, courses are invited to report information
-          on the activities they have conducted during the timeframe of
-          information.
+          In a given submission period, courses are invited to report
+          information on the activities they have conducted during the timeframe
+          of information.
         </Paragraph>
         <Stack>
           <Paragraph variant="small-regular">
@@ -36,9 +36,9 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
           </Paragraph>
           <Paragraph variant="small-regular">
             <b>Custom Timeframe of Information: </b>
-            If a course cannot apply the Default Timeframe of Information, it may
-            define a custom Timeframe of Information. The Custom Timeframe of
-            Information shall be 12 months in duration and shall not overlap
+            If a course cannot apply the Default Timeframe of Information, it
+            may define a custom Timeframe of Information. The Custom Timeframe
+            of Information shall be 12 months in duration and shall not overlap
             with a previous Timeframe of Information.
           </Paragraph>
         </Stack>
@@ -51,16 +51,14 @@ const getStepConfigurations = (data: TProgressReportingShape) => [
     step: '2',
     title: CREATE_REPORT_FIELD_INFO.actions.title,
     subtitle: CREATE_REPORT_FIELD_INFO.actions.subtitle,
-    content: <ActionsOutcomesAndImpacts />,
-    hasRequiredLabel: true
+    content: <ActionsOutcomesAndImpacts />
   },
   {
     step: '3',
     title: 'Progress of targets',
     subtitle:
       'In this section, you should provide information on the progress of the targets set by the course.',
-    content: <ProgressOfTargets />,
-    hasRequiredLabel: true
+    content: <ProgressOfTargets />
   },
   {
     step: '4',

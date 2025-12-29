@@ -10,7 +10,6 @@ export default function TypeField({
   const { watch, setValue } = useFormContext<SmartDropdownData>();
   const tempOption = watch('tempOption');
   const readOnly = !!tempOption?.id;
-  const conditionalEndpoint = readOnly ? 'ParticipantType' : 'AccountType';
 
   return (
     <Grid size={gridSizeMap[customGridSize ?? 'full']}>
@@ -18,7 +17,7 @@ export default function TypeField({
         name="type"
         inputPlaceholder="Type"
         required={true}
-        dropdownEnpoint={conditionalEndpoint}
+        dropdownEnpoint="AccountType"
         noOptionsFallbackTitle="No options"
         disabled={readOnly}
         onChange={() => {

@@ -2,32 +2,31 @@ import {
   AppCard,
   CustomTag,
   Header3,
-  Paragraph,
   Select,
   SkeletonComponent
 } from '@app/lib/ui';
 import { AppCardWrapper, InitiativeCardsContainer } from './Initiative.styles';
 import { DianaIcon, FileTextIcon, UserIcon } from '@app/lib/icons';
-import { Box, Grid2, Stack } from '@mui/material';
+import { Grid2, Stack } from '@mui/material';
 import {
   useActiveInitiative,
   useGlobalLoading,
   useInitiatives
 } from '@app/hooks';
 import { NavLink } from 'react-router';
-import { formatAndSplitDateTime } from '@app/utils';
 
 export default function Initiative() {
   const { data: initiatives } = useInitiatives();
   const { activeInitiative, setActiveInitiative } = useActiveInitiative();
   const isLoading = useGlobalLoading();
 
-  const { date: lastUpdatedDate, hour: lastUpdatedHour } =
-    formatAndSplitDateTime(activeInitiative?.lastUpdated);
-  const { date: lastProgressSubmittedDate, hour: lastProgressSubmittedHour } =
-    formatAndSplitDateTime(activeInitiative?.lastProgressSubmitted);
-  const { date: lastParticipantUpdatedDate, hour: lastParticipantUpdatedHour } =
-    formatAndSplitDateTime(activeInitiative?.lastParticipantUpdated);
+  // const { date: lastUpdatedDate, hour: lastUpdatedHour } =
+  //   formatAndSplitDateTime(activeInitiative?.lastUpdated);
+  // console.log('🚀 ~ Initiative ~ lastUpdatedDate:', lastUpdatedDate);
+  // const { date: lastProgressSubmittedDate, hour: lastProgressSubmittedHour } =
+  //   formatAndSplitDateTime(activeInitiative?.lastProgressSubmitted);
+  // const { date: lastParticipantUpdatedDate, hour: lastParticipantUpdatedHour } =
+  //   formatAndSplitDateTime(activeInitiative?.lastParticipantUpdated);
 
   return (
     <>
@@ -73,7 +72,7 @@ export default function Initiative() {
               </Header3>
               <CustomTag variant={activeInitiative?.initiativeStatus} />
             </Stack>
-            <Box>
+            {/* <Box>
               <Paragraph variant="medium-regular">
                 {'Profile updated:'}{' '}
                 <span style={{ fontWeight: 700 }}>
@@ -93,7 +92,7 @@ export default function Initiative() {
                   {lastParticipantUpdatedDate} | {lastParticipantUpdatedHour}
                 </span>
               </Paragraph>
-            </Box>
+            </Box> */}
           </Stack>
           <InitiativeCardsContainer>
             <AppCardWrapper>

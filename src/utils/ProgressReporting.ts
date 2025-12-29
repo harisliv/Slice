@@ -1,3 +1,4 @@
+import { StepStatus, TagStatus } from '@app/lib/types';
 import {
   type ProgressReportingDTO,
   type TProgressReportingData,
@@ -8,7 +9,6 @@ import {
   isProgressOfTargetsSchema,
   isTimeframeOfInformationSchema
 } from '@app/types';
-import { StepStatus, TagStatus } from '@app/lib/types';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
@@ -206,7 +206,7 @@ export const convertToClientEntity = (
       description: normalizeString(target.description),
       descriptionStatus: normalizeString(target.descriptionStatus),
       id: target.id,
-      targetId: target.targetId,
+      targetId: target.targetId || crypto.randomUUID(),
       latestReportedYear: normalizeNumber(target.latestReportedYear),
       reportValue: normalizeNumber(target.reportValue),
       status: normalizeString(target.status),

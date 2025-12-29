@@ -8,6 +8,7 @@ export default function ProgressOfTargets() {
   const { control } = useFormContext<ProgressOfTargetsFormData>();
 
   const { fields } = useFieldArray({ control, name: 'targets' });
+  console.log('🚀 ~ ProgressOfTargets ~ fields:', fields);
 
   return (
     <Stack spacing={2}>

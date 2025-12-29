@@ -8,11 +8,11 @@ import { useLoaderData } from 'react-router';
 
 export default function CreateReport() {
   const isLoading = useSingleReportLoading();
-  const { reportId } = useLoaderData() || { reportId: null };
+  const { assignmentId } = useLoaderData() || { assignmentId: null };
 
   return (
     <StateAndFormStepperProvider steps={CREATE_REPORT_STEPS}>
-      <FormContextProvider reportId={reportId}>
+      <FormContextProvider reportId={assignmentId}>
         {isLoading ? <SkeletonComponent /> : <CreateReportContent />}
       </FormContextProvider>
     </StateAndFormStepperProvider>

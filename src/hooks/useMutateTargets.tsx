@@ -38,7 +38,7 @@ export default function useMutateTargets(): UseMutationResult<
 > {
   const { activeInitiative } = useActiveInitiative();
   const mutation = useMutatePrivateRoutes<TargetFormEntity, TargetDTO>({
-    endpoint: `/target`,
+    endpoint: `/functions/v1/target`,
     convertToServerEntity: (value) =>
       convertToServerEntity(value, activeInitiative?.id || '')
   });

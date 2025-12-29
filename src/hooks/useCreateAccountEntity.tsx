@@ -2,7 +2,6 @@ import { useQueryClient } from '@tanstack/react-query';
 import type {
   AccountEntityCreateDTO,
   AccountEntityDetails,
-  AccountEntityOption,
   SCHEMA_TYPE,
   SmartDropdownData
 } from '@app/types';
@@ -10,8 +9,6 @@ import {
   convertToClientEntity,
   convertToServerEntity
 } from '@app/utils/smartDropdown';
-import { idbAddItem } from '@app/utils/indexedDb';
-import { IDB_STORES } from '@app/constants';
 import useMutatePrivateRoutes from './useMutatePrivateRoutes';
 import { useActiveInitiative } from './useActiveInitiative';
 import { apiClient } from '@app/config/axios.config';
@@ -33,21 +30,10 @@ export default function useCreateAccountEntity(schemaType: SCHEMA_TYPE) {
     convertToServerEntity,
     convertToClientEntity,
     typeGuard: isAccountEntityDetails,
-    onSuccess: async (data) => {
-      if (!data.id || !data.name) {
-        return;
-      }
-      const accountOption: AccountEntityOption = {
-        id: data.id,
-        name: data.name
-      };
-
-      await idbAddItem(IDB_STORES.accountsStore, accountOption);
-
-      qc.setQueryData(['accounts', 'idb'], (old: any) => ({
-        dropdownAccounts: [...(old?.dropdownAccounts ?? []), accountOption],
-        lastUpdate: old?.lastUpdate
-      }));
+    onSuccess: async () => {
+      qc.invalidateQueries({
+        queryKey: ['accounts', 'accountsList']
+      });
     }
   });
 

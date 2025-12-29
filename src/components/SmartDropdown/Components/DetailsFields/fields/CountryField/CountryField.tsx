@@ -8,7 +8,7 @@ export default function CountryField({
   customGridSize
 }: TCustomGridSizeProps = {}) {
   const { watch } = useFormContext<SmartDropdownData>();
-  const tempOption = watch('tempOption');
+  const tempOption = watch('tempOption'); // use useWatch
   const readOnly = !!tempOption?.id;
 
   return (
